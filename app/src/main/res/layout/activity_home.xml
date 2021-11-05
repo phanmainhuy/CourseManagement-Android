@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="10dp"
+    tools:context=".HomeActivity"
+    android:orientation="vertical"
+    >
+<androidx.drawerlayout.widget.DrawerLayout
+                android:id="@+id/drawerlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/grey_text_login"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:padding="5dp">
+                <ImageView
+                    android:id="@+id/imageView_logo"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/logoapp"
+                    />
+                <TextView
+                    android:id="@+id/icon_toolbar_home"
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:textSize="12dp"
+                    android:layout_marginLeft="30dp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:text="Tri thức là chìa khóa mở cửa tương lai"
+                    android:textColor="@color/black"
+                    >
+                </TextView>
+         </androidx.appcompat.widget.Toolbar>
+        </LinearLayout>
+            <ViewFlipper
+                android:id="@+id/viewflipper"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@color/teal_200"
+                >
+                <TextView
+                    android:id="@+id/xxx"
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:text="Đây là quảng cáo bla bla bla"
+                    android:textColor="@color/black"
+                    />
+            </ViewFlipper>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nagivationviewLeft"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        android:background="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/menu_navigation"></com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

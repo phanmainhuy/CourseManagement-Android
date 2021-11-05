@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OnLearn</string>
+    <string name="channel_name">OnLearn</string>
+    <string name="channel_description">Welcome to OnLearn</string>
+</resources>

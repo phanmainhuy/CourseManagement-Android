@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/mnu_user"
+            android:icon="@drawable/ic_password"
+            android:title="Thông tin người dùng" />
+
+        <item
+            android:id="@+id/mnu_address"
+            android:icon="@drawable/ic_password"
+            android:title="Khuyến mãi" />
+
+        <item
+            android:id="@+id/mnu_new"
+            android:icon="@drawable/ic_password"
+            android:title="Tin tức"/>
+        <item
+            android:id="@+id/mnu_help"
+            android:icon="@drawable/logoapp"
+            android:title="Hỗ trợ" />
+        <item
+            android:id="@+id/mnu_contact"
+            android:icon="@drawable/ic_password"
+            android:title="Liên hệ" />
+
+    </group>
+
+</menu>
