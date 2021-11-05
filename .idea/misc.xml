@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/University/KhoaLuan/Code/Mobile_OnLearn/app/src/main/res/drawable/ic_usertext.xml" value="0.2703125" />
+        <entry key="..\:/University/KhoaLuan/Code/Mobile_OnLearn/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/University/KhoaLuan/Code/Mobile_OnLearn/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/University/KhoaLuan/Code/Mobile_OnLearn/app/src/main/res/layout/activity_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/University/KhoaLuan/Code/Mobile_OnLearn/app/src/main/res/menu/menu_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable-v24/ic_logofb.xml" value="0.14635416666666667" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable/decorate_text_basic.xml" value="0.2703125" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable/decorate_text_login.xml" value="0.2703125" />
