@@ -68,18 +68,25 @@
 
 
                 />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+
             <Button
                 android:id="@+id/btn_getOTP_Forgetpass"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="100dp"
-                android:gravity="center"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:backgroundTint="@color/red_price"
                 android:text="Lấy mã OTP"
                 />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/lblMatKhau_Login2"
@@ -116,7 +123,7 @@
                 android:id="@+id/btn_xacnhan_forgetpass"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="10dp"
 
                 android:backgroundTint="@color/green_dolla"
                 android:text="Xác nhận"
