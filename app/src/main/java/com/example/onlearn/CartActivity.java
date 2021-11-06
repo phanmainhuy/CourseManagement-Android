@@ -9,8 +9,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class CartActivity extends AppCompatActivity {
+
+    Button btnContinue, btnThanhToan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,10 @@ public class CartActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Giỏ hàng"+ "</font>"));
 
+
+        //anh xa
+        btnContinue = findViewById(R.id.btn_Cart_Continue);
+        btnThanhToan = findViewById(R.id.btn_Cart_Pay);
 
 
 

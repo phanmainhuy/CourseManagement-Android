@@ -97,6 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="Thanh toán"
+
         android:textStyle="bold"
         android:backgroundTint="@color/green_dolla"
         android:textColor="@color/white"
