@@ -5,25 +5,31 @@
 
         <item
             android:id="@+id/mnu_user"
-            android:icon="@drawable/ic_password"
+            android:icon="@drawable/ic_user"
             android:title="Thông tin người dùng" />
 
         <item
-            android:id="@+id/mnu_address"
-            android:icon="@drawable/ic_password"
+            android:id="@+id/mnu_course"
+            android:icon="@drawable/ic_course"
+            android:title="Phòng học" />
+
+
+        <item
+            android:id="@+id/mnu_discount"
+            android:icon="@drawable/ic_discount"
             android:title="Khuyến mãi" />
 
         <item
             android:id="@+id/mnu_new"
-            android:icon="@drawable/ic_password"
+            android:icon="@drawable/ic_news"
             android:title="Tin tức"/>
         <item
             android:id="@+id/mnu_help"
-            android:icon="@drawable/logoapp"
+            android:icon="@drawable/ic_chatbot"
             android:title="Hỗ trợ" />
         <item
             android:id="@+id/mnu_contact"
-            android:icon="@drawable/ic_password"
+            android:icon="@drawable/ic_support"
             android:title="Liên hệ" />
 
     </group>

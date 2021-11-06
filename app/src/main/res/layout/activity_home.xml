@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="10dp"
+
     tools:context=".HomeActivity"
     android:orientation="vertical"
     >
 <androidx.drawerlayout.widget.DrawerLayout
-                android:id="@+id/drawerlayout"
+                android:id="@+id/drawerlayout_Home"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
     <ScrollView
@@ -29,7 +29,7 @@
             android:orientation="vertical"
             >
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbar_Home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/grey_text_login"
@@ -37,7 +37,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:padding="5dp">
                 <ImageView
-                    android:id="@+id/imageView_logo"
+                    android:id="@+id/imgView_logo_Home"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
                     app:srcCompat="@drawable/logoapp"
@@ -57,24 +57,14 @@
          </androidx.appcompat.widget.Toolbar>
         </LinearLayout>
             <ViewFlipper
-                android:id="@+id/viewflipper"
+                android:id="@+id/viewQuangCao_Home"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_Home"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:background="@color/teal_200"
                 >
-                <TextView
-                    android:id="@+id/xxx"
-                    android:layout_width="250dp"
-                    android:layout_height="match_parent"
-                    android:textSize="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:textStyle="bold"
-                    android:fontFamily="serif"
-                    android:text="Đây là quảng cáo bla bla bla"
-                    android:textColor="@color/black"
-                    />
+
             </ViewFlipper>
 
 
@@ -84,7 +74,7 @@
         </LinearLayout>
     </ScrollView>
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nagivationviewLeft"
+        android:id="@+id/navigationviewLeft_Home"
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"
         android:background="@color/white"
