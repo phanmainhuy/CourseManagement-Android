@@ -62,14 +62,29 @@
                 android:layout_height="180dp"
                 app:layout_constraintTop_toBottomOf="@id/toolbar_Home"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:background="@color/teal_200"
+
                 >
 
             </ViewFlipper>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/green_dolla"
+                >
 
 
+            </androidx.recyclerview.widget.RecyclerView>
 
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_200"
+                >
+
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </ScrollView>

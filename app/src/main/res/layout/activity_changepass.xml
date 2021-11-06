@@ -31,13 +31,22 @@
             app:srcCompat="@drawable/logoapp"
 
             />
-
+        <TextView
+            android:id="@+id/lblSlogan_Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="Learning is the eye of the mind" />
 
         <TextView
             android:id="@+id/lblMatKhau_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:textColor="@color/black"
             android:textSize="15dp"
             android:text="Mật khẩu mới" />
@@ -90,7 +99,7 @@
 
 
         <Button
-            android:id="@+id/btnLogin_Login"
+            android:id="@+id/btnChangePass_ChangePass"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="50dp"
