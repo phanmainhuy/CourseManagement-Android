@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -46,10 +47,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //action bar
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(Html.fromHtml("<font color=\"black\">" +"Trang chủ"+ "</font>"));
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Trang chủ"+ "</font>"));
         //doi mau thanh action bars
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#8470FF"));
+                = new ColorDrawable(Color.parseColor("#00CD66"));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
 
@@ -85,7 +86,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         ArrayList<Integer> mangslide = new ArrayList<>();
 
-        mangslide.add(R.drawable.ic_course);
+        mangslide.add(R.drawable.slide1);
+        mangslide.add(R.drawable.slide2);
+        mangslide.add(R.drawable.slide3);
+        mangslide.add(R.drawable.slide4);
 
 
         for (int i = 0; i < mangslide.size(); i++) {

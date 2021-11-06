@@ -25,7 +25,7 @@ public class UserActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         //doi mau thanh action bar
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#8470FF"));
+                = new ColorDrawable(Color.parseColor("#00CD66"));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Thông tin người dùng"+ "</font>"));

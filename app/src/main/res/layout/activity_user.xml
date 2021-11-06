@@ -280,7 +280,7 @@
                 <Button
                     android:id="@+id/btn_User_LogOut"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="60dp"
                     android:backgroundTint="@color/green_dolla"
                     android:text="Đăng xuất"
                     android:textColor="@color/white"
@@ -292,7 +292,7 @@
                 <Button
                     android:id="@+id/btn_User_Save"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="60dp"
                     android:backgroundTint="@color/green_dolla"
                     android:text="Lưu thay đổi"
                     android:textColor="@color/white"
