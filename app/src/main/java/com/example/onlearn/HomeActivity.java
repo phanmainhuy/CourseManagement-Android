@@ -139,6 +139,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search,menu);
+        getMenuInflater().inflate(R.menu.menu_notification,menu);
         getMenuInflater().inflate(R.menu.menu_cart,menu);
 
         return true;
@@ -179,6 +181,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.action_cart)
         {
             Intent intent = new Intent(this,CartActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.action_notification)
+        {
+            Intent intent = new Intent(this,ForgetpassActivity.class);
             startActivity(intent);
         }
         return true;

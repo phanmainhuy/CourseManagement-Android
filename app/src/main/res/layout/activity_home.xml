@@ -83,7 +83,6 @@
                 android:background="@color/teal_200"
                 >
 
-
             </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
