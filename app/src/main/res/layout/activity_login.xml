@@ -61,7 +61,7 @@
                 android:drawableLeft="@drawable/ic_account"
                 android:paddingLeft="20dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/hint_txt"
+                android:textColorHint="@color/grey_hint_txt"
                 android:textSize="15dp" />
 
             <TextView
@@ -87,7 +87,7 @@
                 android:inputType="textPassword"
                 android:paddingLeft="20dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/hint_txt"
+                android:textColorHint="@color/grey_hint_txt"
 
 
                 />

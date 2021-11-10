@@ -27,6 +27,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import Model.GLOBAL;
+
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ViewFlipper viewQuangCao;
@@ -50,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Trang chủ"+ "</font>"));
         //doi mau thanh action bars
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#00CD66"));
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorTitle));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
 
@@ -185,7 +187,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         if (id == R.id.action_notification)
         {
-            Intent intent = new Intent(this,ForgetpassActivity.class);
+            Intent intent = new Intent(this,NotificationActivity.class);
             startActivity(intent);
         }
         return true;

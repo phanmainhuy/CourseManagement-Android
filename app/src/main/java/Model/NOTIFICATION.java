@@ -3,37 +3,48 @@ package Model;
 import java.io.Serializable;
 
 public class NOTIFICATION implements Serializable {
-    int imgLogo;
-    String title;
-    String content;
+    public int ImgLogo;
+    public String Title;
+    public String Content;
+    public String Date;
+
+    public NOTIFICATION(int imglogo, String title, String content, String date) {
+        ImgLogo = imglogo;
+        Title = title;
+        Content = content;
+        Date = date;
+    }
 
     public int getImgLogo() {
-        return imgLogo;
+        return ImgLogo;
     }
 
     public void setImgLogo(int imgLogo) {
-        this.imgLogo = imgLogo;
+        this.ImgLogo = imgLogo;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.Title = title;
     }
 
     public String getContent() {
-        return content;
+        return Content;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        this.Content = content;
     }
 
 
+    public String getDate() {
+        return Date;
+    }
 
-
-
-
+    public void setDate(String date) {
+        this.Date = date;
+    }
 }

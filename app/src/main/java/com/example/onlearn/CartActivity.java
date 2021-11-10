@@ -11,6 +11,8 @@ import android.text.Html;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import Model.GLOBAL;
+
 public class CartActivity extends AppCompatActivity {
 
     Button btnContinue, btnThanhToan;
@@ -25,7 +27,7 @@ public class CartActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         //doi mau thanh action bar
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#00CD66"));
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorTitle));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Giỏ hàng"+ "</font>"));

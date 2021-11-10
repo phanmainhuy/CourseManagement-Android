@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
 
+
         <item
             android:id="@+id/mnu_user"
             android:icon="@drawable/ic_user"
-            android:title="Thông tin người dùng" />
+            android:title="Cập nhật thông tin" />
 
         <item
             android:id="@+id/mnu_course"
@@ -19,10 +20,11 @@
             android:icon="@drawable/ic_discount"
             android:title="Khuyến mãi" />
 
+
         <item
             android:id="@+id/mnu_new"
             android:icon="@drawable/ic_news"
-            android:title="Tin tức"/>
+            android:title="Tin tức khuyến mãi"/>
         <item
             android:id="@+id/mnu_help"
             android:icon="@drawable/ic_chatbot"
@@ -30,7 +32,7 @@
         <item
             android:id="@+id/mnu_contact"
             android:icon="@drawable/ic_support"
-            android:title="Liên hệ" />
+            android:title="Hotline liên hệ" />
 
     </group>
 

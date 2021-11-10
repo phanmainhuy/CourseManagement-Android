@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Đổi ảnh đại diện"
-                    android:textColor="@color/hint_txt"
+                    android:textColor="@color/grey_hint_txt"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.501"
                     app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
                         android:hint="Họ và tên"
 
                         android:textColor="@color/black"
-                        android:textColorHint="@color/hint_txt"
+                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
                 </LinearLayout>
 
@@ -130,7 +130,7 @@
                         android:hint="Số điện thoại"
                         android:inputType="phone"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/hint_txt"
+                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
 
 
@@ -160,7 +160,7 @@
                         android:hint="Email"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/hint_txt"
+                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
                 </LinearLayout>
 
@@ -238,7 +238,7 @@
                         android:hint="Ngày sinh"
                         android:inputType="date"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/hint_txt"
+                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
                 </LinearLayout>
 
@@ -266,7 +266,7 @@
                         android:ems="10"
                         android:hint="Địa chỉ"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/hint_txt"
+                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
                 </LinearLayout>
             </LinearLayout>

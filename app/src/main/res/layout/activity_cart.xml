@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Giỏ hàng rỗng"
-                android:textColor="@color/hint_txt"
+                android:textColor="@color/grey_hint_txt"
                 android:textSize="30dp" />
 
             <ListView
