@@ -1,4 +1,4 @@
-package Adapter;
+package com.example.onlearn.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import com.example.onlearn.R;
 
 import java.util.ArrayList;
 
-import Model.NOTIFICATION;
+import com.example.onlearn.Model.NOTIFICATION;
 
 public class NotificationAdapter_Listview extends BaseAdapter {
     Context context;

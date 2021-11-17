@@ -1,4 +1,4 @@
-package Adapter;
+package com.example.onlearn.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import com.example.onlearn.R;
 
 import java.util.ArrayList;
 
-import Model.OPTION;
+import com.example.onlearn.Model.OPTION;
 
 public class OptionAdapter_Home_rcl extends RecyclerView.Adapter<OptionAdapter_Home_rcl.KHUNGNHIN> {
     Context context;

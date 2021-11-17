@@ -1,6 +1,6 @@
-package Adapter;
+package com.example.onlearn.Adapter;
 
-import Model.OPTION;
+import com.example.onlearn.Model.OPTION;
 
 public interface OnClickRcl_Home {
     void itemClickOption(OPTION option);

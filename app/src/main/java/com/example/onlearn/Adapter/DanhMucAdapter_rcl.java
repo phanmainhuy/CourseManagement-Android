@@ -1,15 +1,11 @@
+package com.example.onlearn.Adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,13 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
-import Adapter.OnClickRCL_DanhMuc;
-import Model.DANHMUCKHOAHOC;
-import Model.GLOBAL;
+import com.example.onlearn.Model.DANHMUCKHOAHOC;
+import com.example.onlearn.Model.GLOBAL;
 
 public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.KHUNGNHIN>{
     Context context;
@@ -55,7 +48,7 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
         Picasso.with(context)
                 .load(url + danhmuc.HinhAnh)
                 .placeholder(R.drawable.no_image_found)
-                .into(holder.hinh);
+                .into(holder.hinhanh);
 
         holder.ten.setText(danhmuc.TenDanhMuc);
         //holder.mota.setText(products.mota);
@@ -82,8 +75,8 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
         public KHUNGNHIN(@NonNull View itemView) {
             super(itemView);
 
-            hinhanh = itemView.findViewById(R.id.img_product);
-            ten = itemView.findViewById(R.id.tv_product1);
+            hinhanh = itemView.findViewById(R.id.imgDanhMuc_DanhMuc);
+            ten = itemView.findViewById(R.id.tvTenDM_DanhMuc);
 
 
 
@@ -91,53 +84,18 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.ItemClick(products);
+                    listener.itemClickDanhMuc(danhmuckhoahoc);
                 }
             });
         }
     }
 
-    //Search view cho san pham
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                String strSearch = constraint.toString();
-                if(strSearch.isEmpty())
-                {
-                    dulieu = dulieusearch;
-                }
-                else
-                {
-                    ArrayList<Products> list = new ArrayList<>();
-                    for(Products products : dulieusearch)
-                    {
-                        if(products.getTen().toLowerCase().contains(strSearch.toLowerCase()))
-                        {
-                            list.add(products);
-                        }
-                    }
-                    dulieu = list;
-                }
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = dulieu;
-
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                dulieu = (ArrayList<Products>) results.values;
-                notifyDataSetChanged();
-            }
-        };
-    }
-
-    //Tạo format tiền VND
-    public static String formatNumberCurrency(String gia)
-    {
-        DecimalFormat format = new DecimalFormat("#,###");
-        return format.format(Double.parseDouble(gia));
-    }
+//
+//
+//    //Tạo format tiền VND
+//    public static String formatNumberCurrency(String gia)
+//    {
+//        DecimalFormat format = new DecimalFormat("#,###");
+//        return format.format(Double.parseDouble(gia));
+//    }
 }

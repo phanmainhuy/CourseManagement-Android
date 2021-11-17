@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import Model.GLOBAL;
+import com.example.onlearn.Model.GLOBAL;
 
 public class UserActivity extends AppCompatActivity {
     Button btnLogout, btnSaveInfor;

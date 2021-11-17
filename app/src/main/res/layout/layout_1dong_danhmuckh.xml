@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/no_image_found" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTenDM_DanhMuc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name"

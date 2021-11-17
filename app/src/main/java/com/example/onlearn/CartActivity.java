@@ -11,7 +11,7 @@ import android.text.Html;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import Model.GLOBAL;
+import com.example.onlearn.Model.GLOBAL;
 
 public class CartActivity extends AppCompatActivity {
 

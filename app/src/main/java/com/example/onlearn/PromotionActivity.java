@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 
-import Model.GLOBAL;
+import com.example.onlearn.Model.GLOBAL;
 
 public class PromotionActivity extends AppCompatActivity {
 

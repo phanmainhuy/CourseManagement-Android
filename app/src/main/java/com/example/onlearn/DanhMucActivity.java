@@ -10,9 +10,13 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 
-import Model.GLOBAL;
+import com.example.onlearn.Adapter.DanhMucAdapter_rcl;
+
+import com.example.onlearn.Model.GLOBAL;
 
 public class DanhMucActivity extends AppCompatActivity {
+
+    DanhMucAdapter_rcl danhmuc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

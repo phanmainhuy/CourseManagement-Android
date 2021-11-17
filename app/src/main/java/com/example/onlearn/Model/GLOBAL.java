@@ -1,4 +1,4 @@
-package Model;
+package com.example.onlearn.Model;
 
 public class GLOBAL {
     public static String colorTitle = "#00CD66";

@@ -16,9 +16,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import Adapter.NotificationAdapter_Listview;
-import Model.GLOBAL;
-import Model.NOTIFICATION;
+import com.example.onlearn.Adapter.NotificationAdapter_Listview;
+import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.Model.NOTIFICATION;
 
 public class NotificationActivity extends AppCompatActivity {
     ArrayList<NOTIFICATION> dataNotification = new ArrayList<>();

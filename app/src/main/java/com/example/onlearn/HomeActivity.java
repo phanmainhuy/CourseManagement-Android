@@ -26,10 +26,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import Adapter.OnClickRcl_Home;
-import Adapter.OptionAdapter_Home_rcl;
-import Model.GLOBAL;
-import Model.OPTION;
+import com.example.onlearn.Adapter.OnClickRcl_Home;
+import com.example.onlearn.Adapter.OptionAdapter_Home_rcl;
+import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.Model.OPTION;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickRcl_Home {
 
