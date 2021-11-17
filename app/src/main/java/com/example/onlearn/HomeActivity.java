@@ -3,13 +3,12 @@ package com.example.onlearn;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -27,20 +26,30 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import Adapter.OnClickRcl_Home;
+import Adapter.OptionAdapter_Home_rcl;
 import Model.GLOBAL;
+import Model.OPTION;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickRcl_Home {
 
     ViewFlipper viewQuangCao;
     DrawerLayout drawerLayout;
     NavigationView navigationLeft;
     Toolbar toolbar;
 
+    ArrayList<OPTION> listOption = new ArrayList<>();
+    RecyclerView rclOption;
+    OptionAdapter_Home_rcl optionAdapter;
+
     //navigation handle
     private int mSelectedId;
     private static final String SELECTED_ITEM_ID = "selected"; //nguoi dung da select item
     //private static final String FRIST_TIME = "fist_time"; // nguoi dung select lan dau
     private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +75,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar_Home);
         navigationLeft = findViewById(R.id.navigationviewLeft_Home);
         drawerLayout = findViewById(R.id.drawerlayout_Home);
+        rclOption = findViewById(R.id.rclOption_Home);
+
+
+        //add data Option
+        listOption.add(new OPTION(R.drawable.ic_folder, "Danh mục"));
+        listOption.add(new OPTION(R.drawable.ic_khuyenmai, "Khuyến mãi"));
+        listOption.add(new OPTION(R.drawable.ic_option, "Khóa học"));
+        listOption.add(new OPTION(R.drawable.ic_options, "Giới thiệu"));
+
+        //load Option
+        rclOption.setAdapter(new OptionAdapter_Home_rcl(this, listOption, this));
+        rclOption.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+
+
+
 
         //toolbar
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -79,7 +103,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //Xu ly Navigation Left
         //tao su kien click navigationLeft
         navigationLeft.setNavigationItemSelectedListener(this);
-
+        //load quang cao
         loadViewFlipper();
 
     }
@@ -129,7 +153,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //            }
         if(mSelectedId == R.id.mnu_contact)
         {
-            intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:028 3510 6870"));
+            intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0948462040"));
             startActivity(intent);
         }
 //            if(mSelectedId == R.id.mnu_help)
@@ -194,4 +218,33 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @Override
+    public void itemClickOption(OPTION option) {
+        if (option.getTitle().equals("Khuyến mãi"))
+        {
+            Intent intent = new Intent(this,PromotionActivity.class);
+            startActivity(intent);
+        }
+        if (option.getTitle().equals("Danh mục"))
+        {
+            Intent intent1 = new Intent(this, DanhMucActivity.class);
+            startActivity(intent1);
+        }
+        if (option.getTitle().equals("Khóa học"))
+        {
+            Intent intent1 = new Intent(this, LoginActivity.class);
+            startActivity(intent1);
+        }
+        if (option.getTitle().equals("Giới thiệu"))
+        {
+            Intent intent1 = new Intent(this, LoginActivity.class);
+            startActivity(intent1);
+        }
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }

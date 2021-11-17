@@ -67,17 +67,26 @@
 
             </ViewFlipper>
 
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rclDanhMuc_Home"
+                android:id="@+id/rclOption_Home"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:background="@color/green_dolla"
+                android:layout_height="120dp"
+                android:background="@color/white"
+
                 >
 
 
             </androidx.recyclerview.widget.RecyclerView>
 
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Khoá học được yêu thích"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rclKhoaHoc5Sao_Home"
                 android:layout_width="match_parent"
