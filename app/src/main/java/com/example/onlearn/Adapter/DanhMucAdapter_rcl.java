@@ -52,9 +52,12 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
 
         holder.ten.setText(danhmuc.TenDanhMuc);
 
+        Picasso.with(context)
+                .load(url + danhmuc.HinhAnh)
+                .placeholder(R.drawable.no_image_found)
+                .into(holder.hinhanh);
         // for image we add Glide library dependency for image fetching from server
-        holder.hinhanh.setImageBitmap(this.converStringToBitmapFromAccess(danhmuc.getHinhAnh()));
-        holder.hinhanh.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
 
 //        Picasso.with(context)
 //                .load(url + danhmuc.HinhAnh)
@@ -68,18 +71,8 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
         holder.danhmuckhoahoc = dulieu.get(position);
 
     }
-    //bit map
-    public Bitmap converStringToBitmapFromAccess(String filename){
-        AssetManager assetManager = context.getAssets();
-        try {
-            InputStream is = assetManager.open(filename);
-            Bitmap bitmap = BitmapFactory.decodeStream(is);
-            return bitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
+
     @Override
     public int getItemCount() {
         return dulieu.size();

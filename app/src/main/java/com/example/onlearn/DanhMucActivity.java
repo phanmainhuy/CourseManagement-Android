@@ -13,13 +13,17 @@ import android.text.Html;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.onlearn.Adapter.DanhMucAdapter_rcl;
 
 import com.example.onlearn.Adapter.OnClickRCL_DanhMuc;
 import com.example.onlearn.Model.DANHMUCKHOAHOC;
 import com.example.onlearn.Model.GLOBAL;
-import com.example.onlearn.processJson.ParseJson;
-import com.example.onlearn.processJson._HttpsTrustManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,16 +64,8 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
         danhmucAdapter = new DanhMucAdapter_rcl(this, datadanhmuc, this);
         rclDanhMuc.setAdapter(danhmucAdapter);
         rclDanhMuc.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-//        try {
-//            datadanhmuc = layDanhMucKH();
-//            if (datadanhmuc == null)
-//            {
-//                Toast.makeText(DanhMucActivity.this, "Lỗi load data", Toast.LENGTH_SHORT).show();
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "https://www.google.com.vn/search?q=c%C3%B4ng+ngh%E1%BB%87+th%C3%B4ng+tin&tbm=isch&ved=2ahUKEwivx82pmaD0AhU4-DgGHQbPDzEQ2-cCegQIABAA&oq=c%C3%B4ng+ngh%E1%BB%87+th%C3%B4ng+tin&gs_lcp=CgNpbWcQAzIFCAAQgAQyBQgAEIAEMgUIABCABDIECAAQHjIECAAQHjIECAAQHjIECAAQHjIECAAQHjIECAAQHjIECAAQHjoHCCMQ7wMQJzoECAAQQzoICAAQgAQQsQM6BwgAELEDEEM6CwgAEIAEELEDEIMBOgQIABATOggIABAIEB4QE1CfCFj1IWD6ImgEcAB4AYABZYgBtRCSAQQyMy4xmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=22CVYe_tNrjw4-EPhp6_iAM&authuser=0&bih=722&biw=1536&hl=en#imgrc=0j8TDzeGhbFyBM"));
+//
+        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", ""));
 
 
 
@@ -77,39 +73,36 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
 
     }
 
-    public ArrayList<DANHMUCKHOAHOC> layDanhMucKH() throws JSONException {
-        _HttpsTrustManager.HttpsTrustManager.allowAllSSL();
 
+    public void LaySanPham() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        new Thread(new Runnable() {
-
+        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
             @Override
-            public void run() {
-                ParseJson parseJson = new ParseJson();
-                String p = parseJson.readStringFileContent(urlDanhmuc);
-                JSONArray response = null;
-                try {
-                    response = new JSONArray(p);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            public void onResponse(JSONArray response) {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        datadanhmuc.add(new DANHMUCKHOAHOC(jsonObject.getInt("MaDanhMuc"), jsonObject.getString("TenDanhMuc"),  jsonObject.getString("HinhAnh")));
+                        datadanhmuc.add(new DANHMUCKHOAHOC(jsonObject.getInt("MaDanhMuc"), jsonObject.getString("TenDanhMuc"), jsonObject.getString("HinhAnh")));
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
                 danhmucAdapter.notifyDataSetChanged();
             }
-        }).start();
-        return datadanhmuc;
+        };
 
+        Response.ErrorListener thatbai = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
 
-
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlDanhmuc, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
     }
-
 
 
     @Override
