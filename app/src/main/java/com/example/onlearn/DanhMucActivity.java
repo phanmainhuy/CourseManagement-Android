@@ -99,8 +99,8 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         };
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlDanhmuc, thanhcong, thatbai);
+        String urlslide = "http://" + GLOBAL.ip + "/wsministop/slide/";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlslide, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
 
