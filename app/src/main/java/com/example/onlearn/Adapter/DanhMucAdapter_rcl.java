@@ -1,9 +1,6 @@
 package com.example.onlearn.Adapter;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.example.onlearn.Model.DANHMUCKHOAHOC;
@@ -30,7 +25,7 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
     private OnClickRCL_DanhMuc listener;
 
 
-    String url = "http://" + GLOBAL.ip + "/topcategory";
+    String urlimg = GLOBAL.ip + GLOBAL.folderimg;
 
     public DanhMucAdapter_rcl(Context context, ArrayList<DANHMUCKHOAHOC> dulieu, OnClickRCL_DanhMuc listener) {
         this.context = context;
@@ -53,10 +48,9 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
         holder.ten.setText(danhmuc.TenDanhMuc);
 
         Picasso.with(context)
-                .load(url + danhmuc.HinhAnh)
+                .load(urlimg + danhmuc.HinhAnh)
                 .placeholder(R.drawable.no_image_found)
                 .into(holder.hinhanh);
-        // for image we add Glide library dependency for image fetching from server
 
 
 //        Picasso.with(context)

@@ -40,7 +40,7 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
 
 
     //url
-    String urlDanhmuc="http://" + GLOBAL.ip + "/topcategory";
+    String urlDanhmuc= GLOBAL.ip + "topcategory/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +62,18 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
 
         //Load du lieu va xu ly
         danhmucAdapter = new DanhMucAdapter_rcl(this, datadanhmuc, this);
+        rclDanhMuc.setHasFixedSize(true);
         rclDanhMuc.setAdapter(danhmucAdapter);
-        rclDanhMuc.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-//
-        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", ""));
+        rclDanhMuc.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        danhmucAdapter.notifyDataSetChanged();
 
+        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
+        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
+        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
+        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
+
+
+        LaySanPham();
 
 
 
@@ -92,19 +99,25 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
                 danhmucAdapter.notifyDataSetChanged();
             }
         };
-
+//        try {
+//            Class.forName("dalvik.system.CloseGuard")
+//                    .getMethod("setEnabled", boolean.class)
+//                    .invoke(null, true);
+//        } catch (ReflectiveOperationException e) {
+//            throw new RuntimeException(e);
+//        }
         Response.ErrorListener thatbai = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         };
-        String urlslide = "http://" + GLOBAL.ip + "/wsministop/slide/";
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlslide, null, thanhcong, thatbai);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlDanhmuc, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
 
-
+// nut tro ve
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
