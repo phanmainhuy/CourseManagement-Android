@@ -15,21 +15,30 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.example.onlearn.API.Retrofit;
+import com.example.onlearn.Model.DanhMuc;
+import com.example.onlearn.Model.DanhMucCon;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.onlearn.Adapter.OnClickRcl_Home;
 import com.example.onlearn.Adapter.OptionAdapter_Home_rcl;
 import com.example.onlearn.Model.GLOBAL;
 import com.example.onlearn.Model.OPTION;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickRcl_Home {
 
@@ -42,6 +51,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView rclOption;
     OptionAdapter_Home_rcl optionAdapter;
 
+    public static List<DanhMuc> danhMuc;
+    public static List<DanhMucCon> danhMucConList;
     //navigation handle
     private int mSelectedId;
     private static final String SELECTED_ITEM_ID = "selected"; //nguoi dung da select item
@@ -68,7 +79,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-
+        GetDanhMuc();
 
         //anh xa
         viewQuangCao = findViewById(R.id.viewQuangCao_Home);
@@ -247,4 +258,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+
+
+    //Lay danh muc
+    private void GetDanhMuc()
+    {
+        Call<List<DanhMuc>> danhMucCall = Retrofit.getserviceAPI().getDanhMuc();
+        danhMucCall.enqueue(new Callback<List<DanhMuc>>() {
+            @Override
+            public void onResponse(Call<List<DanhMuc>> call, Response<List<DanhMuc>> response) {
+                danhMuc = response.body();
+                Log.e("ERRr",response.message());
+            }
+
+            @Override
+            public void onFailure(Call<List<DanhMuc>> call, Throwable t) {
+                Log.e("ERRr",t.getMessage());
+            }
+        });
+    }
+
+
 }

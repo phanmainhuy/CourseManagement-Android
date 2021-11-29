@@ -23,6 +23,7 @@ import com.example.onlearn.Adapter.DanhMucAdapter_rcl;
 
 import com.example.onlearn.Adapter.OnClickRCL_DanhMuc;
 import com.example.onlearn.Model.DANHMUCKHOAHOC;
+import com.example.onlearn.Model.DanhMuc;
 import com.example.onlearn.Model.GLOBAL;
 
 import org.json.JSONArray;
@@ -30,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_DanhMuc {
 
@@ -37,7 +39,7 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
     ArrayList<DANHMUCKHOAHOC> datadanhmuc = new ArrayList<>();
     DanhMucAdapter_rcl danhmucAdapter;
 
-
+    private List<DanhMuc> sdanhMuc = HomeActivity.danhMuc;
 
     //url
     String urlDanhmuc= GLOBAL.ip + "topcategory/";
@@ -58,22 +60,22 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
 
         //anh xa
         rclDanhMuc = findViewById(R.id.rclDanhMucKH_DanhMuc);
-
+        ArrayList<DanhMuc> dara = new ArrayList<DanhMuc>(sdanhMuc);
 
         //Load du lieu va xu ly
-        danhmucAdapter = new DanhMucAdapter_rcl(this, datadanhmuc, this);
+        danhmucAdapter = new DanhMucAdapter_rcl(this, dara, this);
         rclDanhMuc.setHasFixedSize(true);
         rclDanhMuc.setAdapter(danhmucAdapter);
         rclDanhMuc.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         danhmucAdapter.notifyDataSetChanged();
 
-        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
-        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
-        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
-        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
+        /*datadanhmuc.add(new DANHMUCKHOAHOC(1, "Imformation Technology", ""));
+        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Data Science", ""));*/
+//        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
+//        datadanhmuc.add(new DANHMUCKHOAHOC(1, "Công nghệ thông tin", "CNTT.jpg"));
+//
 
-
-        LaySanPham();
+//        LaySanPham();
 
 
 
@@ -99,13 +101,15 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
                 danhmucAdapter.notifyDataSetChanged();
             }
         };
-//        try {
-//            Class.forName("dalvik.system.CloseGuard")
-//                    .getMethod("setEnabled", boolean.class)
-//                    .invoke(null, true);
-//        } catch (ReflectiveOperationException e) {
-//            throw new RuntimeException(e);
-//        }
+        //bat loi ne
+        try {
+            Class.forName("dalvik.system.CloseGuard")
+                    .getMethod("setEnabled", boolean.class)
+                    .invoke(null, true);
+        } catch (ReflectiveOperationException e) {
+            throw new RuntimeException(e);
+        }
+
         Response.ErrorListener thatbai = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

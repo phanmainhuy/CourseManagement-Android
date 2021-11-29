@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onlearn.Model.DanhMuc;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;
 
@@ -20,14 +21,14 @@ import com.example.onlearn.Model.GLOBAL;
 
 public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.KHUNGNHIN>{
     Context context;
-    ArrayList<DANHMUCKHOAHOC> dulieu;
+    ArrayList<DanhMuc> dulieu;
 
     private OnClickRCL_DanhMuc listener;
 
 
     String urlimg = GLOBAL.ip + GLOBAL.folderimg;
 
-    public DanhMucAdapter_rcl(Context context, ArrayList<DANHMUCKHOAHOC> dulieu, OnClickRCL_DanhMuc listener) {
+    public DanhMucAdapter_rcl(Context context, ArrayList<DanhMuc> dulieu, OnClickRCL_DanhMuc listener) {
         this.context = context;
         this.dulieu = dulieu;
         this.listener = listener;
@@ -43,24 +44,14 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
 
     @Override
     public void onBindViewHolder(@NonNull DanhMucAdapter_rcl.KHUNGNHIN holder, int position) {
-        DANHMUCKHOAHOC danhmuc = dulieu.get(position);
+        DanhMuc danhmuc = dulieu.get(position);
 
-        holder.ten.setText(danhmuc.TenDanhMuc);
+        holder.ten.setText(danhmuc.getTenDanhMuc());
 
         Picasso.with(context)
-                .load(urlimg + danhmuc.HinhAnh)
+                .load(urlimg + danhmuc.getHinhAnh())
                 .placeholder(R.drawable.no_image_found)
                 .into(holder.hinhanh);
-
-
-//        Picasso.with(context)
-//                .load(url + danhmuc.HinhAnh)
-//                .placeholder(R.drawable.no_image_found)
-//                .into(holder.hinhanh);
-
-
-        //holder.mota.setText(products.mota);
-        //set format cho giá
 
         holder.danhmuckhoahoc = dulieu.get(position);
 
@@ -75,7 +66,7 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
 
     public class KHUNGNHIN extends RecyclerView.ViewHolder
     {
-        DANHMUCKHOAHOC danhmuckhoahoc;
+        DanhMuc danhmuckhoahoc;
         ImageView hinhanh;
         TextView ten;
 
@@ -90,12 +81,12 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
 
 
             //Xu ly su kien click item cua recycle view
-            itemView.setOnClickListener(new View.OnClickListener() {
+            /*itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.itemClickDanhMuc(danhmuckhoahoc);
+                    listener.itemClickDanhMuc();
                 }
-            });
+            });*/
         }
     }
 
