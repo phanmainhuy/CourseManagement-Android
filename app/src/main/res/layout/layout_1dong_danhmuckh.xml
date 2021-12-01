@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
+    
     >
 
     <ImageView
@@ -19,13 +19,13 @@
         android:id="@+id/tvTenDM_DanhMuc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
         android:layout_marginLeft="110dp"
         android:layout_marginTop="10dp"
+        android:text="Name"
         android:textColor="@color/black"
         android:textSize="16dp"
-        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgDanhMuc_DanhMuc"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imgDanhMuc_DanhMuc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
