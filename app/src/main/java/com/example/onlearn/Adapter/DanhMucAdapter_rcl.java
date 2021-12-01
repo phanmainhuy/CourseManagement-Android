@@ -10,25 +10,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.onlearn.Model.DanhMuc;
+import com.example.onlearn.Model.DANHMUC;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import com.example.onlearn.Model.DANHMUCKHOAHOC;
 import com.example.onlearn.Model.GLOBAL;
 
 public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.KHUNGNHIN>{
     Context context;
-    ArrayList<DanhMuc> dulieu;
+    ArrayList<DANHMUC> dulieu;
 
     private OnClickRCL_DanhMuc listener;
 
 
-    String urlimg = GLOBAL.ip + GLOBAL.folderimg;
+    String urlimg = "http://localhost:8080/img/";
 
-    public DanhMucAdapter_rcl(Context context, ArrayList<DanhMuc> dulieu, OnClickRCL_DanhMuc listener) {
+    public DanhMucAdapter_rcl(Context context, ArrayList<DANHMUC> dulieu, OnClickRCL_DanhMuc listener) {
         this.context = context;
         this.dulieu = dulieu;
         this.listener = listener;
@@ -44,7 +43,7 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
 
     @Override
     public void onBindViewHolder(@NonNull DanhMucAdapter_rcl.KHUNGNHIN holder, int position) {
-        DanhMuc danhmuc = dulieu.get(position);
+        DANHMUC danhmuc = dulieu.get(position);
 
         holder.ten.setText(danhmuc.getTenDanhMuc());
 
@@ -66,7 +65,7 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
 
     public class KHUNGNHIN extends RecyclerView.ViewHolder
     {
-        DanhMuc danhmuckhoahoc;
+        DANHMUC danhmuckhoahoc;
         ImageView hinhanh;
         TextView ten;
 

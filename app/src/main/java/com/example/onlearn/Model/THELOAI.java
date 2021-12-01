@@ -2,7 +2,7 @@ package com.example.onlearn.Model;
 
 import java.util.List;
 
-public class DanhMucCon {
+public class THELOAI {
     int MaTheLoai;
     String TenTheLoai;
 

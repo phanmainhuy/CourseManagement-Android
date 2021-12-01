@@ -23,8 +23,8 @@ import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 import com.example.onlearn.API.Retrofit;
-import com.example.onlearn.Model.DanhMuc;
-import com.example.onlearn.Model.DanhMucCon;
+import com.example.onlearn.Model.DANHMUC;
+import com.example.onlearn.Model.THELOAI;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -51,8 +51,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView rclOption;
     OptionAdapter_Home_rcl optionAdapter;
 
-    public static List<DanhMuc> danhMuc;
-    public static List<DanhMucCon> danhMucConList;
+    public static List<DANHMUC> danhMuc;
+    public static List<THELOAI> danhMucConList;
     //navigation handle
     private int mSelectedId;
     private static final String SELECTED_ITEM_ID = "selected"; //nguoi dung da select item
@@ -264,16 +264,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //Lay danh muc
     private void GetDanhMuc()
     {
-        Call<List<DanhMuc>> danhMucCall = Retrofit.getserviceAPI().getDanhMuc();
-        danhMucCall.enqueue(new Callback<List<DanhMuc>>() {
+        Call<List<DANHMUC>> danhMucCall = Retrofit.getserviceAPI().getDanhMuc();
+        danhMucCall.enqueue(new Callback<List<DANHMUC>>() {
             @Override
-            public void onResponse(Call<List<DanhMuc>> call, Response<List<DanhMuc>> response) {
+            public void onResponse(Call<List<DANHMUC>> call, Response<List<DANHMUC>> response) {
                 danhMuc = response.body();
                 Log.e("ERRr",response.message());
             }
 
             @Override
-            public void onFailure(Call<List<DanhMuc>> call, Throwable t) {
+            public void onFailure(Call<List<DANHMUC>> call, Throwable t) {
                 Log.e("ERRr",t.getMessage());
             }
         });

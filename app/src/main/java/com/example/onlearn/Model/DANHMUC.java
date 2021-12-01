@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class DanhMuc {
+public class DANHMUC {
     int MaDanhMuc;
     String TenDanhMuc;
     String HinhAnh;
@@ -29,9 +29,9 @@ public class DanhMuc {
 
     @SerializedName("DanhSachTheLoai")
     @Expose
-    private List<DanhMucCon> danhMucConList;
+    private List<THELOAI> danhMucConList;
 
-    public List<DanhMucCon> getDanhMucConList() {
+    public List<THELOAI> getDanhMucConList() {
         return danhMucConList;
     }
 }

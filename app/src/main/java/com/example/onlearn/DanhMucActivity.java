@@ -11,24 +11,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.onlearn.Adapter.DanhMucAdapter_rcl;
 
 import com.example.onlearn.Adapter.OnClickRCL_DanhMuc;
-import com.example.onlearn.Model.DANHMUCKHOAHOC;
-import com.example.onlearn.Model.DanhMuc;
+import com.example.onlearn.Model.DANHMUC;
 import com.example.onlearn.Model.GLOBAL;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,13 +24,12 @@ import java.util.List;
 public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_DanhMuc {
 
     RecyclerView rclDanhMuc;
-    ArrayList<DANHMUCKHOAHOC> datadanhmuc = new ArrayList<>();
     DanhMucAdapter_rcl danhmucAdapter;
 
-    private List<DanhMuc> sdanhMuc = HomeActivity.danhMuc;
+    private List<DANHMUC> sdanhMuc = HomeActivity.danhMuc;
 
     //url
-    String urlDanhmuc= GLOBAL.ip + "topcategory/";
+    String urlDanhmuc= GLOBAL.ipGD + "topcategory/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +47,7 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
 
         //anh xa
         rclDanhMuc = findViewById(R.id.rclDanhMucKH_DanhMuc);
-        ArrayList<DanhMuc> dara = new ArrayList<DanhMuc>(sdanhMuc);
+        ArrayList<DANHMUC> dara = new ArrayList<DANHMUC>(sdanhMuc);
 
         //Load du lieu va xu ly
         danhmucAdapter = new DanhMucAdapter_rcl(this, dara, this);
@@ -83,43 +70,6 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
     }
 
 
-    public void LaySanPham() {
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-
-        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        JSONObject jsonObject = response.getJSONObject(i);
-                        datadanhmuc.add(new DANHMUCKHOAHOC(jsonObject.getInt("MaDanhMuc"), jsonObject.getString("TenDanhMuc"), jsonObject.getString("HinhAnh")));
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                danhmucAdapter.notifyDataSetChanged();
-            }
-        };
-        //bat loi ne
-        try {
-            Class.forName("dalvik.system.CloseGuard")
-                    .getMethod("setEnabled", boolean.class)
-                    .invoke(null, true);
-        } catch (ReflectiveOperationException e) {
-            throw new RuntimeException(e);
-        }
-
-        Response.ErrorListener thatbai = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        };
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlDanhmuc, null, thanhcong, thatbai);
-        requestQueue.add(jsonArrayRequest);
-    }
 
 // nut tro ve
     @Override
@@ -135,7 +85,7 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
 
 
     @Override
-    public void itemClickDanhMuc(DANHMUCKHOAHOC danhmuckh) {
+    public void itemClickDanhMuc(DANHMUC danhmuckh) {
 
     }
 

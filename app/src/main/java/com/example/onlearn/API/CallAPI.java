@@ -1,6 +1,6 @@
 package com.example.onlearn.API;
 
-import com.example.onlearn.Model.DanhMuc;
+import com.example.onlearn.Model.DANHMUC;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface CallAPI {
     //http://localhost:63702/topcategory/
 
     @GET("topcategory/")
-    Call<List<DanhMuc>> getDanhMuc ();
+    Call<List<DANHMUC>> getDanhMuc ();
 
 
 
