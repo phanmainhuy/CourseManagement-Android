@@ -25,7 +25,7 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
     private OnClickRCL_DanhMuc listener;
 
 
-    String urlimg = "http://localhost:8080/img/";
+    String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
     public DanhMucAdapter_rcl(Context context, ArrayList<DANHMUC> dulieu, OnClickRCL_DanhMuc listener) {
         this.context = context;

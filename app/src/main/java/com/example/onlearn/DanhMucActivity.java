@@ -29,7 +29,7 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
     private List<DANHMUC> sdanhMuc = HomeActivity.danhMuc;
 
     //url
-    String urlDanhmuc= GLOBAL.ipGD + "topcategory/";
+    String urlDanhmuc= GLOBAL.ip + "topcategory/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
