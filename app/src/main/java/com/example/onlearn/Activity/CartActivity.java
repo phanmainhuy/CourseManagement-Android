@@ -17,21 +17,14 @@ import com.example.onlearn.R;
 public class CartActivity extends AppCompatActivity {
 
     Button btnContinue, btnThanhToan;
-
+    String titleActionBar = "Giỏ hàng";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         ActionBar actionBar = getSupportActionBar();
 
-        //thanh tro ve home
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        //doi mau thanh action bar
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor(GLOBAL.colorTitle));
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Giỏ hàng"+ "</font>"));
+        DecorateActionBar();
 
 
         //anh xa
@@ -64,7 +57,17 @@ public class CartActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    void DecorateActionBar(){
+        //action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + titleActionBar + "</font>"));
+        //doi mau thanh action bars
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+    }
 
 
 }

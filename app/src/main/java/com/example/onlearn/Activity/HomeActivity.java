@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Trang chủ"+ "</font>"));
         //doi mau thanh action bars
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor(GLOBAL.colorTitle));
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
 
@@ -150,12 +150,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             drawerLayout.closeDrawer(GravityCompat.START);
         }
-//        if (mSelectedId == R.id.mnu_cart) {
-//            intent = new Intent(HomeActivity.this, CartActivity.class);
-//            startActivity(intent);
-//
-//            drawerLayout.closeDrawer(GravityCompat.START);
-//        }
+        if (mSelectedId == R.id.mnu_classroom) {
+            intent = new Intent(HomeActivity.this, ClassRoomActivity.class);
+            startActivity(intent);
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
 
 //            if (mSelectedId == R.id.mnu_address) {
 //                intent = new Intent(HomeActivity.this, LocationActivity.class);

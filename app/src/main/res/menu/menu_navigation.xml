@@ -10,7 +10,7 @@
             android:title="Cập nhật thông tin" />
 
         <item
-            android:id="@+id/mnu_course"
+            android:id="@+id/mnu_classroom"
             android:icon="@drawable/ic_course"
             android:title="Phòng học" />
 

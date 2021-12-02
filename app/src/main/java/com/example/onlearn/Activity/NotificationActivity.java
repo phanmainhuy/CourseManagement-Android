@@ -39,7 +39,7 @@ public class NotificationActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         //doi mau thanh action bar
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor(GLOBAL.colorTitle));
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Thông báo"+ "</font>"));

@@ -1,7 +1,7 @@
 package com.example.onlearn.Model;
 
 public class GLOBAL {
-    public static String colorTitle = "#00CD66";
+    public static String colorActionBar = "#00CD66";
 
     //Y: 192.168.1.8
     //http://192.168.1.9:63702/
@@ -9,5 +9,7 @@ public class GLOBAL {
     //10.0.2.2
     public static String ip = "http://192.168.1.9:45455/";
     public static String urlimg = "assets/images/";
+
+
 
 }
