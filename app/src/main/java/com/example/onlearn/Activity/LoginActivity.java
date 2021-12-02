@@ -1,4 +1,4 @@
-package com.example.onlearn;
+package com.example.onlearn.Activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.onlearn.R;
 
 public class LoginActivity extends AppCompatActivity {
 

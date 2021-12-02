@@ -1,8 +1,10 @@
-package com.example.onlearn;
+package com.example.onlearn.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.onlearn.R;
 
 public class ClassRoomActivity extends AppCompatActivity {
 

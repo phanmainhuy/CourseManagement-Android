@@ -1,4 +1,4 @@
-package com.example.onlearn;
+package com.example.onlearn.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -9,20 +9,19 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.R;
 
-public class CartActivity extends AppCompatActivity {
+public class PromotionActivity extends AppCompatActivity {
 
-    Button btnContinue, btnThanhToan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
-        ActionBar actionBar = getSupportActionBar();
+        setContentView(R.layout.activity_promotion);
 
+        ActionBar actionBar = getSupportActionBar();
         //thanh tro ve home
         actionBar.setDisplayHomeAsUpEnabled(true);
         //doi mau thanh action bar
@@ -30,28 +29,13 @@ public class CartActivity extends AppCompatActivity {
                 = new ColorDrawable(Color.parseColor(GLOBAL.colorTitle));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Giỏ hàng"+ "</font>"));
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Khuyến mãi"+ "</font>"));
 
 
-        //anh xa
-        btnContinue = findViewById(R.id.btn_Cart_Continue);
-        btnThanhToan = findViewById(R.id.btn_Cart_Pay);
 
 
 
     }
-    //xu ly
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -63,6 +47,13 @@ public class CartActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+
+
+
 
 
 

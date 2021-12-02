@@ -15,31 +15,31 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ClassRoomActivity"
+            android:name=".Activity.ClassRoomActivity"
             android:exported="false" />
         <activity
-            android:name=".LoaiKhoaHocActivity"
+            android:name=".Activity.LoaiKhoaHocActivity"
             android:exported="false" /> <!-- android:networkSecurityConfig="@xml/network_security_config" -->
         <activity
-            android:name=".DanhMucActivity"
+            android:name=".Activity.DanhMucActivity"
             android:exported="false" />
         <activity
-            android:name=".PromotionActivity"
+            android:name=".Activity.PromotionActivity"
             android:exported="false" />
         <activity
-            android:name=".NotificationActivity"
+            android:name=".Activity.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgetpassActivity"
+            android:name=".Activity.ForgetpassActivity"
             android:exported="false" />
         <activity
-            android:name=".CartActivity"
+            android:name=".Activity.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".UserActivity"
+            android:name=".Activity.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activity.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,16 +48,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ChangePassActivity"
+            android:name=".Activity.ChangePassActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true" />
     </application>
 

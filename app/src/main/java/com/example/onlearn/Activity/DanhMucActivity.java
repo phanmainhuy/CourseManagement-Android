@@ -1,4 +1,4 @@
-package com.example.onlearn;
+package com.example.onlearn.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -17,6 +17,7 @@ import com.example.onlearn.Adapter.DanhMucAdapter_rcl;
 import com.example.onlearn.Adapter.OnClickRCL_DanhMuc;
 import com.example.onlearn.Model.DANHMUC;
 import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.R;
 
 import java.util.ArrayList;
 import java.util.List;

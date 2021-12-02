@@ -1,4 +1,4 @@
-package com.example.onlearn;
+package com.example.onlearn.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -25,6 +25,7 @@ import android.widget.ViewFlipper;
 import com.example.onlearn.API.Retrofit;
 import com.example.onlearn.Model.DANHMUC;
 import com.example.onlearn.Model.THELOAI;
+import com.example.onlearn.R;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
