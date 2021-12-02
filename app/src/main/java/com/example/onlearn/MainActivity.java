@@ -1,4 +1,4 @@
-package com.example.onlearn.Activity;
+package com.example.onlearn;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.onlearn.R;
+import com.example.onlearn.Activity.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
