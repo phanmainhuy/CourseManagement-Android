@@ -48,10 +48,12 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
 
         //anh xa
         rclDanhMuc = findViewById(R.id.rclDanhMucKH_DanhMuc);
-        ArrayList<DANHMUC> dara = new ArrayList<DANHMUC>(sdanhMuc);
+
+        //add data load tu home
+        ArrayList<DANHMUC> data = new ArrayList<>(sdanhMuc);
 
         //Load du lieu va xu ly
-        danhmucAdapter = new DanhMucAdapter_rcl(this, dara, this);
+        danhmucAdapter = new DanhMucAdapter_rcl(this, data, this);
         rclDanhMuc.setHasFixedSize(true);
         rclDanhMuc.setAdapter(danhmucAdapter);
         rclDanhMuc.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));

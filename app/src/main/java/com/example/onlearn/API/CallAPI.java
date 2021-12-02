@@ -1,6 +1,7 @@
 package com.example.onlearn.API;
 
 import com.example.onlearn.Model.DANHMUC;
+import com.example.onlearn.Model.KHOAHOC;
 
 import java.util.List;
 
@@ -12,6 +13,9 @@ public interface CallAPI {
 
     @GET("topcategory/")
     Call<List<DANHMUC>> getDanhMuc ();
+
+    @GET("MostBuyCourse/?limit=10")
+    Call<List<KHOAHOC>> getFavoriteCourses ();
 
 
 

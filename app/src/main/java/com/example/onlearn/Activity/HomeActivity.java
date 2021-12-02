@@ -23,7 +23,10 @@ import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 import com.example.onlearn.API.Retrofit;
+import com.example.onlearn.Adapter.FavoriteCourseAdapter_rcl;
+import com.example.onlearn.MainActivity;
 import com.example.onlearn.Model.DANHMUC;
+import com.example.onlearn.Model.KHOAHOC;
 import com.example.onlearn.Model.THELOAI;
 import com.example.onlearn.R;
 import com.google.android.material.navigation.NavigationView;
@@ -32,7 +35,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.onlearn.Adapter.OnClickRcl_Home;
+import com.example.onlearn.Adapter.OnClickRCL_Home;
 import com.example.onlearn.Adapter.OptionAdapter_Home_rcl;
 import com.example.onlearn.Model.GLOBAL;
 import com.example.onlearn.Model.OPTION;
@@ -41,7 +44,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickRcl_Home {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickRCL_Home {
 
     ViewFlipper viewQuangCao;
     DrawerLayout drawerLayout;
@@ -49,11 +52,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
 
     ArrayList<OPTION> listOption = new ArrayList<>();
-    RecyclerView rclOption;
+    RecyclerView rclOption, rclFavoriteCourses;
     OptionAdapter_Home_rcl optionAdapter;
+    FavoriteCourseAdapter_rcl fvrCoursesAdapter;
 
+    //tao list data
     public static List<DANHMUC> danhMuc;
     public static List<THELOAI> danhMucConList;
+    private List<KHOAHOC> lstKhoahoc = MainActivity.favoriteCourses;
+
+
     //navigation handle
     private int mSelectedId;
     private static final String SELECTED_ITEM_ID = "selected"; //nguoi dung da select item
@@ -78,27 +86,33 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         actionBar.setBackgroundDrawable(colorDrawable);
 
 
-
-
-        GetDanhMuc();
-
         //anh xa
         viewQuangCao = findViewById(R.id.viewQuangCao_Home);
         toolbar = findViewById(R.id.toolbar_Home);
         navigationLeft = findViewById(R.id.navigationviewLeft_Home);
         drawerLayout = findViewById(R.id.drawerlayout_Home);
         rclOption = findViewById(R.id.rclOption_Home);
+        rclFavoriteCourses = findViewById(R.id.rcl_FavoriteCourse_Home);
+
+        //setdata favorite courses
+
+        ArrayList<KHOAHOC> data = new ArrayList<>(lstKhoahoc);
+
+        fvrCoursesAdapter = new FavoriteCourseAdapter_rcl(this, data, this);
+        rclFavoriteCourses.setHasFixedSize(true);
+        rclFavoriteCourses.setAdapter(fvrCoursesAdapter);
+        rclFavoriteCourses.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        rclFavoriteCourses.notifyDataSetChanged();
 
 
-        //add data Option
-        listOption.add(new OPTION(R.drawable.ic_folder, "Danh mục"));
-        listOption.add(new OPTION(R.drawable.ic_khuyenmai, "Khuyến mãi"));
-        listOption.add(new OPTION(R.drawable.ic_option, "Khóa học"));
-        listOption.add(new OPTION(R.drawable.ic_options, "Giới thiệu"));
 
-        //load Option
-        rclOption.setAdapter(new OptionAdapter_Home_rcl(this, listOption, this));
-        rclOption.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+
+
+
+        //get data
+        GetDanhMuc();
+        getOptionHome();
+
 
 
 
@@ -117,6 +131,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationLeft.setNavigationItemSelectedListener(this);
         //load quang cao
         loadViewFlipper();
+
+    }
+
+    void getOptionHome()
+    {
+
+        //add data Option
+        listOption.add(new OPTION(R.drawable.ic_folder, "Danh mục"));
+        listOption.add(new OPTION(R.drawable.ic_khuyenmai, "Khuyến mãi"));
+        listOption.add(new OPTION(R.drawable.ic_option, "Khóa học"));
+        listOption.add(new OPTION(R.drawable.ic_options, "Giới thiệu"));
+
+        //load Option
+        rclOption.setAdapter(new OptionAdapter_Home_rcl(this, listOption, this));
+        rclOption.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+
 
     }
 
@@ -175,16 +205,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //            }
     }
 
+
+    //hien thi icon tren action bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search,menu);
+//        getMenuInflater().inflate(R.menu.menu_search,menu);
         getMenuInflater().inflate(R.menu.menu_notification,menu);
         getMenuInflater().inflate(R.menu.menu_cart,menu);
 
         return true;
     }
 
-
+    //xu ly chon menu tu Navigation
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         //Intent intent = null;
@@ -256,6 +288,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public void ItemClickFavorite(KHOAHOC favorite_course) {
+
+    }
+
+    @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
@@ -279,6 +316,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
+
 
 
 }

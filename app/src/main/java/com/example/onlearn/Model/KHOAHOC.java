@@ -12,11 +12,23 @@ public class KHOAHOC implements Serializable {
     public Boolean TrangThai;
     public String HinhAnh;
     public int MaGV;
+    public int DanhGia;
+    public String TenGV;
     public String MoTaKhoaHoc;
     public String NgayTao;
     public String NgayDuyet;
 
-    public KHOAHOC(int maKhoaHoc, int maLoai, String tenKhoaHoc, String donGia, int soLuongMua, String thoiHanHoanTien, Boolean trangThai, String hinhAnh, int maGV, String moTaKhoaHoc, String ngayTao, String ngayDuyet) {
+    public int getDanhGia() {
+        return DanhGia;
+    }
+
+    public void setDanhGia(int danhGia) {
+        DanhGia = danhGia;
+    }
+
+
+
+    public KHOAHOC(int maKhoaHoc, int maLoai, String tenKhoaHoc, String donGia, int soLuongMua, String thoiHanHoanTien, Boolean trangThai, String hinhAnh, int maGV, String TenGV, int danhgia, String moTaKhoaHoc, String ngayTao, String ngayDuyet) {
         MaKhoaHoc = maKhoaHoc;
         MaLoai = maLoai;
         TenKhoaHoc = tenKhoaHoc;
@@ -26,6 +38,8 @@ public class KHOAHOC implements Serializable {
         TrangThai = trangThai;
         HinhAnh = hinhAnh;
         MaGV = maGV;
+        DanhGia = danhgia;
+        this.TenGV = TenGV;
         MoTaKhoaHoc = moTaKhoaHoc;
         NgayTao = ngayTao;
         NgayDuyet = ngayDuyet;
@@ -126,4 +140,13 @@ public class KHOAHOC implements Serializable {
     public void setNgayDuyet(String ngayDuyet) {
         NgayDuyet = ngayDuyet;
     }
+
+    public String getTenGV() {
+        return TenGV;
+    }
+
+    public void setTenGV(String tenGV) {
+        TenGV = tenGV;
+    }
+
 }

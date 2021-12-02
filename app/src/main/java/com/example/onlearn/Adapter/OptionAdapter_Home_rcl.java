@@ -19,12 +19,12 @@ import com.example.onlearn.Model.OPTION;
 public class OptionAdapter_Home_rcl extends RecyclerView.Adapter<OptionAdapter_Home_rcl.KHUNGNHIN> {
     Context context;
     ArrayList<OPTION> dulieu;
-    private OnClickRcl_Home listener;
+    private OnClickRCL_Home listener;
 //    private OnClickListener listener;
 
 //    String url = "http://" + GLOBAL.ip + "/topcategory";
 
-    public OptionAdapter_Home_rcl(Context context, ArrayList<OPTION> dulieu, OnClickRcl_Home listener) {
+    public OptionAdapter_Home_rcl(Context context, ArrayList<OPTION> dulieu, OnClickRCL_Home listener) {
         this.context = context;
         this.dulieu = dulieu;
         this.listener = listener;

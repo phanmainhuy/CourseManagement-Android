@@ -17,7 +17,6 @@ public class Retrofit {
         return retrofit;
     };
 
-
     public static CallAPI getserviceAPI ()
     {
         CallAPI callAPI_admin = getRetrofit().create(CallAPI.class);
