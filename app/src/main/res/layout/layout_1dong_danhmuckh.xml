@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     >
 
     <ImageView
         android:id="@+id/imgDanhMuc_DanhMuc"
         android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/no_image_found" />
@@ -25,7 +23,7 @@
         android:ellipsize="end"
         android:text="Name"
         android:textColor="@color/black"
-        android:textSize="16dp"
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="@+id/imgDanhMuc_DanhMuc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imgDanhMuc_DanhMuc" />
