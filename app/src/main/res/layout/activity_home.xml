@@ -86,6 +86,7 @@
                 android:layout_marginLeft="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:layout_marginBottom="5dp"
                 android:textSize="20dp"
                 />
 

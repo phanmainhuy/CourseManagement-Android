@@ -7,6 +7,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface CallAPI {
     //http://localhost:63702/topcategory/
@@ -14,8 +15,9 @@ public interface CallAPI {
     @GET("topcategory/")
     Call<List<DANHMUC>> getDanhMuc ();
 
-    @GET("MostBuyCourse/?limit=10")
-    Call<List<KHOAHOC>> getFavoriteCourses ();
+
+//    @GET("MostBuyCourse/")
+//    Call<List<KHOAHOC>> getFavoriteCourses (@Query("limit") int limits);
 
 
 

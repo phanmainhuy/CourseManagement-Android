@@ -20,8 +20,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.Retrofit;
 import com.example.onlearn.Adapter.FavoriteCourseAdapter_rcl;
 import com.example.onlearn.MainActivity;
@@ -40,6 +46,10 @@ import com.example.onlearn.Adapter.OptionAdapter_Home_rcl;
 import com.example.onlearn.Model.GLOBAL;
 import com.example.onlearn.Model.OPTION;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,19 +66,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     OptionAdapter_Home_rcl optionAdapter;
     FavoriteCourseAdapter_rcl fvrCoursesAdapter;
 
+    //url take most buy course
+    String urlFvrCourses = GLOBAL.ip + "MostBuyCourse/?limit=10";
+
     //tao list data
     public static List<DANHMUC> danhMuc;
     public static List<THELOAI> danhMucConList;
-    private List<KHOAHOC> lstKhoahoc = MainActivity.favoriteCourses;
+//    private List<KHOAHOC> lstKhoahoc = LoginActivity.favoriteCourses;
 
+    ArrayList<KHOAHOC> data = new ArrayList<>();
 
     //navigation handle
     private int mSelectedId;
     private static final String SELECTED_ITEM_ID = "selected"; //nguoi dung da select item
     //private static final String FRIST_TIME = "fist_time"; // nguoi dung select lan dau
     private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
-
-
 
 
     @Override
@@ -78,7 +90,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //action bar
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Trang chủ"+ "</font>"));
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + "Trang chủ" + "</font>"));
         //doi mau thanh action bars
         ColorDrawable colorDrawable
                 = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
@@ -96,25 +108,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //setdata favorite courses
 
-        ArrayList<KHOAHOC> data = new ArrayList<>(lstKhoahoc);
+        //set cung khoa hoc
+        /*ArrayList<KHOAHOC> data = new ArrayList<>();*/
 
         fvrCoursesAdapter = new FavoriteCourseAdapter_rcl(this, data, this);
         rclFavoriteCourses.setHasFixedSize(true);
         rclFavoriteCourses.setAdapter(fvrCoursesAdapter);
-        rclFavoriteCourses.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        rclFavoriteCourses.notifyDataSetChanged();
+        rclFavoriteCourses.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+//        rclFavoriteCourses.notifyDataSetChanged();
 
-
-
-
+        //add data set cung khoa hoc
+        data.add(new KHOAHOC(0, 0, "Cấu Trúc Dữ Liệu Và Giải Thuật Thực Chiến Với JaVa &  LeetCode",
+                "499000.0000", 100, "True",
+                "LapTrinh1.jpg", 2, "Phan Mai Như Ý", 5,
+                "", "", ""));
 
 
         //get data
         GetDanhMuc();
         getOptionHome();
-
-
-
+        getFavoriteCourses();
 
 
         //toolbar
@@ -134,8 +147,43 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    void getOptionHome()
-    {
+    private void getFavoriteCourses() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        com.android.volley.Response.Listener<JSONArray> thanhcong = new com.android.volley.Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        data.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
+                                jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
+                                jsonObject.getInt("SoLuongMua"), jsonObject.getString("TrangThai")
+                                , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
+                                , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
+                                , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
+                                , jsonObject.getString("NgayChapThuan")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                fvrCoursesAdapter.notifyDataSetChanged();
+            }
+        };
+
+        com.android.volley.Response.ErrorListener thatbai = new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlFvrCourses, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+
+    void getOptionHome() {
 
         //add data Option
         listOption.add(new OPTION(R.drawable.ic_folder, "Danh mục"));
@@ -145,7 +193,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //load Option
         rclOption.setAdapter(new OptionAdapter_Home_rcl(this, listOption, this));
-        rclOption.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        rclOption.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
 
     }
@@ -171,6 +219,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         viewQuangCao.setFlipInterval(2000);
         viewQuangCao.startFlipping();
     }
+
     //dieu huong navigation
     private void navigation(int mSelectedId) {
         Intent intent = null;
@@ -193,8 +242,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //
 //                drawerLayout.closeDrawer(GravityCompat.START);
 //            }
-        if(mSelectedId == R.id.mnu_contact)
-        {
+        if (mSelectedId == R.id.mnu_contact) {
             intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0948462040"));
             startActivity(intent);
         }
@@ -210,8 +258,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 //        getMenuInflater().inflate(R.menu.menu_search,menu);
-        getMenuInflater().inflate(R.menu.menu_notification,menu);
-        getMenuInflater().inflate(R.menu.menu_cart,menu);
+        getMenuInflater().inflate(R.menu.menu_notification, menu);
+        getMenuInflater().inflate(R.menu.menu_cart, menu);
 
         return true;
     }
@@ -235,12 +283,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //nut tro ve navigation
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START))
-        {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else
-        {
+        } else {
             super.onBackPressed();
         }
     }
@@ -248,14 +293,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_cart)
-        {
-            Intent intent = new Intent(this,CartActivity.class);
+        if (id == R.id.action_cart) {
+            Intent intent = new Intent(this, CartActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.action_notification)
-        {
-            Intent intent = new Intent(this,NotificationActivity.class);
+        if (id == R.id.action_notification) {
+            Intent intent = new Intent(this, NotificationActivity.class);
             startActivity(intent);
         }
         return true;
@@ -264,23 +307,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void itemClickOption(OPTION option) {
-        if (option.getTitle().equals("Khuyến mãi"))
-        {
-            Intent intent = new Intent(this,PromotionActivity.class);
+        if (option.getTitle().equals("Khuyến mãi")) {
+            Intent intent = new Intent(this, PromotionActivity.class);
             startActivity(intent);
         }
-        if (option.getTitle().equals("Danh mục"))
-        {
+        if (option.getTitle().equals("Danh mục")) {
             Intent intent1 = new Intent(this, DanhMucActivity.class);
             startActivity(intent1);
         }
-        if (option.getTitle().equals("Khóa học"))
-        {
+        if (option.getTitle().equals("Khóa học")) {
             Intent intent1 = new Intent(this, LoginActivity.class);
             startActivity(intent1);
         }
-        if (option.getTitle().equals("Giới thiệu"))
-        {
+        if (option.getTitle().equals("Giới thiệu")) {
             Intent intent1 = new Intent(this, LoginActivity.class);
             startActivity(intent1);
         }
@@ -298,26 +337,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     //Lay danh muc
-    private void GetDanhMuc()
-    {
+    private void GetDanhMuc() {
         Call<List<DANHMUC>> danhMucCall = Retrofit.getserviceAPI().getDanhMuc();
         danhMucCall.enqueue(new Callback<List<DANHMUC>>() {
             @Override
             public void onResponse(Call<List<DANHMUC>> call, Response<List<DANHMUC>> response) {
                 danhMuc = response.body();
-                Log.e("ERRr",response.message());
+                Log.e("ERRr", response.message());
             }
 
             @Override
             public void onFailure(Call<List<DANHMUC>> call, Throwable t) {
-                Log.e("ERRr",t.getMessage());
+                Log.e("ERRr", t.getMessage());
             }
         });
     }
-
-
 
 
 }

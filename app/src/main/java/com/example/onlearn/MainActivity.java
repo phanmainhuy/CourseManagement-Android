@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static List<KHOAHOC> favoriteCourses;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,20 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getFavoriteCourses()
     {
-        Call<List<KHOAHOC>> favoriteCall = Retrofit.getserviceAPI().getFavoriteCourses();
-        favoriteCall.enqueue(new Callback<List<KHOAHOC>>() {
-            @Override
-            public void onResponse(Call<List<KHOAHOC>> call, Response<List<KHOAHOC>> response) {
-                favoriteCourses = response.body();
-                Log.e("ERRr",response.message());
-            }
 
-            @Override
-            public void onFailure(Call<List<KHOAHOC>> call, Throwable t) {
-                Log.e("ERRr", t.getMessage());
-            }
-
-        });
     }
 
 

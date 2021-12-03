@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,7 +14,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.onlearn.API.Retrofit;
+import com.example.onlearn.Model.KHOAHOC;
 import com.example.onlearn.R;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences remember;
     CheckBox chkSave;
     EditText txtUsername, txtPassword;
-
+//    public static List<KHOAHOC> favoriteCourses;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//                call_API();
 
                 //Luu lai thong tin dang nhap
                 SharedPreferences.Editor editor = remember.edit();
@@ -87,19 +96,31 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+//    private void call_API(){
+//        Call<List<KHOAHOC>> favoriteCall = Retrofit.getserviceAPI().getFavoriteCourses(10);
+//        favoriteCall.enqueue(new Callback<List<KHOAHOC>>() {
+//            @Override
+//            public void onResponse(Call<List<KHOAHOC>> call, Response<List<KHOAHOC>> response) {
+//                if(response.isSuccessful())
+//                {
+//                    favoriteCourses = response.body();
+//                    Log.e("ERRr",response.message());
+//                    Log.e("ERRr","cpmfeakjaskfEFU");
+//                }
+//                else {
+//                    Log.e("ERRr", "onResponse: Faile");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<KHOAHOC>> call, Throwable t) {
+//                Log.e("ERRr", t.getMessage());
+//            }
+//
+//        });
+//    }
+
+
+
 }

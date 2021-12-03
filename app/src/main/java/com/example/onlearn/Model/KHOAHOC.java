@@ -8,8 +8,7 @@ public class KHOAHOC implements Serializable {
     public String TenKhoaHoc;
     public String DonGia;
     public int SoLuongMua;
-    public String ThoiHanHoanTien;
-    public Boolean TrangThai;
+    public String TrangThai;
     public String HinhAnh;
     public int MaGV;
     public int DanhGia;
@@ -28,13 +27,14 @@ public class KHOAHOC implements Serializable {
 
 
 
-    public KHOAHOC(int maKhoaHoc, int maLoai, String tenKhoaHoc, String donGia, int soLuongMua, String thoiHanHoanTien, Boolean trangThai, String hinhAnh, int maGV, String TenGV, int danhgia, String moTaKhoaHoc, String ngayTao, String ngayDuyet) {
+    public KHOAHOC(int maKhoaHoc, int maLoai, String tenKhoaHoc,
+                   String donGia, int soLuongMua, String trangThai,
+                   String hinhAnh, int maGV, String TenGV, int danhgia, String moTaKhoaHoc, String ngayTao, String ngayDuyet) {
         MaKhoaHoc = maKhoaHoc;
         MaLoai = maLoai;
         TenKhoaHoc = tenKhoaHoc;
         DonGia = donGia;
         SoLuongMua = soLuongMua;
-        ThoiHanHoanTien = thoiHanHoanTien;
         TrangThai = trangThai;
         HinhAnh = hinhAnh;
         MaGV = maGV;
@@ -85,19 +85,13 @@ public class KHOAHOC implements Serializable {
         SoLuongMua = soLuongMua;
     }
 
-    public String getThoiHanHoanTien() {
-        return ThoiHanHoanTien;
-    }
 
-    public void setThoiHanHoanTien(String thoiHanHoanTien) {
-        ThoiHanHoanTien = thoiHanHoanTien;
-    }
 
-    public Boolean getTrangThai() {
+    public String getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(Boolean trangThai) {
+    public void setTrangThai(String trangThai) {
         TrangThai = trangThai;
     }
 
