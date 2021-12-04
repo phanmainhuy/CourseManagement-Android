@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class LOAIKHOAHOC implements Serializable {
     public int MaLoai;
     public int MaDanhMuc;
-    public int TenLoai;
+    public String TenLoai;
     public String HinhAnh;
 
-    public LOAIKHOAHOC(int maLoai, int maDanhMuc, int tenLoai, String hinhAnh) {
+    public LOAIKHOAHOC(int maLoai, int maDanhMuc, String tenLoai, String hinhAnh) {
         MaLoai = maLoai;
         MaDanhMuc = maDanhMuc;
         TenLoai = tenLoai;
@@ -31,11 +31,11 @@ public class LOAIKHOAHOC implements Serializable {
         MaDanhMuc = maDanhMuc;
     }
 
-    public int getTenLoai() {
+    public String getTenLoai() {
         return TenLoai;
     }
 
-    public void setTenLoai(int tenLoai) {
+    public void setTenLoai(String tenLoai) {
         TenLoai = tenLoai;
     }
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ import com.example.onlearn.Adapter.DanhMucAdapter_rcl;
 
 import com.example.onlearn.Adapter.OnClickRCL_DanhMuc;
 import com.example.onlearn.Model.DANHMUC;
-import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_muc);
+        //action bar
         ActionBar actionBar = getSupportActionBar();
         //thanh tro ve home
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -87,13 +89,21 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
     }
 
 
+//    @Override
+//    public void itemClickDanhMuc(DANHMUC danhmuckh) {
+//
+//
+//    }
+//
+//    @Override
+//    public void onPointerCaptureChanged(boolean hasCapture) {
+//
+//    }
+
     @Override
-    public void itemClickDanhMuc(DANHMUC danhmuckh) {
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
+    public void ItemClickDM(DANHMUC danhmuc) {
+        Intent intent = new Intent(this, LoaiKhoaHocActivity.class);
+        GLOBAL.idDMClick = danhmuc;
+        startActivity(intent);
     }
 }

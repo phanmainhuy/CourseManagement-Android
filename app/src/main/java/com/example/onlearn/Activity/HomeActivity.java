@@ -42,7 +42,7 @@ import java.util.List;
 
 import com.example.onlearn.Adapter.OnClickRCL_Home;
 import com.example.onlearn.Adapter.OptionAdapter_Home_rcl;
-import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.OPTION;
 
 import org.json.JSONArray;
@@ -114,6 +114,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         rclFavoriteCourses.setHasFixedSize(true);
         rclFavoriteCourses.setAdapter(fvrCoursesAdapter);
         rclFavoriteCourses.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
 //        rclFavoriteCourses.notifyDataSetChanged();
 
         //add data set cung khoa hoc
@@ -250,6 +251,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //                intent = new Intent(this,SupportChatActivity.class);
 //                startActivity(intent);
 //            }
+
+        if(mSelectedId == R.id.mnu_logout)
+        {
+            intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
 

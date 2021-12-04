@@ -1,15 +1,5 @@
 package com.example.onlearn.Activity;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Html;
-import android.view.MenuItem;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-
-import com.example.onlearn.Model.GLOBAL;
-
 public class _Function {
 
     String titleActionBar = "";

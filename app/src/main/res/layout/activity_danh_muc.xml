@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.DanhMucActivity"
     android:background="@color/white"
-
+    android:paddingLeft="5dp"
     >
 
     <androidx.recyclerview.widget.RecyclerView

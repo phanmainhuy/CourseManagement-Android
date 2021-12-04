@@ -11,8 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.onlearn.Model.DANHMUC;
-import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.LOAIKHOAHOC;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;
@@ -38,7 +37,7 @@ public class LoaiKhoaHocAdapter_rcl extends RecyclerView.Adapter<LoaiKhoaHocAdap
 
     @Override
     public KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_danhmuckh,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_loaikhoahoc,null);
         return new KHUNGNHIN(view);
     }
 

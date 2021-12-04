@@ -33,7 +33,10 @@
             android:id="@+id/mnu_contact"
             android:icon="@drawable/ic_support"
             android:title="Hotline liên hệ" />
-
+        <item
+            android:id="@+id/mnu_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Đăng xuất" />
     </group>
 
 </menu>

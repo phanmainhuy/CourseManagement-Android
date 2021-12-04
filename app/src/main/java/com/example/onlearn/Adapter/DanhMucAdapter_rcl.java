@@ -16,11 +16,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.GLOBAL;
 
 public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.KHUNGNHIN>{
     Context context;
     ArrayList<DANHMUC> dulieu;
+
 
     private OnClickRCL_DanhMuc listener;
 
@@ -80,12 +81,12 @@ public class DanhMucAdapter_rcl extends RecyclerView.Adapter<DanhMucAdapter_rcl.
 
 
             //Xu ly su kien click item cua recycle view
-            /*itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.itemClickDanhMuc();
+                    listener.ItemClickDM(danhmuckhoahoc);
                 }
-            });*/
+            });
         }
     }
 

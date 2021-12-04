@@ -35,14 +35,14 @@
                     app:layout_constraintHorizontal_bias="0.501"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/no_image_found" />
+                    app:srcCompat="@drawable/icongg" />
 
                 <TextView
                     android:id="@+id/lbl_User_HoTenAva"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="Phan Mai Nhu Y"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -79,16 +79,15 @@
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/txt_User_Hoten"
+                        android:id="@+id/tv_User_Hoten"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
 
-                        android:hint="Họ và tên"
+                        android:text="Phan Mai Như Ý"
 
                         android:textColor="@color/black"
-                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
                 </LinearLayout>
 
@@ -115,10 +114,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Số điện thoại"
-                        android:inputType="phone"
+
+                        android:text="0948462040"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
 
 
@@ -145,10 +143,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Email"
-                        android:inputType="textEmailAddress"
+                        android:text="baotiantu@gmail.com"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
                 </LinearLayout>
 
@@ -225,10 +221,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Ngày sinh"
-                        android:inputType="date"
+                        android:text="05/11/2000"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
                 </LinearLayout>
 
@@ -254,7 +248,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Địa chỉ"
+                        android:text="Tân phú"
                         android:textColor="@color/black"
                         android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
@@ -267,17 +261,6 @@
                 android:layout_height="145dp"
                 android:orientation="vertical"
                 >
-                <Button
-                    android:id="@+id/btn_User_LogOut"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:backgroundTint="@color/blue_primary"
-                    android:text="Đăng xuất"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_User_Save"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
                     android:id="@+id/btn_User_Save"

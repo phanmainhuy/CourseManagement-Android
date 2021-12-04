@@ -81,18 +81,30 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                call_API();
 
-                //Luu lai thong tin dang nhap
-                SharedPreferences.Editor editor = remember.edit();
-                if (chkSave.isChecked()) {
-                    //luu lai thong tin
-                    editor.putString("username", txtUsername.getText().toString());
-                    editor.putString("password", txtPassword.getText().toString());
+                if (txtUsername.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                editor.putBoolean("saveinfo", chkSave.isChecked());
-                editor.commit();
-                Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_LONG).show();
-                Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent1);
+                if (txtPassword.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else
+                {
+                    //Luu lai thong tin dang nhap
+                    SharedPreferences.Editor editor = remember.edit();
+                    if (chkSave.isChecked()) {
+                        //luu lai thong tin
+                        editor.putString("username", txtUsername.getText().toString());
+                        editor.putString("password", txtPassword.getText().toString());
+                    }
+                    editor.putBoolean("saveinfo", chkSave.isChecked());
+                    editor.commit();
+                    Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_LONG).show();
+                    Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent1);
+
+                }
 
             }
         });

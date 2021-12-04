@@ -89,35 +89,6 @@
                 />
 
             <EditText
-                android:id="@+id/txt_email"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/decorate_text_register"
-                android:drawableLeft="@drawable/ic_email"
-                android:drawablePadding="10dp"
-                android:textSize="15dp"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:text=""
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey_hint_txt"
-                 />
-            <EditText
-                android:id="@+id/txt_phone"
-                android:layout_width="match_parent"
-                android:textColorHint="@color/grey_hint_txt"
-                android:drawableLeft="@drawable/ic_phone"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:inputType="text"
-                android:textSize="15dp"
-                android:layout_height="50dp"
-                android:drawablePadding="10dp"
-                android:hint="Số điện thoại"
-                android:background="@drawable/decorate_text_register"
-                />
-            <EditText
                 android:id="@+id/txt_nameuser"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -133,35 +104,24 @@
                 />
 
             <EditText
-                android:id="@+id/txt_address"
+                android:id="@+id/txt_phone"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/ic_location"
-                android:background="@drawable/decorate_text_register"
-                android:hint="Địa chỉ"
-                android:text=""
-                android:drawablePadding="10dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
                 android:textColorHint="@color/grey_hint_txt"
+                android:drawableLeft="@drawable/ic_phone"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                android:textSize="15dp"
+                android:layout_height="50dp"
+                android:drawablePadding="10dp"
+                android:hint="Số điện thoại"
+                android:background="@drawable/decorate_text_register"
                 />
 
-            <EditText
-                android:id="@+id/txt_ngaysinh"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/decorate_text_register"
-                android:drawableLeft="@drawable/ic_calendar"
-                android:drawablePadding="10dp"
-                android:hint="Ngày sinh"
-                android:text=""
-                android:inputType="date"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey_hint_txt"
-                />
+
+
+
+
 
 
 

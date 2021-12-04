@@ -1,6 +1,6 @@
 package com.example.onlearn.API;
 
-import com.example.onlearn.Model.GLOBAL;
+import com.example.onlearn.GLOBAL;
 
 import retrofit2.converter.gson.GsonConverterFactory;
 

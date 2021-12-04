@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.LoginActivity"
-    android:padding="20dp"
+
     android:background="@color/white"
     android:orientation="vertical"
     >
@@ -16,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:padding="20dp"
+
             >
 
             <ImageView
@@ -37,6 +39,7 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="18dp"
+
                 android:textStyle="bold"
                 android:text="Learning is the eye of the mind" />
             <TextView
@@ -115,6 +118,7 @@
                     android:layout_height="60dp"
                     android:backgroundTint="@color/blue_primary"
                     android:text="Đăng nhập"
+
                     android:textColor="@color/white"
                     android:textSize="15dp"
                     android:textStyle="bold"

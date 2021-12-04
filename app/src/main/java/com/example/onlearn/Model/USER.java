@@ -8,20 +8,20 @@ public class USER implements Serializable {
     public String TenDN;
     public String MatKhau;
     public String HoTen;
-    public String CMND;
+//    public String CMND;
     public String HinhAnh;
     public String SDT;
     public String Email;
     public String NgaySinh;
     public String DiaChi;
 
-    public USER(int maND, int maNhom, String tenDN, String matKhau, String hoTen, String CMND, String hinhAnh, String SDT, String email, String ngaySinh, String diaChi) {
+    public USER(int maND, int maNhom, String tenDN, String matKhau, String hoTen, String hinhAnh, String SDT, String email, String ngaySinh, String diaChi) {
         MaND = maND;
         MaNhom = maNhom;
         TenDN = tenDN;
         MatKhau = matKhau;
         HoTen = hoTen;
-        this.CMND = CMND;
+//        this.CMND = CMND;
         HinhAnh = hinhAnh;
         this.SDT = SDT;
         Email = email;
@@ -69,13 +69,13 @@ public class USER implements Serializable {
         HoTen = hoTen;
     }
 
-    public String getCMND() {
-        return CMND;
-    }
-
-    public void setCMND(String CMND) {
-        this.CMND = CMND;
-    }
+//    public String getCMND() {
+//        return CMND;
+//    }
+//
+//    public void setCMND(String CMND) {
+//        this.CMND = CMND;
+//    }
 
     public String getHinhAnh() {
         return HinhAnh;
