@@ -30,7 +30,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.Retrofit;
 import com.example.onlearn.Adapter.FavoriteCourseAdapter_rcl;
-import com.example.onlearn.MainActivity;
 import com.example.onlearn.Model.DANHMUC;
 import com.example.onlearn.Model.KHOAHOC;
 import com.example.onlearn.Model.THELOAI;
@@ -104,7 +103,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationLeft = findViewById(R.id.navigationviewLeft_Home);
         drawerLayout = findViewById(R.id.drawerlayout_Home);
         rclOption = findViewById(R.id.rclOption_Home);
-        rclFavoriteCourses = findViewById(R.id.rcl_FavoriteCourse_Home);
+        rclFavoriteCourses = findViewById(R.id.rcl_BestSellingCourse_Home);
 
         //setdata favorite courses
 
@@ -118,10 +117,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //        rclFavoriteCourses.notifyDataSetChanged();
 
         //add data set cung khoa hoc
-        data.add(new KHOAHOC(0, 0, "Cấu Trúc Dữ Liệu Và Giải Thuật Thực Chiến Với JaVa &  LeetCode",
-                "499000.0000", 100, "True",
-                "LapTrinh1.jpg", 2, "Phan Mai Như Ý", 5,
-                "", "", ""));
+//        data.add(new KHOAHOC(0, 0, "Cấu Trúc Dữ Liệu Và Giải Thuật Thực Chiến Với JaVa &  LeetCode",
+//                "499000.0000", 100, "True",
+//                "LapTrinh1.jpg", 2, "Phan Mai Như Ý", 5,
+//                "", "", ""));
 
 
         //get data

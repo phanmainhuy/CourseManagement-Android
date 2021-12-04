@@ -82,16 +82,16 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Khoá học được yêu thích"
                 android:layout_marginLeft="5dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:layout_marginBottom="5dp"
+
+                android:text="Top 10 khoá học được mua nhiều nhất"
+                android:textColor="@color/black"
                 android:textSize="20dp"
-                />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcl_FavoriteCourse_Home"
+                android:id="@+id/rcl_BestSellingCourse_Home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white">
