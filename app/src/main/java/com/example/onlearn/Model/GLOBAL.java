@@ -1,7 +1,7 @@
 package com.example.onlearn.Model;
 
 public class GLOBAL {
-    public static String colorActionBar = "#00CD66";
+    public static String colorActionBar = "#3399FF";
 
     //Y: 192.168.1.8
     //http://192.168.1.9:63702/

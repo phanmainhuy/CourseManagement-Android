@@ -185,7 +185,7 @@
                                 android:layout_weight="1"
                                 android:textSize="16dp"
                                 android:text="Nam"
-                                android:buttonTint="@color/green_dolla"
+                                android:buttonTint="@color/blue_primary"
                                 android:textColor="@color/black" />
 
                             <RadioButton
@@ -193,7 +193,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:buttonTint="@color/green_dolla"
+                                android:buttonTint="@color/blue_primary"
                                 android:textSize="16dp"
                                 android:text="Nữ"
                                 android:textColor="@color/black" />
@@ -271,7 +271,7 @@
                     android:id="@+id/btn_User_LogOut"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:backgroundTint="@color/green_dolla"
+                    android:backgroundTint="@color/blue_primary"
                     android:text="Đăng xuất"
                     android:textColor="@color/white"
                     android:textStyle="bold"
@@ -283,7 +283,7 @@
                     android:id="@+id/btn_User_Save"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:backgroundTint="@color/green_dolla"
+                    android:backgroundTint="@color/blue_primary"
                     android:text="Sửa thông tin"
                     android:textColor="@color/white"
                     android:textStyle="bold"

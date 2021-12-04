@@ -82,9 +82,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:paddingLeft="5dp"
+                android:drawablePadding="5dp"
                 android:layout_marginBottom="5dp"
-
+                android:drawableLeft="@drawable/ic_decortvhome"
                 android:text="Top 10 khoá học được mua nhiều nhất"
                 android:textColor="@color/black"
                 android:textSize="20dp"
