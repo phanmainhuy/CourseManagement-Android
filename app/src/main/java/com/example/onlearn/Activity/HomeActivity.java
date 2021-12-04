@@ -188,7 +188,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //add data Option
         listOption.add(new OPTION(R.drawable.ic_folder, "Danh mục"));
         listOption.add(new OPTION(R.drawable.ic_khuyenmai, "Khuyến mãi"));
-        listOption.add(new OPTION(R.drawable.ic_option, "Khóa học"));
+        listOption.add(new OPTION(R.drawable.ic_option, "Tìm kiếm"));
         listOption.add(new OPTION(R.drawable.ic_options, "Giới thiệu"));
 
         //load Option
@@ -307,6 +307,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, NotificationActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.action_search) {
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
+        }
         return true;
     }
 
@@ -321,8 +325,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent intent1 = new Intent(this, DanhMucActivity.class);
             startActivity(intent1);
         }
-        if (option.getTitle().equals("Khóa học")) {
-            Intent intent1 = new Intent(this, LoginActivity.class);
+        if (option.getTitle().equals("Tìm kiếm")) {
+            Intent intent1 = new Intent(this, SearchActivity.class);
             startActivity(intent1);
         }
         if (option.getTitle().equals("Giới thiệu")) {
