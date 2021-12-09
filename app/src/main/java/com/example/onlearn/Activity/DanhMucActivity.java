@@ -106,4 +106,5 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
         GLOBAL.idDMClick = danhmuc;
         startActivity(intent);
     }
+
 }

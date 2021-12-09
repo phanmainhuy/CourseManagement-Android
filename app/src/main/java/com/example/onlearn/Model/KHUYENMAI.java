@@ -2,13 +2,13 @@ package com.example.onlearn.Model;
 
 import java.io.Serializable;
 
-public class PROMOTION implements Serializable {
+public class KHUYENMAI implements Serializable {
     public int MaKM;
     public String MaApDung;
     public  String TenKM;
     public String HinhAnh;
 
-    public PROMOTION(int maKM, String maApDung, String tenKM, String hinhAnh) {
+    public KHUYENMAI(int maKM, String maApDung, String tenKM, String hinhAnh) {
         MaKM = maKM;
         MaApDung = maApDung;
         TenKM = tenKM;

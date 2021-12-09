@@ -58,13 +58,10 @@ public class LoginActivity extends AppCompatActivity {
             chkSave.setChecked(true);
         }
 
-        btnForgetPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Chuyển sang quên mật khẩu", Toast.LENGTH_LONG).show();
-                Intent intent1 = new Intent(LoginActivity.this, ForgetpassActivity.class);
-                startActivity(intent1);
-            }
+        btnForgetPass.setOnClickListener(v -> {
+            Toast.makeText(getApplicationContext(), "Chuyển sang quên mật khẩu", Toast.LENGTH_LONG).show();
+            Intent intent1 = new Intent(LoginActivity.this, ForgetpassActivity.class);
+            startActivity(intent1);
         });
 
         btnRegist.setOnClickListener(new View.OnClickListener() {

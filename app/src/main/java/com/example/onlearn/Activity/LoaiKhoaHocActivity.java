@@ -18,12 +18,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.Adapter.LoaiKhoaHocAdapter_rcl;
 import com.example.onlearn.Adapter.OnClickRCL_LoaiKH;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.LOAIKHOAHOC;
 import com.example.onlearn.R;
+import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +42,7 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
 
     //http://192.168.1.9:45455/TopCategoryByID/?ID=1
     String url = GLOBAL.ip + "TopCategoryByID/?ID=" + id;
+//    String url = GLOBAL.ip + "topcategory/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,32 +78,38 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
     private void getTheLoai() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        JSONObject jsonObject = response.getJSONObject(i);
-                        dataloaikh.add(new LOAIKHOAHOC(jsonObject.getInt("TongSoKhoaHoc"),
-                                jsonObject.getInt("MaDanhMuc"),
-                                jsonObject.getString("TenDanhMuc"), jsonObject.getString("HinhAnh")));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
 
+                try {
+//                    JSONObject jsonObject = response.getJSONObject(i);
+                    JSONArray Data = response.getJSONArray("DanhSachTheLoai");
+                    String hinhanh = response.getString("HinhAnh");
+                    String tenDM = response.getString("TenDanhMuc");
+                        for(int a  = 0; a < Data.length(); a++) //have length
+                        {
+                            JSONObject inData = Data.getJSONObject(a);
+                            dataloaikh.add(new LOAIKHOAHOC(
+                                    inData.getInt("MaTheLoai"),
+                                    response.getInt("MaDanhMuc"),
+                                            inData.getString("TenTheLoai"),
+                                            hinhanh,
+                                            tenDM
+                                    )
+                            );
+                        }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                loaikhAdapter.notifyDataSetChanged();
-            }
+
+
+            loaikhAdapter.notifyDataSetChanged();
         };
 
-        Response.ErrorListener thatbai = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+        com.android.volley.Response.ErrorListener thatbai = error ->
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        };
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, thanhcong, thatbai);
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, url, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
 
     }

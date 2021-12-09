@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import com.example.onlearn.GLOBAL;
@@ -31,6 +33,13 @@ public class CartActivity extends AppCompatActivity {
         btnContinue = findViewById(R.id.btn_Cart_Continue);
         btnThanhToan = findViewById(R.id.btn_Cart_Pay);
 
+
+
+        btnContinue.setOnClickListener(v -> {
+            Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+            startActivity(intent);
+
+        });
 
 
     }

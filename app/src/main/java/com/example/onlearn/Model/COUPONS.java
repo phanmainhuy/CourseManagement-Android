@@ -2,7 +2,7 @@ package com.example.onlearn.Model;
 
 import java.io.Serializable;
 
-public class VOUCHER_CUS implements Serializable {
+public class COUPONS implements Serializable {
 
     public int MaND;
     public int MaKM;
@@ -41,7 +41,7 @@ public class VOUCHER_CUS implements Serializable {
         NgayKetThuc = ngayKetThuc;
     }
 
-    public VOUCHER_CUS(int maND, int maKM, String ngayBatDau, String ngayKetThuc) {
+    public COUPONS(int maND, int maKM, String ngayBatDau, String ngayKetThuc) {
         MaND = maND;
         MaKM = maKM;
         NgayBatDau = ngayBatDau;

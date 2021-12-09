@@ -150,33 +150,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void getFavoriteCourses() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        com.android.volley.Response.Listener<JSONArray> thanhcong = new com.android.volley.Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        JSONObject jsonObject = response.getJSONObject(i);
-                        data.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
-                                jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
-                                jsonObject.getInt("SoLuongMua"), jsonObject.getString("TrangThai")
-                                , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
-                                , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
-                                , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
-                                , jsonObject.getString("NgayChapThuan")));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+        com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject jsonObject = response.getJSONObject(i);
+                    data.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
+                            jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
+                            jsonObject.getInt("SoLuongMua"), jsonObject.getString("TrangThai")
+                            , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
+                            , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
+                            , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
+                            , jsonObject.getString("NgayChapThuan")));
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                fvrCoursesAdapter.notifyDataSetChanged();
             }
+            fvrCoursesAdapter.notifyDataSetChanged();
         };
 
-        com.android.volley.Response.ErrorListener thatbai = new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+        com.android.volley.Response.ErrorListener thatbai = error ->
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        };
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlFvrCourses, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
