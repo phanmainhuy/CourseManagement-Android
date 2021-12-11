@@ -15,6 +15,9 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.PayActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.DetailCoursesActivity"
             android:exported="false" />
         <activity
