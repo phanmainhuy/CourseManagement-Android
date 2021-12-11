@@ -117,12 +117,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 //        rclFavoriteCourses.notifyDataSetChanged();
 
-        //add data set cung khoa hoc
-//        data.add(new KHOAHOC(0, 0, "Cấu Trúc Dữ Liệu Và Giải Thuật Thực Chiến Với JaVa &  LeetCode",
-//                "499000.0000", 100, "True",
-//                "LapTrinh1.jpg", 2, "Phan Mai Như Ý", 5,
-//                "", "", ""));
-
 
         //get data
         GetDanhMuc();

@@ -52,7 +52,7 @@ public class NotificationActivity extends AppCompatActivity {
 
 
         //set data listview
-        dataNotification.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thành công",
+        dataNotification.add(new NOTIFICATION(R.drawable.coupon1, "Thông báo mua khóa học thành công",
                 "We' were happy to let you know that we’ve received your order." +
 
                 "Once your package ships, we will send you an email with a tracking number and link so you can see the movement of your package.\n" +

@@ -3,6 +3,7 @@ package com.example.onlearn.Activity;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,15 +15,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.Retrofit;
+import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.KHOAHOC;
 import com.example.onlearn.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -82,10 +95,18 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 if (txtPassword.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+//                try {
+//                    onLogin(txtUsername.getText().toString(), txtPassword.getText().toString());
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+
                 else
                 {
                     //Luu lai thong tin dang nhap
@@ -106,29 +127,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-//    private void call_API(){
-//        Call<List<KHOAHOC>> favoriteCall = Retrofit.getserviceAPI().getFavoriteCourses(10);
-//        favoriteCall.enqueue(new Callback<List<KHOAHOC>>() {
-//            @Override
-//            public void onResponse(Call<List<KHOAHOC>> call, Response<List<KHOAHOC>> response) {
-//                if(response.isSuccessful())
-//                {
-//                    favoriteCourses = response.body();
-//                    Log.e("ERRr",response.message());
-//                    Log.e("ERRr","cpmfeakjaskfEFU");
-//                }
-//                else {
-//                    Log.e("ERRr", "onResponse: Faile");
-//                }
-//            }
+
+//    private void  onLogin(String userName, String password) throws JSONException {
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
 //
-//            @Override
-//            public void onFailure(Call<List<KHOAHOC>> call, Throwable t) {
-//                Log.e("ERRr", t.getMessage());
-//            }
+//        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+//            Log.v("login response", response.toString());
+//        };
 //
-//        });
+//        com.android.volley.Response.ErrorListener thatbai = error -> {
+//            if(error.getMessage()!=null){
+//                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        };
+//
+//
+//        String urlApi = GLOBAL.ip + "api/identity";
+//        JSONObject jsonBody = new JSONObject();
+//        jsonBody.put("UserName", userName);
+//        jsonBody.put("Password", password);
+//
+//        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST, urlApi, jsonBody, thanhcong, thatbai);
+//        requestQueue.add(jsonArrayRequest);
 //    }
+
+
 
 
 
