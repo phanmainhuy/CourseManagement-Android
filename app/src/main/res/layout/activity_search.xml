@@ -52,19 +52,7 @@
 
             </LinearLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="700dp">
 
-                <TextView
-                    android:id="@+id/lblEmpty_Search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Không tìm thấy khóa học"
-                    android:textSize="20dp"
-                    android:textColor="@color/grey_hint_txt"
-                     />
 
                 <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rclSearch"
@@ -74,7 +62,7 @@
                     android:background="@color/white">
                 </androidx.recyclerview.widget.RecyclerView>
 
-            </FrameLayout>
+
 
 
 

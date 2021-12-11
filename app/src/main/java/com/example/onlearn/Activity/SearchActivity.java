@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,7 +37,7 @@ public class SearchActivity extends AppCompatActivity {
     RecyclerView rclSearch;
     Button btnSearch;
     EditText txtSearch;
-    TextView tvEmpty;
+
 
     ArrayList<KHOAHOC> data = new ArrayList<>();
 
@@ -61,7 +62,6 @@ public class SearchActivity extends AppCompatActivity {
         btnSearch = findViewById(R.id.btnSearch_Search);
         txtSearch = findViewById(R.id.txtSearch_Search);
         rclSearch = findViewById(R.id.rclSearch);
-        tvEmpty = findViewById(R.id.lblEmpty_Search);
 
 //        search = txtSearch.getText().toString();
 
@@ -70,10 +70,9 @@ public class SearchActivity extends AppCompatActivity {
         rclSearch.setHasFixedSize(true);
         rclSearch.setAdapter(searchAdapter_rcl);
         rclSearch.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
+//        checkDataEmpty();
         btnSearch.setOnClickListener(v -> {
 
-            data.clear();
 
             if(txtSearch.getText().length() <= 0){
                 Toast.makeText(getApplicationContext(), "Vui lòng nhập dữ liệu cần tìm", Toast.LENGTH_SHORT).show();
@@ -81,8 +80,7 @@ public class SearchActivity extends AppCompatActivity {
             }
             else {
                 getSearchKH();
-
-
+//                checkDataEmpty();
             }
 
 
@@ -95,6 +93,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
     private void getSearchKH() {
+        data.clear();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
@@ -132,9 +131,8 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-    private void checkDataSize(){
-        
-    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
