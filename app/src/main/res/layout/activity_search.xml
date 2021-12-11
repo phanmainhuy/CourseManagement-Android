@@ -22,12 +22,16 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/txtSearch_Search"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
+                    android:textColor="@color/black"
+                    android:hint="Vui lòng nhập thông tin cần thêm"
 
                     />
 
                 <Button
+                    android:id="@+id/btnSearch_Search"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:text="Tìm"
