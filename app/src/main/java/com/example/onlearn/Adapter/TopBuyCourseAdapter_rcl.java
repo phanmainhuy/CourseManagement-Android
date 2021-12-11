@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class FavoriteCourseAdapter_rcl extends RecyclerView.Adapter<FavoriteCourseAdapter_rcl.KHUNGNHIN>{
+public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAdapter_rcl.KHUNGNHIN>{
 
     Context context;
     ArrayList<KHOAHOC> dulieu;
@@ -30,7 +30,7 @@ public class FavoriteCourseAdapter_rcl extends RecyclerView.Adapter<FavoriteCour
 
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
-    public FavoriteCourseAdapter_rcl(Context context, ArrayList<KHOAHOC> dulieu, OnClickRCL_Home listener) {
+    public TopBuyCourseAdapter_rcl(Context context, ArrayList<KHOAHOC> dulieu, OnClickRCL_Home listener) {
         this.context = context;
         this.dulieu = dulieu;
         this.listener = listener;
@@ -39,9 +39,9 @@ public class FavoriteCourseAdapter_rcl extends RecyclerView.Adapter<FavoriteCour
     @NonNull
 
     @Override
-    public FavoriteCourseAdapter_rcl.KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TopBuyCourseAdapter_rcl.KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_courses,null);
-        return new FavoriteCourseAdapter_rcl.KHUNGNHIN(view);
+        return new TopBuyCourseAdapter_rcl.KHUNGNHIN(view);
     }
 
     @Override
@@ -94,12 +94,12 @@ public class FavoriteCourseAdapter_rcl extends RecyclerView.Adapter<FavoriteCour
 
 
             //Xu ly su kien click item cua recycle view
-            /*itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.itemClickDanhMuc();
+                    listener.ItemClickCourse(khoahoc);
                 }
-            });*/
+            });
         }
     }
 

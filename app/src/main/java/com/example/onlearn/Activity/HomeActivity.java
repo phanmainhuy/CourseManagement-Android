@@ -18,7 +18,6 @@ import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -28,7 +27,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.Retrofit;
-import com.example.onlearn.Adapter.FavoriteCourseAdapter_rcl;
+import com.example.onlearn.Adapter.TopBuyCourseAdapter_rcl;
 import com.example.onlearn.Model.DANHMUC;
 import com.example.onlearn.Model.KHOAHOC;
 import com.example.onlearn.Model.THELOAI;
@@ -62,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ArrayList<OPTION> listOption = new ArrayList<>();
     RecyclerView rclOption, rclFavoriteCourses;
     OptionAdapter_Home_rcl optionAdapter;
-    FavoriteCourseAdapter_rcl fvrCoursesAdapter;
+    TopBuyCourseAdapter_rcl fvrCoursesAdapter;
 
     //url take most buy course
     String urlFvrCourses = GLOBAL.ip + "MostBuyCourse/?limit=10";
@@ -109,7 +108,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //set cung khoa hoc
         /*ArrayList<KHOAHOC> data = new ArrayList<>();*/
 
-        fvrCoursesAdapter = new FavoriteCourseAdapter_rcl(this, data, this);
+        fvrCoursesAdapter = new TopBuyCourseAdapter_rcl(this, data, this);
         rclFavoriteCourses.setHasFixedSize(true);
         rclFavoriteCourses.setAdapter(fvrCoursesAdapter);
         rclFavoriteCourses.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -123,13 +122,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         getFavoriteCourses();
 
 
-        //toolbar
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        //toolbar
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
 
         //Xu ly Navigation Left
@@ -323,8 +322,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void ItemClickFavorite(KHOAHOC favorite_course) {
-
+    public void ItemClickCourse(KHOAHOC data) {
+        GLOBAL.KhoaHocClick = data;
+        Intent intent = new Intent(this, DetailCoursesActivity.class);
+        startActivity(intent);
     }
 
     @Override

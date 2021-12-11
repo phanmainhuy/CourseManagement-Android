@@ -9,17 +9,18 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 
-public class UserActivity extends AppCompatActivity {
-    Button btnSaveInfor;
+public class DetailCoursesActivity extends AppCompatActivity {
+    String TitleActionBar = "Chi tiết khóa học";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_detailcourses);
 
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
@@ -30,22 +31,16 @@ public class UserActivity extends AppCompatActivity {
                 = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Thông tin người dùng"+ "</font>"));
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + TitleActionBar + "</font>"));
 
         //anh xa
-        btnSaveInfor = findViewById(R.id.btn_Cart_Continue);
 
-
-//        btnSaveInfor.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(UserActivity.this, HomeActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
 
     }
+
+
+
 
 
     @Override
@@ -58,16 +53,5 @@ public class UserActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
