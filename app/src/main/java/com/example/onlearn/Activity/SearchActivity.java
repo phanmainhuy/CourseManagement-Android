@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -37,6 +38,7 @@ public class SearchActivity extends AppCompatActivity {
     RecyclerView rclSearch;
     Button btnSearch;
     EditText txtSearch;
+    TextView tvEmpty;
 
     ArrayList<KHOAHOC> data = new ArrayList<>();
 
@@ -61,6 +63,7 @@ public class SearchActivity extends AppCompatActivity {
         btnSearch = findViewById(R.id.btnSearch_Search);
         txtSearch = findViewById(R.id.txtSearch_Search);
         rclSearch = findViewById(R.id.rclSearch);
+        tvEmpty = findViewById(R.id.lblEmpty_Search);
 
 //        search = txtSearch.getText().toString();
 
@@ -71,14 +74,18 @@ public class SearchActivity extends AppCompatActivity {
         rclSearch.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         btnSearch.setOnClickListener(v -> {
-            if(txtSearch.getText().equals("")){
+
+            data.clear();
+
+            if(txtSearch.getText().length() <= 0){
                 Toast.makeText(getApplicationContext(), "Vui lòng nhập dữ liệu cần tìm", Toast.LENGTH_SHORT).show();
                 return;
             }
             else {
-                Toast.makeText(getApplicationContext(), "Tìm kiếm thành công", Toast.LENGTH_SHORT).show();
-//                search = txtSearch.getText().toString();
+
                 getFavoriteCourses();
+//                if(data.)
+
             }
 
 
@@ -115,9 +122,17 @@ public class SearchActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
         String search = txtSearch.getText().toString();
-        String urlSearch = GLOBAL.ip + "Search/?searchstring="+ search;
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlSearch, null, thanhcong, thatbai);
-        requestQueue.add(jsonArrayRequest);
+        if(search.equals("")){
+            Toast.makeText(getApplicationContext(), "Vui lòng nhập dữ liệu cần tìm", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        else
+        {
+            String urlSearch = GLOBAL.ip + "Search/?searchstring="+ search;
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlSearch, null, thanhcong, thatbai);
+            requestQueue.add(jsonArrayRequest);
+        }
     }
 
 
