@@ -13,13 +13,13 @@ import android.view.MenuItem;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 
-public class PromotionActivity extends AppCompatActivity {
+public class CouponActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_promotion);
+        setContentView(R.layout.activity_coupon);
 
         ActionBar actionBar = getSupportActionBar();
         //thanh tro ve home

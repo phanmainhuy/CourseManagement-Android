@@ -39,7 +39,7 @@
             android:name=".Activity.DanhMucActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.PromotionActivity"
+            android:name=".Activity.CouponActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.NotificationActivity"

@@ -16,15 +16,16 @@
 
 
         <item
-            android:id="@+id/mnu_discount"
-            android:icon="@drawable/ic_discount"
+            android:id="@+id/mnu_couponwallet"
+            android:icon="@drawable/ic_couponwallet"
             android:title="Ví khuyến mãi" />
 
 
-        <item
-            android:id="@+id/mnu_new"
-            android:icon="@drawable/ic_news"
-            android:title="Tin tức"/>
+<!--        <item-->
+<!--            android:id="@+id/mnu_new"-->
+<!--            android:icon="@drawable/ic_news"-->
+<!--            android:title="Tin tức"/>-->
+
         <item
             android:id="@+id/mnu_help"
             android:icon="@drawable/ic_chatbot"

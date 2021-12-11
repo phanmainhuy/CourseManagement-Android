@@ -80,9 +80,8 @@ public class SearchActivity extends AppCompatActivity {
                 return;
             }
             else {
-
                 getSearchKH();
-//                if(data.)
+
 
             }
 
@@ -133,6 +132,9 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
+    private void checkDataSize(){
+        
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

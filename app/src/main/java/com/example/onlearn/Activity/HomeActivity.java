@@ -221,12 +221,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
         }
 
-//            if (mSelectedId == R.id.mnu_address) {
-//                intent = new Intent(HomeActivity.this, LocationActivity.class);
-//                startActivity(intent);
-//
-//                drawerLayout.closeDrawer(GravityCompat.START);
-//            }
+            if (mSelectedId == R.id.mnu_couponwallet) {
+                intent = new Intent(HomeActivity.this, CouponWalletActivity.class);
+                startActivity(intent);
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+
         if (mSelectedId == R.id.mnu_contact) {
             intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0948462040"));
             startActivity(intent);
@@ -303,7 +303,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void itemClickOption(OPTION option) {
         if (option.getTitle().equals("Khuyến mãi")) {
-            Intent intent = new Intent(this, PromotionActivity.class);
+            Intent intent = new Intent(this, CouponActivity.class);
             startActivity(intent);
         }
         if (option.getTitle().equals("Danh mục")) {

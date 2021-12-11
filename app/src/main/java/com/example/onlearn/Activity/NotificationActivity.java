@@ -78,7 +78,7 @@ public class NotificationActivity extends AppCompatActivity {
         btnVoucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NotificationActivity.this, PromotionActivity.class);
+                Intent intent = new Intent(NotificationActivity.this, CouponActivity.class);
                 startActivity(intent);
             }
         });
