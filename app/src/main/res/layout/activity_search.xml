@@ -24,16 +24,30 @@
                 <EditText
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/decorate_text_basic" />
+
+                    />
 
                 <Button
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:text="Tìm"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
 
                     />
 
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rclSearch"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1000dp"
+                android:background="@color/white">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
 
 
         </LinearLayout>

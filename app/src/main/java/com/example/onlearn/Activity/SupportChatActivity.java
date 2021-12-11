@@ -1,10 +1,16 @@
 package com.example.onlearn.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.onlearn.API.CallAPI;
 import com.example.onlearn.Adapter.ChatAdapter_RecycleView;
+import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.ChatsModel;
 import com.example.onlearn.Model.MessageModel;
 import com.example.onlearn.R;
@@ -39,6 +46,17 @@ public class SupportChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_support_chat);
+
+        ActionBar actionBar = getSupportActionBar();
+        //thanh tro ve home
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //doi mau thanh action bar
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Chatbot hỗ trợ OnLearn"+ "</font>"));
+
 
         //Anh xa
         chatsRV = findViewById(R.id.idRVChats);
@@ -71,7 +89,7 @@ public class SupportChatActivity extends AppCompatActivity {
     {
         chatsModelsArrayList.add(new ChatsModel(message,USER_KEY));
         chatAdapter_recycleView.notifyDataSetChanged();
-        String url ="http://api.brainshop.ai/get?bid=158000&key=Sin1haXQIDNZwZgm&uid=[uid]&msg=[msg]="+message;
+        String url ="http://api.brainshop.ai/get?bid=158000&key=Sin1haXQIDNZwZgm&uid=[uid]&msg="+message;
         String BASE_URL = "http://api.brainshop.ai/";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -100,7 +118,16 @@ public class SupportChatActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
 }
