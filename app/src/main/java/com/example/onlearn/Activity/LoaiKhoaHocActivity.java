@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -33,8 +34,9 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
 
     RecyclerView rclLoaikh;
     LoaiKhoaHocAdapter_rcl loaikhAdapter;
-    int id = GLOBAL.idDMClick.getMaDanhMuc();
+    int id = GLOBAL.DMClick.getMaDanhMuc();
     ArrayList<LOAIKHOAHOC> dataloaikh = new ArrayList<>();
+    String titleActionBar = GLOBAL.DMClick.getTenDanhMuc();
 
     //http://192.168.1.9:45455/TopCategoryByID/?ID=1
     String url = GLOBAL.ip + "TopCategoryByID/?ID=" + id;
@@ -54,7 +56,7 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
                 = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + "Loại khóa học" + "</font>"));
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + titleActionBar + "</font>"));
 
         //anh xa
         rclLoaikh = findViewById(R.id.rclLoaiKH_LoaiKH);
@@ -113,7 +115,9 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
 
     @Override
     public void ItemClickLoaiKhoaHoc(LOAIKHOAHOC loaikhoahoc) {
-
+        Intent intent = new Intent(this, KhoaHocTheoLoaiActivity.class);
+        GLOBAL.LoaiKHClick = loaikhoahoc;
+        startActivity(intent);
     }
 
     @Override

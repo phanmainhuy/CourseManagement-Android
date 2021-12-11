@@ -89,21 +89,11 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
     }
 
 
-//    @Override
-//    public void itemClickDanhMuc(DANHMUC danhmuckh) {
-//
-//
-//    }
-//
-//    @Override
-//    public void onPointerCaptureChanged(boolean hasCapture) {
-//
-//    }
 
     @Override
     public void ItemClickDM(DANHMUC danhmuc) {
         Intent intent = new Intent(this, LoaiKhoaHocActivity.class);
-        GLOBAL.idDMClick = danhmuc;
+        GLOBAL.DMClick = danhmuc;
         startActivity(intent);
     }
 

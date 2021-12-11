@@ -40,7 +40,7 @@ public class FavoriteCourseAdapter_rcl extends RecyclerView.Adapter<FavoriteCour
 
     @Override
     public FavoriteCourseAdapter_rcl.KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_home_favoritecourses,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_courses,null);
         return new FavoriteCourseAdapter_rcl.KHUNGNHIN(view);
     }
 

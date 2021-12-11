@@ -1,6 +1,7 @@
 package com.example.onlearn;
 
 import com.example.onlearn.Model.DANHMUC;
+import com.example.onlearn.Model.LOAIKHOAHOC;
 import com.example.onlearn.Model.USER;
 
 public class GLOBAL {
@@ -14,7 +15,9 @@ public class GLOBAL {
     public static String urlimg = "assets/images/";
 
     //object
-    public static DANHMUC idDMClick;
+    public static DANHMUC DMClick;
+    public static LOAIKHOAHOC LoaiKHClick;
+
     public static USER  userlogin;
 
 

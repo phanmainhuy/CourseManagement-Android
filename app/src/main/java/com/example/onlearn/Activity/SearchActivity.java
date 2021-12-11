@@ -83,7 +83,7 @@ public class SearchActivity extends AppCompatActivity {
             }
             else {
 
-                getFavoriteCourses();
+                getSearchKH();
 //                if(data.)
 
             }
@@ -97,7 +97,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 
-    private void getFavoriteCourses() {
+    private void getSearchKH() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {

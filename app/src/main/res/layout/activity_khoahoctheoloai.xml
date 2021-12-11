@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.KhoaHocTheoLoaiActivity"
+    android:background="@color/white"
+    android:padding="10dp"
+    >
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/KHtheoloai_rcl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:id="@+id/tvEmpty_KHtheoLoai"
+        android:drawableTop="@drawable/ic_emptybox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Không có khóa học nào"
+        android:drawablePadding="5dp"
+        android:textColor="@color/grey_hint_txt"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        />
+
+
+
+</FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

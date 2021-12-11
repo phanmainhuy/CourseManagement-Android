@@ -81,12 +81,12 @@ public class LoaiKhoaHocAdapter_rcl extends RecyclerView.Adapter<LoaiKhoaHocAdap
 
 
             //Xu ly su kien click item cua recycle view
-            /*itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.itemClickDanhMuc();
+                    listener.ItemClickLoaiKhoaHoc(loaikhoahoc);
                 }
-            });*/
+            });
         }
     }
 
