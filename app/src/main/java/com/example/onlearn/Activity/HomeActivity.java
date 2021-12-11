@@ -174,7 +174,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //add data Option
         listOption.add(new OPTION(R.drawable.ic_folder, "Danh mục"));
         listOption.add(new OPTION(R.drawable.ic_khuyenmai, "Khuyến mãi"));
-        listOption.add(new OPTION(R.drawable.ic_option, "Tìm kiếm"));
+        listOption.add(new OPTION(R.drawable.ic_searchhome, "Tìm kiếm"));
         listOption.add(new OPTION(R.drawable.ic_options, "Giới thiệu"));
 
         //load Option
