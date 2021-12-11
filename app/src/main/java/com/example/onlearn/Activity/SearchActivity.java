@@ -39,8 +39,7 @@ public class SearchActivity extends AppCompatActivity {
     EditText txtSearch;
 
     ArrayList<KHOAHOC> data = new ArrayList<>();
-    String search="C#";
-    String urlSearch = GLOBAL.ip + "Search/?searchstring="+search+"&&paging=1&&type=1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +49,8 @@ public class SearchActivity extends AppCompatActivity {
         //action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + "Tìm kiếm" + "</font>"));
+        //thanh tro ve home
+        actionBar.setDisplayHomeAsUpEnabled(true);
         //doi mau thanh action bars
         ColorDrawable colorDrawable
                 = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
@@ -61,7 +62,7 @@ public class SearchActivity extends AppCompatActivity {
         txtSearch = findViewById(R.id.txtSearch_Search);
         rclSearch = findViewById(R.id.rclSearch);
 
-        search = txtSearch.getText().toString();
+//        search = txtSearch.getText().toString();
 
         //set up rcl
         searchAdapter_rcl = new SearchAdapter_rcl(this, data);
@@ -69,20 +70,18 @@ public class SearchActivity extends AppCompatActivity {
         rclSearch.setAdapter(searchAdapter_rcl);
         rclSearch.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(txtSearch.getText().equals("")){
-                    Toast.makeText(getApplicationContext(), "Vui lòng nhập dữ liệu cần tìm", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Tìm kiếm thành công", Toast.LENGTH_SHORT).show();
-                    getFavoriteCourses();
-                }
-
-
+        btnSearch.setOnClickListener(v -> {
+            if(txtSearch.getText().equals("")){
+                Toast.makeText(getApplicationContext(), "Vui lòng nhập dữ liệu cần tìm", Toast.LENGTH_SHORT).show();
+                return;
             }
+            else {
+                Toast.makeText(getApplicationContext(), "Tìm kiếm thành công", Toast.LENGTH_SHORT).show();
+//                search = txtSearch.getText().toString();
+                getFavoriteCourses();
+            }
+
+
         });
 
 
@@ -115,6 +114,8 @@ public class SearchActivity extends AppCompatActivity {
         com.android.volley.Response.ErrorListener thatbai = error ->
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
+        String search = txtSearch.getText().toString();
+        String urlSearch = GLOBAL.ip + "Search/?searchstring="+ search;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlSearch, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
