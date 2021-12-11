@@ -1,4 +1,4 @@
-package com.example.onlearn.Adapter;
+package com.example.onlearn.OnClick;
 
 import com.example.onlearn.Model.KHOAHOC;
 import com.example.onlearn.Model.OPTION;

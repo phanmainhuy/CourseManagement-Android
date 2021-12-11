@@ -15,17 +15,13 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.Adapter.LoaiKhoaHocAdapter_rcl;
-import com.example.onlearn.Adapter.OnClickRCL_LoaiKH;
+import com.example.onlearn.OnClick.OnClickRCL_LoaiKH;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.LOAIKHOAHOC;
 import com.example.onlearn.R;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.Retrofit;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.KHOAHOC;
+import com.example.onlearn.Model.LOGIN;
 import com.example.onlearn.R;
 
 import org.json.JSONArray;
@@ -102,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 //                try {
-//                    onLogin(txtUsername.getText().toString(), txtPassword.getText().toString());
+//                    onLogin();
 //                } catch (JSONException e) {
 //                    e.printStackTrace();
 //                }
@@ -128,28 +129,30 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-//    private void  onLogin(String userName, String password) throws JSONException {
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//
-//        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
-//            Log.v("login response", response.toString());
-//        };
-//
-//        com.android.volley.Response.ErrorListener thatbai = error -> {
-//            if(error.getMessage()!=null){
-//                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        };
-//
-//
-//        String urlApi = GLOBAL.ip + "api/identity";
-//        JSONObject jsonBody = new JSONObject();
+    private void  onLogin() throws JSONException {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+            String username = txtUsername.getText().toString();
+            String password = txtPassword.getText().toString();
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+            Log.v("login response", response.toString());
+        };
+
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if(error.getMessage()!=null){
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+        LOGIN login = new LOGIN(username,password);
+
+
+        String urlApi = GLOBAL.ip + "api/identity";
+        JSONObject jsonBody = new JSONObject();
 //        jsonBody.put("UserName", userName);
 //        jsonBody.put("Password", password);
-//
-//        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST, urlApi, jsonBody, thanhcong, thatbai);
-//        requestQueue.add(jsonArrayRequest);
-//    }
+
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST, urlApi, jsonBody, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+    }
 
 
 

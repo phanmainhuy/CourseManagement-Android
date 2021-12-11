@@ -15,7 +15,7 @@ import android.view.MenuItem;
 
 import com.example.onlearn.Adapter.DanhMucAdapter_rcl;
 
-import com.example.onlearn.Adapter.OnClickRCL_DanhMuc;
+import com.example.onlearn.OnClick.OnClickRCL_DanhMuc;
 import com.example.onlearn.Model.DANHMUC;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;

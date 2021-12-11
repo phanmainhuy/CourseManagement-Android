@@ -25,7 +25,6 @@ import android.widget.ViewFlipper;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.Retrofit;
@@ -40,7 +39,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.onlearn.Adapter.OnClickRCL_Home;
+import com.example.onlearn.OnClick.OnClickRCL_Home;
 import com.example.onlearn.Adapter.OptionAdapter_Home_rcl;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.OPTION;
