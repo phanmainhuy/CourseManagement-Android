@@ -23,7 +23,7 @@
         android:drawableTop="@drawable/ic_emptybox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Không có khóa học nào"
+        android:text="Chưa có khóa học loại này"
         android:drawablePadding="5dp"
         android:textColor="@color/grey_hint_txt"
         android:layout_gravity="center"
