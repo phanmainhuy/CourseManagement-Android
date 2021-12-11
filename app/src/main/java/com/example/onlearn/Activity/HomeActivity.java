@@ -232,11 +232,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0948462040"));
             startActivity(intent);
         }
-//            if(mSelectedId == R.id.mnu_help)
-//            {
-//                intent = new Intent(this,SupportChatActivity.class);
-//                startActivity(intent);
-//            }
+            if(mSelectedId == R.id.mnu_help)
+            {
+                intent = new Intent(this,SupportChatActivity.class);
+                startActivity(intent);
+            }
 
         if(mSelectedId == R.id.mnu_logout)
         {
