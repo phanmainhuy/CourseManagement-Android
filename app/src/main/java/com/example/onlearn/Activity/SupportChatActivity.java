@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.onlearn.API.CallAPI;
+import com.example.onlearn.API.CallAPIRetro;
 import com.example.onlearn.Adapter.ChatAdapter_RecycleView;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.Model.ChatsModel;
@@ -95,7 +95,7 @@ public class SupportChatActivity extends AppCompatActivity {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        CallAPI retrofitAPI = retrofit.create(CallAPI.class);
+        CallAPIRetro retrofitAPI = retrofit.create(CallAPIRetro.class);
         Call<MessageModel> call = retrofitAPI.getMessage(url);
         call.enqueue(new Callback<MessageModel>() {
             @Override

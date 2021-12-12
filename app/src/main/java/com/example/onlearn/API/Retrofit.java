@@ -17,9 +17,9 @@ public class Retrofit {
         return retrofit;
     };
 
-    public static CallAPI getserviceAPI ()
+    public static CallAPIRetro getserviceAPI ()
     {
-        CallAPI callAPI_admin = getRetrofit().create(CallAPI.class);
-        return callAPI_admin;
+        CallAPIRetro callAPI_Retro_admin = getRetrofit().create(CallAPIRetro.class);
+        return callAPI_Retro_admin;
     }
 }

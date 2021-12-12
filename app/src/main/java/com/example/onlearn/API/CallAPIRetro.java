@@ -11,7 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
-public interface CallAPI {
+public interface CallAPIRetro {
     //chatbot
     @GET
     Call<MessageModel> getMessage(@Url String url);
