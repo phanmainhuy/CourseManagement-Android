@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                call_API();
+
 
                 if (txtUsername.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
@@ -102,26 +102,29 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-//                try {
-//                    onLogin();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
+
 
                 else
                 {
-                    //Luu lai thong tin dang nhap
-                    SharedPreferences.Editor editor = remember.edit();
-                    if (chkSave.isChecked()) {
-                        //luu lai thong tin
-                        editor.putString("username", txtUsername.getText().toString());
-                        editor.putString("password", txtPassword.getText().toString());
+                    try {
+                        onLogin();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
                     }
-                    editor.putBoolean("saveinfo", chkSave.isChecked());
-                    editor.commit();
-                    Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_LONG).show();
-                    Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent1);
+
+//                    //Luu lai thong tin dang nhap
+//                    SharedPreferences.Editor editor = remember.edit();
+//                    if (chkSave.isChecked()) {
+//                        //luu lai thong tin
+//                        editor.putString("username", txtUsername.getText().toString());
+//                        editor.putString("password", txtPassword.getText().toString());
+//                    }
+//                    editor.putBoolean("saveinfo", chkSave.isChecked());
+//                    editor.commit();
+//                    Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_LONG).show();
+//                    Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
+//                    startActivity(intent1);
 
                 }
 
@@ -147,7 +150,8 @@ public class LoginActivity extends AppCompatActivity {
 
         String urlApi = GLOBAL.ip + "api/identity";
         JSONObject jsonBody = new JSONObject();
-//        jsonBody.put("UserName", userName);
+        jsonBody.put("model", login);
+//        jsonBody.put("UserName", username);
 //        jsonBody.put("Password", password);
 
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST, urlApi, jsonBody, thanhcong, thatbai);

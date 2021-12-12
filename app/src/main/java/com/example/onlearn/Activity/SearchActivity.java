@@ -126,6 +126,7 @@ public class SearchActivity extends AppCompatActivity {
         else
         {
             String urlSearch = GLOBAL.ip + "Search/?searchstring="+ search;
+            urlSearch = urlSearch.replaceAll(" ", "%20");
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlSearch, null, thanhcong, thatbai);
             requestQueue.add(jsonArrayRequest);
         }

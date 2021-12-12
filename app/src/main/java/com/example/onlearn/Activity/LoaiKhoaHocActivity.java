@@ -45,7 +45,7 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loai_khoa_hoc);
+        setContentView(R.layout.activityloaikhoahoc);
 
         //action bar
         ActionBar actionBar = getSupportActionBar();
