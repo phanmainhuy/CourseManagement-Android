@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity {
     RecyclerView rclKHtheoLoai;
     KhoaHocTheoLoaiAdapter khoahocAdapter;
     ArrayList<KHOAHOC> datakh = new ArrayList<>();
-    TextView isEmpty;
+//    TextView isEmpty;
 
 
 
@@ -57,7 +58,7 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity {
 
         //anh xa
         rclKHtheoLoai = findViewById(R.id.KHtheoloai_rcl);
-        isEmpty = findViewById(R.id.tvEmpty_KHtheoLoai);
+//        isEmpty = findViewById(R.id.tvEmpty_KHtheoLoai);
 
         //set up rcl
         khoahocAdapter = new KhoaHocTheoLoaiAdapter(this, datakh);
@@ -100,7 +101,6 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity {
 
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlKHtheoLoai, null, thanhcong, thatbai);
             requestQueue.add(jsonArrayRequest);
-
     }
 
 

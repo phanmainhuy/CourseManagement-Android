@@ -9,29 +9,16 @@
     android:padding="10dp"
     >
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/KHtheoloai_rcl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-    </androidx.recyclerview.widget.RecyclerView>
-    <TextView
-        android:id="@+id/tvEmpty_KHtheoLoai"
-        android:drawableTop="@drawable/ic_emptybox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chưa có khóa học loại này"
-        android:drawablePadding="5dp"
-        android:textColor="@color/grey_hint_txt"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
 
 
 
-</FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

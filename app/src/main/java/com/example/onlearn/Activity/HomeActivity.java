@@ -258,7 +258,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
 
             if (mSelectedId == R.id.mnu_wallet) {
-                intent = new Intent(HomeActivity.this, CouponActivity.class);
+                intent = new Intent(HomeActivity.this, CouponWalletActivity.class);
                 startActivity(intent);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
