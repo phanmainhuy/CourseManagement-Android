@@ -1,4 +1,4 @@
-package com.example.onlearn.Adapter;
+package com.example.onlearn.activity.chatbot;
 
 import android.content.Context;
 import android.view.LayoutInflater;

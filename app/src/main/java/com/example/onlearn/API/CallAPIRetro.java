@@ -1,7 +1,7 @@
 package com.example.onlearn.API;
 
 import com.example.onlearn.models.DANHMUC;
-import com.example.onlearn.models.MessageModel;
+import com.example.onlearn.models.MESSAGE;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import retrofit2.http.Url;
 public interface CallAPIRetro {
     //chatbot
     @GET
-    Call<MessageModel> getMessage(@Url String url);
+    Call<MESSAGE> getMessage(@Url String url);
 
 
     //http://localhost:63702/topcategory/

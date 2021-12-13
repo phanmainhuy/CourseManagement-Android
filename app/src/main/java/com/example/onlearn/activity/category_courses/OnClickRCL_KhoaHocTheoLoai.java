@@ -1,4 +1,4 @@
-package com.example.onlearn.OnClick;
+package com.example.onlearn.activity.category_courses;
 
 
 import com.example.onlearn.models.KHOAHOC;

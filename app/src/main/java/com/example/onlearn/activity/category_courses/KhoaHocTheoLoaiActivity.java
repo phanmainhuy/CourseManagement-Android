@@ -17,7 +17,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.onlearn.Adapter.KhoaHocTheoLoaiAdapter;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.R;

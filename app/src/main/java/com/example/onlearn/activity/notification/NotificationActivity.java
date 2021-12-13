@@ -17,7 +17,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import com.example.onlearn.activity.coupon.CouponActivity;
-import com.example.onlearn.Adapter.NotificationAdapter_Listview;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.models.NOTIFICATION;
 import com.example.onlearn.R;

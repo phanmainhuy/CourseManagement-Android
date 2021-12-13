@@ -17,10 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlearn.API.CallAPIRetro;
-import com.example.onlearn.Adapter.ChatAdapter_RecycleView;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.models.ChatsModel;
-import com.example.onlearn.models.MessageModel;
+import com.example.onlearn.models.MESSAGE;
 import com.example.onlearn.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -96,20 +95,20 @@ public class SupportChatActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         CallAPIRetro retrofitAPI = retrofit.create(CallAPIRetro.class);
-        Call<MessageModel> call = retrofitAPI.getMessage(url);
-        call.enqueue(new Callback<MessageModel>() {
+        Call<MESSAGE> call = retrofitAPI.getMessage(url);
+        call.enqueue(new Callback<MESSAGE>() {
             @Override
-            public void onResponse(Call<MessageModel> call, Response<MessageModel> response) {
+            public void onResponse(Call<MESSAGE> call, Response<MESSAGE> response) {
                 if(response.isSuccessful())
                 {
-                    MessageModel messageModel =  response.body();
-                    chatsModelsArrayList.add(new ChatsModel(messageModel.getCnt(),BOT_KEY));
+                    MESSAGE MESSAGE =  response.body();
+                    chatsModelsArrayList.add(new ChatsModel(MESSAGE.getCnt(),BOT_KEY));
                     chatAdapter_recycleView.notifyDataSetChanged();
                 }
             }
 
             @Override
-            public void onFailure(Call<MessageModel> call, Throwable t) {
+            public void onFailure(Call<MESSAGE> call, Throwable t) {
                 chatsModelsArrayList.add(new ChatsModel("Please revert your question",BOT_KEY));
                 chatAdapter_recycleView.notifyDataSetChanged();
             }

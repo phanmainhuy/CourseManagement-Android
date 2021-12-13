@@ -1,9 +1,9 @@
 package com.example.onlearn.models;
 
-public class MessageModel {
+public class MESSAGE {
     String cnt;
 
-    public MessageModel(String cnt) {
+    public MESSAGE(String cnt) {
         this.cnt = cnt;
     }
 

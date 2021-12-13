@@ -1,4 +1,4 @@
-package com.example.onlearn.Adapter;
+package com.example.onlearn.activity.notification;
 
 import android.content.Context;
 import android.view.LayoutInflater;

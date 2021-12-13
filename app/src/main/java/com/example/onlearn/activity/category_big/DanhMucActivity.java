@@ -13,9 +13,6 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 
-import com.example.onlearn.Adapter.DanhMucAdapter_rcl;
-
-import com.example.onlearn.OnClick.OnClickRCL_DanhMuc;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.category_small.LoaiKhoaHocActivity;
 import com.example.onlearn.models.DANHMUC;

@@ -1,4 +1,4 @@
-package com.example.onlearn.Adapter;
+package com.example.onlearn.activity.home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.onlearn.OnClick.OnClickRCL_Home;
 import com.example.onlearn.R;
 
 import java.util.ArrayList;

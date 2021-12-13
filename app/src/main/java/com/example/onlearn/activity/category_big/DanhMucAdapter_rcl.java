@@ -1,4 +1,4 @@
-package com.example.onlearn.Adapter;
+package com.example.onlearn.activity.category_big;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlearn.models.DANHMUC;
-import com.example.onlearn.OnClick.OnClickRCL_DanhMuc;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;
 

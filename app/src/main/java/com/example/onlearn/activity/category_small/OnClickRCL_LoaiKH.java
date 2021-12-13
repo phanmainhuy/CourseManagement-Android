@@ -1,4 +1,4 @@
-package com.example.onlearn.OnClick;
+package com.example.onlearn.activity.category_small;
 
 import com.example.onlearn.models.LOAIKHOAHOC;
 

@@ -18,8 +18,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.onlearn.Adapter.LoaiKhoaHocAdapter_rcl;
-import com.example.onlearn.OnClick.OnClickRCL_LoaiKH;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiActivity;
 import com.example.onlearn.models.LOAIKHOAHOC;

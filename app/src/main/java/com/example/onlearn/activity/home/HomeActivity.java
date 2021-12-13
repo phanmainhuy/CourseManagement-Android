@@ -38,7 +38,6 @@ import com.example.onlearn.activity.coupon.CouponActivity;
 import com.example.onlearn.activity.coupon_wallet.CouponWalletActivity;
 import com.example.onlearn.activity.detail_course.DetailCourseActivity;
 import com.example.onlearn.activity.login.LoginActivity;
-import com.example.onlearn.Adapter.TopBuyCourseAdapter_rcl;
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.THELOAI;
@@ -49,8 +48,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.onlearn.OnClick.OnClickRCL_Home;
-import com.example.onlearn.Adapter.OptionAdapter_Home_rcl;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.models.OPTION;
 

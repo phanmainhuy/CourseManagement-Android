@@ -1,4 +1,4 @@
-package com.example.onlearn.Adapter;
+package com.example.onlearn.activity.home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.models.KHOAHOC;
-import com.example.onlearn.OnClick.OnClickRCL_Home;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;
 

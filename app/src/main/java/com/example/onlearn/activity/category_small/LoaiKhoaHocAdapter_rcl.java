@@ -1,4 +1,4 @@
-package com.example.onlearn.Adapter;
+package com.example.onlearn.activity.category_small;
 
 
 import android.content.Context;
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.models.LOAIKHOAHOC;
-import com.example.onlearn.OnClick.OnClickRCL_LoaiKH;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;
 
