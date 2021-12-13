@@ -1,11 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
     android:background="@color/white"
-    >
-    
+    android:padding="5dp">
 
 
+    <ImageView
+        android:id="@+id/imgKM_Coupon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/summersale" />
+
+    <TextView
+        android:id="@+id/tvTenKM_Coupon"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="110dp"
+        android:gravity="center||left"
+        android:maxLines="2"
+        android:text="Khuyến Mãi Chào Mừng Mùa Hè Nhiệt Huyết, Sôi Động"
+        android:textColor="@color/blue_deep"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvValueKM_Coupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:maxLines="1"
+        android:text="Giảm giá: 200.000 VND"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTenKM_Coupon" />
+
+    <TextView
+        android:id="@+id/tvHSD_Coupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:maxLines="1"
+        android:textSize="15dp"
+
+        android:text="Hạn sử dụng: 5 ngày"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvValueKM_Coupon" />
+
+    <TextView
+        android:id="@+id/tvDiemMua_Coupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:textSize="15dp"
+        android:maxLines="1"
+        android:text="Điểm mua: 3.000"
+        android:textStyle="bold"
+        android:textColor="@color/red_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHSD_Coupon" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text="Mua mã"
+        android:backgroundTint="@color/red_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHSD_Coupon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
