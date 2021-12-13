@@ -17,6 +17,7 @@ import com.example.onlearn.R;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiAdapter;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.KHUYENMAI;
+import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -56,8 +57,8 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
         holder.tenkm.setText(km.TenKM);
         holder.hsdkm.setText("Hạn sử dụng: "+km.HSD);
         //set format cho giá
-        holder.giatrikm.setText("Giảm giá: "+formatNumberCurrency(km.GiaTri)+ " VND");
-        holder.diemmua.setText("Điểm mua: "+formatNumberCurrency(km.GiaTri)+ " đ");
+        holder.giatrikm.setText("Giảm giá: "+ utils.formatNumberCurrency(km.GiaTri)+ " VND");
+        holder.diemmua.setText("Điểm mua: "+utils.formatNumberCurrency(km.GiaTri)+ " đ");
 
         holder.khuyenmai = dulieu.get(position);
     }
@@ -112,10 +113,5 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
 
 
 
-    //Tạo format tiền VND
-    public static String formatNumberCurrency(String gia)
-    {
-        DecimalFormat format = new DecimalFormat("#,###");
-        return format.format(Double.parseDouble(gia));
-    }
+
 }

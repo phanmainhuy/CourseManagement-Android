@@ -3,6 +3,8 @@ package com.example.onlearn.activity.coupon;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +24,7 @@ import com.example.onlearn.R;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiAdapter;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.KHUYENMAI;
+import com.example.onlearn.utils.SpacesItemDecoration;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +62,19 @@ public class CouponActivity extends AppCompatActivity {
         rclCoupon.setHasFixedSize(true);
         rclCoupon.setAdapter(kmAdapter);
         rclCoupon.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        //Ngan giua cac item
+
+        rclCoupon.addItemDecoration(new SpacesItemDecoration(60));
+
+//        //Chèn một kẻ ngang giữa các phần tử
+//        DividerItemDecoration dividerHorizontal =
+//                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+//
+//        dividerHorizontal.
+//                setDrawable(ContextCompat.getDrawable(this, R.drawable.coupon_duongkengangitem));
+//        rclCoupon.addItemDecoration(dividerHorizontal);
+
 
         //get data
         getAllCoupon();
