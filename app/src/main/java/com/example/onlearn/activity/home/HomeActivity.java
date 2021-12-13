@@ -218,10 +218,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         listOption.add(new OPTION(R.drawable.ic_searchhome, "Tìm kiếm"));
         listOption.add(new OPTION(R.drawable.ic_options, "Giới thiệu"));
 
+
+
         //load Option
         rclOption.setAdapter(new OptionAdapter_Home_rcl(this, listOption, this));
         rclOption.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
+//        rclOption.setHasFixedSize(true);
 
     }
 

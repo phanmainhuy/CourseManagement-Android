@@ -9,12 +9,12 @@ public class KHUYENMAI implements Serializable {
     public String imgKM;
     public String GiaTri;
     public String HSD;
-    public int Diem;
+    public String Diem;
 
 
 
 
-    public KHUYENMAI(int maKM, String maApDung, String tenKM, String imgKM, String giaTri, String hsd, int diem) {
+    public KHUYENMAI(int maKM, String maApDung, String tenKM, String imgKM, String giaTri, String hsd, String diem) {
         MaKM = maKM;
         MaApDung = maApDung;
         TenKM = tenKM;
@@ -63,11 +63,11 @@ public class KHUYENMAI implements Serializable {
         GiaTri = giaTri;
     }
 
-    public int getDiem() {
+    public String getDiem() {
         return Diem;
     }
 
-    public void setDiem(int diem) {
+    public void setDiem(String diem) {
         Diem = diem;
     }
 

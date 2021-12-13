@@ -95,7 +95,7 @@ public class CouponActivity extends AppCompatActivity {
                             jsonObject.getString("HinhAnh"),
                             jsonObject.getString("GiaTri"),
                             "",
-                            jsonObject.getInt("DiemCanMua")
+                            jsonObject.getString("DiemCanMua")
                     ));
                 } catch (JSONException e) {
                     e.printStackTrace();
