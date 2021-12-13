@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.coupon.CouponActivity"
-    android:background="@color/white"
+    android:background="@color/grey_text_login"
     android:orientation="vertical"
+
     >
 
     <androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,6 @@
         android:layout_marginLeft="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         >
 
 </androidx.recyclerview.widget.RecyclerView>
