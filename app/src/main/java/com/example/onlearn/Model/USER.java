@@ -4,30 +4,32 @@ import java.io.Serializable;
 
 public class USER implements Serializable {
     public int MaND;
-    public int MaNhom;
-    public String TenDN;
-    public String MatKhau;
-    public String HoTen;
-//    public String CMND;
-    public String HinhAnh;
-    public String SDT;
+    public String UserName;
+    public String Ten;
     public String Email;
-    public String NgaySinh;
-    public String DiaChi;
+    public String Birthday;
+    public String Gender;
+    public String Address;
+    public String Number;
+    public String ImgUser;
+//    public String CMND;
+    public int DiemTichLuy;
 
-    public USER(int maND, int maNhom, String tenDN, String matKhau, String hoTen, String hinhAnh, String SDT, String email, String ngaySinh, String diaChi) {
+    public USER(int maND, String userName, String name, String email, String birthday, String gender, String address, String number, String imgUser, int diemTichLuy) {
         MaND = maND;
-        MaNhom = maNhom;
-        TenDN = tenDN;
-        MatKhau = matKhau;
-        HoTen = hoTen;
-//        this.CMND = CMND;
-        HinhAnh = hinhAnh;
-        this.SDT = SDT;
+        UserName = userName;
+        Ten = name;
         Email = email;
-        NgaySinh = ngaySinh;
-        DiaChi = diaChi;
+        Birthday = birthday;
+        Gender = gender;
+        Address = address;
+        Number = number;
+        ImgUser = imgUser;
+//        this.CMND = CMND;
+        DiemTichLuy = diemTichLuy;
     }
+
+
 
     public int getMaND() {
         return MaND;
@@ -37,60 +39,20 @@ public class USER implements Serializable {
         MaND = maND;
     }
 
-    public int getMaNhom() {
-        return MaNhom;
+    public String getUserName() {
+        return UserName;
     }
 
-    public void setMaNhom(int maNhom) {
-        MaNhom = maNhom;
+    public void setUserName(String userName) {
+        UserName = userName;
     }
 
-    public String getTenDN() {
-        return TenDN;
+    public String getTen() {
+        return Ten;
     }
 
-    public void setTenDN(String tenDN) {
-        TenDN = tenDN;
-    }
-
-    public String getMatKhau() {
-        return MatKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        MatKhau = matKhau;
-    }
-
-    public String getHoTen() {
-        return HoTen;
-    }
-
-    public void setHoTen(String hoTen) {
-        HoTen = hoTen;
-    }
-
-//    public String getCMND() {
-//        return CMND;
-//    }
-//
-//    public void setCMND(String CMND) {
-//        this.CMND = CMND;
-//    }
-
-    public String getHinhAnh() {
-        return HinhAnh;
-    }
-
-    public void setHinhAnh(String hinhAnh) {
-        HinhAnh = hinhAnh;
-    }
-
-    public String getSDT() {
-        return SDT;
-    }
-
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
+    public void setTen(String ten) {
+        Ten = ten;
     }
 
     public String getEmail() {
@@ -101,19 +63,63 @@ public class USER implements Serializable {
         Email = email;
     }
 
-    public String getNgaySinh() {
-        return NgaySinh;
+    public String getBirthday() {
+        return Birthday;
     }
 
-    public void setNgaySinh(String ngaySinh) {
-        NgaySinh = ngaySinh;
+    public void setBirthday(String birthday) {
+        Birthday = birthday;
     }
 
-    public String getDiaChi() {
-        return DiaChi;
+    public String getGender() {
+        return Gender;
     }
 
-    public void setDiaChi(String diaChi) {
-        DiaChi = diaChi;
+    public void setGender(String gender) {
+        Gender = gender;
     }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getNumber() {
+        return Number;
+    }
+
+    public void setNumber(String number) {
+        Number = number;
+    }
+
+    public String getImgUser() {
+        return ImgUser;
+    }
+
+    public void setImgUser(String imgUser) {
+        ImgUser = imgUser;
+    }
+
+//    public String getCMND() {
+//        return CMND;
+//    }
+//
+//    public void setCMND(String CMND) {
+//        this.CMND = CMND;
+//    }
+
+    public int getDiemTichLuy() {
+        return DiemTichLuy;
+    }
+
+    public void setDiemTichLuy(int diemTichLuy) {
+        DiemTichLuy = diemTichLuy;
+    }
+
+
+
+
 }

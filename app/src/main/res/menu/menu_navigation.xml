@@ -16,7 +16,7 @@
 
 
         <item
-            android:id="@+id/mnu_couponwallet"
+            android:id="@+id/mnu_wallet"
             android:icon="@drawable/ic_couponwallet"
             android:title="Ví khuyến mãi" />
 

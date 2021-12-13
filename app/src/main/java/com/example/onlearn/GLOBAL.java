@@ -21,6 +21,6 @@ public class GLOBAL {
     public static KHOAHOC KhoaHocClick;
 
     public static USER  userlogin;
-
+    public static int idUser;
 
 }

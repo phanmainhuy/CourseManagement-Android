@@ -25,12 +25,14 @@ import android.widget.ViewFlipper;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.Retrofit;
 import com.example.onlearn.Adapter.TopBuyCourseAdapter_rcl;
 import com.example.onlearn.Model.DANHMUC;
 import com.example.onlearn.Model.KHOAHOC;
 import com.example.onlearn.Model.THELOAI;
+import com.example.onlearn.Model.USER;
 import com.example.onlearn.R;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
@@ -62,6 +64,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView rclOption, rclFavoriteCourses;
     OptionAdapter_Home_rcl optionAdapter;
     TopBuyCourseAdapter_rcl fvrCoursesAdapter;
+
+    //url take imformation user
+    String urlUser = GLOBAL.ip + "api/hocvien?userId="+String.valueOf(GLOBAL.idUser);
+    String x = String.valueOf(GLOBAL.idUser);
 
     //url take most buy course
     String urlFvrCourses = GLOBAL.ip + "MostBuyCourse/?limit=10";
@@ -119,9 +125,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //get data
         GetDanhMuc();
         getOptionHome();
-        getFavoriteCourses();
+        getMostBuyCourses();
 
-
+//        getInfoUser();
 //        //toolbar
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -139,7 +145,37 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void getFavoriteCourses() {
+//    private void getInfoUser() {
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+//
+//            try {
+//
+//                GLOBAL.userlogin.setMaND(GLOBAL.idUser);
+//                GLOBAL.userlogin.setUserName(response.getString("UserName"));
+//                GLOBAL.userlogin.setTen(response.getString("Name"));
+//                GLOBAL.userlogin.setEmail(response.getString("Email"));
+//                GLOBAL.userlogin.setBirthday(response.getString("DoB"));
+//                GLOBAL.userlogin.setGender(response.getString("Gender"));
+//                GLOBAL.userlogin.setAddress(response.getString("Address"));
+//                GLOBAL.userlogin.setNumber(response.getString("Number"));
+//                GLOBAL.userlogin.setImgUser(response.getString("HinhAnh"));
+//                GLOBAL.userlogin.setDiemTichLuy(response.getInt("DiemTichLuy"));
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//
+//        };
+//        com.android.volley.Response.ErrorListener thatbai = error ->
+//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+//
+//        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
+//        requestQueue.add(jsonArrayRequest);
+//    }
+
+    private void getMostBuyCourses() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
@@ -221,8 +257,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
         }
 
-            if (mSelectedId == R.id.mnu_couponwallet) {
-                intent = new Intent(HomeActivity.this, CouponWalletActivity.class);
+            if (mSelectedId == R.id.mnu_wallet) {
+                intent = new Intent(HomeActivity.this, CouponActivity.class);
                 startActivity(intent);
                 drawerLayout.closeDrawer(GravityCompat.START);
             }

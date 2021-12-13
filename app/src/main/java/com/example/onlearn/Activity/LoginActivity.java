@@ -58,11 +58,6 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txtPassword_Login);
         txtUsername = findViewById(R.id.txtusername_Login);
 
-        try {
-            checkLogin();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
 
@@ -86,67 +81,61 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent1 = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent1);
         });
-//
-//
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//                if (txtUsername.getText().toString().equals("")){
-//                    Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//
-//                if (txtPassword.getText().toString().equals("")){
-//                    Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//
-//
-//
-//                else
-//                {
-//                    try {
-//                        onLogin();
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//
-//                    }
-//
-////                    //Luu lai thong tin dang nhap
-////                    SharedPreferences.Editor editor = remember.edit();
-////                    if (chkSave.isChecked()) {
-////                        //luu lai thong tin
-////                        editor.putString("username", txtUsername.getText().toString());
-////                        editor.putString("password", txtPassword.getText().toString());
-////                    }
-////                    editor.putBoolean("saveinfo", chkSave.isChecked());
-////                    editor.commit();
-////                    Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_LONG).show();
-////                    Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
-////                    startActivity(intent1);
-//
-//                }
-//
-//            }
-//        });
+
+        btnLogin.setOnClickListener(v ->{
+            if (txtUsername.getText().toString().equals("")){
+                Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (txtPassword.getText().toString().equals("")){
+                Toast.makeText(getApplicationContext(), "Vui long nhap mật khẩu", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            //neu khong rong thi chay ham login
+            else
+            {
+                try {
+                    checkLogin();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
     }
 
     private void checkLogin() throws JSONException {
 
         JSONObject parmas = new JSONObject();
         Map<String, String> paramsHeaders = new HashMap<>();
-        parmas.put("username", "phanmainhuy");
-        parmas.put("password", "123123");
 
+        String username = txtUsername.getText().toString();
+        String password = txtPassword.getText().toString();
+
+        parmas.put("username", username);
+        parmas.put("password", password);
         paramsHeaders.put("Content-Type", "application/json");
         api.CallAPI(urlApi, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
                 Log.i("success",dataResponse);
 
+                try {
+                    JSONObject result = new JSONObject(dataResponse);
+                    GLOBAL.idUser = result.getInt("UserID");
+//                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
+
+                saveUserLogin();
+                Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent1);
                 // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
                 // JSONObject objResult = new JSONObject(dataResponse);
                 // }
@@ -156,8 +145,22 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void ReponseError(String error) {
                 Log.e("error",error);
+                Toast.makeText(getApplicationContext(), "Sai mật khẩu", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void saveUserLogin(){
+        //Luu lai thong tin dang nhap
+        SharedPreferences.Editor editor = remember.edit();
+        if (chkSave.isChecked()) {
+            //luu lai thong tin
+            editor.putString("username", txtUsername.getText().toString());
+            editor.putString("password", txtPassword.getText().toString());
+        }
+        editor.putBoolean("saveinfo", chkSave.isChecked());
+        editor.commit();
+        Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_LONG).show();
     }
 
 //    private void  onLogin() throws JSONException {

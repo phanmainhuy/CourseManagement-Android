@@ -4,16 +4,7 @@ public class _Function {
 
     String titleActionBar = "";
 //    //action bar
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            // Respond to the action bar's Up/Home button
-//            case android.R.id.home:
-//                this.finish();
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+//
 //
 //    void DecorateActionBar(){
 //        //action bar
@@ -27,5 +18,14 @@ public class _Function {
 //        actionBar.setBackgroundDrawable(colorDrawable);
 //    }
 
-
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            // Respond to the action bar's Up/Home button
+//            case android.R.id.home:
+//                this.finish();
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }
