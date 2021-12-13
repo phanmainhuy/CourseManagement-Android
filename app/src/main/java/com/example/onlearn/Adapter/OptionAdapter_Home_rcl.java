@@ -15,7 +15,7 @@ import com.example.onlearn.R;
 
 import java.util.ArrayList;
 
-import com.example.onlearn.Model.OPTION;
+import com.example.onlearn.models.OPTION;
 
 public class OptionAdapter_Home_rcl extends RecyclerView.Adapter<OptionAdapter_Home_rcl.KHUNGNHIN> {
     Context context;

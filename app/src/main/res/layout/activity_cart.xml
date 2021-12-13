@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:weightSum="10"
     android:padding="10dp"
-    tools:context=".Activity.CartActivity"
+    tools:context=".activity.cart.CartActivity"
     >
     <LinearLayout
         android:layout_width="match_parent"

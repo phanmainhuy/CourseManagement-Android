@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlearn.GLOBAL;
-import com.example.onlearn.Model.LOAIKHOAHOC;
+import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.OnClick.OnClickRCL_LoaiKH;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;

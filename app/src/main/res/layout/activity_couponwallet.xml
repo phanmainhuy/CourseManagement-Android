@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.CouponWalletActivity"
+    tools:context=".activity.coupon_wallet.CouponWalletActivity"
     android:background="@color/white"
     >
 

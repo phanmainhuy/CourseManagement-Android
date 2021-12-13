@@ -1,9 +1,9 @@
 package com.example.onlearn;
 
-import com.example.onlearn.Model.DANHMUC;
-import com.example.onlearn.Model.KHOAHOC;
-import com.example.onlearn.Model.LOAIKHOAHOC;
-import com.example.onlearn.Model.USER;
+import com.example.onlearn.models.DANHMUC;
+import com.example.onlearn.models.KHOAHOC;
+import com.example.onlearn.models.LOAIKHOAHOC;
+import com.example.onlearn.models.USER;
 
 public class GLOBAL {
     public static String colorActionBar = "#3399FF";

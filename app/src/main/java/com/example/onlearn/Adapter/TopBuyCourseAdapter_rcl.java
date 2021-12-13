@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlearn.GLOBAL;
-import com.example.onlearn.Model.KHOAHOC;
+import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.OnClick.OnClickRCL_Home;
 import com.example.onlearn.R;
 import com.squareup.picasso.Picasso;

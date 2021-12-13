@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.onlearn.Model.ChatsModel;
+import com.example.onlearn.models.ChatsModel;
 import com.example.onlearn.R;
 
 import java.util.ArrayList;

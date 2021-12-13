@@ -1,6 +1,6 @@
 package com.example.onlearn.OnClick;
 
-import com.example.onlearn.Model.DANHMUC;
+import com.example.onlearn.models.DANHMUC;
 
 public interface OnClickRCL_DanhMuc {
 

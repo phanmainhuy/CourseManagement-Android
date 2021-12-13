@@ -1,7 +1,7 @@
 package com.example.onlearn.OnClick;
 
-import com.example.onlearn.Model.KHOAHOC;
-import com.example.onlearn.Model.OPTION;
+import com.example.onlearn.models.KHOAHOC;
+import com.example.onlearn.models.OPTION;
 
 public interface OnClickRCL_Home {
     void itemClickOption(OPTION option);

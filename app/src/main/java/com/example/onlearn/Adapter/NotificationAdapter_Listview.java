@@ -12,7 +12,7 @@ import com.example.onlearn.R;
 
 import java.util.ArrayList;
 
-import com.example.onlearn.Model.NOTIFICATION;
+import com.example.onlearn.models.NOTIFICATION;
 
 public class NotificationAdapter_Listview extends BaseAdapter {
     Context context;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.DanhMucActivity"
+    tools:context=".activity.category_big.DanhMucActivity"
     android:background="@color/white"
     android:paddingLeft="5dp"
     >

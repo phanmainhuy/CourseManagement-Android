@@ -6,17 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 
-import com.example.onlearn.API.Retrofit;
-import com.example.onlearn.Activity.LoginActivity;
-import com.example.onlearn.Model.KHOAHOC;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.onlearn.activity.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 

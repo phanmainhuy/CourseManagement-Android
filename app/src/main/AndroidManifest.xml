@@ -15,58 +15,58 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activity.CouponWalletActivity"
+            android:name=".activity.coupon_wallet.CouponWalletActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.PayActivity"
+            android:name=".activity.pay.PayActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.DetailCoursesActivity"
+            android:name=".activity.detail_course.DetailCourseActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.KhoaHocTheoLoaiActivity"
+            android:name=".activity.category_courses.KhoaHocTheoLoaiActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.SupportChatActivity"
+            android:name=".activity.chatbot.SupportChatActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.SearchActivity"
+            android:name=".activity.search.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ClassRoomActivity"
+            android:name=".activity.classroom.ClassRoomActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoaiKhoaHocActivity"
+            android:name=".activity.category_small.LoaiKhoaHocActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.DanhMucActivity"
+            android:name=".activity.category_big.DanhMucActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.CouponActivity"
+            android:name=".activity.coupon.CouponActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.NotificationActivity"
+            android:name=".activity.notification.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ForgetpassActivity"
+            android:name=".activity.forget_pass.ForgetpassActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.CartActivity"
+            android:name=".activity.cart.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.UserActivity"
+            android:name=".activity.profile_user.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.HomeActivity"
+            android:name=".activity.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.RegisterActivity"
+            android:name=".activity.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.ChangePassActivity"
+            android:name=".activity.change_pass.ChangePassActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".activity.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,14 +1,12 @@
 package com.example.onlearn.API;
 
-import com.example.onlearn.Model.DANHMUC;
-import com.example.onlearn.Model.KHOAHOC;
-import com.example.onlearn.Model.MessageModel;
+import com.example.onlearn.models.DANHMUC;
+import com.example.onlearn.models.MessageModel;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 public interface CallAPIRetro {
