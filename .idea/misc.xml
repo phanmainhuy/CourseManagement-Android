@@ -39,6 +39,7 @@
         <entry key="..\:/University/KhoaLuan/Code/Mobile_OnLearn/app/src/main/res/menu/menu_notification.xml" value="0.13020833333333334" />
         <entry key="..\:/University/KhoaLuan/Code/Mobile_OnLearn/app/src/main/res/menu/menu_search.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable-v24/decorate_btn_mincart.xml" value="0.2703125" />
+        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable-v24/decorate_text_coupon.xml" value="0.14635416666666667" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable-v24/decorate_text_search.xml" value="0.2703125" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable-v24/ic_logofb.xml" value="0.14635416666666667" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable/decorate_btn_addcart.xml" value="0.2703125" />
@@ -68,9 +69,10 @@
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_support_chat.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_user.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/bot_msg_rv_item.xml" value="0.25416666666666665" />
-        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_coupon.xml" value="0.536" />
+        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_coupon.xml" value="0.264" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_courses.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_home_favoritecourses.xml" value="0.25416666666666665" />
+        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_loaikhoahoc.xml" value="0.13020833333333334" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_notification.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/user_msg_rv_item.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />

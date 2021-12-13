@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -44,20 +45,19 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
 
     @Override
     public void onBindViewHolder(@NonNull CouponAdapter.KHUNGNHIN holder, int position) {
-        KHUYENMAI kh = dulieu.get(position);
+        KHUYENMAI km = dulieu.get(position);
 
         //img
         Picasso.with(context)
-                .load(urlimg + kh.imgKM)
+                .load(urlimg + km.imgKM)
                 .placeholder(R.drawable.no_image_found)
                 .into(holder.imgKM);
 
-        holder.tenkh.setText(kh.TenKM);
-        holder.tengv.setText(kh.TenGV);
+        holder.tenkm.setText(km.TenKM);
+        holder.hsdkm.setText("Hạn sử dụng: "+km.HSD);
         //set format cho giá
-        holder.giakh.setText(formatNumberCurrency(kh.DonGia)+ " đ");
-        //set rating
-        holder.ratingkh.setRating(kh.DanhGia);
+        holder.giatrikm.setText("Giảm giá: "+formatNumberCurrency(km.GiaTri)+ " VND");
+        holder.diemmua.setText("Điểm mua: "+formatNumberCurrency(km.GiaTri)+ " đ");
 
         holder.khuyenmai = dulieu.get(position);
     }
@@ -77,18 +77,20 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
     {
         KHUYENMAI khuyenmai;
         ImageView imgKM;
-        TextView tenkh, tengv, giakh;
-        RatingBar ratingkh;
+        TextView tenkm, giatrikm, hsdkm, diemmua;
+        Button btnMuaMa;
 
 
         public KHUNGNHIN(@NonNull View itemView) {
             super(itemView);
 
-            imgKM = itemView.findViewById(R.id.imgKH_Home);
-            tenkh = itemView.findViewById(R.id.tvTenKH_Home);
-            tengv = itemView.findViewById(R.id.tvTenGV_Home);
-            ratingkh = itemView.findViewById(R.id.ratingBar_Home);
-            giakh = itemView.findViewById(R.id.tvGiaKH_Home);
+           //anh xa
+            imgKM = itemView.findViewById(R.id.imgKM_Coupon);
+            btnMuaMa = itemView.findViewById(R.id.btnBuyCoupon_Coupon);
+            tenkm = itemView.findViewById(R.id.tvTenKM_Coupon);
+            giatrikm = itemView.findViewById(R.id.tvValueKM_Coupon);
+            hsdkm = itemView.findViewById(R.id.tvHSD_Coupon);
+            diemmua = itemView.findViewById(R.id.tvDiemMua_Coupon);
 
 
 
@@ -100,6 +102,12 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                 }
             });*/
         }
+
+
+
+
+
+
     }
 
 

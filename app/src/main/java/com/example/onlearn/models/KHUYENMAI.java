@@ -8,13 +8,18 @@ public class KHUYENMAI implements Serializable {
     public  String TenKM;
     public String imgKM;
     public String GiaTri;
+    public String HSD;
     public int Diem;
 
-    public KHUYENMAI(int maKM, String maApDung, String tenKM, String imgKM, String giaTri, int diem) {
+
+
+
+    public KHUYENMAI(int maKM, String maApDung, String tenKM, String imgKM, String giaTri, String hsd, int diem) {
         MaKM = maKM;
         MaApDung = maApDung;
         TenKM = tenKM;
         this.imgKM = imgKM;
+        HSD = hsd;
         GiaTri = giaTri;
         Diem = diem;
     }
@@ -67,7 +72,13 @@ public class KHUYENMAI implements Serializable {
     }
 
 
+    public String getHSD() {
+        return HSD;
+    }
 
+    public void setHSD(String HSD) {
+        this.HSD = HSD;
+    }
 
 
 

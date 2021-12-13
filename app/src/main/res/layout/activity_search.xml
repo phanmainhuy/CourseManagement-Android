@@ -32,7 +32,7 @@
                     android:layout_height="50dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey_hint_txt"
-                    android:hint="Nhập tên hóa học"
+                    android:hint="Nhập tên khóa học"
                     android:drawableLeft="@drawable/ic_search"
                     android:textCursorDrawable="@color/black"
                     android:drawablePadding="10dp"
