@@ -17,6 +17,7 @@ import com.example.onlearn.models.KHUYENMAI_KH;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class CPWalletAdapter extends RecyclerView.Adapter<CPWalletAdapter.KHUNGNHIN>{
@@ -51,7 +52,12 @@ public class CPWalletAdapter extends RecyclerView.Adapter<CPWalletAdapter.KHUNGN
                 .into(holder.imgKM);
 
         holder.tenkm.setText(km.TenKM);
-        holder.hsdkm.setText("HSD: "+km.HSD);
+        try {
+            holder.hsdkm.setText("HSD: "+utils.converDateFormate(km.HSD));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+//        holder.hsdkm.setText("HSD: "+ (km.HSD));
         //set format cho giá
         holder.giatrikm.setText("Giá trị: "+ utils.formatNumberCurrency(km.GiaTri)+ " VND");
         holder.maapdung.setText("Mã áp dụng: "+km.MaApDung);

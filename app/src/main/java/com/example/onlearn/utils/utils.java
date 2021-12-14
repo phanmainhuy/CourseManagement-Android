@@ -1,5 +1,7 @@
 package com.example.onlearn.utils;
 
+import android.util.Log;
+
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,17 +16,28 @@ public class utils {
         return format.format(Double.parseDouble(gia));
     }
 
-    public static Date formatStringtoDate(String datestring) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        Date date = null;
-        try {
-            date = df.parse(datestring);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
+    public static Date formatStringtoDate(String datestring) throws ParseException {
+//        String strDate = "2013-05-15T10:00:00-0700";
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+
+        return dateFormat.parse(datestring);
+
     }
 
+//    converDateFormate("dd/mm/yyyy hh:mm:ss", "dd/mm/yyyy", "12/12/2012 12:12:12");
+    public static String converDateFormate(String dateString) throws ParseException {
+        String oldpattern = "yyyy-MM-dd'T'HH:mm";
+        String newPattern = "dd/MM/yyyy";
+
+        SimpleDateFormat format = new SimpleDateFormat(oldpattern);
+        Date testDate;
+        testDate = format.parse(dateString);
+
+        SimpleDateFormat formatter = new SimpleDateFormat(newPattern);
+        String newFormat = formatter.format(testDate);
+        return newFormat;
+    }
 
 
 }
