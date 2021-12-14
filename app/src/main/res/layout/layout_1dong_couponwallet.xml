@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvTenKM_CouponWallet"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="110dp"
+        android:gravity="center|left"
+        android:maxLines="2"
+        android:text="Khuyến Mãi Chào Mừng Mùa Hè Nhiệt Huyết, Sôi Động"
+        android:textColor="@color/blue_deep"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgKM_CouponWallet"
+        android:layout_width="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/coupon1" />
+
+    <TextView
+        android:id="@+id/tvValueKM_CouponWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textColor="@color/red_price"
+        android:layout_marginLeft="110dp"
+        android:text="Value: 500.000VND"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTenKM_CouponWallet" />
+    <TextView
+        android:id="@+id/tvMaApDung_CouponWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textColor="@color/blue_deep"
+        android:layout_marginLeft="110dp"
+        android:text="Mã áp dụng: BUTA5678"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvValueKM_CouponWallet" />
+    <TextView
+        android:id="@+id/tvHSD_CouponWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_marginLeft="110dp"
+        android:textColor="@color/red_price"
+        android:text="HSD: Còn lại 5 ngày"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMaApDung_CouponWallet" />
+    <Button
+        android:id="@+id/btnCopy_Coupon"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="270dp"
+        android:backgroundTint="@color/red_price"
+        android:text="Copy Mã"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
