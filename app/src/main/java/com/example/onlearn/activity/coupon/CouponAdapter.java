@@ -55,7 +55,7 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                 .into(holder.imgKM);
 
         holder.tenkm.setText(km.TenKM);
-        holder.hsdkm.setText("Hạn sử dụng: "+km.HSD);
+        holder.hsdkm.setText("Thời hạn: "+km.HSD);
         //set format cho giá
         holder.giatrikm.setText("Giảm giá: "+ utils.formatNumberCurrency(km.GiaTri)+ " VND");
         holder.diemmua.setText("Điểm mua: "+utils.formatNumberCurrency(km.Diem)+ " điểm");

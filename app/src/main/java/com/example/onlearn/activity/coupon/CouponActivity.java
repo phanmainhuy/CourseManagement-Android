@@ -65,7 +65,7 @@ public class CouponActivity extends AppCompatActivity {
 
         //Ngan giua cac item
 
-        rclCoupon.addItemDecoration(new SpacesItemDecoration(60));
+        rclCoupon.addItemDecoration(new SpacesItemDecoration(30));
 
 //        //Chèn một kẻ ngang giữa các phần tử
 //        DividerItemDecoration dividerHorizontal =
@@ -94,7 +94,7 @@ public class CouponActivity extends AppCompatActivity {
                             jsonObject.getString("TenKM"),
                             jsonObject.getString("HinhAnh"),
                             jsonObject.getString("GiaTri"),
-                            "",
+                            jsonObject.getString("ThoiGianKeoDai"),
                             jsonObject.getString("DiemCanMua")
                     ));
                 } catch (JSONException e) {
