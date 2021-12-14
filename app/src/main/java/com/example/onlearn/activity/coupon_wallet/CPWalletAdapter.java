@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -105,7 +106,7 @@ public class CPWalletAdapter extends RecyclerView.Adapter<CPWalletAdapter.KHUNGN
             btnCopy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    setClipboard(context, khuyenmai.getMaApDung());
                 }
             });
 
@@ -119,7 +120,17 @@ public class CPWalletAdapter extends RecyclerView.Adapter<CPWalletAdapter.KHUNGN
             });*/
         }
 
-
+        private void setClipboard(Context context, String text) {
+            if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                clipboard.setText(text);
+            } else {
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", text);
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(context, "Đã lưu mã áp dụng", Toast.LENGTH_SHORT).show();
+            }
+        }
 
 
 
