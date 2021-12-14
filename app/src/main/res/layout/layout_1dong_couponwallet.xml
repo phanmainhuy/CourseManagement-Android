@@ -35,7 +35,7 @@
         android:maxLines="1"
         android:textColor="@color/red_price"
         android:layout_marginLeft="110dp"
-        android:text="Value: 500.000VND"
+        android:text="Giá trị: 500.000VND"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTenKM_CouponWallet" />
     <TextView
@@ -59,11 +59,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMaApDung_CouponWallet" />
     <Button
-        android:id="@+id/btnCopy_Coupon"
+        android:id="@+id/btnCopy_CouponWallet"
         android:layout_width="120dp"
         android:layout_height="45dp"
         android:layout_marginTop="110dp"
-        android:layout_marginLeft="270dp"
+        android:layout_marginLeft="280dp"
         android:backgroundTint="@color/red_price"
         android:text="Copy Mã"
         android:textColor="@color/white"

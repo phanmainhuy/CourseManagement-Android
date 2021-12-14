@@ -2,7 +2,7 @@ package com.example.onlearn.models;
 
 import java.io.Serializable;
 
-public class KM_KH implements Serializable {
+public class KHUYENMAI_KH implements Serializable {
     public int MaKM;
     public int MaHV;
     public String TenKM;
@@ -11,7 +11,7 @@ public class KM_KH implements Serializable {
     public String MaApDung;
     public String HSD;
 
-    public KM_KH(int maKM, int maHV, String tenKM, String imgKM, String giaTri, String maApDung, String HSD) {
+    public KHUYENMAI_KH(int maKM, int maHV, String tenKM, String imgKM, String giaTri, String maApDung, String HSD) {
         MaKM = maKM;
         MaHV = maHV;
         TenKM = tenKM;
