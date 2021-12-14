@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.models.KHUYENMAI;
 import com.example.onlearn.models.KHUYENMAI_KH;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
@@ -89,6 +88,7 @@ public class CPWalletAdapter extends RecyclerView.Adapter<CPWalletAdapter.KHUNGN
             tenkm = itemView.findViewById(R.id.tvTenKM_CouponWallet);
             giatrikm = itemView.findViewById(R.id.tvValueKM_CouponWallet);
             hsdkm = itemView.findViewById(R.id.tvHSD_CouponWallet);
+            maapdung = itemView.findViewById(R.id.tvMaApDung_CouponWallet);
 
 
 
