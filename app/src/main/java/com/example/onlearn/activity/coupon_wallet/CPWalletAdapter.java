@@ -64,6 +64,12 @@ public class CPWalletAdapter extends RecyclerView.Adapter<CPWalletAdapter.KHUNGN
 
 
         holder.khuyenmai = dulieu.get(position);
+
+
+
+
+
+
     }
 
 
@@ -96,6 +102,12 @@ public class CPWalletAdapter extends RecyclerView.Adapter<CPWalletAdapter.KHUNGN
             hsdkm = itemView.findViewById(R.id.tvHSD_CouponWallet);
             maapdung = itemView.findViewById(R.id.tvMaApDung_CouponWallet);
 
+            btnCopy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
 
 
             //Xu ly su kien click item cua recycle view

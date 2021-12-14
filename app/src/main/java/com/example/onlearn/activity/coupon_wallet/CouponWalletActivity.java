@@ -2,6 +2,8 @@ package com.example.onlearn.activity.coupon_wallet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -65,6 +67,14 @@ public class CouponWalletActivity extends AppCompatActivity {
 
         //get data
         getCouponCus();
+
+        //Chèn một kẻ ngang giữa các phần tử
+        DividerItemDecoration dividerHorizontal =
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+
+        dividerHorizontal.
+                setDrawable(ContextCompat.getDrawable(this, R.drawable.black_duongkengangitem));
+        rclCPWallet.addItemDecoration(dividerHorizontal);
 
     }
 

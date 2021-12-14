@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
         android:id="@+id/tvTenKM_CouponWallet"
@@ -12,6 +13,7 @@
         android:layout_marginLeft="110dp"
         android:gravity="center|left"
         android:maxLines="2"
+        android:layout_marginTop="5dp"
         android:text="Khuyến Mãi Chào Mừng Mùa Hè Nhiệt Huyết, Sôi Động"
         android:textColor="@color/blue_deep"
         android:textSize="18dp"
@@ -22,7 +24,7 @@
     <ImageView
         android:id="@+id/imgKM_CouponWallet"
         android:layout_width="100dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
