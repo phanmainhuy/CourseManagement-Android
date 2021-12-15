@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.models.USER;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
@@ -31,7 +33,7 @@ import org.json.JSONObject;
 import java.text.ParseException;
 
 public class UserActivity extends AppCompatActivity {
-    Button btnSaveInfor;
+    Button btnChangeInfo, btnBack;
     ImageView imgUser;
     TextView tvUserName, tvName, tvPhone, tvEmail, tvDoB, tvAddress, tvCmnd, tvDiemTL, tvGender;
 
@@ -56,8 +58,9 @@ public class UserActivity extends AppCompatActivity {
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" +"Thông tin người dùng"+ "</font>"));
 
         //anh xa
-        btnSaveInfor = findViewById(R.id.btn_Cart_Continue);
-        tvUserName = findViewById(R.id.tvUserName_User);
+        btnChangeInfo = findViewById(R.id.btnChangeInfo_User);
+        btnBack = findViewById(R.id.btnBack_User);
+    tvUserName = findViewById(R.id.tvUserName_User);
         tvName = findViewById(R.id.tvName_User);
         tvPhone = findViewById(R.id.tvPhone_User);
         tvEmail = findViewById(R.id.tvEmail_User);
@@ -72,13 +75,10 @@ public class UserActivity extends AppCompatActivity {
 
         getInfoUser();
 
-//        btnSaveInfor.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(UserActivity.this, HomeActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        });
 
 
     }
@@ -96,10 +96,10 @@ public class UserActivity extends AppCompatActivity {
                     tvCmnd.setText(response.getString("CMND"));
                     tvDiemTL.setText(utils.formatNumberCurrency(response.getString("DiemTichLuy")));
 
-//                    Picasso.with(this)
-//                        .load(urlImgUser + response.getString("HinhAnh"))
-//                        .placeholder(R.drawable.no_image_found)
-//                        .into(imgUser);
+                    Picasso.with(this)
+                        .load(urlImgUser + response.getString("HinhAnh"))
+                        .placeholder(R.drawable.no_image_found)
+                        .into(imgUser);
 
 
             } catch (JSONException | ParseException e) {
