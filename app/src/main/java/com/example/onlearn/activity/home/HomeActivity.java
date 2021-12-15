@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     TopBuyCourseAdapter_rcl fvrCoursesAdapter;
 
     //url take imformation user
-    String urlUser = GLOBAL.ip + "api/hocvien?userId="+String.valueOf(GLOBAL.idUser);
+    String urlUser = GLOBAL.ip + "api/hocvien?userId="+ GLOBAL.idUser;
     String x = String.valueOf(GLOBAL.idUser);
 
     //url take most buy course
@@ -134,7 +134,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         getOptionHome();
         getMostBuyCourses();
 
-        getInfoUser();
+//        getInfoUser();
+
+
+
+
 //        //toolbar
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -152,35 +156,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void getInfoUser() {
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
-
-            try {
-
-                GLOBAL.userlogin.MaND = GLOBAL.idUser;
-                GLOBAL.userlogin.UserName = response.getString("UserName");
-                GLOBAL.userlogin.Ten = response.getString("Name");
-                GLOBAL.userlogin.Email = (response.getString("Email"));
-                GLOBAL.userlogin.Birthday = (response.getString("DoB"));
-                GLOBAL.userlogin.Gender = (response.getString("Gender"));
-                GLOBAL.userlogin.Address = (response.getString("Address"));
-                GLOBAL.userlogin.Number = (response.getString("Number"));
-                GLOBAL.userlogin.ImgUser = (response.getString("HinhAnh"));
-                GLOBAL.userlogin.DiemTichLuy = (response.getInt("DiemTichLuy"));
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-        };
-        com.android.volley.Response.ErrorListener thatbai = error ->
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
-        requestQueue.add(jsonRequest);
-    }
+    
 
     private void getMostBuyCourses() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
