@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
+import com.example.onlearn.activity.detail_course.DetailCourseActivity;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.R;
 
@@ -29,7 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements OnClickRCL_Search{
     SearchAdapter_rcl searchAdapter_rcl;
     RecyclerView rclSearch;
     Button btnSearch;
@@ -63,7 +65,7 @@ public class SearchActivity extends AppCompatActivity {
 //        search = txtSearch.getText().toString();
 
         //set up rcl
-        searchAdapter_rcl = new SearchAdapter_rcl(this, data);
+        searchAdapter_rcl = new SearchAdapter_rcl(this, data, this);
         rclSearch.setHasFixedSize(true);
         rclSearch.setAdapter(searchAdapter_rcl);
         rclSearch.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -144,6 +146,15 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void itemClickKhoaHoc(KHOAHOC khoahoc) {
+        GLOBAL.KhoaHocClick = khoahoc;
+        Intent intent1 = new Intent(this, DetailCourseActivity.class);
+        startActivity(intent1);
+    }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
 }

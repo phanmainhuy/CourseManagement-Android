@@ -1,9 +1,11 @@
 package com.example.onlearn.activity.search;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -22,14 +24,15 @@ import java.util.ArrayList;
 public class SearchAdapter_rcl extends RecyclerView.Adapter<SearchAdapter_rcl.KHUNGNHIN>{
         Context context;
         ArrayList<KHOAHOC> dulieu;
-
+        private OnClickRCL_Search listener;
 
 
         String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
-public SearchAdapter_rcl(Context context, ArrayList<KHOAHOC> dulieu) {
+public SearchAdapter_rcl(Context context, ArrayList<KHOAHOC> dulieu, OnClickRCL_Search listener) {
         this.context = context;
         this.dulieu = dulieu;
+        this.listener = listener;
         }
 @NonNull
 
@@ -76,6 +79,7 @@ public class KHUNGNHIN extends RecyclerView.ViewHolder
     ImageView imgKH;
     TextView tenkh, tengv, giakh;
     RatingBar ratingkh;
+    ImageButton btnAdd, btnDelete;
 
 
     public KHUNGNHIN(@NonNull View itemView) {
@@ -86,16 +90,32 @@ public class KHUNGNHIN extends RecyclerView.ViewHolder
         tengv = itemView.findViewById(R.id.tvTenGV_Home);
         ratingkh = itemView.findViewById(R.id.ratingBar_Home);
         giakh = itemView.findViewById(R.id.tvGiaKH_Home);
+        btnAdd = itemView.findViewById(R.id.btnAddCart_Home);
+        btnDelete = itemView.findViewById(R.id.btnRemoveCart_Home);
 
+
+        //onclick 2 button
+        btnDelete.setVisibility(itemView.INVISIBLE);
+        btnAdd.setOnClickListener(v -> {
+            btnAdd.setVisibility(itemView.INVISIBLE);
+            btnDelete.setVisibility(itemView.VISIBLE);
+        });
+
+
+        btnDelete.setOnClickListener(v -> {
+            btnDelete.setVisibility(itemView.INVISIBLE);
+            btnAdd.setVisibility(itemView.VISIBLE);
+
+        });
 
 
         //Xu ly su kien click item cua recycle view
-            /*itemView.setOnClickListener(new View.OnClickListener() {
+           itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.itemClickDanhMuc();
+                    listener.itemClickKhoaHoc(khoahoc);
                 }
-            });*/
+            });
     }
 }
 

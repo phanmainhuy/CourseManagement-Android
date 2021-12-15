@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
+import com.example.onlearn.activity.detail_course.DetailCourseActivity;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.R;
 
@@ -27,7 +29,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class KhoaHocTheoLoaiActivity extends AppCompatActivity {
+public class KhoaHocTheoLoaiActivity extends AppCompatActivity implements OnClickRCL_KhoaHocTheoLoai{
     String titleActionBar = GLOBAL.LoaiKHClick.getTenLoai();
     String urlKHtheoLoai = GLOBAL.ip + "api/khoahoc?maLoai=" + GLOBAL.LoaiKHClick.getMaLoai();
     RecyclerView rclKHtheoLoai;
@@ -57,7 +59,7 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity {
 //        isEmpty = findViewById(R.id.tvEmpty_KHtheoLoai);
 
         //set up rcl
-        khoahocAdapter = new KhoaHocTheoLoaiAdapter(this, datakh);
+        khoahocAdapter = new KhoaHocTheoLoaiAdapter(this, datakh, this);
         rclKHtheoLoai.setHasFixedSize(true);
         rclKHtheoLoai.setAdapter(khoahocAdapter);
         rclKHtheoLoai.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -112,4 +114,15 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void itemClickKhoaHoc(KHOAHOC khoahoc) {
+        GLOBAL.KhoaHocClick = khoahoc;
+        Intent intent1 = new Intent(this, DetailCourseActivity.class);
+        startActivity(intent1);
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.R;
+import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -22,14 +24,15 @@ import java.util.ArrayList;
 public class KhoaHocTheoLoaiAdapter extends RecyclerView.Adapter<KhoaHocTheoLoaiAdapter.KHUNGNHIN>{
     Context context;
     ArrayList<KHOAHOC> dulieu;
-
+    private OnClickRCL_KhoaHocTheoLoai listener;
 
 
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
-    public KhoaHocTheoLoaiAdapter(Context context, ArrayList<KHOAHOC> dulieu) {
+    public KhoaHocTheoLoaiAdapter(Context context, ArrayList<KHOAHOC> dulieu, OnClickRCL_KhoaHocTheoLoai listener) {
         this.context = context;
         this.dulieu = dulieu;
+        this.listener = listener;
     }
     @NonNull
 
@@ -53,7 +56,7 @@ public class KhoaHocTheoLoaiAdapter extends RecyclerView.Adapter<KhoaHocTheoLoai
         holder.tenkh.setText(kh.TenKhoaHoc);
         holder.tengv.setText(kh.TenGV);
         //set format cho giá
-        holder.giakh.setText(formatNumberCurrency(kh.DonGia)+ " đ");
+        holder.giakh.setText(utils.formatNumberCurrency(kh.DonGia)+ " đ");
         //set rating
         holder.ratingkh.setRating(kh.DanhGia);
 
@@ -77,6 +80,7 @@ public class KhoaHocTheoLoaiAdapter extends RecyclerView.Adapter<KhoaHocTheoLoai
         ImageView imgKH;
         TextView tenkh, tengv, giakh;
         RatingBar ratingkh;
+        ImageButton btnAdd, btnDelete;
 
 
         public KHUNGNHIN(@NonNull View itemView) {
@@ -87,25 +91,30 @@ public class KhoaHocTheoLoaiAdapter extends RecyclerView.Adapter<KhoaHocTheoLoai
             tengv = itemView.findViewById(R.id.tvTenGV_Home);
             ratingkh = itemView.findViewById(R.id.ratingBar_Home);
             giakh = itemView.findViewById(R.id.tvGiaKH_Home);
+            btnAdd = itemView.findViewById(R.id.btnAddCart_Home);
+            btnDelete = itemView.findViewById(R.id.btnRemoveCart_Home);
 
+            //xuly btn
+            btnDelete.setVisibility(itemView.INVISIBLE);
+
+            btnAdd.setOnClickListener(v -> {
+                btnAdd.setVisibility(itemView.INVISIBLE);
+                btnDelete.setVisibility(itemView.VISIBLE);
+            });
+
+            btnDelete.setOnClickListener(v -> {
+                btnDelete.setVisibility(itemView.INVISIBLE);
+                btnAdd.setVisibility(itemView.VISIBLE);
+
+            });
 
 
             //Xu ly su kien click item cua recycle view
-            /*itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.itemClickDanhMuc();
-                }
-            });*/
+            itemView.setOnClickListener(v -> listener.itemClickKhoaHoc(khoahoc));
         }
     }
 
 
 
-    //Tạo format tiền VND
-    public static String formatNumberCurrency(String gia)
-    {
-        DecimalFormat format = new DecimalFormat("#,###");
-        return format.format(Double.parseDouble(gia));
-    }
+
 }
