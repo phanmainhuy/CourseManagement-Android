@@ -35,7 +35,7 @@
                     app:layout_constraintHorizontal_bias="0.501"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/icongg" />
+                    app:srcCompat="@drawable/ic_user" />
 
                 <TextView
                     android:id="@+id/lbl_User_HoTenAva"
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
 
                     android:layout_marginTop="20dp"
-                    android:text="Phan Mai Nhu Y"
+                    android:text="phanmainhuy"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold"

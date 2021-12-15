@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -79,6 +80,7 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
         ImageView imgKH;
         TextView tenkh, tengv, giakh;
         RatingBar ratingkh;
+        Button btnAdd, btnDelete;
 
 
         public KHUNGNHIN(@NonNull View itemView) {
@@ -89,6 +91,7 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
             tengv = itemView.findViewById(R.id.tvTenGV_Home);
             ratingkh = itemView.findViewById(R.id.ratingBar_Home);
             giakh = itemView.findViewById(R.id.tvGiaKH_Home);
+
 
 
 
