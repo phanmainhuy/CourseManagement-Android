@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -80,7 +82,7 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
         ImageView imgKH;
         TextView tenkh, tengv, giakh;
         RatingBar ratingkh;
-        Button btnAdd, btnDelete;
+        ImageButton btnAdd, btnDelete;
 
 
         public KHUNGNHIN(@NonNull View itemView) {
@@ -91,17 +93,29 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
             tengv = itemView.findViewById(R.id.tvTenGV_Home);
             ratingkh = itemView.findViewById(R.id.ratingBar_Home);
             giakh = itemView.findViewById(R.id.tvGiaKH_Home);
+            btnAdd = itemView.findViewById(R.id.btnAddCart_Home);
+            btnDelete = itemView.findViewById(R.id.btnRemoveCart_Home);
 
+//            btnDelete.setEnabled(false);
+            btnDelete.setVisibility(itemView.INVISIBLE);
 
+            //xu ly su kien onclick btn add va delete
+            btnAdd.setOnClickListener(v -> {
+                btnAdd.setVisibility(itemView.INVISIBLE);
+                btnDelete.setVisibility(itemView.VISIBLE);
+                String tenmh = tenkh.getText().toString();
+                Toast.makeText(context.getApplicationContext(), "Đã thêm khóa học " + tenmh, Toast.LENGTH_SHORT).show();
+
+            });
+
+            btnDelete.setOnClickListener(v -> {
+                btnDelete.setVisibility(itemView.INVISIBLE);
+                btnAdd.setVisibility(itemView.VISIBLE);
+            });
 
 
             //Xu ly su kien click item cua recycle view
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.ItemClickCourse(khoahoc);
-                }
-            });
+            itemView.setOnClickListener(v -> listener.ItemClickCourse(khoahoc));
         }
     }
 

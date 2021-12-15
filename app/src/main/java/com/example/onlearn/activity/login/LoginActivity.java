@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         btnForgetPass.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), "Chuyển sang quên mật khẩu", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Chuyển sang quên mật khẩu", Toast.LENGTH_SHORT).show();
             Intent intent1 = new Intent(LoginActivity.this, ForgetpassActivity.class);
             startActivity(intent1);
         });
@@ -87,12 +87,12 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(v ->{
             if (txtUsername.getText().toString().equals("")){
-                Toast.makeText(getApplicationContext(), "Vui long nhap ten dang nhap", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Vui lòng điền tên đăng nhập", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             if (txtPassword.getText().toString().equals("")){
-                Toast.makeText(getApplicationContext(), "Vui long nhap mật khẩu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -163,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         editor.putBoolean("saveinfo", chkSave.isChecked());
         editor.commit();
-        Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_SHORT).show();
     }
 
 //    private void  onLogin() throws JSONException {
