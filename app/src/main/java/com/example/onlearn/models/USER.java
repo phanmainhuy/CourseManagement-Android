@@ -15,7 +15,9 @@ public class USER implements Serializable {
     public String CMND;
     public int DiemTichLuy;
 
-    public USER(int maND, String userName, String name, String email, String birthday, String gender, String address, String number, String imgUser, int diemTichLuy) {
+    public USER(int maND, String userName, String name, String email, String birthday,
+                String gender, String address, String number,
+                String imgUser, int diemTichLuy) {
         MaND = maND;
         UserName = userName;
         Ten = name;
