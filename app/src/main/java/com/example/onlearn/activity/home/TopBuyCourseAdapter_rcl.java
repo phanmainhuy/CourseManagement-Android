@@ -96,6 +96,7 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
             btnAdd = itemView.findViewById(R.id.btnAddCart_Home);
             btnDelete = itemView.findViewById(R.id.btnRemoveCart_Home);
 
+            String tenmh = tenkh.getText().toString();
 //            btnDelete.setEnabled(false);
             btnDelete.setVisibility(itemView.INVISIBLE);
 
@@ -103,7 +104,7 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
             btnAdd.setOnClickListener(v -> {
                 btnAdd.setVisibility(itemView.INVISIBLE);
                 btnDelete.setVisibility(itemView.VISIBLE);
-                String tenmh = tenkh.getText().toString();
+
                 Toast.makeText(context.getApplicationContext(), "Đã thêm khóa học " + tenmh, Toast.LENGTH_SHORT).show();
 
             });
@@ -111,6 +112,7 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
             btnDelete.setOnClickListener(v -> {
                 btnDelete.setVisibility(itemView.INVISIBLE);
                 btnAdd.setVisibility(itemView.VISIBLE);
+                Toast.makeText(context.getApplicationContext(), "Đã xóa khóa học " + tenmh, Toast.LENGTH_SHORT).show();
             });
 
 
