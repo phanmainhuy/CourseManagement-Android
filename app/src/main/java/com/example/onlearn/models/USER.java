@@ -12,7 +12,7 @@ public class USER implements Serializable {
     public String Address;
     public String Number;
     public String ImgUser;
-//    public String CMND;
+    public String CMND;
     public int DiemTichLuy;
 
     public USER(int maND, String userName, String name, String email, String birthday, String gender, String address, String number, String imgUser, int diemTichLuy) {
@@ -25,7 +25,7 @@ public class USER implements Serializable {
         Address = address;
         Number = number;
         ImgUser = imgUser;
-//        this.CMND = CMND;
+        this.CMND = CMND;
         DiemTichLuy = diemTichLuy;
     }
 
@@ -103,13 +103,13 @@ public class USER implements Serializable {
         ImgUser = imgUser;
     }
 
-//    public String getCMND() {
-//        return CMND;
-//    }
-//
-//    public void setCMND(String CMND) {
-//        this.CMND = CMND;
-//    }
+    public String getCMND() {
+        return CMND;
+    }
+
+    public void setCMND(String CMND) {
+        this.CMND = CMND;
+    }
 
     public int getDiemTichLuy() {
         return DiemTichLuy;

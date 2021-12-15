@@ -6,16 +6,39 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.models.USER;
+import com.example.onlearn.utils.utils;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
 
 public class UserActivity extends AppCompatActivity {
     Button btnSaveInfor;
+    ImageView imgUser;
+    TextView tvUserName, tvName, tvPhone, tvEmail, tvDoB, tvAddress, tvCmnd, tvDiemTL, tvGender;
+
+
+    //url take imformation user
+    String urlUser = GLOBAL.ip + "api/hocvien?userId="+GLOBAL.idUser;
+    String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +57,20 @@ public class UserActivity extends AppCompatActivity {
 
         //anh xa
         btnSaveInfor = findViewById(R.id.btn_Cart_Continue);
+        tvUserName = findViewById(R.id.tvUserName_User);
+        tvName = findViewById(R.id.tvName_User);
+        tvPhone = findViewById(R.id.tvPhone_User);
+        tvEmail = findViewById(R.id.tvEmail_User);
+        tvDoB = findViewById(R.id.tvDoB_User);
+        tvAddress = findViewById(R.id.tvAddress_User);
+        tvCmnd = findViewById(R.id.tvCMND_User);
+        tvDiemTL = findViewById(R.id.tvDiemTichLuy_User);
+        imgUser = findViewById(R.id.imgAvatar);
+        tvGender = findViewById(R.id.tvGender_User);
 
+
+
+        getInfoUser();
 
 //        btnSaveInfor.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -47,6 +83,37 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    private void getInfoUser() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+            try {
+                    tvUserName.setText(response.getString("UserName"));
+                    tvName.setText(response.getString("Name"));
+                    tvEmail.setText(response.getString("Email"));
+                    tvDoB.setText(utils.converDateFormate(response.getString("DoB")));
+                    tvAddress.setText(response.getString("Address"));
+                        tvGender.setText(response.getString("Gender"));
+                    tvCmnd.setText(response.getString("CMND"));
+                    tvDiemTL.setText(utils.formatNumberCurrency(response.getString("DiemTichLuy")));
+
+//                    Picasso.with(this)
+//                        .load(urlImgUser + response.getString("HinhAnh"))
+//                        .placeholder(R.drawable.no_image_found)
+//                        .into(imgUser);
+
+
+            } catch (JSONException | ParseException e) {
+                e.printStackTrace();
+            }
+
+
+        };
+        com.android.volley.Response.ErrorListener thatbai = error ->
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

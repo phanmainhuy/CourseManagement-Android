@@ -23,7 +23,7 @@
                 android:layout_height="178dp"
                 android:layout_weight="6"
                 android:gravity="center"
-
+                android:layout_marginBottom="30dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -38,12 +38,12 @@
                     app:srcCompat="@drawable/ic_user" />
 
                 <TextView
-                    android:id="@+id/lbl_User_HoTenAva"
+                    android:id="@+id/tvUserName_User"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:layout_marginTop="20dp"
-                    android:text="phanmainhuy"
+                    android:text="username"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -72,6 +72,7 @@
                     <TextView
                         android:id="@+id/lbl_User_Name"
                         android:layout_width="82dp"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Họ và tên"
@@ -79,11 +80,11 @@
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/tv_User_Hoten"
+                        android:id="@+id/tvName_User"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
+                        android:ems="8"
 
                         android:text="Phan Mai Như Ý"
 
@@ -104,16 +105,17 @@
                         android:layout_width="82dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textStyle="bold"
                         android:text="Số điện thoại"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/txt_User_Phone"
+                        android:id="@+id/tvPhone_User"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
+                        android:ems="8"
 
                         android:text="0948462040"
                         android:textColor="@color/black"
@@ -133,16 +135,17 @@
                         android:layout_width="81dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textStyle="bold"
                         android:text="Email"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/txt_User_Email"
+                        android:id="@+id/tvEmail_User"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
+                        android:ems="8"
                         android:text="baotiantu@gmail.com"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
@@ -153,50 +156,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+
                     android:background="@color/white"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="132dp"
+                        android:layout_width="81dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
                         android:text="Giới tính"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <RadioGroup
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rdb_User_Nam"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textSize="16dp"
-                                android:text="Nam"
-                                android:buttonTint="@color/blue_primary"
-                                android:textColor="@color/black" />
-
-                            <RadioButton
-                                android:id="@+id/rdb_User_Nu"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:buttonTint="@color/blue_primary"
-                                android:textSize="16dp"
-                                android:text="Nữ"
-                                android:textColor="@color/black" />
-                        </RadioGroup>
+                    <TextView
+                        android:id="@+id/tvGender_User"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="8"
+                        android:text="Nam"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
 
 
-                    </RadioGroup>
                 </LinearLayout>
 
                 <LinearLayout
@@ -213,14 +196,17 @@
                         android:layout_weight="1"
                         android:text="Ngày sinh"
                         android:textColor="@color/black"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+
+                        />
 
                     <TextView
-                        android:id="@+id/txt_User_Birthday"
+                        android:id="@+id/tvDoB_User"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
+                        android:ems="8"
                         android:text="05/11/2000"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
@@ -240,15 +226,75 @@
                         android:layout_weight="1"
                         android:text="Địa chỉ"
                         android:textColor="@color/black"
+                        android:textStyle="bold"
+
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/txt_User_Address"
+                        android:id="@+id/tvAddress_User"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:ems="10"
+                        android:ems="8"
                         android:text="Tân phú"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey_hint_txt"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_User_Diemtl"
+                        android:layout_width="83dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Điểm tích lũy"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvDiemTichLuy_User"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="8"
+                        android:text="2000"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey_hint_txt"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lbl_User_cmnd"
+                        android:layout_width="83dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CMND"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvCMND_User"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="8"
+                        android:text="216195"
                         android:textColor="@color/black"
                         android:textColorHint="@color/grey_hint_txt"
                         android:textSize="16dp" />
@@ -260,6 +306,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="145dp"
                 android:orientation="vertical"
+                android:gravity="center"
                 >
 
                 <Button
@@ -268,6 +315,17 @@
                     android:layout_height="60dp"
                     android:backgroundTint="@color/blue_primary"
                     android:text="Sửa thông tin"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+                <Button
+                    android:id="@+id/btnBack_User"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/blue_primary"
+                    android:text="Quay lại trang chủ"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"

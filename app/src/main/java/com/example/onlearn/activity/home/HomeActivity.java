@@ -43,6 +43,7 @@ import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.THELOAI;
 import com.example.onlearn.R;
+import com.example.onlearn.models.USER;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -72,16 +73,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     OptionAdapter_Home_rcl optionAdapter;
     TopBuyCourseAdapter_rcl fvrCoursesAdapter;
 
-    //url take imformation user
-    String urlUser = GLOBAL.ip + "api/hocvien?userId="+ GLOBAL.idUser;
-    String x = String.valueOf(GLOBAL.idUser);
+
+    ArrayList<USER> lstUser = new ArrayList<>();
 
     //url take most buy course
     String urlFvrCourses = GLOBAL.ip + "MostBuyCourse/?limit=10";
 
     //tao list data
     public static List<DANHMUC> danhMuc;
-    public static List<THELOAI> danhMucConList;
 //    private List<KHOAHOC> lstKhoahoc = LoginActivity.favoriteCourses;
 
     ArrayList<KHOAHOC> data = new ArrayList<>();
@@ -133,10 +132,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         GetDanhMuc();
         getOptionHome();
         getMostBuyCourses();
-
 //        getInfoUser();
-
-
+//        Toast.makeText(getApplicationContext(), lstUser.size(), Toast.LENGTH_SHORT).show();
 
 
 //        //toolbar
@@ -156,7 +153,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    
+
 
     private void getMostBuyCourses() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
