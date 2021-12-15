@@ -54,9 +54,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Chào bạn! Đây là chatbox tự động hỗ trợ của OnLearn."
+        android:text="Chào bạn! Đây là chatbox tự động hỗ trợ của OnLearn. Vui lòng nhắn hello để bắt đầu."
         android:textColor="@color/black"
         android:textSize="16dp" />
 
