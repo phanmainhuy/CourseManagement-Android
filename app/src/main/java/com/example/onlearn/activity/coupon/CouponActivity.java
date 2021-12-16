@@ -13,6 +13,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,6 +27,8 @@ import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiAdapter;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.KHUYENMAI;
 import com.example.onlearn.utils.SpacesItemDecoration;
+import com.example.onlearn.utils.utils;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +40,10 @@ public class CouponActivity extends AppCompatActivity {
     CouponAdapter kmAdapter;
     ArrayList<KHUYENMAI> datakm = new ArrayList<>();
     RecyclerView rclCoupon;
+    ImageView imgAvatar;
+    TextView tvUsername, tvName, tvDiemTL;
+
+    String urlAvatar = GLOBAL.ip + GLOBAL.urlimg +  "users/";
 
     String urlkm = GLOBAL.ip + "api/khuyenmai";
 
@@ -44,18 +52,15 @@ public class CouponActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupon);
 
-        ActionBar actionBar = getSupportActionBar();
-        //thanh tro ve home
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        //doi mau thanh action bar
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + "Khuyến mãi" + "</font>"));
+       decorateActionBar();
 
         //anh xa
         rclCoupon = findViewById(R.id.rclCoupon);
+        imgAvatar = findViewById(R.id.imgAvatar_Coupon);
+        tvUsername = findViewById(R.id.tvUsername_Coupon);
+        tvName = findViewById(R.id.tvName_Coupon);
+        tvDiemTL = findViewById(R.id.tvDiemTL_Coupon);
+
 
         //set data rcl
         kmAdapter = new CouponAdapter(this, datakm);
@@ -64,7 +69,6 @@ public class CouponActivity extends AppCompatActivity {
         rclCoupon.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         //Ngan giua cac item
-
         rclCoupon.addItemDecoration(new SpacesItemDecoration(30));
 
 //        //Chèn một kẻ ngang giữa các phần tử
@@ -78,8 +82,33 @@ public class CouponActivity extends AppCompatActivity {
 
         //get data
         getAllCoupon();
+        getUser();
 
 
+    }
+
+    private void getUser() {
+        tvUsername.setText(GLOBAL.userlogin.getUserName());
+        tvName.setText(GLOBAL.userlogin.getTen());
+        tvDiemTL.setText(utils.formatNumberCurrency(String.valueOf(GLOBAL.userlogin.getDiemTichLuy())));
+        Picasso.with(this)
+                .load(urlAvatar + GLOBAL.userlogin.getImgUser())
+                .placeholder(R.drawable.no_image_found)
+                .into(imgAvatar);
+
+    }
+
+
+    private void decorateActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        //thanh tro ve home
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //doi mau thanh action bar
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + "Khuyến mãi" + "</font>"));
     }
 
     private void getAllCoupon() {
