@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,6 +22,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiActivity;
+import com.example.onlearn.activity.category_small.LoaiKhoaHocActivity;
+import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
@@ -43,6 +47,7 @@ public class DetailCourseActivity extends AppCompatActivity {
     RatingBar ratingKH;
     Button btnMuaNgay, btnAddCart;
     String TitleActionBar = "Chi tiết khóa học";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +82,14 @@ public class DetailCourseActivity extends AppCompatActivity {
         getDetailCourse();
 
         //xu ly button
-
+        tvTheLoai.setOnClickListener(v -> {
+            Intent intent = new Intent(this, KhoaHocTheoLoaiActivity.class);
+            startActivity(intent);
+        });
+        tvDanhMuc.setOnClickListener(v -> {
+            Intent intent = new Intent(this, LoaiKhoaHocActivity.class);
+            startActivity(intent);
+        });
 
     }
 
@@ -88,7 +100,7 @@ public class DetailCourseActivity extends AppCompatActivity {
         com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
 
             try {
-                tvGiaKH.setText(utils.formatNumberCurrency(response.getString("DonGia")) +" đ");
+                tvGiaKH.setText(utils.formatNumberCurrency(response.getString("DonGia")) + " đ");
                 tvMoTa.setText(response.getString("GioiThieu"));
                 tvNgayKhaiGiang.setText(utils.converDateFormate(response.getString("NgayChapThuan")));
                 tvLuotMua.setText(String.valueOf(response.getInt("SoLuongMua")));
@@ -98,11 +110,18 @@ public class DetailCourseActivity extends AppCompatActivity {
                 tvTenKH.setText(response.getString("TenKhoaHoc"));
                 ratingKH.setRating(response.getInt("DanhGia"));
 
-
                 Picasso.with(this)
                         .load(urlgetimgKH + response.getString("HinhAnh"))
                         .placeholder(R.drawable.no_image_found)
                         .into(imgKH);
+                GLOBAL.LoaiKHClick = new LOAIKHOAHOC(response.getInt("MaLoai"),
+                        response.getInt("MaDM"),
+                        response.getString("TenLoai"),
+                        "", response.getString("TenDanhMuc")
+                );
+                GLOBAL.DMClick = new DANHMUC(response.getInt("MaDM"),
+                        response.getString("TenDanhMuc"),"", 0);
+
 
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();

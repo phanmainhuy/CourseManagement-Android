@@ -16,7 +16,7 @@ public class USER implements Serializable {
     public int DiemTichLuy;
 
     public USER(int maND, String userName, String name, String email, String birthday,
-                String gender, String address, String number,
+                String gender, String address, String number, String CMND,
                 String imgUser, int diemTichLuy) {
         MaND = maND;
         UserName = userName;

@@ -11,6 +11,13 @@ public class DANHMUC {
     String HinhAnh;
     int TongSoKhoaHoc;
 
+    public DANHMUC(int maDanhMuc, String tenDanhMuc, String hinhAnh, int tongSoKhoaHoc) {
+        MaDanhMuc = maDanhMuc;
+        TenDanhMuc = tenDanhMuc;
+        HinhAnh = hinhAnh;
+        TongSoKhoaHoc = tongSoKhoaHoc;
+    }
+
     public int getMaDanhMuc() {
         return MaDanhMuc;
     }

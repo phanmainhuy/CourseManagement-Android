@@ -71,7 +71,7 @@ public class UserActivity extends AppCompatActivity {
         imgUser = findViewById(R.id.imgAvatar);
         tvGender = findViewById(R.id.tvGender_User);
 
-
+//        tvUserName.setText(GLOBAL.userlogin.getUserName());
 
         getInfoUser();
 

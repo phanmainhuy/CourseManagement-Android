@@ -44,9 +44,11 @@ import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.THELOAI;
 import com.example.onlearn.R;
 import com.example.onlearn.models.USER;
+import com.example.onlearn.utils.utils;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,8 +75,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     OptionAdapter_Home_rcl optionAdapter;
     TopBuyCourseAdapter_rcl fvrCoursesAdapter;
 
+    String urlUser = GLOBAL.ip + "api/hocvien?userId=" + GLOBAL.idUser;
+    String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
 
-    ArrayList<USER> lstUser = new ArrayList<>();
 
     //url take most buy course
     String urlFvrCourses = GLOBAL.ip + "MostBuyCourse/?limit=10";
@@ -132,7 +135,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         GetDanhMuc();
         getOptionHome();
         getMostBuyCourses();
-//        getInfoUser();
+        getInfoUser();
 //        Toast.makeText(getApplicationContext(), lstUser.size(), Toast.LENGTH_SHORT).show();
 
 
@@ -152,7 +155,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         loadViewFlipper();
 
     }
-
 
 
     private void getMostBuyCourses() {
@@ -193,7 +195,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         listOption.add(new OPTION(R.drawable.ic_khuyenmai, "Khuyến mãi"));
         listOption.add(new OPTION(R.drawable.ic_searchhome, "Tìm kiếm"));
         listOption.add(new OPTION(R.drawable.ic_options, "Giới thiệu"));
-
 
 
         //load Option
@@ -241,24 +242,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
         }
 
-            if (mSelectedId == R.id.mnu_wallet) {
-                intent = new Intent(HomeActivity.this, CouponWalletActivity.class);
-                startActivity(intent);
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
+        if (mSelectedId == R.id.mnu_wallet) {
+            intent = new Intent(HomeActivity.this, CouponWalletActivity.class);
+            startActivity(intent);
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
 
         if (mSelectedId == R.id.mnu_contact) {
             intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:0948462040"));
             startActivity(intent);
         }
-            if(mSelectedId == R.id.mnu_help)
-            {
-                intent = new Intent(this, SupportChatActivity.class);
-                startActivity(intent);
-            }
+        if (mSelectedId == R.id.mnu_help) {
+            intent = new Intent(this, SupportChatActivity.class);
+            startActivity(intent);
+        }
 
-        if(mSelectedId == R.id.mnu_logout)
-        {
+        if (mSelectedId == R.id.mnu_logout) {
             intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
@@ -353,6 +352,50 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    private void getInfoUser() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+            try {
+
+                GLOBAL.userlogin = new USER(response.getInt("UserId"),
+                        response.getString("UserName"),
+                        response.getString("Name"),
+                        response.getString("Email"),
+                        response.getString("DoB"),
+                        response.getString("Gender"),
+                        response.getString("Address"),
+                        response.getString("Number"),
+                        response.getString("CMND"),
+                        response.getString("HinhAnh"),
+                        response.getInt("DiemTichLuy")
+                        );
+
+//                (response.getString("Name"));
+//                (response.getString("Email"));
+//                tvDoB.setText(utils.converDateFormate(response.getString("DoB")));
+//                tvAddress.setText(response.getString("Address"));
+//                tvGender.setText(response.getString("Gender"));
+//                tvCmnd.setText(response.getString("CMND"));
+//                tvDiemTL.setText(utils.formatNumberCurrency(response.getString("DiemTichLuy")));
+//
+//                Picasso.with(this)
+//                        .load(urlImgUser + response.getString("HinhAnh"))
+//                        .placeholder(R.drawable.no_image_found)
+//                        .into(imgUser);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        };
+        com.android.volley.Response.ErrorListener thatbai = error ->
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+    }
 
     //Lay danh muc
     private void GetDanhMuc() {
