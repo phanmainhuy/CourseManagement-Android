@@ -25,9 +25,20 @@
             <ImageView
                 android:id="@+id/imgKH_Detail"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/imgcourse" />
+
+            <TextView
+                android:id="@+id/tvTenKH_Detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Tên khóa học"
+                android:textColor="@color/blue_deep"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -193,6 +204,7 @@
                     android:layout_height="wrap_content"
                     android:isIndicator="true"
                     android:numStars="5"
+                    android:max="5"
                     android:rating="3"
                     android:theme="@style/RatingBar"
                     />

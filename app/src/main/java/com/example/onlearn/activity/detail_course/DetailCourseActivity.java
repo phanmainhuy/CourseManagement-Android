@@ -22,23 +22,27 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.models.LOAIKHOAHOC;
+import com.example.onlearn.utils.utils;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+
 public class DetailCourseActivity extends AppCompatActivity {
-    String TitleActionBar = "Chi tiết khóa học";
+
 
     //http://192.168.1.160:45455/api/khoahoc?makhoa=1
     String urlgetKH = GLOBAL.ip + "api/khoahoc?makhoa=" + GLOBAL.KhoaHocClick.getMaKhoaHoc();
     String urlgetimgKH = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
     ImageView imgKH;
-    TextView tvGiaKH, tvNgayKhaiGiang, tvLuotMua, tvDanhMuc, tvTheLoai, tvTenGV, tvMoTa;
+    TextView tvGiaKH, tvNgayKhaiGiang, tvLuotMua, tvDanhMuc, tvTheLoai, tvTenGV, tvMoTa, tvTenKH;
     RatingBar ratingKH;
     Button btnMuaNgay, btnAddCart;
-
+    String TitleActionBar = "Chi tiết khóa học";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,7 @@ public class DetailCourseActivity extends AppCompatActivity {
         tvDanhMuc = findViewById(R.id.tvTenDM_Detail);
         tvTheLoai = findViewById(R.id.tvTenLoai_Detail);
         tvTenGV = findViewById(R.id.tvTenGV_Detail);
+        tvTenKH = findViewById(R.id.tvTenKH_Detail);
         ratingKH = findViewById(R.id.rating_Detail);
         tvMoTa = findViewById(R.id.tvGioiThieu_Detail);
         btnAddCart = findViewById(R.id.AddCart_Detail);
@@ -74,40 +79,43 @@ public class DetailCourseActivity extends AppCompatActivity {
         //xu ly button
 
 
-
-
-
-
-
-
-
-
-
-
     }
 
     private void getDetailCourse() {
 
-            RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-            com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
 
-                try {
-                        tvMoTa.setText(response.getString("GioiThieu"));
+            try {
+                tvGiaKH.setText(utils.formatNumberCurrency(response.getString("DonGia")) +" đ");
+                tvMoTa.setText(response.getString("GioiThieu"));
+                tvNgayKhaiGiang.setText(utils.converDateFormate(response.getString("NgayChapThuan")));
+                tvLuotMua.setText(String.valueOf(response.getInt("SoLuongMua")));
+                tvDanhMuc.setText(response.getString("TenDanhMuc"));
+                tvTheLoai.setText(response.getString("TenLoai"));
+                tvTenGV.setText(response.getString("TenGV"));
+                tvTenKH.setText(response.getString("TenKhoaHoc"));
+                ratingKH.setRating(response.getInt("DanhGia"));
 
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                Picasso.with(this)
+                        .load(urlgetimgKH + response.getString("HinhAnh"))
+                        .placeholder(R.drawable.no_image_found)
+                        .into(imgKH);
+
+            } catch (JSONException | ParseException e) {
+                e.printStackTrace();
+            }
 
 
-            };
+        };
 
-            com.android.volley.Response.ErrorListener thatbai = error ->
-                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+        com.android.volley.Response.ErrorListener thatbai = error ->
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
-            JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlgetKH, null, thanhcong, thatbai);
-            requestQueue.add(jsonArrayRequest);
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlgetKH, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
 
 
     }
