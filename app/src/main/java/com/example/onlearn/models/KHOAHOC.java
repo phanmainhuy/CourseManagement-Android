@@ -5,6 +5,9 @@ import java.io.Serializable;
 public class KHOAHOC implements Serializable {
     public int MaKhoaHoc;
     public int MaLoai;
+    public int MaDM;
+    public String TenLoai;
+    public String TenDanhMuc;
     public String TenKhoaHoc;
     public String DonGia;
     public int SoLuongMua;
@@ -27,11 +30,15 @@ public class KHOAHOC implements Serializable {
 
 
 
-    public KHOAHOC(int maKhoaHoc, int maLoai, String tenKhoaHoc,
+    public KHOAHOC(int maKhoaHoc, int maLoai, int maDM, String tenLoai, String tenDM,
+                   String tenKhoaHoc,
                    String donGia, int soLuongMua, String trangThai,
                    String hinhAnh, int maGV, String TenGV, int danhgia, String moTaKhoaHoc, String ngayTao, String ngayDuyet) {
         MaKhoaHoc = maKhoaHoc;
         MaLoai = maLoai;
+        MaDM = maDM;
+        TenLoai = tenLoai;
+        TenDanhMuc = tenDM;
         TenKhoaHoc = tenKhoaHoc;
         DonGia = donGia;
         SoLuongMua = soLuongMua;

@@ -81,6 +81,8 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity implements OnClic
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
                     datakh.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
+                            jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
+                            jsonObject.getString("TenDanhMuc"),
                             jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
                             jsonObject.getInt("SoLuongMua"), jsonObject.getString("TrangThai")
                             , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
