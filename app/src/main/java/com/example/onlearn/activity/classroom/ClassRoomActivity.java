@@ -14,13 +14,16 @@ import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 
 public class ClassRoomActivity extends AppCompatActivity {
-    String titleActionBar = "Phòng học";
+    String titleActionBar = "Phòng học của " + GLOBAL.userlogin.getTen();
+
+    String urlClassroom = GLOBAL.ip + "api/KhoaHocTheoHocVien?MaHV=" +GLOBAL.idUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classroom);
         DecorateActionBar();
+
 
 
 

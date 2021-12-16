@@ -120,7 +120,7 @@ public class DetailCourseActivity extends AppCompatActivity {
                         "", response.getString("TenDanhMuc")
                 );
                 GLOBAL.DMClick = new DANHMUC(response.getInt("MaDM"),
-                        response.getString("TenDanhMuc"),"", 0);
+                        response.getString("TenDanhMuc"), "", 0);
 
 
             } catch (JSONException | ParseException e) {

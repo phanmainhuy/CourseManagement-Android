@@ -8,18 +8,27 @@
     tools:context=".activity.classroom.ClassRoomActivity">
 
 
-    <TextView
-        android:id="@+id/tvEmpty_Classroom"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rclClassroom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bạn chưa mua khóa học"
-        android:textColor="@color/grey_hint_txt"
-        android:textSize="16dp"
-        android:drawablePadding="5dp"
-        android:drawableTop="@drawable/ic_emptybox"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvEmpty_Classroom"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Bạn chưa mua khóa học"-->
+<!--        android:textColor="@color/grey_hint_txt"-->
+<!--        android:textSize="16dp"-->
+<!--        android:drawablePadding="5dp"-->
+<!--        android:drawableTop="@drawable/ic_emptybox"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
