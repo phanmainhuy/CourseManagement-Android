@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,14 +27,16 @@ import java.util.ArrayList;
 public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>{
     Context context;
     ArrayList<KHUYENMAI> dulieu;
+    private OnClickRCL_Coupon listener;
 
 
 
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "sales/";
 
-    public CouponAdapter(Context context, ArrayList<KHUYENMAI> dulieu) {
+    public CouponAdapter(Context context, ArrayList<KHUYENMAI> dulieu,  OnClickRCL_Coupon listener) {
         this.context = context;
         this.dulieu = dulieu;
+        this.listener = listener;
     }
     @NonNull
 
@@ -55,10 +58,10 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                 .into(holder.imgKM);
 
         holder.tenkm.setText(km.TenKM);
-        holder.hsdkm.setText("Thời hạn: "+km.HSD);
+        holder.hsdkm.setText(km.HSD);
         //set format cho giá
-        holder.giatrikm.setText("Giảm giá: "+ utils.formatNumberCurrency(km.GiaTri)+ " VND");
-        holder.diemmua.setText("Điểm mua: "+utils.formatNumberCurrency(km.Diem)+ " điểm");
+        holder.giatrikm.setText(utils.formatNumberCurrency(km.GiaTri)+ " VND");
+        holder.diemmua.setText(utils.formatNumberCurrency(km.Diem)+ " ");
 
         holder.khuyenmai = dulieu.get(position);
     }
@@ -92,6 +95,15 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
             giatrikm = itemView.findViewById(R.id.tvValueKM_Coupon);
             hsdkm = itemView.findViewById(R.id.tvHSD_Coupon);
             diemmua = itemView.findViewById(R.id.tvDiemMua_Coupon);
+
+
+
+
+            btnMuaMa.setOnClickListener(v->{
+
+            });
+
+
 
 
 

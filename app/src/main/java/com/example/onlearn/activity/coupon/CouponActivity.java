@@ -36,7 +36,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CouponActivity extends AppCompatActivity {
+public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coupon{
     CouponAdapter kmAdapter;
     ArrayList<KHUYENMAI> datakm = new ArrayList<>();
     RecyclerView rclCoupon;
@@ -63,7 +63,7 @@ public class CouponActivity extends AppCompatActivity {
 
 
         //set data rcl
-        kmAdapter = new CouponAdapter(this, datakm);
+        kmAdapter = new CouponAdapter(this, datakm, this);
         rclCoupon.setHasFixedSize(true);
         rclCoupon.setAdapter(kmAdapter);
         rclCoupon.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -154,4 +154,13 @@ public class CouponActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void itemClickCoupon(KHUYENMAI khuyenmai) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }

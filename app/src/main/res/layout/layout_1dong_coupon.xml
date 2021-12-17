@@ -33,43 +33,73 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvValueKM_Coupon"
-        android:layout_width="match_parent"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"
         android:maxLines="1"
-        android:text="Giảm giá: 200.000 VND"
+        android:text="Giảm giá:"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTenKM_Coupon" />
+    <TextView
+        android:id="@+id/tvValueKM_Coupon"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:maxLines="1"
+        android:text="30.000 VND"
         android:textColor="@color/black"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTenKM_Coupon" />
 
     <TextView
-        android:id="@+id/tvHSD_Coupon"
-        android:layout_width="match_parent"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"
         android:maxLines="1"
         android:textSize="15dp"
 
-        android:text="Hạn sử dụng: 5 ngày"
+        android:text="Hạn sử dụng: "
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvValueKM_Coupon" />
-
     <TextView
-        android:id="@+id/tvDiemMua_Coupon"
+        android:id="@+id/tvHSD_Coupon"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:maxLines="1"
+        android:textSize="15dp"
+
+        android:text="5 ngày"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvValueKM_Coupon" />
+    <TextView
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"
         android:textSize="15dp"
         android:maxLines="1"
-        android:text="Điểm mua: 3.000"
+        android:text="Điểm mua: "
         android:textStyle="bold"
         android:textColor="@color/red_price"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHSD_Coupon" />
-
+    <TextView
+        android:id="@+id/tvDiemMua_Coupon"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:textSize="15dp"
+        android:maxLines="1"
+        android:text="3000"
+        android:textStyle="bold"
+        android:textColor="@color/red_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHSD_Coupon" />
 
     <Button
         android:id="@+id/btnBuyCoupon_Coupon"
