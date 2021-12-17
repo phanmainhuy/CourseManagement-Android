@@ -2,6 +2,7 @@ package com.example.onlearn;
 
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.KHOAHOC;
+import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.models.USER;
 
@@ -14,11 +15,11 @@ public class GLOBAL {
     //10.0.2.2
     public static String ip = "http://192.168.1.160:45455/";
     public static String urlimg = "assets/images/";
-
     //object
     public static DANHMUC DMClick;
     public static LOAIKHOAHOC LoaiKHClick;
     public static KHOAHOC KhoaHocClick;
+    public static LEARN learn;
 
     public static USER  userlogin;
     public static int idUser;

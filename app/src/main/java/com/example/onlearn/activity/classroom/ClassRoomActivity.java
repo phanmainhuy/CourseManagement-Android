@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.classroom_detail.ClassroomDetailActivity;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.LEARN;
 
@@ -148,6 +150,8 @@ public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_C
 
     @Override
     public void itemClickClassroom(LEARN khoahoc) {
-
+        GLOBAL.learn = khoahoc;
+        Intent intent = new Intent(this, ClassroomDetailActivity.class);
+        startActivity(intent);
     }
 }
