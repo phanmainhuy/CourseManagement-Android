@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_text_login"
+    android:background="@color/white"
     android:padding="10dp"
     >
 
@@ -16,7 +16,7 @@
         android:text="Chương: Giới thiệu"
         android:textStyle="bold"
         android:textSize="21dp"
-        android:textColor="@color/black"
+        android:textColor="@color/blue_deep"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

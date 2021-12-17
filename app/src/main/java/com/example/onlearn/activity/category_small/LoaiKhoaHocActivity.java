@@ -63,7 +63,6 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
 
 
         //data rcl
-
         loaikhAdapter = new LoaiKhoaHocAdapter_rcl(this, dataloaikh, this);
         rclLoaikh.setHasFixedSize(true);
         rclLoaikh.setAdapter(loaikhAdapter);
@@ -103,8 +102,11 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
             loaikhAdapter.notifyDataSetChanged();
         };
 
-        com.android.volley.Response.ErrorListener thatbai = error ->
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+        com.android.volley.Response.ErrorListener thatbai = error ->{
+            if(error.getMessage()!=null){
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+        };
 
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, url, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);

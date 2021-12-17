@@ -4,17 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.models.CHAPTER;
-import com.example.onlearn.models.LOAIKHOAHOC;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,7 +34,7 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.KHUNGNHIN> {
 
     @Override
     public KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_basic, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_classroom_intro, null);
         return new KHUNGNHIN(view);
     }
 
@@ -46,7 +42,8 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.KHUNGNHIN> {
     public void onBindViewHolder(@NonNull IntroAdapter.KHUNGNHIN holder, int position) {
         CHAPTER chap = dulieu.get(position);
 
-        holder.ten.setText(chap.getTenChuong());
+
+        holder.ten.setText("Chương "+chap.getTenChuong());
 
 
         holder.chapter = dulieu.get(position);

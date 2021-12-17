@@ -3,6 +3,8 @@ package com.example.onlearn.activity.classroom_detail;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,13 +15,28 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.category_small.LoaiKhoaHocAdapter_rcl;
+import com.example.onlearn.models.CHAPTER;
+import com.example.onlearn.models.LEARN;
+import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.ParseException;
+import java.util.ArrayList;
 
 public class ClassroomDetailActivity extends AppCompatActivity {
     String titleActionBar = "Chi tiết khóa học " ;
@@ -28,8 +45,11 @@ public class ClassroomDetailActivity extends AppCompatActivity {
     TextView tvTenKH, tvTenGV, tvNgayMua, tvGioiThieu;
     Button btnLearn;
     RatingBar ratingBar;
+    RecyclerView rclChapter;
+    IntroAdapter chapAdapter;
+    ArrayList<CHAPTER> dataintro = new ArrayList<>();
 
-    String urlgetchuong = GLOBAL.ip + "api/chuong?MaKhoaHoc=" + GLOBAL.learn.getMaKH();
+    String urlgetchap = GLOBAL.ip + "api/chuong?MaKhoaHoc=" + GLOBAL.learn.getMaKH();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +65,13 @@ public class ClassroomDetailActivity extends AppCompatActivity {
         tvNgayMua = findViewById(R.id.tvNgayMua_classroom);
         btnLearn = findViewById(R.id.btnLearn_classroom);
         ratingBar = findViewById(R.id.rating_classroom);
+        rclChapter = findViewById(R.id.rclChapter_classroom);
+
+        //set adapter
+        chapAdapter = new IntroAdapter(this, dataintro);
+        rclChapter.setHasFixedSize(true);
+        rclChapter.setAdapter(chapAdapter);
+        rclChapter.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         //getdata
         try {
@@ -52,7 +79,40 @@ public class ClassroomDetailActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        
+        getIntroChap();
 
+    }
+
+    private void getIntroChap() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject jsonObject = response.getJSONObject(i);
+                    dataintro.add(new CHAPTER(jsonObject.getInt("MaChuong"),
+                            jsonObject.getInt("MaKhoaHoc"),
+                            jsonObject.getString("TenChuong"), jsonObject.getString("TenKhoaHoc"))
+                    );
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            chapAdapter.notifyDataSetChanged();
+
+        };
+//        Map<String, String> paramsHeaders = new HashMap<>();
+//        paramsHeaders.put("Content-Type", "application/json");
+        com.android.volley.Response.ErrorListener thatbai = error ->{
+            if(error.getMessage()!=null){
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlgetchap, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
 
     }
 
