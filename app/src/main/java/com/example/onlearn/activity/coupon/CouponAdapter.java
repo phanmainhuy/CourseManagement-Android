@@ -99,10 +99,10 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
 
 
 
-            btnMuaMa.setOnClickListener(v->{
-
-            });
-
+//            btnMuaMa.setOnClickListener(v->{
+//
+//            });
+//
 
 
 
