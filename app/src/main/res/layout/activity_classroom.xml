@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:padding="10dp"
     tools:context=".activity.classroom.ClassRoomActivity">
 
 
@@ -12,24 +13,11 @@
         android:id="@+id/rclClassroom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:paddingBottom="10dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/tvEmpty_Classroom"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Bạn chưa mua khóa học"-->
-<!--        android:textColor="@color/grey_hint_txt"-->
-<!--        android:textSize="16dp"-->
-<!--        android:drawablePadding="5dp"-->
-<!--        android:drawableTop="@drawable/ic_emptybox"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

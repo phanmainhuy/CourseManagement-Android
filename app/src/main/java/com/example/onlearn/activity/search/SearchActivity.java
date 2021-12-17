@@ -116,8 +116,11 @@ public class SearchActivity extends AppCompatActivity implements OnClickRCL_Sear
             searchAdapter_rcl.notifyDataSetChanged();
         };
 
-        com.android.volley.Response.ErrorListener thatbai = error ->
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+        com.android.volley.Response.ErrorListener thatbai = error ->{
+            if(error.getMessage()!=null){
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
 
         String search = txtSearch.getText().toString();
         if(search.equals("")){

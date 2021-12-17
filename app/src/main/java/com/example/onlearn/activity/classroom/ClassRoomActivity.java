@@ -1,5 +1,4 @@
 package com.example.onlearn.activity.classroom;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,23 +12,31 @@ import android.text.Html;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.ServerError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiAdapter;
 import com.example.onlearn.models.KHOAHOC;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Response;
 
 public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_Classroom{
-    String titleActionBar = "Phòng học của " + GLOBAL.userlogin.getTen();
+    String titleActionBar = "Phòng học của " +GLOBAL.userlogin.getTen();
 
     String urlClassroom = GLOBAL.ip + "api/KhoaHocTheoHocVien?MaHV=" +GLOBAL.idUser;
     RecyclerView rclClassroom;
@@ -50,13 +57,37 @@ public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_C
         adapterclassroom = new ClassroomAdapter(this, dataclass, this);
         rclClassroom.setAdapter(adapterclassroom);
         rclClassroom.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
+        rclClassroom.setHasFixedSize(true);
         //get data
-        getClassroom();
-
+//        getClassroom();
+        try {
+            getClassroom();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
+    public void onErrorResponse(VolleyError error) {
 
+        // As of f605da3 the following should work
+        NetworkResponse response = error.networkResponse;
+        if (error instanceof ServerError && response != null) {
+            try {
+                String res = new String(response.data,
+                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+                // Now you can use any deserializer to make sense of data
+                JSONObject obj = new JSONObject(res);
+            } catch (UnsupportedEncodingException e1) {
+                // Couldn't properly decode data to string
+                e1.printStackTrace();
+            } catch (JSONException e2) {
+                // returned data is not JSONObject?
+                e2.printStackTrace();
+            }
+        }
+    }
+
+//thieu header
     private void getClassroom() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -79,10 +110,16 @@ public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_C
                 }
             }
             adapterclassroom.notifyDataSetChanged();
-        };
 
-        com.android.volley.Response.ErrorListener thatbai = error ->
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+        };
+//        Map<String, String> paramsHeaders = new HashMap<>();
+//        paramsHeaders.put("Content-Type", "application/json");
+        com.android.volley.Response.ErrorListener thatbai = error ->{
+            if(error.getMessage()!=null){
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+        };
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlClassroom, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
