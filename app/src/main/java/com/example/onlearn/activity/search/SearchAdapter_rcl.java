@@ -53,7 +53,7 @@ public void onBindViewHolder(@NonNull KHUNGNHIN holder, int position) {
         .into(holder.imgKH);
 
         holder.tenkh.setText(kh.TenKhoaHoc);
-        holder.tengv.setText("Giáo viên: "+kh.TenGV);
+        holder.tengv.setText("Giảng viên: "+kh.TenGV);
         //set format cho giá
         holder.giakh.setText(formatNumberCurrency(kh.DonGia)+ " đ");
         //set rating

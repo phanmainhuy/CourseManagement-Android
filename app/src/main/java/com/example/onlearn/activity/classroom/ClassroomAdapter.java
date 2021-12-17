@@ -55,7 +55,7 @@ public class ClassroomAdapter  extends RecyclerView.Adapter<ClassroomAdapter.KHU
                 .into(holder.imgKH);
 
         holder.tenkh.setText(kh.TenKH);
-        holder.tengv.setText("Giáo viên: "+kh.tenGV);
+        holder.tengv.setText("Giảng viên: "+kh.tenGV);
         //set format cho giá
         try {
             holder.giakh.setText("Ngày mua: "+utils.converDateFormate(kh.ngaymua));
