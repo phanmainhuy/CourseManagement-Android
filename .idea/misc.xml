@@ -66,6 +66,7 @@
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_forget_pass.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_khoahoctheoloai.xml" value="0.264" />
+        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_lesson.xml" value="0.175" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_pay.xml" value="0.25416666666666665" />
@@ -76,7 +77,8 @@
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_user.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activityloaikhoahoc.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/bot_msg_rv_item.xml" value="0.25416666666666665" />
-        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_basic.xml" value="0.2" />
+        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_basic.xml" value="0.264" />
+        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_classroom_intro.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_coupon.xml" value="0.264" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_couponwallet.xml" value="0.264" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_course_classroom.xml" value="0.25416666666666665" />

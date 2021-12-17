@@ -79,12 +79,4 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.KHUNGNHIN> {
         }
     }
 
-//
-//
-//    //Tạo format tiền VND
-//    public static String formatNumberCurrency(String gia)
-//    {
-//        DecimalFormat format = new DecimalFormat("#,###");
-//        return format.format(Double.parseDouble(gia));
-//    }
 }

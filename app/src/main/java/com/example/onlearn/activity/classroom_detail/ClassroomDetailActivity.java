@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.category_small.LoaiKhoaHocAdapter_rcl;
+import com.example.onlearn.activity.chapter.ChapterActivity;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LOAIKHOAHOC;
@@ -82,6 +84,11 @@ public class ClassroomDetailActivity extends AppCompatActivity {
         
         getIntroChap();
 
+
+        btnLearn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ChapterActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void getIntroChap() {

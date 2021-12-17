@@ -1,5 +1,6 @@
 package com.example.onlearn;
 
+import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.LEARN;
@@ -20,6 +21,7 @@ public class GLOBAL {
     public static LOAIKHOAHOC LoaiKHClick;
     public static KHOAHOC KhoaHocClick;
     public static LEARN learn;
+    public static CHAPTER chapter;
 
     public static USER  userlogin;
     public static int idUser;

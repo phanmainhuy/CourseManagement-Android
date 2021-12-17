@@ -3,32 +3,104 @@ package com.example.onlearn.activity.chapter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.classroom_detail.IntroAdapter;
+import com.example.onlearn.models.CHAPTER;
+import com.example.onlearn.utils.SpacesItemDecoration;
 
-public class ChapterActivity extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Chapter{
     String urlChap = GLOBAL.ip +"api/chuong?MaKhoaHoc=" +GLOBAL.learn.getMaKH();
     String titleActionBar = "Chọn chương";
+    RecyclerView rclChap;
+    ChapterAdapter chapterAdapter;
+    ArrayList<CHAPTER> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter);
+        DecorateActionBar();
+
+        //anh xa
+        rclChap = findViewById(R.id.rclChapter);
+
+        //set adapter
+        chapterAdapter = new ChapterAdapter(this, data, this);
+        rclChap.setHasFixedSize(true);
+        rclChap.setAdapter(chapterAdapter);
+        rclChap.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+//        Chèn một kẻ ngang giữa các phần tử
+        DividerItemDecoration dividerHorizontal =
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+
+        dividerHorizontal.
+                setDrawable(ContextCompat.getDrawable(this, R.drawable.black_duongkengangitem));
+        rclChap.addItemDecoration(dividerHorizontal);
+        rclChap.addItemDecoration(new SpacesItemDecoration(50));
 
 
 
+        //data
+        getChap();
 
     }
 
 
+    private void getChap() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
+        com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject jsonObject = response.getJSONObject(i);
+                    data.add(new CHAPTER(jsonObject.getInt("MaChuong"),
+                            jsonObject.getInt("MaKhoaHoc"),
+                            jsonObject.getString("TenChuong"), jsonObject.getString("TenKhoaHoc"))
+                    );
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            chapterAdapter.notifyDataSetChanged();
+
+        };
+
+
+        com.android.volley.Response.ErrorListener thatbai = error ->{
+            if(error.getMessage()!=null){
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlChap, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+
+    }
 
     //action bar
     @Override
@@ -55,4 +127,13 @@ public class ChapterActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void ItemClickLoaiKhoaHoc(CHAPTER chapter) {
+        GLOBAL.chapter = chapter;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }
