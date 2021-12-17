@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.classroom_detail.IntroAdapter;
+import com.example.onlearn.activity.lesson.LessonActivity;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.utils.SpacesItemDecoration;
 
@@ -130,6 +132,8 @@ public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Cha
     @Override
     public void ItemClickLoaiKhoaHoc(CHAPTER chapter) {
         GLOBAL.chapter = chapter;
+        Intent intent = new Intent(this, LessonActivity.class);
+        startActivity(intent);
     }
 
     @Override

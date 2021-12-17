@@ -4,6 +4,7 @@ import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.LEARN;
+import com.example.onlearn.models.LESSON;
 import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.models.USER;
 
@@ -22,6 +23,7 @@ public class GLOBAL {
     public static KHOAHOC KhoaHocClick;
     public static LEARN learn;
     public static CHAPTER chapter;
+    public static LESSON lesson;
 
     public static USER  userlogin;
     public static int idUser;
