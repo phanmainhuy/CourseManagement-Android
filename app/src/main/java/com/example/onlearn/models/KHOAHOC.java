@@ -32,7 +32,9 @@ public class KHOAHOC implements Serializable {
 
     public KHOAHOC(int maKhoaHoc, int maLoai, int maDM, String tenLoai, String tenDM,
                    String tenKhoaHoc,
-                   String donGia, int soLuongMua, String trangThai,
+                   String donGia,
+//                   int soLuongMua,
+                   String trangThai,
                    String hinhAnh, int maGV, String TenGV, int danhgia, String moTaKhoaHoc, String ngayTao, String ngayDuyet) {
         MaKhoaHoc = maKhoaHoc;
         MaLoai = maLoai;
@@ -41,7 +43,7 @@ public class KHOAHOC implements Serializable {
         TenDanhMuc = tenDM;
         TenKhoaHoc = tenKhoaHoc;
         DonGia = donGia;
-        SoLuongMua = soLuongMua;
+//        SoLuongMua = soLuongMua;
         TrangThai = trangThai;
         HinhAnh = hinhAnh;
         MaGV = maGV;
@@ -84,13 +86,13 @@ public class KHOAHOC implements Serializable {
         DonGia = donGia;
     }
 
-    public int getSoLuongMua() {
-        return SoLuongMua;
-    }
-
-    public void setSoLuongMua(int soLuongMua) {
-        SoLuongMua = soLuongMua;
-    }
+//    public int getSoLuongMua() {
+//        return SoLuongMua;
+//    }
+//
+//    public void setSoLuongMua(int soLuongMua) {
+//        SoLuongMua = soLuongMua;
+//    }
 
 
 

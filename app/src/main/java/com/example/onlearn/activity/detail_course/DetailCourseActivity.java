@@ -43,7 +43,7 @@ public class DetailCourseActivity extends AppCompatActivity {
     String urlgetimgKH = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
     ImageView imgKH;
-    TextView tvGiaKH, tvNgayKhaiGiang, tvLuotMua, tvDanhMuc, tvTheLoai, tvTenGV, tvMoTa, tvTenKH;
+    TextView tvGiaKH, tvNgayKhaiGiang, tvDanhMuc, tvTheLoai, tvTenGV, tvMoTa, tvTenKH;
     RatingBar ratingKH;
     Button btnMuaNgay, btnAddCart;
     String TitleActionBar = "Chi tiết khóa học";
@@ -68,7 +68,6 @@ public class DetailCourseActivity extends AppCompatActivity {
         imgKH = findViewById(R.id.imgKH_Detail);
         tvGiaKH = findViewById(R.id.tvGiaKH_Detail);
         tvNgayKhaiGiang = findViewById(R.id.tvNgayKhaiGiang_Detail);
-        tvLuotMua = findViewById(R.id.tvLuotMua_Detail);
         tvDanhMuc = findViewById(R.id.tvTenDM_Detail);
         tvTheLoai = findViewById(R.id.tvTenLoai_Detail);
         tvTenGV = findViewById(R.id.tvTenGV_Detail);
@@ -103,7 +102,7 @@ public class DetailCourseActivity extends AppCompatActivity {
                 tvGiaKH.setText(utils.formatNumberCurrency(response.getString("DonGia")) + " đ");
                 tvMoTa.setText(response.getString("GioiThieu"));
                 tvNgayKhaiGiang.setText(utils.converDateFormate(response.getString("NgayChapThuan")));
-                tvLuotMua.setText(String.valueOf(response.getInt("SoLuongMua")));
+//                tvLuotMua.setText(String.valueOf(response.getInt("SoLuongMua")));
                 tvDanhMuc.setText(response.getString("TenDanhMuc"));
                 tvTheLoai.setText(response.getString("TenLoai"));
                 tvTenGV.setText(response.getString("TenGV"));

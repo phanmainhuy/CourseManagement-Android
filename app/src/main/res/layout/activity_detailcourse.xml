@@ -87,30 +87,7 @@
                     android:textSize="17dp"/>
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <TextView
-                    android:layout_width="135dp"
-                    android:layout_height="wrap_content"
-                    android:text="Lượt mua: "
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="17dp"/>
 
-                <TextView
-                    android:id="@+id/tvLuotMua_Detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="30"
-                    android:layout_marginLeft="10dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/blue_deep"
-                    android:textSize="17dp"/>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
