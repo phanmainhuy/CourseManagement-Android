@@ -15,20 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.models.KHOAHOC;
+import com.example.onlearn.models.LEARN;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class ClassroomAdapter  extends RecyclerView.Adapter<ClassroomAdapter.KHUNGNHIN>{
     Context context;
-    ArrayList<KHOAHOC> dulieu;
+    ArrayList<LEARN> dulieu;
     private OnClickRCL_Classroom listener;
 
 
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
-    public ClassroomAdapter(Context context, ArrayList<KHOAHOC> dulieu, OnClickRCL_Classroom listener) {
+    public ClassroomAdapter(Context context, ArrayList<LEARN> dulieu, OnClickRCL_Classroom listener) {
         this.context = context;
         this.dulieu = dulieu;
         this.listener = listener;
@@ -44,20 +46,24 @@ public class ClassroomAdapter  extends RecyclerView.Adapter<ClassroomAdapter.KHU
 
     @Override
     public void onBindViewHolder(@NonNull ClassroomAdapter.KHUNGNHIN holder, int position) {
-        KHOAHOC kh = dulieu.get(position);
+        LEARN kh = dulieu.get(position);
 
         //img
         Picasso.with(context)
-                .load(urlimg + kh.HinhAnh)
+                .load(urlimg + kh.imgKH)
                 .placeholder(R.drawable.no_image_found)
                 .into(holder.imgKH);
 
-        holder.tenkh.setText(kh.TenKhoaHoc);
-        holder.tengv.setText(kh.TenGV);
+        holder.tenkh.setText(kh.TenKH);
+        holder.tengv.setText("Giáo viên: "+kh.tenGV);
         //set format cho giá
-        holder.giakh.setText(kh.TenLoai);
+        try {
+            holder.giakh.setText("Ngày mua: "+utils.converDateFormate(kh.ngaymua));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         //set rating
-        holder.ratingkh.setRating(kh.DanhGia);
+        holder.ratingkh.setRating(kh.rating);
 
         holder.khoahoc = dulieu.get(position);
     }
@@ -75,7 +81,7 @@ public class ClassroomAdapter  extends RecyclerView.Adapter<ClassroomAdapter.KHU
 
     public class KHUNGNHIN extends RecyclerView.ViewHolder
     {
-        KHOAHOC khoahoc;
+        LEARN khoahoc;
         ImageView imgKH;
         TextView tenkh, tengv, giakh;
         RatingBar ratingkh;

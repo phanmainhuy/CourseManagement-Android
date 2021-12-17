@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.models.KHOAHOC;
+import com.example.onlearn.models.LEARN;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +42,7 @@ public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_C
     String urlClassroom = GLOBAL.ip + "api/KhoaHocTheoHocVien?MaHV=" +GLOBAL.idUser;
     RecyclerView rclClassroom;
     ClassroomAdapter adapterclassroom;
-    ArrayList<KHOAHOC> dataclass = new ArrayList<>();
+    ArrayList<LEARN> dataclass = new ArrayList<>();
 
 
     @Override
@@ -67,27 +68,9 @@ public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_C
         }
 
     }
-    public void onErrorResponse(VolleyError error) {
 
-        // As of f605da3 the following should work
-        NetworkResponse response = error.networkResponse;
-        if (error instanceof ServerError && response != null) {
-            try {
-                String res = new String(response.data,
-                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
-                // Now you can use any deserializer to make sense of data
-                JSONObject obj = new JSONObject(res);
-            } catch (UnsupportedEncodingException e1) {
-                // Couldn't properly decode data to string
-                e1.printStackTrace();
-            } catch (JSONException e2) {
-                // returned data is not JSONObject?
-                e2.printStackTrace();
-            }
-        }
-    }
 
-//thieu header
+
     private void getClassroom() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -95,16 +78,23 @@ public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_C
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    dataclass.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
-                            jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
-                            jsonObject.getString("TenDanhMuc"),
-                            jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
+                    dataclass.add(new LEARN(jsonObject.getInt("MaKhoaHoc"),
+//                            jsonObject.getInt("MaLoai"),
+//                            jsonObject.getInt("MaDM"),
+//                            jsonObject.getString("TenLoai"),
+//                            jsonObject.getString("TenDanhMuc"),
+                            jsonObject.getString("TenKhoaHoc"),
+//                            jsonObject.getString("DonGia"),
 //                            jsonObject.getInt("SoLuongMua"),
-                            jsonObject.getString("TrangThai")
-                            , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
-                            , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
-                            , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
-                            , jsonObject.getString("NgayChapThuan")));
+//                            jsonObject.getString("TrangThai"),
+                             jsonObject.getString("HinhAnh"),
+                            jsonObject.getInt("MaGV"),
+                             jsonObject.getString("TenGV"),
+                            jsonObject.getInt("DanhGia"),
+                            jsonObject.getString("GioiThieu"),
+                            jsonObject.getString("NgayMua")
+//                            , jsonObject.getString("NgayChapThuan")
+                    ));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -150,13 +140,14 @@ public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_C
         actionBar.setBackgroundDrawable(colorDrawable);
     }
 
+
     @Override
-    public void itemClickClassroom(KHOAHOC khoahoc) {
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
+    public void itemClickClassroom(LEARN khoahoc) {
 
     }
 }

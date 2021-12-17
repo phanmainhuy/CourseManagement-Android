@@ -54,7 +54,7 @@ public class KhoaHocTheoLoaiAdapter extends RecyclerView.Adapter<KhoaHocTheoLoai
                 .into(holder.imgKH);
 
         holder.tenkh.setText(kh.TenKhoaHoc);
-        holder.tengv.setText(kh.TenGV);
+        holder.tengv.setText("Giáo viên: "+kh.TenGV);
         //set format cho giá
         holder.giakh.setText(utils.formatNumberCurrency(kh.DonGia)+ " đ");
         //set rating
