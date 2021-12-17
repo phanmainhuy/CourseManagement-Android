@@ -145,7 +145,7 @@
                 <TextView
                     android:layout_width="135dp"
                     android:layout_height="wrap_content"
-                    android:text="Tên giáo viên: "
+                    android:text="Giảng viên: "
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="17dp"/>
