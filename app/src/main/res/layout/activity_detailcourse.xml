@@ -81,6 +81,8 @@
                     android:id="@+id/tvNgayKhaiGiang_Detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
+
                     android:text="20/12/2021"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
@@ -107,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Công nghệ thông tin"
+                    android:maxLines="1"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/blue_deep"
                     android:textStyle="bold"
@@ -128,7 +131,8 @@
 
                 <TextView
                     android:id="@+id/tvTenLoai_Detail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:maxLines="1"
                     android:layout_height="wrap_content"
                     android:text="Lập trình web"
                     android:layout_marginLeft="10dp"
@@ -146,6 +150,7 @@
                     android:layout_width="135dp"
                     android:layout_height="wrap_content"
                     android:text="Giảng viên: "
+
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="17dp"/>
@@ -155,6 +160,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phan Mai Như Ý"
+                    android:maxLines="1"
+
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="17dp"/>
