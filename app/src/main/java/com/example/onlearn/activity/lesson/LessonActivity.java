@@ -74,16 +74,17 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    JSONArray baihocs = jsonObject.getJSONArray("DanhSachBaiHoc");
-                    for(int a  = 0; a < baihocs.length(); a++){
-                        JSONObject jsonBaihoc = response.getJSONObject(a);
-                        datales.add(new LESSON(jsonBaihoc.getInt("MaBaiHoc"),
-                                jsonBaihoc.getString("TenBaiHoc"),
-                                jsonBaihoc.getInt("MaChuong"),
-                                jsonBaihoc.getString("TenChuong"),
-                                jsonBaihoc.getString("VideoName")
-                                ));
-                    }
+                        JSONArray baihocs = jsonObject.getJSONArray("DanhSachBaiHoc");
+
+                        for (int a = 0; a < baihocs.length(); a++) {
+                            JSONObject jsonBaihoc = baihocs.getJSONObject(a);
+                            datales.add(new LESSON(jsonBaihoc.getInt("MaBaiHoc"),
+                                    jsonBaihoc.getString("TenBaiHoc"),
+                                    jsonBaihoc.getInt("MaChuong"),
+                                    jsonBaihoc.getString("TenChuong"),
+                                    jsonBaihoc.getString("VideoName")
+                            ));
+                        }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
