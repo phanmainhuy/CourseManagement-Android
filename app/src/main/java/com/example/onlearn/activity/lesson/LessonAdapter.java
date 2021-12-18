@@ -47,6 +47,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.KHUNGNHIN>
 
 
         holder.ten.setText(les.getTenBaiHoc());
+        holder.chuong.setText(les.getTenChuong());
 
 
         holder.lesson = dulieu.get(position);
@@ -62,7 +63,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.KHUNGNHIN>
     public class KHUNGNHIN extends RecyclerView.ViewHolder {
         LESSON lesson;
 
-        TextView ten;
+        TextView ten, chuong;
 
         //TextView mota;
 
@@ -70,7 +71,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.KHUNGNHIN>
             super(itemView);
 
             ten = itemView.findViewById(R.id.tv_basic);
-
+            chuong = itemView.findViewById(R.id.tvChuong_basic);
 
             //Xu ly su kien click item cua recycle view
             itemView.setOnClickListener(v -> {
