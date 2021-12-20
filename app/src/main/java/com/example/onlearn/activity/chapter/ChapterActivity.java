@@ -62,6 +62,7 @@ public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Cha
         dividerHorizontal.
                 setDrawable(ContextCompat.getDrawable(this, R.drawable.black_duongkengangitem));
         rclChap.addItemDecoration(dividerHorizontal);
+
         rclChap.addItemDecoration(new SpacesItemDecoration(50));
 
 

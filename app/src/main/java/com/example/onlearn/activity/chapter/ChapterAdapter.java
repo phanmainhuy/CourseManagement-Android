@@ -1,6 +1,7 @@
 package com.example.onlearn.activity.chapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ private OnClickRCL_Chapter listener;
 
     @Override
     public ChapterAdapter.KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_basic, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_chapter, null);
         return new ChapterAdapter.KHUNGNHIN(view);
     }
 
@@ -67,7 +68,7 @@ private OnClickRCL_Chapter listener;
         public KHUNGNHIN(@NonNull View itemView) {
             super(itemView);
 
-            ten = itemView.findViewById(R.id.tv_basic);
+            ten = itemView.findViewById(R.id.tv_basic_chapter);
 
 
             //Xu ly su kien click item cua recycle view

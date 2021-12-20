@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -22,8 +23,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.excercise.ExcerciseActivity;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.LESSON;
+import com.example.onlearn.utils.SpacesItemDecoration;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,9 +34,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class LessonActivity extends AppCompatActivity implements OnClickRCL_Lesson{
+public class LessonActivity extends AppCompatActivity implements OnClickRCL_Lesson {
     String titleActionBar = GLOBAL.chapter.getTenChuong();
-    String urllesson = GLOBAL.ip +"api/chuong?MaKhoaHoc=" +GLOBAL.chapter.getMaKH();
+    String urllesson = GLOBAL.ip + "api/BaiHoc/GetByParentId?MaChuong=" + GLOBAL.chapter.getMaChuong();
     RecyclerView rclLesson;
     LessonAdapter lessonAdapter;
     ArrayList<LESSON> datales = new ArrayList<>();
@@ -49,7 +52,7 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
 
         //set adapter
         lessonAdapter = new LessonAdapter(this, datales, this);
-        rclLesson.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        rclLesson.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rclLesson.setAdapter(lessonAdapter);
 //        Chèn một kẻ ngang giữa các phần tử
         DividerItemDecoration dividerHorizontal =
@@ -58,15 +61,15 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
                 setDrawable(ContextCompat.getDrawable(this, R.drawable.black_duongkengangitem));
         rclLesson.addItemDecoration(dividerHorizontal);
 
+        rclLesson.addItemDecoration(new SpacesItemDecoration(30));
+
 
 
         getLesson();
 
 
-
-
-
     }
+
     private void getLesson() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -74,17 +77,13 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                        JSONArray baihocs = jsonObject.getJSONArray("DanhSachBaiHoc");
-
-                        for (int a = 0; a < baihocs.length(); a++) {
-                            JSONObject jsonBaihoc = baihocs.getJSONObject(a);
-                            datales.add(new LESSON(jsonBaihoc.getInt("MaBaiHoc"),
-                                    jsonBaihoc.getString("TenBaiHoc"),
-                                    jsonBaihoc.getInt("MaChuong"),
-                                    jsonBaihoc.getString("TenChuong"),
-                                    jsonBaihoc.getString("VideoName")
+                    datales.add(new LESSON(jsonObject.getInt("MaBaiHoc"),
+                            jsonObject.getString("TenBaiHoc"),
+                            jsonObject.getInt("MaChuong"),
+                            jsonObject.getString("TenChuong"),
+                            jsonObject.getString("VideoName")
                             ));
-                        }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -93,8 +92,8 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
             lessonAdapter.notifyDataSetChanged();
 
         };
-        com.android.volley.Response.ErrorListener thatbai = error ->{
-            if(error.getMessage()!=null){
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if (error.getMessage() != null) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         };
@@ -116,7 +115,7 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
         return super.onOptionsItemSelected(item);
     }
 
-    void DecorateActionBar(){
+    void DecorateActionBar() {
         //action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -130,7 +129,9 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
 
     @Override
     public void ItemClickLesson(LESSON lesson) {
-
+        GLOBAL.lesson = lesson;
+        Intent intent = new Intent(this, ExcerciseActivity.class);
+        startActivity(intent);
     }
 
     @Override

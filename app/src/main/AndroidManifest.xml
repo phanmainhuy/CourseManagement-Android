@@ -15,6 +15,9 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.excercise.ExcerciseActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.lesson.LessonActivity"
             android:exported="false" />
         <activity

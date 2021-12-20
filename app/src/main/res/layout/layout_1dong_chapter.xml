@@ -10,12 +10,13 @@
 
     <TextView
 
-        android:id="@+id/tv_basic"
+        android:id="@+id/tv_basic_chapter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Bài 1:"
+        android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="21dp"
+        android:textSize="23dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
