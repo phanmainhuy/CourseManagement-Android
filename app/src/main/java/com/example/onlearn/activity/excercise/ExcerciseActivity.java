@@ -25,6 +25,8 @@ import org.json.JSONObject;
 
 public class ExcerciseActivity extends AppCompatActivity {
     String titleActionBar = GLOBAL.lesson.getTenBaiHoc();
+    String urlGetEx = GLOBAL.ip + "api/baihoc?MaBaiHoc=" + GLOBAL.lesson.getMaBaiHoc();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,6 @@ public class ExcerciseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_excercise);
 
         DecorateActionBar();
-
 
 
 
