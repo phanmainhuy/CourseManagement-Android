@@ -6,10 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.models.LESSON;
+import com.example.onlearn.utils.VideoViewUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +33,11 @@ public class ExcerciseActivity extends AppCompatActivity {
     String titleActionBar = GLOBAL.lesson.getTenBaiHoc();
     String urlGetEx = GLOBAL.ip + "api/baihoc?MaBaiHoc=" + GLOBAL.lesson.getMaBaiHoc();
 
+    VideoView videoLearn;
+    private int position = 0;
+    MediaController mediaController;
+    Button btnUrl;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,49 @@ public class ExcerciseActivity extends AppCompatActivity {
 
         DecorateActionBar();
 
+        //anh xa
+        btnUrl = findViewById(R.id.button_url);
+        videoLearn = findViewById(R.id.videoLearn);
+
+        //set the controller button
+        if(mediaController == null){
+            mediaController = new MediaController(this);
+
+            //set the videoView that anchor for the MediaController
+            mediaController.setAnchorView(videoLearn);
+            //set mediaController for VideoView
+            videoLearn.setMediaController(mediaController);
+        }
+        // When the video file ready for playback
+        videoLearn.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            public void onPrepared(MediaPlayer mediaPlayer) {
+
+                videoLearn.seekTo(position);
+                if (position == 0) {
+                    videoLearn.start();
+                }
+
+                // When video Screen change size.
+                mediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+                    @Override
+                    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+                        // Re-Set the videoView that acts as the anchor for the MediaController
+                        mediaController.setAnchorView(videoLearn);
+                    }
+                });
+            }
+        });
+
+        btnUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String videoURL = VideoViewUtils.URL_VIDEO_SAMPLE;
+                VideoViewUtils.playURLVideo(ExcerciseActivity.this, videoLearn, videoURL);
+            }
+
+        });
+        // When you change direction of phone, this method will be called.
+        // It store the state of video (Current position)
 
 
 
@@ -45,6 +99,26 @@ public class ExcerciseActivity extends AppCompatActivity {
 
 
 
+    //videoView
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        // Store current position.
+        savedInstanceState.putInt("CurrentPosition", videoLearn.getCurrentPosition());
+        videoLearn.pause();
+    }
+
+
+    // After rotating the phone. This method is called.
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // Get saved position.
+        position = savedInstanceState.getInt("CurrentPosition");
+        videoLearn.seekTo(position);
+    }
 
 
     //action bar
