@@ -15,6 +15,9 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.change_profile.ChangeProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.rating.RatingActivity"
             android:exported="false" />
         <activity

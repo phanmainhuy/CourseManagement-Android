@@ -61,9 +61,20 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
         holder.hsdkm.setText(km.HSD);
         //set format cho giá
         holder.giatrikm.setText(utils.formatNumberCurrency(km.GiaTri)+ " VND");
-        holder.diemmua.setText(utils.formatNumberCurrency(km.Diem)+ " ");
+        holder.diemmua.setText((km.Diem)+ " ");
+
+//        holder.btnMuaMa.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                listener.itemClickCoupon(dulieu.get(position));
+//                Toast.makeText(context.getApplicationContext(), "Mua mã" + km.TenKM, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+
 
         holder.khuyenmai = dulieu.get(position);
+
     }
 
 
@@ -96,13 +107,20 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
             hsdkm = itemView.findViewById(R.id.tvHSD_Coupon);
             diemmua = itemView.findViewById(R.id.tvDiemMua_Coupon);
 
+            btnMuaMa.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.itemClickCoupon(khuyenmai);
+
+                    Toast.makeText(context.getApplicationContext(), "Mua mã " + diemmua.getText(), Toast.LENGTH_SHORT).show();
 
 
 
-//            btnMuaMa.setOnClickListener(v->{
-//
-//            });
-//
+                }
+            });
+
+
+
 
 
 

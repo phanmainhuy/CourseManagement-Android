@@ -41,7 +41,8 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
     ArrayList<KHUYENMAI> datakm = new ArrayList<>();
     RecyclerView rclCoupon;
     ImageView imgAvatar;
-    TextView tvUsername, tvName, tvDiemTL;
+    TextView tvUsername, tvName;
+    public TextView tvDiemTL;
 
     String urlAvatar = GLOBAL.ip + GLOBAL.urlimg +  "users/";
 

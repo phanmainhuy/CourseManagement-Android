@@ -22,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.change_profile.ChangeProfileActivity;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.models.USER;
 import com.example.onlearn.utils.utils;
@@ -80,6 +81,10 @@ public class UserActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        btnChangeInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ChangeProfileActivity.class);
+            startActivity(intent);
+        });
 
     }
 
@@ -108,8 +113,12 @@ public class UserActivity extends AppCompatActivity {
 
 
         };
-        com.android.volley.Response.ErrorListener thatbai = error ->
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if(error.getMessage()!=null){
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        };
 
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
