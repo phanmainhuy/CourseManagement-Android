@@ -29,7 +29,7 @@ public class utils {
 //    converDateFormate("dd/mm/yyyy hh:mm:ss", "dd/mm/yyyy", "12/12/2012 12:12:12");
     public static String converDateFormate(String dateString) throws ParseException {
         String oldpattern = "yyyy-MM-dd'T'HH:mm";
-        String newPattern = "dd/MM/yyyy";
+        String newPattern = "dd-MM-yyyy";
 
         SimpleDateFormat format = new SimpleDateFormat(oldpattern);
         Date testDate;

@@ -4,19 +4,37 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.example.onlearn.API.API;
+import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.home.HomeActivity;
+import com.example.onlearn.activity.login.LoginActivity;
+import com.example.onlearn.models.USER;
+import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChangeProfileActivity extends AppCompatActivity {
     String titleActionBar = "Sửa thông tin người dùng";
@@ -24,8 +42,13 @@ public class ChangeProfileActivity extends AppCompatActivity {
     EditText txtName, txtNumber, txtEmail, txtDoB, txtAddress, txtCMND;
     TextView tvUserName;
     ImageView imgAvatar;
+    RadioButton rdoMale, rdoFemale;
 
+    API api;
+    //url
+    String urlputUser = GLOBAL.ip + "api/nguoidung";
     String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
+    private USER user = GLOBAL.userlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,20 +67,87 @@ public class ChangeProfileActivity extends AppCompatActivity {
         txtCMND = findViewById(R.id.txt_User_CMND);
         tvUserName = findViewById(R.id.tv_User_username);
         imgAvatar = findViewById(R.id.img_User_Avatar);
+        rdoMale = findViewById(R.id.rdb_User_Male);
+        rdoFemale = findViewById(R.id.rdb_User_Female);
 
-//        add thong tin
-        tvUserName.setText(GLOBAL.userlogin.getUserName());
+
+        //add data
+        tvUserName.setText(user.getUserName());
+        txtName.setText(user.getTen());
+        txtNumber.setText(user.getNumber());
+        txtEmail.setText(user.getEmail());
+        try {
+            txtDoB.setText(utils.converDateFormate(user.getBirthday()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        txtAddress.setText(user.getAddress());
+        txtCMND.setText(user.getCMND());
         Picasso.with(this)
-                .load(urlImgUser + GLOBAL.userlogin.getImgUser())
+                .load(urlImgUser + user.getImgUser())
                 .placeholder(R.drawable.no_image_found)
                 .into(imgAvatar);
 
+        //set Gender
+        if (user.getGender().equals("Nữ")) {
+            rdoFemale.setChecked(true);
+        } else {
+            rdoMale.setChecked(true);
+        }
+        btnLogout.setOnClickListener(v -> {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        });
 
+        btnSave.setOnClickListener(v -> {
+
+
+        });
+//        try {
+//            changeProfileUser();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
 
     }
 
+    private void changeProfileUser() throws JSONException {
 
+        JSONObject parmas = new JSONObject();
+        Map<String, String> paramsHeaders = new HashMap<>();
+
+        parmas.put("UserId", 2);
+        parmas.put("UserName", "PhanMaiNhuY");
+        parmas.put("Name", "han Mai Như Ú");
+//        parmas.put("CMND", txtCMND.getText().toString());
+//        parmas.put("Number", txtNumber.getText().toString());
+//        parmas.put("Email", txtEmail.getText().toString());
+//        parmas.put("DoB", txtDoB.getText().toString());
+//        parmas.put("Address", txtAddress.getText().toString());
+        paramsHeaders.put("Content-Type", "application/json");
+        api.CallAPI(urlputUser, Request.Method.PUT, parmas.toString(), null, paramsHeaders, new ICallBack() {
+            @Override
+            public void ReponseSuccess(String dataResponse) {
+                Log.i("success",dataResponse);
+
+//                try {
+//                    JSONObject result = new JSONObject(dataResponse);
+//                    GLOBAL.idUser = result.getInt("UserID");
+////                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+
+            }
+            @Override
+            public void ReponseError(String error) {
+                Log.e("error",error);
+                Toast.makeText(getApplicationContext(), "Sửa không thành công", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
 
 
     //action bar
@@ -72,7 +162,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void DecorateActionBar(){
+    void DecorateActionBar() {
         //action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
