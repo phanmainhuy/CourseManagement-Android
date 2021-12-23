@@ -164,16 +164,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    data.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
-                            jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
-                            jsonObject.getString("TenDanhMuc"),
-                            jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
+                    if(jsonObject.getBoolean("HienThi") == true){
+                        data.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
+                                jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
+                                jsonObject.getString("TenDanhMuc"),
+                                jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
 //                            jsonObject.getInt("SoLuongMua") "",
-                            jsonObject.getString("TrangThai")
-                            , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
-                            , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
-                            , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
-                            , jsonObject.getString("NgayChapThuan")));
+                                jsonObject.getString("TrangThai")
+                                , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
+                                , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
+                                , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
+                                , jsonObject.getString("NgayChapThuan")));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

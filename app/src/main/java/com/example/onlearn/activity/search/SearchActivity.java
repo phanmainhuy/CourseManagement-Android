@@ -99,16 +99,18 @@ public class SearchActivity extends AppCompatActivity implements OnClickRCL_Sear
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    data.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
-                            jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
-                            jsonObject.getString("TenDanhMuc"),
-                            jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
-//                            jsonObject.getInt("SoLuongMua"),
-                            jsonObject.getString("TrangThai")
-                            , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
-                            , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
-                            , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
-                            , jsonObject.getString("NgayChapThuan")));
+                    if(jsonObject.getBoolean("HienThi") == true){
+                        data.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
+                                jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
+                                jsonObject.getString("TenDanhMuc"),
+                                jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
+//                            jsonObject.getInt("SoLuongMua") "",
+                                jsonObject.getString("TrangThai")
+                                , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
+                                , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
+                                , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
+                                , jsonObject.getString("NgayChapThuan")));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -130,7 +132,7 @@ public class SearchActivity extends AppCompatActivity implements OnClickRCL_Sear
 
         else
         {
-            String urlSearch = GLOBAL.ip + "Search?searchstring="+ search;
+            String urlSearch = GLOBAL.ip + "SearchAll?searchString="+ search;
             urlSearch = urlSearch.replaceAll(" ", "%20");
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlSearch, null, thanhcong, thatbai);
             requestQueue.add(jsonArrayRequest);

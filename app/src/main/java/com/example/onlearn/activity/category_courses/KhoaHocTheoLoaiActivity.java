@@ -80,16 +80,18 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity implements OnClic
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    datakh.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
-                            jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
-                            jsonObject.getString("TenDanhMuc"),
-                            jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
-//                            jsonObject.getInt("SoLuongMua"),
-                            jsonObject.getString("TrangThai")
-                            , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
-                            , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
-                            , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
-                            , jsonObject.getString("NgayChapThuan")));
+                    if(jsonObject.getBoolean("HienThi") == true){
+                        datakh.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
+                                jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
+                                jsonObject.getString("TenDanhMuc"),
+                                jsonObject.getString("TenKhoaHoc"), jsonObject.getString("DonGia"),
+//                            jsonObject.getInt("SoLuongMua") "",
+                                jsonObject.getString("TrangThai")
+                                , jsonObject.getString("HinhAnh"), jsonObject.getInt("MaGV")
+                                , jsonObject.getString("TenGV"), jsonObject.getInt("DanhGia")
+                                , jsonObject.getString("GioiThieu"), jsonObject.getString("NgayTao")
+                                , jsonObject.getString("NgayChapThuan")));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
