@@ -132,7 +132,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         //get data
-        GetDanhMuc();
+//        GetDanhMuc();
         getOptionHome();
         getMostBuyCourses();
         getInfoUser();
@@ -398,22 +398,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         requestQueue.add(jsonArrayRequest);
     }
 
-    //Lay danh muc
-    private void GetDanhMuc() {
-        Call<List<DANHMUC>> danhMucCall = Retrofit.getserviceAPI().getDanhMuc();
-        danhMucCall.enqueue(new Callback<List<DANHMUC>>() {
-            @Override
-            public void onResponse(Call<List<DANHMUC>> call, Response<List<DANHMUC>> response) {
-                danhMuc = response.body();
-                Log.e("ERRr", response.message());
-            }
-
-            @Override
-            public void onFailure(Call<List<DANHMUC>> call, Throwable t) {
-                Log.e("ERRr", t.getMessage());
-            }
-        });
-    }
+//    //Lay danh muc
+//    private void GetDanhMuc() {
+//        Call<List<DANHMUC>> danhMucCall = Retrofit.getserviceAPI().getDanhMuc();
+//        danhMucCall.enqueue(new Callback<List<DANHMUC>>() {
+//            @Override
+//            public void onResponse(Call<List<DANHMUC>> call, Response<List<DANHMUC>> response) {
+//                danhMuc = response.body();
+//                Log.e("ERRr", response.message());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<DANHMUC>> call, Throwable t) {
+//                Log.e("ERRr", t.getMessage());
+//            }
+//        });
+//    }
 
 
 }

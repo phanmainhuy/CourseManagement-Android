@@ -10,6 +10,9 @@ public class DANHMUC {
     String TenDanhMuc;
     String HinhAnh;
     int TongSoKhoaHoc;
+    String HienThi;
+
+
 
     public DANHMUC(int maDanhMuc, String tenDanhMuc, String hinhAnh, int tongSoKhoaHoc) {
         MaDanhMuc = maDanhMuc;
@@ -29,16 +32,22 @@ public class DANHMUC {
     public String getHinhAnh() {
         return HinhAnh;
     }
+    public String getHienThi() {
+        return HienThi;
+    }
 
+    public void setHienThi(String hienThi) {
+        HienThi = hienThi;
+    }
     public int getTongSoKhoaHoc() {
         return TongSoKhoaHoc;
     }
 
-    @SerializedName("DanhSachTheLoai")
-    @Expose
-    private List<THELOAI> danhMucConList;
-
-    public List<THELOAI> getDanhMucConList() {
-        return danhMucConList;
-    }
+//    @SerializedName("DanhSachTheLoai")
+//    @Expose
+//    private List<THELOAI> danhMucConList;
+//
+//    public List<THELOAI> getDanhMucConList() {
+//        return danhMucConList;
+//    }
 }

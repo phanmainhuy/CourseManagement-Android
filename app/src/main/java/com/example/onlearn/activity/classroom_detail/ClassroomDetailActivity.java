@@ -27,6 +27,7 @@ import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.category_small.LoaiKhoaHocAdapter_rcl;
 import com.example.onlearn.activity.chapter.ChapterActivity;
+import com.example.onlearn.activity.rating.RatingActivity;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LOAIKHOAHOC;
@@ -40,12 +41,12 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-public class ClassroomDetailActivity extends AppCompatActivity {
+ public class ClassroomDetailActivity extends AppCompatActivity implements OnClickRCL_InTro{
     String titleActionBar = "Chi tiết khóa học " ;
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
     ImageView imgKH;
     TextView tvTenKH, tvTenGV, tvNgayMua, tvGioiThieu;
-    Button btnLearn;
+    Button btnLearn, btnRating;
     RatingBar ratingBar;
     RecyclerView rclChapter;
     IntroAdapter chapAdapter;
@@ -66,11 +67,12 @@ public class ClassroomDetailActivity extends AppCompatActivity {
         tvGioiThieu = findViewById(R.id.tvGioiThieu_classroom);
         tvNgayMua = findViewById(R.id.tvNgayMua_classroom);
         btnLearn = findViewById(R.id.btnLearn_classroom);
+        btnRating = findViewById(R.id.btnRating_classroom);
         ratingBar = findViewById(R.id.rating_classroom);
         rclChapter = findViewById(R.id.rclChapter_classroom);
 
         //set adapter
-        chapAdapter = new IntroAdapter(this, dataintro);
+        chapAdapter = new IntroAdapter(this, dataintro, this);
         rclChapter.setHasFixedSize(true);
         rclChapter.setAdapter(chapAdapter);
         rclChapter.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -87,6 +89,10 @@ public class ClassroomDetailActivity extends AppCompatActivity {
 
         btnLearn.setOnClickListener(v -> {
             Intent intent = new Intent(this, ChapterActivity.class);
+            startActivity(intent);
+        });
+        btnRating.setOnClickListener(v ->{
+            Intent intent = new Intent(this, RatingActivity.class);
             startActivity(intent);
         });
     }
@@ -161,7 +167,15 @@ public class ClassroomDetailActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void itemClickChapter(CHAPTER chapter) {
+        GLOBAL.chapter = chapter;
+        Intent intent = new Intent(this, ChapterActivity.class);
+        startActivity(intent);
+    }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
-
+    }
 }

@@ -112,9 +112,18 @@
                 android:id="@+id/btnLearn_classroom"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:backgroundTint="#FF4500"
                 android:text="Vào học"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+            <Button
+                android:id="@+id/btnRating_classroom"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#008B45"
+                android:text="Đánh giá khóa học"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 />

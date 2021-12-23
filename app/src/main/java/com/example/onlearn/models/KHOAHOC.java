@@ -10,7 +10,7 @@ public class KHOAHOC implements Serializable {
     public String TenDanhMuc;
     public String TenKhoaHoc;
     public String DonGia;
-    public int SoLuongMua;
+//    public int SoLuongMua;
     public String TrangThai;
     public String HinhAnh;
     public int MaGV;

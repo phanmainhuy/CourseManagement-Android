@@ -3,6 +3,8 @@ package com.example.onlearn.activity.category_small;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -68,6 +70,14 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
         rclLoaikh.setAdapter(loaikhAdapter);
         rclLoaikh.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+        //        Chèn một kẻ ngang giữa các phần tử
+        DividerItemDecoration dividerHorizontal =
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+
+        dividerHorizontal.
+                setDrawable(ContextCompat.getDrawable(this, R.drawable.black_duongkengangitem));
+        rclLoaikh.addItemDecoration(dividerHorizontal);
+
         getTheLoai();
     }
 
@@ -84,14 +94,17 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
                         for(int a  = 0; a < Data.length(); a++) //have length
                         {
                             JSONObject inData = Data.getJSONObject(a);
-                            dataloaikh.add(new LOAIKHOAHOC(
-                                    inData.getInt("MaTheLoai"),
-                                    response.getInt("MaDanhMuc"),
-                                            inData.getString("TenTheLoai"),
-                                            hinhanh,
-                                            tenDM
-                                    )
-                            );
+                            if (inData.getBoolean("HienThi") == true){
+                                dataloaikh.add(new LOAIKHOAHOC(
+                                                inData.getInt("MaTheLoai"),
+                                                response.getInt("MaDanhMuc"),
+                                                inData.getString("TenTheLoai"),
+                                                hinhanh,
+                                                tenDM
+                                        )
+                                );
+                            }
+
                         }
 
                 } catch (JSONException e) {

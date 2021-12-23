@@ -18,15 +18,15 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.KHUNGNHIN> {
     Context context;
     ArrayList<CHAPTER> dulieu;
 
-//private OnClickRCL_LoaiKH listener;
+private OnClickRCL_InTro listener;
 
 
 //    String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
-    public IntroAdapter(Context context, ArrayList<CHAPTER> dulieu) {
+    public IntroAdapter(Context context, ArrayList<CHAPTER> dulieu, OnClickRCL_InTro listener) {
         this.context = context;
         this.dulieu = dulieu;
-//        this.listener = listener;
+        this.listener = listener;
 
     }
 
@@ -73,7 +73,7 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.KHUNGNHIN> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                listener.ItemClickLoaiKhoaHoc(loaikhoahoc);
+                listener.itemClickChapter(chapter);
                 }
             });
         }
