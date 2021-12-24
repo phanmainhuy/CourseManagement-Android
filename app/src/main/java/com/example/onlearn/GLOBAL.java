@@ -12,7 +12,7 @@ import com.example.onlearn.models.USER;
 import java.util.ArrayList;
 
 public class GLOBAL {
-    public static String colorActionBar = "#6666CC";
+    public static String colorActionBar = "#6699FF";
     //api
     //Y: 192.168.1.8
     //http://192.168.1.9:63702/

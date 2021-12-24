@@ -98,7 +98,6 @@
         android:text="Thanh toán"
 
         android:textStyle="bold"
-        android:backgroundTint="@color/blue_primary"
         android:textColor="@color/white"
         />
     <Button
@@ -108,7 +107,6 @@
         android:layout_height="0dp"
         android:textStyle="bold"
         android:text="Tiếp tục mua hàng"
-        android:backgroundTint="@color/blue_primary"
         android:textColor="@color/white"
         />
 
