@@ -3,7 +3,6 @@ package com.example.onlearn.models;
 import java.io.Serializable;
 
 public class CART_ITEMS implements Serializable {
-    public int UserID;
     public int CourseID;
     public String CourseName;
     public String OriginPrice;
@@ -12,10 +11,9 @@ public class CART_ITEMS implements Serializable {
     public String TeacherName;
     public String imgName;
 
-    public CART_ITEMS(int userID, int courseID, String courseName, String originPrice, String afterPrice,
+    public CART_ITEMS(int courseID, String courseName, String originPrice, String afterPrice,
                       int teacherID, String teacherName, String imgName)
     {
-        UserID = userID;
         CourseID = courseID;
         CourseName = courseName;
         OriginPrice = originPrice;
@@ -25,13 +23,7 @@ public class CART_ITEMS implements Serializable {
         this.imgName = imgName;
     }
 
-    public int getUserID() {
-        return UserID;
-    }
-
-    public void setUserID(int userID) {
-        UserID = userID;
-    }
+   
 
     public int getCourseID() {
         return CourseID;
