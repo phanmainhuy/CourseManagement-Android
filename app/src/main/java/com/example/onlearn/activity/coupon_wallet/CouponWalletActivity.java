@@ -101,8 +101,10 @@ public class CouponWalletActivity extends AppCompatActivity {
             walletAdapter.notifyDataSetChanged();
         };
 
-        Response.ErrorListener thatbai = error -> {
-            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if(error.getMessage()!=null){
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
         };
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlCPwallet, null, thanhcong, thatbai);

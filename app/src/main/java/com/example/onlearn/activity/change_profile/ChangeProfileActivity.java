@@ -119,7 +119,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
         parmas.put("UserId", 2);
         parmas.put("UserName", "PhanMaiNhuY");
-        parmas.put("Name", "han Mai Như Ú");
+        parmas.put("Name", "Name test put");
 //        parmas.put("CMND", txtCMND.getText().toString());
 //        parmas.put("Number", txtNumber.getText().toString());
 //        parmas.put("Email", txtEmail.getText().toString());
