@@ -23,7 +23,7 @@ public class CART_ITEMS implements Serializable {
         this.imgName = imgName;
     }
 
-   
+
 
     public int getCourseID() {
         return CourseID;
