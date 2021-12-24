@@ -2,7 +2,7 @@ package com.example.onlearn.models;
 
 import java.io.Serializable;
 
-public class CART_ITEMS implements Serializable {
+public class Items_CART implements Serializable {
     public int CourseID;
     public String CourseName;
     public String OriginPrice;
@@ -11,7 +11,7 @@ public class CART_ITEMS implements Serializable {
     public String TeacherName;
     public String imgName;
 
-    public CART_ITEMS(int courseID, String courseName, String originPrice, String afterPrice,
+    public Items_CART(int courseID, String courseName, String originPrice, String afterPrice,
                       int teacherID, String teacherName, String imgName)
     {
         CourseID = courseID;

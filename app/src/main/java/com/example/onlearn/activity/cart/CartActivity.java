@@ -11,20 +11,29 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 
+import java.util.ArrayList;
+
 public class CartActivity extends AppCompatActivity {
 
     Button btnContinue, btnThanhToan;
     String titleActionBar = "Giỏ hàng";
+    ListView lvCart;
+    TextView tvThanhTien, tvNull;
+    CartAdapter cartAdapter;
+    
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-
 
         DecorateActionBar();
 
@@ -32,6 +41,10 @@ public class CartActivity extends AppCompatActivity {
         //anh xa
         btnContinue = findViewById(R.id.btn_Cart_Continue);
         btnThanhToan = findViewById(R.id.btn_Cart_Pay);
+
+
+
+
 
 
         //xu ly

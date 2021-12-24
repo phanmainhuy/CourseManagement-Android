@@ -1,5 +1,6 @@
 package com.example.onlearn;
 
+import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.KHOAHOC;
@@ -8,8 +9,10 @@ import com.example.onlearn.models.LESSON;
 import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.models.USER;
 
+import java.util.ArrayList;
+
 public class GLOBAL {
-    public static String colorActionBar = "#3399FF";
+    public static String colorActionBar = "#6666CC";
     //api
     //Y: 192.168.1.8
     //http://192.168.1.9:63702/
@@ -27,5 +30,7 @@ public class GLOBAL {
 
     public static USER  userlogin;
     public static int idUser;
+
+    public static ArrayList<Items_CART> itemsCart_items;
 
 }
