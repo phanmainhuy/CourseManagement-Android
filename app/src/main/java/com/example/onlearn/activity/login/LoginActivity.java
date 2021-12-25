@@ -32,7 +32,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     String urlApi = GLOBAL.ip + "api/identity";
 
-    Button btnLogin, btnRegist, btnFB, btnGG;
+    Button btnLogin, btnRegist;
     TextView btnForgetPass;
     SharedPreferences remember;
     CheckBox chkSave;

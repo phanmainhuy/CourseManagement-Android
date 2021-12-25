@@ -134,8 +134,11 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
             kmAdapter.notifyDataSetChanged();
         };
 
-        com.android.volley.Response.ErrorListener thatbai = error ->
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+        com.android.volley.Response.ErrorListener thatbai = error ->{
+            if(error.getMessage() != null)
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+
+        };
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlkm, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);

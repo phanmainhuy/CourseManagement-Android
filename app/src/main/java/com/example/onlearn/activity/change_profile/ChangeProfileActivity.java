@@ -103,11 +103,11 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
 
         });
-//        try {
-//            changeProfileUser();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            changeProfileUser();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
     }
