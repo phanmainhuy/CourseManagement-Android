@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class VideoViewUtils {
+public class VideoViewUtils{
     public static final String URL_VIDEO_SAMPLE  = "https://ex1.o7planning.com/_testdatas_/mov_bbb.mp4";
     public static final String LOG_TAG= "AndroidVideoView";
     // String videoURL = "https://ex1.o7planning.com/_testdatas_/mov_bbb.mp4";
@@ -14,7 +14,7 @@ public class VideoViewUtils {
         try {
             Log.i(LOG_TAG, "Video URL: "+ videoURL);
 
-            Uri uri= Uri.parse( videoURL );
+            Uri uri= Uri.parse(videoURL);
 
             videoView.setVideoURI(uri);
             videoView.requestFocus();

@@ -394,7 +394,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         };
         com.android.volley.Response.ErrorListener thatbai = error ->
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+        {
+                if(error.getMessage() != null){
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+        };
 
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);

@@ -229,6 +229,8 @@
                 android:layout_marginTop="10dp"
                 android:text="Giới thiệu khóa học"
                 android:textColor="@color/black"
+                android:paddingLeft="5dp"
+                android:background="@drawable/textlines"
                 android:textSize="25dp"
                 android:textStyle="bold" />
 

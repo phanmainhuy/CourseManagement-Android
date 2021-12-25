@@ -46,7 +46,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
     API api;
     //url
-    String urlputUser = GLOBAL.ip + "api/nguoidung";
+    String urlputUser = GLOBAL.ip + "api/nguoidung/put";
     String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
     private USER user = GLOBAL.userlogin;
 
@@ -100,22 +100,23 @@ public class ChangeProfileActivity extends AppCompatActivity {
         });
 
         btnSave.setOnClickListener(v -> {
-
+            try {
+                changeProfileUser();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         });
-        try {
-            changeProfileUser();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
     }
 
+    //put method volley
     private void changeProfileUser() throws JSONException {
 
         JSONObject parmas = new JSONObject();
         Map<String, String> paramsHeaders = new HashMap<>();
+
 
         parmas.put("UserId", 2);
         parmas.put("UserName", "PhanMaiNhuY");
@@ -126,10 +127,16 @@ public class ChangeProfileActivity extends AppCompatActivity {
 //        parmas.put("DoB", txtDoB.getText().toString());
 //        parmas.put("Address", txtAddress.getText().toString());
         paramsHeaders.put("Content-Type", "application/json");
-        api.CallAPI(urlputUser, Request.Method.PUT, parmas.toString(), null, paramsHeaders, new ICallBack() {
+        //print paramas
+        Log.i("infoput", parmas.toString());
+
+
+        //api null
+        api.CallAPI(urlputUser, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
-                Log.i("success",dataResponse);
+
+                    Log.i("success", "my response" +dataResponse);
 
 //                try {
 //                    JSONObject result = new JSONObject(dataResponse);
@@ -140,10 +147,12 @@ public class ChangeProfileActivity extends AppCompatActivity {
 //                }
 
             }
+
             @Override
             public void ReponseError(String error) {
-                Log.e("error",error);
-                Toast.makeText(getApplicationContext(), "Sửa không thành công", Toast.LENGTH_LONG).show();
+
+                    Log.e("error", "my error: "+ error);
+                    Toast.makeText(getApplicationContext(), "Sửa không thành công", Toast.LENGTH_LONG).show();
             }
         });
 

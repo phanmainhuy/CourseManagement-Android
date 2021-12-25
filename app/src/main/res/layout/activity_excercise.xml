@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/baitap_Excercise"
+        android:id="@+id/rclbaitap_Excercise"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
 
