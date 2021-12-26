@@ -50,7 +50,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
     API api;
     //url
-    String urlputUser = GLOBAL.ip + "api/nguoidung/put";
+    String urlputUser = GLOBAL.ip + "api/nguoidung";
     String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
     private USER user = GLOBAL.userlogin;
 
@@ -109,13 +109,13 @@ public class ChangeProfileActivity extends AppCompatActivity {
         btnSave.setOnClickListener(v -> {
             try {
                 changeProfileUser();
-                Intent intent = new Intent(this, UserActivity.class);
-                startActivity(intent);
+
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();
             }
 
         });
+
 
 
     }
@@ -159,7 +159,8 @@ public class ChangeProfileActivity extends AppCompatActivity {
 //                } catch (JSONException e) {
 //                    e.printStackTrace();
 //                }
-
+                Intent intent = new Intent(context, UserActivity.class);
+                startActivity(intent);
             }
 
             @Override

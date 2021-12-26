@@ -17,6 +17,7 @@ public class utils {
         return format.format(Double.parseDouble(gia));
     }
 
+
 //    public static Date formatStringtoDate(String datestring) throws ParseException {
 ////        String strDate = "2013-05-15T10:00:00-0700";
 ////        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");

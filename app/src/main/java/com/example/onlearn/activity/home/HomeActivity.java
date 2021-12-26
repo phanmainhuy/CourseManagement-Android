@@ -303,6 +303,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+
+    //icon menu select
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
