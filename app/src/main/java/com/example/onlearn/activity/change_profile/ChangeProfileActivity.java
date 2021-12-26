@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -43,6 +44,8 @@ public class ChangeProfileActivity extends AppCompatActivity {
     TextView tvUserName;
     ImageView imgAvatar;
     RadioButton rdoMale, rdoFemale;
+    Context context;
+
 
     API api;
     //url
@@ -56,6 +59,9 @@ public class ChangeProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_changeprofile);
         DecorateActionBar();
 
+
+        context = getApplicationContext();
+        api = new API(ChangeProfileActivity.this);
         //anh xa
         btnLogout = findViewById(R.id.btn_User_LogOut);
         btnSave = findViewById(R.id.btn_User_Save);
