@@ -370,7 +370,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         response.getString("Number"),
                         response.getString("CMND"),
                         response.getString("HinhAnh"),
-                        response.getInt("DiemTichLuy")
+                        response.getInt("DiemTichLuy"),
+                        response.getInt("GroupID")
                         );
 
 //                (response.getString("Name"));

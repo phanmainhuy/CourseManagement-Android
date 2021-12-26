@@ -26,6 +26,7 @@ import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.login.LoginActivity;
+import com.example.onlearn.activity.profile_user.UserActivity;
 import com.example.onlearn.models.USER;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
@@ -108,6 +109,8 @@ public class ChangeProfileActivity extends AppCompatActivity {
         btnSave.setOnClickListener(v -> {
             try {
                 changeProfileUser();
+                Intent intent = new Intent(this, UserActivity.class);
+                startActivity(intent);
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();
             }
@@ -136,6 +139,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
         parmas.put("DoB", utils.converDatePutPost(txtDoB.getText().toString()));
         parmas.put("Address", txtAddress.getText().toString());
         parmas.put("HinhAnh", GLOBAL.userlogin.getImgUser());
+        parmas.put("GroupID", GLOBAL.userlogin.getGroupID());
         paramsHeaders.put("Content-Type", "application/json");
         //print paramas
         Log.i("infoput", parmas.toString());

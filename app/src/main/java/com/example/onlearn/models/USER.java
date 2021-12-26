@@ -14,10 +14,11 @@ public class USER implements Serializable {
     public String ImgUser;
     public String CMND;
     public int DiemTichLuy;
+    public int GroupID;
 
     public USER(int maND, String userName, String name, String email, String birthday,
                 String gender, String address, String number, String CMND,
-                String imgUser, int diemTichLuy) {
+                String imgUser, int diemTichLuy, int grID) {
         MaND = maND;
         UserName = userName;
         Ten = name;
@@ -29,6 +30,7 @@ public class USER implements Serializable {
         ImgUser = imgUser;
         this.CMND = CMND;
         DiemTichLuy = diemTichLuy;
+        GroupID = grID;
     }
 
 
@@ -122,6 +124,12 @@ public class USER implements Serializable {
     }
 
 
+    public int getGroupID() {
+        return GroupID;
+    }
 
+    public void setGroupID(int groupID) {
+        GroupID = groupID;
+    }
 
 }

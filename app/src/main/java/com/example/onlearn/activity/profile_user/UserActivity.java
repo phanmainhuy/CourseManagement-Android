@@ -95,6 +95,7 @@ public class UserActivity extends AppCompatActivity {
                     tvUserName.setText(response.getString("UserName"));
                     tvName.setText(response.getString("Name"));
                     tvEmail.setText(response.getString("Email"));
+                    tvPhone.setText(response.getString("Number"));
                     tvDoB.setText(utils.converDateFormate(response.getString("DoB")));
                     tvAddress.setText(response.getString("Address"));
                         tvGender.setText(response.getString("Gender"));
