@@ -39,18 +39,18 @@ public class utils {
         String newFormat = formatter.format(testDate);
         return newFormat;
     }
-//    public static String converDateFormate(String dateString) throws ParseException {
-//        String oldpattern = "yyyy-MM-dd'T'HH:mm";
-//        String newPattern = "dd-MM-yyyy";
-//
-//        SimpleDateFormat format = new SimpleDateFormat(oldpattern);
-//        Date testDate;
-//        testDate = format.parse(dateString);
-//
-//        SimpleDateFormat formatter = new SimpleDateFormat(newPattern);
-//        String newFormat = formatter.format(testDate);
-//        return newFormat;
-//    }
+    public static String converDatePutPost(String dateString) throws ParseException {
+        String oldpattern = "dd-MM-yyyy";
+        String newPattern = "yyyy-MM-dd";
+
+        SimpleDateFormat format = new SimpleDateFormat(oldpattern);
+        Date testDate;
+        testDate = format.parse(dateString);
+
+        SimpleDateFormat formatter = new SimpleDateFormat(newPattern);
+        String newFormat = formatter.format(testDate);
+        return newFormat;
+    }
 
     public void setClipboard(Context context, String text) {
         if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {

@@ -108,7 +108,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
         btnSave.setOnClickListener(v -> {
             try {
                 changeProfileUser();
-            } catch (JSONException e) {
+            } catch (JSONException | ParseException e) {
                 e.printStackTrace();
             }
 
@@ -118,27 +118,31 @@ public class ChangeProfileActivity extends AppCompatActivity {
     }
 
     //put method volley
-    private void changeProfileUser() throws JSONException {
+    private void changeProfileUser() throws JSONException, ParseException {
 
         JSONObject parmas = new JSONObject();
         Map<String, String> paramsHeaders = new HashMap<>();
 
-
-        parmas.put("UserId", 2);
-        parmas.put("UserName", "PhanMaiNhuY");
-        parmas.put("Name", "Name test put");
-//        parmas.put("CMND", txtCMND.getText().toString());
-//        parmas.put("Number", txtNumber.getText().toString());
-//        parmas.put("Email", txtEmail.getText().toString());
-//        parmas.put("DoB", txtDoB.getText().toString());
-//        parmas.put("Address", txtAddress.getText().toString());
+        //set cứng
+//        parmas.put("UserId", 2);
+//        parmas.put("UserName", "PhanMaiNhuY");
+//        parmas.put("Name", "Test put");
+        parmas.put("UserID", GLOBAL.idUser);
+        parmas.put("UserName", tvUserName.getText().toString());
+        parmas.put("Name", txtName.getText().toString());
+        parmas.put("CMND", txtCMND.getText().toString());
+        parmas.put("Number", txtNumber.getText().toString());
+        parmas.put("Email", txtEmail.getText().toString());
+        parmas.put("DoB", utils.converDatePutPost(txtDoB.getText().toString()));
+        parmas.put("Address", txtAddress.getText().toString());
+        parmas.put("HinhAnh", GLOBAL.userlogin.getImgUser());
         paramsHeaders.put("Content-Type", "application/json");
         //print paramas
         Log.i("infoput", parmas.toString());
 
 
         //api null
-        api.CallAPI(urlputUser, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
+        api.CallAPI(urlputUser, Request.Method.PUT, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
 
