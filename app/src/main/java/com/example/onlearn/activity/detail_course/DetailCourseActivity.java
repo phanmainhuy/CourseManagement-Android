@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,10 +22,14 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.onlearn.API.API;
+import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiActivity;
 import com.example.onlearn.activity.category_small.LoaiKhoaHocActivity;
+import com.example.onlearn.activity.login.LoginActivity;
+import com.example.onlearn.activity.register.RegisterActivity;
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.utils.utils;
@@ -34,6 +40,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DetailCourseActivity extends AppCompatActivity {
 
@@ -41,6 +49,10 @@ public class DetailCourseActivity extends AppCompatActivity {
     //http://192.168.1.160:45455/api/khoahoc?makhoa=1
     String urlgetKH = GLOBAL.ip + "api/khoahoc?makhoa=" + GLOBAL.KhoaHocClick.getMaKhoaHoc();
     String urlgetimgKH = GLOBAL.ip + GLOBAL.urlimg + "courses/";
+    String urlPostCart = GLOBAL.ip + "api/cartitem";
+    API api;
+    Context context;
+
 
     ImageView imgKH;
     TextView tvGiaKH, tvNgayKhaiGiang, tvDanhMuc, tvTheLoai, tvTenGV, tvMoTa, tvTenKH;
@@ -53,16 +65,9 @@ public class DetailCourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailcourse);
 
-        //ActionBar
-        ActionBar actionBar = getSupportActionBar();
-        //thanh tro ve home
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        //doi mau thanh action bar
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + TitleActionBar + "</font>"));
+        DecorateActionBar();
+        context = getApplicationContext();
+        api = new API(DetailCourseActivity.this);
 
         //anh xa
         imgKH = findViewById(R.id.imgKH_Detail);
@@ -90,7 +95,72 @@ public class DetailCourseActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        btnAddCart.setOnClickListener(v -> {
+            try {
+                addCart();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
+
+    void DecorateActionBar(){
+        //ActionBar
+        ActionBar actionBar = getSupportActionBar();
+        //thanh tro ve home
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        //doi mau thanh action bar
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + TitleActionBar + "</font>"));
+    }
+
+    private void addCart() throws JSONException {
+
+        JSONObject parmas = new JSONObject();
+        Map<String, String> paramsHeaders = new HashMap<>();
+
+        String GiaKH = tvGiaKH.getText().toString();
+
+        //put parmas
+        parmas.put("UserID", GLOBAL.idUser);
+        parmas.put("CourseID", GLOBAL.KhoaHocClick.getMaKhoaHoc());
+        parmas.put("OriginPrice", GiaKH);
+        paramsHeaders.put("Content-Type", "application/json");
+        api.CallAPI(urlPostCart, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
+            @Override
+            public void ReponseSuccess(String dataResponse) {
+                Log.i("success",dataResponse);
+
+                try {
+                    JSONObject result = new JSONObject(dataResponse);
+//                    GLOBAL.idUser = result.getInt("UserID");
+//                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+//                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
+//                startActivity(intent1);
+                Toast.makeText(getApplicationContext(), "Thêm vào thành công", Toast.LENGTH_SHORT).show();
+                // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
+                // JSONObject objResult = new JSONObject(dataResponse);
+                // }
+                //
+                //   JSONArray arrayResult = objResult.getJSONArray("data");
+            }
+            @Override
+            public void ReponseError(String error) {
+                Log.e("error", "My error: "+ error);
+                Toast.makeText(getApplicationContext(), "Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 
     private void getDetailCourse() {
 

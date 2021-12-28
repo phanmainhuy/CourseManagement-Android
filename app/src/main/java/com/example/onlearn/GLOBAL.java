@@ -30,7 +30,7 @@ public class GLOBAL {
     public static LESSON lesson;
 
     public static USER  userlogin;
-    public static int idUser;
+    public static int idUser=1;
 
     public static ArrayList<Items_CART> itemsCart_items;
     public static CART cart;
