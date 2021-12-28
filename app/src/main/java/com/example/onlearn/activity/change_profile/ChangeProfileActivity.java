@@ -140,6 +140,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
         parmas.put("Address", txtAddress.getText().toString());
         parmas.put("HinhAnh", GLOBAL.userlogin.getImgUser());
         parmas.put("GroupID", GLOBAL.userlogin.getGroupID());
+        parmas.put("Salary", GLOBAL.userlogin.getSalary());
         paramsHeaders.put("Content-Type", "application/json");
         //print paramas
         Log.i("infoput", parmas.toString());

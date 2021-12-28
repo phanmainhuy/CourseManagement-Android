@@ -1,5 +1,6 @@
 package com.example.onlearn;
 
+import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.DANHMUC;
@@ -18,7 +19,7 @@ public class GLOBAL {
     //http://192.168.1.9:63702/
     //https://localhost:63702/
     //10.0.2.2
-    public static String ip = "http://192.168.1.160:45455/";
+    public static String ip = "http://192.168.2.112:45455/";
     public static String urlimg = "assets/images/";
     //object
     public static DANHMUC DMClick;
@@ -29,8 +30,9 @@ public class GLOBAL {
     public static LESSON lesson;
 
     public static USER  userlogin;
-    public static int idUser;
+    public static int idUser = 1;
 
     public static ArrayList<Items_CART> itemsCart_items;
+    public static CART cart;
 
 }

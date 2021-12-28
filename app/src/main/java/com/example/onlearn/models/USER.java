@@ -15,10 +15,13 @@ public class USER implements Serializable {
     public String CMND;
     public int DiemTichLuy;
     public int GroupID;
+    public String Salary;
+
+
 
     public USER(int maND, String userName, String name, String email, String birthday,
                 String gender, String address, String number, String CMND,
-                String imgUser, int diemTichLuy, int grID) {
+                String imgUser, int diemTichLuy, int grID, String Salary) {
         MaND = maND;
         UserName = userName;
         Ten = name;
@@ -31,10 +34,17 @@ public class USER implements Serializable {
         this.CMND = CMND;
         DiemTichLuy = diemTichLuy;
         GroupID = grID;
+        this.Salary = Salary;
     }
 
 
+    public String getSalary() {
+        return Salary;
+    }
 
+    public void setSalary(String salary) {
+        Salary = salary;
+    }
     public int getMaND() {
         return MaND;
     }

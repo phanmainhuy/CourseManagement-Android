@@ -1,4 +1,4 @@
-package com.example.onlearn.activity.pay;
+package com.example.onlearn.activity.introduction;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -13,17 +13,27 @@ import android.view.MenuItem;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 
-public class PayActivity extends AppCompatActivity {
-    String titleActionBar = "Thanh toán";
+public class IntroductionActivity extends AppCompatActivity {
+    String titleActionBar =  "Giới thiệu";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay);
+        setContentView(R.layout.activity_introduction);
+
         decorateActionBar();
 
+
+
+
+
+
+
     }
+
+
+
 
 
     private void decorateActionBar() {
@@ -47,6 +57,5 @@ public class PayActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

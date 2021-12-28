@@ -15,6 +15,9 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.introduction.IntroductionActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.change_profile.ChangeProfileActivity"
             android:exported="false" />
         <activity
@@ -76,7 +79,13 @@
             android:exported="false" />
         <activity
             android:name=".activity.home.HomeActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.register.RegisterActivity"
             android:exported="false" />
@@ -85,13 +94,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.login.LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="false" />

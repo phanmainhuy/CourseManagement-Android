@@ -28,6 +28,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.Retrofit;
+import com.example.onlearn.activity.introduction.IntroductionActivity;
 import com.example.onlearn.activity.search.SearchActivity;
 import com.example.onlearn.activity.profile_user.UserActivity;
 import com.example.onlearn.activity.cart.CartActivity;
@@ -74,6 +75,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView rclOption, rclFavoriteCourses;
     OptionAdapter_Home_rcl optionAdapter;
     TopBuyCourseAdapter_rcl fvrCoursesAdapter;
+
+
 
     String urlUser = GLOBAL.ip + "api/hocvien?userId=" + GLOBAL.idUser;
     String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
@@ -339,7 +342,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent1);
         }
         if (option.getTitle().equals("Giới thiệu")) {
-            Intent intent1 = new Intent(this, LoginActivity.class);
+            Intent intent1 = new Intent(this, IntroductionActivity.class);
             startActivity(intent1);
         }
 
@@ -373,7 +376,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         response.getString("CMND"),
                         response.getString("HinhAnh"),
                         response.getInt("DiemTichLuy"),
-                        response.getInt("GroupID")
+                        response.getInt("GroupID"),
+                        response.getString("Salary")
                         );
 
 //                (response.getString("Name"));

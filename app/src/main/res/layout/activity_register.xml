@@ -46,7 +46,7 @@
                 />
 
             <EditText
-                android:id="@+id/txt_username"
+                android:id="@+id/txt_username_Register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:drawablePadding="10dp"
@@ -60,7 +60,7 @@
                 android:textColorHint="@color/grey_hint_txt"/>
 
             <EditText
-                android:id="@+id/txt_password"
+                android:id="@+id/txt_password_Register"
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
                 android:hint="Mật khẩu"
@@ -74,7 +74,7 @@
                 android:background="@drawable/decorate_text_register"
                 />
             <EditText
-                android:id="@+id/txt_repass"
+                android:id="@+id/txt_repass_Register"
                 android:layout_width="match_parent"
                 android:textColorHint="@color/grey_hint_txt"
                 android:drawableLeft="@drawable/ic_password"
@@ -89,7 +89,7 @@
                 />
 
             <EditText
-                android:id="@+id/txt_nameuser"
+                android:id="@+id/txt_name_Register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -104,7 +104,7 @@
                 />
 
             <EditText
-                android:id="@+id/txt_phone"
+                android:id="@+id/txt_phone_Register"
                 android:layout_width="match_parent"
                 android:textColorHint="@color/grey_hint_txt"
                 android:drawableLeft="@drawable/ic_phone"
@@ -126,7 +126,7 @@
 
 
             <Button
-                android:id="@+id/btnSaveRegister"
+                android:id="@+id/btnRegister_Register"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Đăng ký"
@@ -137,7 +137,7 @@
                 />
 
             <Button
-                android:id="@+id/btnCancel"
+                android:id="@+id/btnCancel_Register"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Huỷ bỏ"

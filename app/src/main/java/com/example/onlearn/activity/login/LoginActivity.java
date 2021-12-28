@@ -22,6 +22,7 @@ import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.register.RegisterActivity;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.utils.utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ActionBar actionBar = getSupportActionBar();
+
         context = getApplicationContext();
         api = new API(LoginActivity.this);
 
@@ -117,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         Map<String, String> paramsHeaders = new HashMap<>();
 
         String username = txtUsername.getText().toString();
-        String password = txtPassword.getText().toString();
+        String password = utils.encryptPassword(txtPassword.getText().toString());
 
         parmas.put("username", username);
         parmas.put("password", password);
@@ -147,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             @Override
             public void ReponseError(String error) {
-                Log.e("error",error);
+                Log.e("error", "My error: "+ error);
                 Toast.makeText(getApplicationContext(), "Sai mật khẩu", Toast.LENGTH_LONG).show();
             }
         });

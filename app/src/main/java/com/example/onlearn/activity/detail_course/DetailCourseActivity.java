@@ -67,7 +67,7 @@ public class DetailCourseActivity extends AppCompatActivity {
         //anh xa
         imgKH = findViewById(R.id.imgKH_Detail);
         tvGiaKH = findViewById(R.id.tvGiaKH_Detail);
-        tvNgayKhaiGiang = findViewById(R.id.tvNgayKhaiGiang_Detail);
+//        tvNgayKhaiGiang = findViewById(R.id.tvNgayKhaiGiang_Detail);
         tvDanhMuc = findViewById(R.id.tvTenDM_Detail);
         tvTheLoai = findViewById(R.id.tvTenLoai_Detail);
         tvTenGV = findViewById(R.id.tvTenGV_Detail);
@@ -101,7 +101,7 @@ public class DetailCourseActivity extends AppCompatActivity {
             try {
                 tvGiaKH.setText(utils.formatNumberCurrency(response.getString("DonGia")) + " đ");
                 tvMoTa.setText(response.getString("GioiThieu"));
-                tvNgayKhaiGiang.setText(utils.converDateFormate(response.getString("NgayChapThuan")));
+//                tvNgayKhaiGiang.setText(utils.converDateFormate(response.getString("NgayTao")));
 //                tvLuotMua.setText(String.valueOf(response.getInt("SoLuongMua")));
                 tvDanhMuc.setText(response.getString("TenDanhMuc"));
                 tvTheLoai.setText(response.getString("TenLoai"));
@@ -122,7 +122,7 @@ public class DetailCourseActivity extends AppCompatActivity {
                         response.getString("TenDanhMuc"), "", 0);
 
 
-            } catch (JSONException | ParseException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
 
