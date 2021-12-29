@@ -147,6 +147,7 @@ public class DetailCourseActivity extends AppCompatActivity {
 //                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
 //                startActivity(intent1);
                 Toast.makeText(getApplicationContext(), "Thêm vào thành công", Toast.LENGTH_SHORT).show();
+                btnAddCart.setEnabled(false);
                 // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
                 // JSONObject objResult = new JSONObject(dataResponse);
                 // }

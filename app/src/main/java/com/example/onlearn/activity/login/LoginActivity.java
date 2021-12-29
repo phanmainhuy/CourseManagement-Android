@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         Map<String, String> paramsHeaders = new HashMap<>();
 
         String username = txtUsername.getText().toString();
-        String password = utils.encryptPassword(txtPassword.getText().toString());
+        String password = txtPassword.getText().toString();
 
         parmas.put("username", username);
         parmas.put("password", password);
