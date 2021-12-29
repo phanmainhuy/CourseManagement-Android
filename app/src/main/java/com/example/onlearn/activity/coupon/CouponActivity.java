@@ -20,12 +20,14 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiAdapter;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.KHUYENMAI;
+import com.example.onlearn.models.USER;
 import com.example.onlearn.utils.SpacesItemDecoration;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
@@ -42,10 +44,14 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
     RecyclerView rclCoupon;
     ImageView imgAvatar;
     TextView tvUsername, tvName;
-    public TextView tvDiemTL;
+    TextView tvDiemTL;
+//    OnClickRCL_Coupon onBuyCoupon;
 
     String urlAvatar = GLOBAL.ip + GLOBAL.urlimg +  "users/";
 
+    String urlUser = GLOBAL.ip + "api/hocvien?userId=" + GLOBAL.idUser;
+
+    //post + get
     String urlkm = GLOBAL.ip + "api/khuyenmai";
 
     @Override
@@ -81,7 +87,6 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
 //        rclCoupon.addItemDecoration(dividerHorizontal);
 
 
-        //get data
         getAllCoupon();
         getUser();
 
@@ -131,6 +136,7 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
                     e.printStackTrace();
                 }
             }
+            getResetUser();
             kmAdapter.notifyDataSetChanged();
         };
 
@@ -145,7 +151,57 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
 
     }
 
+    public void getResetUser() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+            try {
 
+                GLOBAL.userlogin = new USER(response.getInt("UserId"),
+                        response.getString("UserName"),
+                        response.getString("Name"),
+                        response.getString("Email"),
+                        response.getString("DoB"),
+                        response.getString("Gender"),
+                        response.getString("Address"),
+                        response.getString("Number"),
+                        response.getString("CMND"),
+                        response.getString("HinhAnh"),
+                        response.getInt("DiemTichLuy"),
+                        response.getInt("GroupID"),
+                        response.getString("Salary")
+                );
+                tvDiemTL.setText(utils.formatNumberCurrency(String.valueOf(GLOBAL.userlogin.getDiemTichLuy())));
+
+//                (response.getString("Name"));
+//                (response.getString("Email"));
+//                tvDoB.setText(utils.converDateFormate(response.getString("DoB")));
+//                tvAddress.setText(response.getString("Address"));
+//                tvGender.setText(response.getString("Gender"));
+//                tvCmnd.setText(response.getString("CMND"));
+//                tvDiemTL.setText(utils.formatNumberCurrency(response.getString("DiemTichLuy")));
+//
+//                Picasso.with(this)
+//                        .load(urlImgUser + response.getString("HinhAnh"))
+//                        .placeholder(R.drawable.no_image_found)
+//                        .into(imgUser);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        };
+        com.android.volley.Response.ErrorListener thatbai = error ->
+        {
+            if(error.getMessage() != null){
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -158,13 +214,15 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
     }
 
 
+
+
     @Override
-    public void itemClickCoupon(KHUYENMAI khuyenmai) {
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
+    public void buyCoupon(KHUYENMAI khuyenmai) {
 
     }
 }

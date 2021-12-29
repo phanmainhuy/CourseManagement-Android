@@ -73,7 +73,7 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
         rclCart.setAdapter(cartAdapter);
         rclCart.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-
+        tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.TongTien));
         //get data
         getCartItems();
 
@@ -98,14 +98,12 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
         com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
 
             try {
-//                    JSONObject jsonObject = response.getJSONObject(i);
                 JSONArray Data = response.getJSONArray("CartItems");
-//                String hinhanh = response.getString("HinhAnh");
-//                String tenDM = response.getString("TenDanhMuc");
-                GLOBAL.cart = new CART(response.getInt("CourseCartID"),
-                        response.getInt("UserID"),
-                        response.getString("TongTien")
-                );
+//
+//                GLOBAL.cart = new CART(response.getInt("CourseCartID"),
+//                        response.getInt("UserID"),
+//                        response.getString("TongTien")
+//                );
                 tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()) + "VND");
                 for (int a = 0; a < Data.length(); a++) //have length
                 {

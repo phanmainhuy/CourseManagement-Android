@@ -26,7 +26,7 @@
         android:layout_marginLeft="112dp"
         android:gravity="center|left"
 
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="Tên khóa học"

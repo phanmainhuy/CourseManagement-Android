@@ -18,6 +18,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -40,7 +41,9 @@ import com.example.onlearn.activity.coupon.CouponActivity;
 import com.example.onlearn.activity.coupon_wallet.CouponWalletActivity;
 import com.example.onlearn.activity.detail_course.DetailCourseActivity;
 import com.example.onlearn.activity.login.LoginActivity;
+import com.example.onlearn.models.CART;
 import com.example.onlearn.models.DANHMUC;
+import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.THELOAI;
 import com.example.onlearn.R;
@@ -77,6 +80,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     TopBuyCourseAdapter_rcl fvrCoursesAdapter;
 
 
+    String urlGetIDCart = GLOBAL.ip + "api/cartitem/?pUserID=" + GLOBAL.idUser;
 
     String urlUser = GLOBAL.ip + "api/hocvien?userId=" + GLOBAL.idUser;
     String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
@@ -156,6 +160,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationLeft.setNavigationItemSelectedListener(this);
         //load quang cao
         loadViewFlipper();
+        getCartItems();
 
     }
 
@@ -409,6 +414,35 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
+    }
+
+    private void getCartItems() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+
+            try {
+                GLOBAL.cart = new CART(response.getInt("CourseCartID"),
+                        response.getInt("UserID"),
+                        response.getString("TongTien")
+                );
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        };
+
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if (error.getMessage() != null) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlGetIDCart, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+
+
     }
 
 //    //Lay danh muc

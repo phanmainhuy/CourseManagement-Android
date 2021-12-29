@@ -1,48 +1,59 @@
 package com.example.onlearn.activity.coupon;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.example.onlearn.API.API;
+import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiAdapter;
-import com.example.onlearn.models.KHOAHOC;
+import com.example.onlearn.activity.login.LoginActivity;
+import com.example.onlearn.activity.register.RegisterActivity;
 import com.example.onlearn.models.KHUYENMAI;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>{
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN> {
     Context context;
     ArrayList<KHUYENMAI> dulieu;
     private OnClickRCL_Coupon listener;
-
+    API api;
 
 
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "sales/";
+    String urlBuyCP = GLOBAL.ip + "/api/khuyenmai";
 
-    public CouponAdapter(Context context, ArrayList<KHUYENMAI> dulieu,  OnClickRCL_Coupon listener) {
+    public CouponAdapter(Context context, ArrayList<KHUYENMAI> dulieu, OnClickRCL_Coupon listener) {
         this.context = context;
         this.dulieu = dulieu;
         this.listener = listener;
     }
+
     @NonNull
 
     @Override
     public CouponAdapter.KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_coupon,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_coupon, null);
+        api = new API(parent.getContext());
         return new CouponAdapter.KHUNGNHIN(view);
     }
 
@@ -60,8 +71,8 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
         holder.tenkm.setText(km.TenKM);
         holder.hsdkm.setText(km.HSD);
         //set format cho giá
-        holder.giatrikm.setText(utils.formatNumberCurrency(km.GiaTri)+ " VND");
-        holder.diemmua.setText((km.Diem)+ " ");
+        holder.giatrikm.setText(utils.formatNumberCurrency(km.GiaTri) + " VND");
+        holder.diemmua.setText((km.Diem) + " ");
 
 //        holder.btnMuaMa.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -78,9 +89,6 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
     }
 
 
-
-
-
     @Override
     public int getItemCount() {
         return dulieu.size();
@@ -88,8 +96,7 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
     }
 
 
-    public class KHUNGNHIN extends RecyclerView.ViewHolder
-    {
+    public class KHUNGNHIN extends RecyclerView.ViewHolder {
         KHUYENMAI khuyenmai;
         ImageView imgKM;
         TextView tenkm, giatrikm, hsdkm, diemmua;
@@ -99,7 +106,7 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
         public KHUNGNHIN(@NonNull View itemView) {
             super(itemView);
 
-           //anh xa
+            //anh xa
             imgKM = itemView.findViewById(R.id.imgKM_Coupon);
             btnMuaMa = itemView.findViewById(R.id.btnBuyCoupon_Coupon);
             tenkm = itemView.findViewById(R.id.tvTenKM_Coupon);
@@ -107,22 +114,25 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
             hsdkm = itemView.findViewById(R.id.tvHSD_Coupon);
             diemmua = itemView.findViewById(R.id.tvDiemMua_Coupon);
 
-            btnMuaMa.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.itemClickCoupon(khuyenmai);
 
-                    Toast.makeText(context.getApplicationContext(), "Mua mã " + diemmua.getText(), Toast.LENGTH_SHORT).show();
-
-
+            btnMuaMa.setOnClickListener(v -> {
+                if (GLOBAL.userlogin.getDiemTichLuy() <= Integer.parseInt(khuyenmai.getDiem())) {
+                    Toast.makeText(context.getApplicationContext(), "Bạn chưa đủ điểm để mua khuyến mãi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    listener.buyCoupon(khuyenmai);
+                    try {
+                        postBuyCP();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+//                    Toast.makeText(context.getApplicationContext(), "Đã mua khuyến mãi", Toast.LENGTH_SHORT).show();
 
                 }
+
+
             });
-
-
-
-
-
 
 
             //Xu ly su kien click item cua recycle view
@@ -133,15 +143,50 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                 }
             });*/
         }
+        private void postBuyCP() throws JSONException {
 
+            JSONObject parmas = new JSONObject();
+            Map<String, String> paramsHeaders = new HashMap<>();
 
+            String iduser = String.valueOf(GLOBAL.idUser);
+            String makm = String.valueOf(khuyenmai.getMaKM());
 
+            //put parmas
+            parmas.put("MaHV", iduser);
+            parmas.put("MaKM", makm);
+            paramsHeaders.put("Content-Type", "application/json");
+            api.CallAPI(urlBuyCP, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
+                @Override
+                public void ReponseSuccess(String dataResponse) {
+                    Log.i("success",dataResponse);
 
+                    try {
+                        JSONObject result = new JSONObject(dataResponse);
+//                    GLOBAL.idUser = result.getInt("UserID");
+//                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    ((CouponActivity) context).getResetUser();
 
+//                    Intent intent1 = new Intent(RegisterActivity.this , LoginActivity.class);
+//                    startActivity(intent1);
+                    Toast.makeText(context.getApplicationContext(), "Mua khuyến mãi "+ tenkm.getText().toString() + " thành công", Toast.LENGTH_SHORT).show();
+                    // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
+                    // JSONObject objResult = new JSONObject(dataResponse);
+                    // }
+                    //
+                    //   JSONArray arrayResult = objResult.getJSONArray("data");
+                }
+                @Override
+                public void ReponseError(String error) {
+                    Log.e("error", "My error: "+ error);
+                    Toast.makeText(context.getApplicationContext(), "Bạn đã có mã khuyến mãi này trong ví", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
     }
-
-
 
 
 }
