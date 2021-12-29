@@ -22,13 +22,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.onlearn.activity.coupon.CouponAdapter;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
-import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.utils.utils;
 
 import org.json.JSONArray;
@@ -99,12 +97,15 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
 
             try {
                 JSONArray Data = response.getJSONArray("CartItems");
-//
-//                GLOBAL.cart = new CART(response.getInt("CourseCartID"),
-//                        response.getInt("UserID"),
-//                        response.getString("TongTien")
-//                );
-                tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()) + "VND");
+
+                GLOBAL.cart = new CART(response.getInt("CourseCartID"),
+                        response.getInt("UserID"),
+                        response.getString("TongTien"));
+
+
+
+                tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()) + " VND");
+
                 for (int a = 0; a < Data.length(); a++) //have length
                 {
                     JSONObject inData = Data.getJSONObject(a);
@@ -114,6 +115,7 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
                             inData.getString("CourseName"),
                             inData.getString("OriginPrice"),
                             inData.getString("AfterPrice"),
+                            inData.getString("TeacherName"),
                             inData.getString("ImageName")
 
                             )

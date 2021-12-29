@@ -15,10 +15,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -28,7 +26,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.onlearn.API.Retrofit;
 import com.example.onlearn.activity.introduction.IntroductionActivity;
 import com.example.onlearn.activity.search.SearchActivity;
 import com.example.onlearn.activity.profile_user.UserActivity;
@@ -43,16 +40,12 @@ import com.example.onlearn.activity.detail_course.DetailCourseActivity;
 import com.example.onlearn.activity.login.LoginActivity;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.DANHMUC;
-import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.models.KHOAHOC;
-import com.example.onlearn.models.THELOAI;
 import com.example.onlearn.R;
 import com.example.onlearn.models.USER;
-import com.example.onlearn.utils.utils;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,10 +55,6 @@ import com.example.onlearn.models.OPTION;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickRCL_Home {
 
@@ -160,7 +149,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationLeft.setNavigationItemSelectedListener(this);
         //load quang cao
         loadViewFlipper();
-        getCartItems();
+        getCart();
 
     }
 
@@ -385,19 +374,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         response.getString("Salary")
                         );
 
-//                (response.getString("Name"));
-//                (response.getString("Email"));
-//                tvDoB.setText(utils.converDateFormate(response.getString("DoB")));
-//                tvAddress.setText(response.getString("Address"));
-//                tvGender.setText(response.getString("Gender"));
-//                tvCmnd.setText(response.getString("CMND"));
-//                tvDiemTL.setText(utils.formatNumberCurrency(response.getString("DiemTichLuy")));
-//
-//                Picasso.with(this)
-//                        .load(urlImgUser + response.getString("HinhAnh"))
-//                        .placeholder(R.drawable.no_image_found)
-//                        .into(imgUser);
-
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -416,7 +392,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         requestQueue.add(jsonArrayRequest);
     }
 
-    private void getCartItems() {
+    public void getCart() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {

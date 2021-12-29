@@ -6,11 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +29,7 @@ import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.cart.CartActivity;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiActivity;
 import com.example.onlearn.activity.category_small.LoaiKhoaHocActivity;
 import com.example.onlearn.activity.login.LoginActivity;
@@ -148,6 +152,8 @@ public class DetailCourseActivity extends AppCompatActivity {
 //                startActivity(intent1);
                 Toast.makeText(getApplicationContext(), "Thêm vào thành công", Toast.LENGTH_SHORT).show();
                 btnAddCart.setEnabled(false);
+                btnAddCart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_hint_txt)));
+
                 // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
                 // JSONObject objResult = new JSONObject(dataResponse);
                 // }
@@ -157,6 +163,8 @@ public class DetailCourseActivity extends AppCompatActivity {
             @Override
             public void ReponseError(String error) {
                 Log.e("error", "My error: "+ error);
+                btnAddCart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_hint_txt)));
+                btnAddCart.setEnabled(false);
                 Toast.makeText(getApplicationContext(), "Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng", Toast.LENGTH_LONG).show();
             }
         });
@@ -209,13 +217,22 @@ public class DetailCourseActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_cart, menu);
 
+        return super.onCreateOptionsMenu(menu);
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 this.finish();
+                return true;
+            case R.id.action_cart:
+                Intent intent = new Intent(DetailCourseActivity.this, CartActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);

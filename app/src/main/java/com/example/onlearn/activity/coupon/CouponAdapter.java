@@ -162,10 +162,12 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
 
                     try {
                         JSONObject result = new JSONObject(dataResponse);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     ((CouponActivity) context).getResetUser();
+
 
                     Toast.makeText(context.getApplicationContext(), "Mua khuyến mãi "+ tenkm.getText().toString() + " thành công", Toast.LENGTH_SHORT).show();
 

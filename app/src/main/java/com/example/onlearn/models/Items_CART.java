@@ -8,12 +8,13 @@ public class Items_CART implements Serializable {
     public String OriginPrice;
     public String AfterPrice;
 //    public int TeacherID;
-//    public String TeacherName;
+    public String TeacherName;
     public String imgName;
 
     public Items_CART(int courseID, String courseName, String originPrice,
                       String afterPrice,
-//                      int teacherID, String teacherName,
+//                      int teacherID,
+                      String teacherName,
                       String imgName)
     {
         CourseID = courseID;
@@ -67,13 +68,13 @@ public class Items_CART implements Serializable {
 //        TeacherID = teacherID;
 //    }
 //
-//    public String getTeacherName() {
-//        return TeacherName;
-//    }
-//
-//    public void setTeacherName(String teacherName) {
-//        TeacherName = teacherName;
-//    }
+    public String getTeacherName() {
+        return TeacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        TeacherName = teacherName;
+    }
 
     public String getImgName() {
         return imgName;

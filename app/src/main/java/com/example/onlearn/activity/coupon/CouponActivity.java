@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiAdapter;
+import com.example.onlearn.activity.coupon_wallet.CouponWalletActivity;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.KHUYENMAI;
 import com.example.onlearn.models.USER;
@@ -203,11 +206,21 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
         requestQueue.add(jsonArrayRequest);
     }
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_couponwallet, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 this.finish();
+                return true;
+            case R.id.action_coupon:
+                Intent intent = new Intent(CouponActivity.this, CouponWalletActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
