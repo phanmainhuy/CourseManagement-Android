@@ -78,6 +78,31 @@ public class ChangeProfileActivity extends AppCompatActivity {
         rdoFemale = findViewById(R.id.rdb_User_Female);
 
 
+        setData();
+
+
+        btnLogout.setOnClickListener(v -> {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        });
+
+        btnSave.setOnClickListener(v -> {
+            try {
+                changeProfileUser();
+
+
+            } catch (JSONException | ParseException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+
+
+    }
+
+    //add data UI
+    private void setData(){
         //add data
         tvUserName.setText(user.getUserName());
         txtName.setText(user.getTen());
@@ -94,56 +119,64 @@ public class ChangeProfileActivity extends AppCompatActivity {
                 .load(urlImgUser + user.getImgUser())
                 .placeholder(R.drawable.no_image_found)
                 .into(imgAvatar);
-
-        //set Gender
-        if (user.getGender().equals("Nữ")) {
-            rdoFemale.setChecked(true);
-        } else {
-            rdoMale.setChecked(true);
-        }
-        btnLogout.setOnClickListener(v -> {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        });
-
-        btnSave.setOnClickListener(v -> {
-            try {
-                changeProfileUser();
-
-            } catch (JSONException | ParseException e) {
-                e.printStackTrace();
-            }
-
-        });
-
-
+        checkGender();
 
     }
+
+    private void checkGender(){
+        //set Gender
+        if (user.getGender().equals("Nam")){
+            rdoMale.setChecked(true);
+        }
+        else if (user.getGender().equals("Nữ")) {
+            rdoFemale.setChecked(true);
+        }
+        else {
+            rdoFemale.setChecked(false);
+            rdoMale.setChecked(false);
+        }
+    }
+
 
     //put method volley
     private void changeProfileUser() throws JSONException, ParseException {
 
         JSONObject parmas = new JSONObject();
         Map<String, String> paramsHeaders = new HashMap<>();
+        String gender= "";
 
-        //set cứng
-//        parmas.put("UserId", 2);
-//        parmas.put("UserName", "PhanMaiNhuY");
-//        parmas.put("Name", "Test put");
+        if(rdoMale.isChecked()){
+            gender = "Nam";
+        }
+        else if(rdoFemale.isChecked()){
+            gender = "Nữ";
+        }
+        else {
+            gender = "";
+        }
+
+
         parmas.put("UserID", GLOBAL.idUser);
         parmas.put("UserName", tvUserName.getText().toString());
         parmas.put("Name", txtName.getText().toString());
         parmas.put("CMND", txtCMND.getText().toString());
         parmas.put("Number", txtNumber.getText().toString());
         parmas.put("Email", txtEmail.getText().toString());
+        parmas.put("Gender", gender);
         parmas.put("DoB", utils.converDatePutPost(txtDoB.getText().toString()));
         parmas.put("Address", txtAddress.getText().toString());
         parmas.put("HinhAnh", GLOBAL.userlogin.getImgUser());
         parmas.put("GroupID", GLOBAL.userlogin.getGroupID());
         parmas.put("Salary", GLOBAL.userlogin.getSalary());
+
+
+
+
         paramsHeaders.put("Content-Type", "application/json");
+
+
         //print paramas
-        Log.i("infoput", parmas.toString());
+//        Log.i("infoput", parmas.toString());
 
 
         //api null
@@ -160,6 +193,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 //                } catch (JSONException e) {
 //                    e.printStackTrace();
 //                }
+
                 Intent intent = new Intent(context, UserActivity.class);
                 startActivity(intent);
             }

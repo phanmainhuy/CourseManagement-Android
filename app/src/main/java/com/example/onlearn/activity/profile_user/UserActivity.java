@@ -38,7 +38,6 @@ public class UserActivity extends AppCompatActivity {
     ImageView imgUser;
     TextView tvUserName, tvName, tvPhone, tvEmail, tvDoB, tvAddress, tvCmnd, tvDiemTL, tvGender;
 
-
     //url take imformation user
     String urlUser = GLOBAL.ip + "api/hocvien?userId="+GLOBAL.idUser;
     String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
@@ -106,6 +105,21 @@ public class UserActivity extends AppCompatActivity {
                         .load(urlImgUser + response.getString("HinhAnh"))
                         .placeholder(R.drawable.no_image_found)
                         .into(imgUser);
+
+                GLOBAL.userlogin = new USER(response.getInt("UserId"),
+                        response.getString("UserName"),
+                        response.getString("Name"),
+                        response.getString("Email"),
+                        response.getString("DoB"),
+                        response.getString("Gender"),
+                        response.getString("Address"),
+                        response.getString("Number"),
+                        response.getString("CMND"),
+                        response.getString("HinhAnh"),
+                        response.getInt("DiemTichLuy"),
+                        response.getInt("GroupID"),
+                        response.getString("Salary")
+                );
 
 
             } catch (JSONException | ParseException e) {

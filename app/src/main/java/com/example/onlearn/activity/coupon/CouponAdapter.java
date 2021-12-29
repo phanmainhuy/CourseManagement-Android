@@ -162,21 +162,13 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
 
                     try {
                         JSONObject result = new JSONObject(dataResponse);
-//                    GLOBAL.idUser = result.getInt("UserID");
-//                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     ((CouponActivity) context).getResetUser();
 
-//                    Intent intent1 = new Intent(RegisterActivity.this , LoginActivity.class);
-//                    startActivity(intent1);
                     Toast.makeText(context.getApplicationContext(), "Mua khuyến mãi "+ tenkm.getText().toString() + " thành công", Toast.LENGTH_SHORT).show();
-                    // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
-                    // JSONObject objResult = new JSONObject(dataResponse);
-                    // }
-                    //
-                    //   JSONArray arrayResult = objResult.getJSONArray("data");
+
                 }
                 @Override
                 public void ReponseError(String error) {

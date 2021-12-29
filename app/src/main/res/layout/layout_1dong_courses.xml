@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:paddingRight="5dp"
     android:paddingLeft="5dp"
-    android:paddingTop="5dp"
+    android:paddingTop="1dp"
     >
 
 
@@ -22,11 +22,11 @@
     <TextView
         android:id="@+id/tvTenKH_Home"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginLeft="112dp"
         android:gravity="center|left"
 
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="Tên khóa học"

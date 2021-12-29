@@ -112,6 +112,7 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
 
 //            btnDelete.setEnabled(false);
             btnDelete.setVisibility(itemView.INVISIBLE);
+            btnAdd.setVisibility(itemView.INVISIBLE);
 
             //xu ly su kien onclick btn add va delete
             btnAdd.setOnClickListener(v -> {
