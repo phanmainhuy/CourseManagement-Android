@@ -27,7 +27,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="65dp"
                 android:layout_marginRight="50dp"
-
+                android:background="@color/white"
                 app:srcCompat="@drawable/logoapp"
 
                 />
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18dp"
 
                 android:textStyle="bold"
@@ -47,8 +47,8 @@
                 android:layout_width="match_parent"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
-                android:textColor="@color/black"
+                android:layout_marginTop="50dp"
+                android:textColor="@color/white"
                 android:textSize="15dp"
                 android:text="Tài khoản" />
 
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:text="Mật khẩu" />
@@ -97,14 +97,15 @@
 
 
                 <CheckBox
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:id="@+id/chkSave_Login"
-                    android:layout_width="185dp"
+                    android:layout_width="130dp"
                     android:layout_height="30dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="4dp"
-                    android:buttonTint="@color/blue_ForgetPass"
+                    android:buttonTint="@color/black"
+                    android:layout_marginLeft="5dp"
                     android:text="Lưu mật khẩu"
+                    android:background="@color/white"
                     android:textColor="@color/black"
                     android:textSize="15dp"/>
 
@@ -128,7 +129,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/blue_ForgetPass"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textSize="15dp"
                     android:gravity="right"
                     android:text="Quên mật khẩu?" />
