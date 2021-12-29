@@ -95,7 +95,6 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
         ImageView imgKH;
         TextView tenkh, tengv, giakh;
         RatingBar ratingkh;
-        ImageButton btnAdd, btnDelete;
 
 
         public KHUNGNHIN(@NonNull View itemView) {
@@ -106,35 +105,20 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
             tengv = itemView.findViewById(R.id.tvTenGV_Home);
             ratingkh = itemView.findViewById(R.id.ratingBar_Home);
             giakh = itemView.findViewById(R.id.tvGiaKH_Home);
-            btnAdd = itemView.findViewById(R.id.btnAddCart_Home);
-            btnDelete = itemView.findViewById(R.id.btnRemoveCart_Home);
-
-
-//            btnDelete.setEnabled(false);
-            btnDelete.setVisibility(itemView.INVISIBLE);
-            btnAdd.setVisibility(itemView.INVISIBLE);
 
             //xu ly su kien onclick btn add va delete
-            btnAdd.setOnClickListener(v -> {
-                btnAdd.setVisibility(itemView.INVISIBLE);
-                btnDelete.setVisibility(itemView.VISIBLE);
-//                listener.ItemClickCourse(khoahoc);
-                try {
-                    addCart();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+//            btnAdd.setOnClickListener(v -> {
+//                btnAdd.setVisibility(itemView.INVISIBLE);
+//                btnDelete.setVisibility(itemView.VISIBLE);
+////                listener.ItemClickCourse(khoahoc);
+//                try {
+//                    addCart();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            });
 
-            });
-
-            btnDelete.setOnClickListener(v -> {
-                btnDelete.setVisibility(itemView.INVISIBLE);
-                btnAdd.setVisibility(itemView.VISIBLE);
-//                listener.ItemClickCourse(khoahoc);
-
-                String tenmh = tenkh.getText().toString();
-                Toast.makeText(context.getApplicationContext(), "Đã xóa khóa học " + tenmh, Toast.LENGTH_SHORT).show();
-            });
 
 
             //Xu ly su kien click item cua recycle view
@@ -144,49 +128,49 @@ public class TopBuyCourseAdapter_rcl extends RecyclerView.Adapter<TopBuyCourseAd
 
 
 
-        private void addCart() throws JSONException {
-
-            JSONObject parmas = new JSONObject();
-            Map<String, String> paramsHeaders = new HashMap<>();
-
-            String GiaKH = giakh.getText().toString();
-            String MaKH = String.valueOf(khoahoc.getMaKhoaHoc());
-
-            //put parmas
-            parmas.put("UserID", GLOBAL.idUser);
-            parmas.put("CourseID", MaKH);
-            parmas.put("OriginPrice", GiaKH);
-            paramsHeaders.put("Content-Type", "application/json");
-            api.CallAPI(urlApiCart, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
-                @Override
-                public void ReponseSuccess(String dataResponse) {
-                    Log.i("success",dataResponse);
-
-                    try {
-                        JSONObject result = new JSONObject(dataResponse);
-//                    GLOBAL.idUser = result.getInt("UserID");
-//                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    String tenmh = tenkh.getText().toString();
-                    Toast.makeText(context.getApplicationContext(), "Đã thêm khóa học " + tenmh, Toast.LENGTH_SHORT).show();
-
-//                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
-//                startActivity(intent1);
-                    // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
-                    // JSONObject objResult = new JSONObject(dataResponse);
-                    // }
-                    //
-                    //   JSONArray arrayResult = objResult.getJSONArray("data");
-                }
-                @Override
-                public void ReponseError(String error) {
-                    Log.e("error", "My error: "+ error);
-                    Toast.makeText(context.getApplicationContext(), "Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng", Toast.LENGTH_LONG).show();
-                }
-            });
-        }
+//        private void addCart() throws JSONException {
+//
+//            JSONObject parmas = new JSONObject();
+//            Map<String, String> paramsHeaders = new HashMap<>();
+//
+//            String GiaKH = giakh.getText().toString();
+//            String MaKH = String.valueOf(khoahoc.getMaKhoaHoc());
+//
+//            //put parmas
+//            parmas.put("UserID", GLOBAL.idUser);
+//            parmas.put("CourseID", MaKH);
+//            parmas.put("OriginPrice", GiaKH);
+//            paramsHeaders.put("Content-Type", "application/json");
+//            api.CallAPI(urlApiCart, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
+//                @Override
+//                public void ReponseSuccess(String dataResponse) {
+//                    Log.i("success",dataResponse);
+//
+//                    try {
+//                        JSONObject result = new JSONObject(dataResponse);
+////                    GLOBAL.idUser = result.getInt("UserID");
+////                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    String tenmh = tenkh.getText().toString();
+//                    Toast.makeText(context.getApplicationContext(), "Đã thêm khóa học " + tenmh, Toast.LENGTH_SHORT).show();
+//
+////                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
+////                startActivity(intent1);
+//                    // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
+//                    // JSONObject objResult = new JSONObject(dataResponse);
+//                    // }
+//                    //
+//                    //   JSONArray arrayResult = objResult.getJSONArray("data");
+//                }
+//                @Override
+//                public void ReponseError(String error) {
+//                    Log.e("error", "My error: "+ error);
+//                    Toast.makeText(context.getApplicationContext(), "Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng", Toast.LENGTH_LONG).show();
+//                }
+//            });
+//        }
 
 
 

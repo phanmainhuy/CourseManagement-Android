@@ -85,7 +85,6 @@ public class ClassroomAdapter  extends RecyclerView.Adapter<ClassroomAdapter.KHU
         ImageView imgKH;
         TextView tenkh, tengv, giakh;
         RatingBar ratingkh;
-        ImageButton btnAdd, btnDelete;
 
 
         public KHUNGNHIN(@NonNull View itemView) {
@@ -96,12 +95,9 @@ public class ClassroomAdapter  extends RecyclerView.Adapter<ClassroomAdapter.KHU
             tengv = itemView.findViewById(R.id.tvTenGV_Home);
             ratingkh = itemView.findViewById(R.id.ratingBar_Home);
             giakh = itemView.findViewById(R.id.tvGiaKH_Home);
-            btnAdd = itemView.findViewById(R.id.btnAddCart_Home);
-            btnDelete = itemView.findViewById(R.id.btnRemoveCart_Home);
 
-            //an btn
-            btnDelete.setVisibility(itemView.INVISIBLE);
-            btnAdd.setVisibility(itemView.INVISIBLE);
+
+
 
 
             //Xu ly su kien click item cua recycle view

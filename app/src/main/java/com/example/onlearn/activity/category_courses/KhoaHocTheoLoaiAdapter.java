@@ -80,7 +80,7 @@ public class KhoaHocTheoLoaiAdapter extends RecyclerView.Adapter<KhoaHocTheoLoai
         ImageView imgKH;
         TextView tenkh, tengv, giakh;
         RatingBar ratingkh;
-        ImageButton btnAdd, btnDelete;
+
 
 
         public KHUNGNHIN(@NonNull View itemView) {
@@ -91,22 +91,9 @@ public class KhoaHocTheoLoaiAdapter extends RecyclerView.Adapter<KhoaHocTheoLoai
             tengv = itemView.findViewById(R.id.tvTenGV_Home);
             ratingkh = itemView.findViewById(R.id.ratingBar_Home);
             giakh = itemView.findViewById(R.id.tvGiaKH_Home);
-            btnAdd = itemView.findViewById(R.id.btnAddCart_Home);
-            btnDelete = itemView.findViewById(R.id.btnRemoveCart_Home);
 
-            //xuly btn
-            btnDelete.setVisibility(itemView.INVISIBLE);
 
-            btnAdd.setOnClickListener(v -> {
-                btnAdd.setVisibility(itemView.INVISIBLE);
-                btnDelete.setVisibility(itemView.VISIBLE);
-            });
 
-            btnDelete.setOnClickListener(v -> {
-                btnDelete.setVisibility(itemView.INVISIBLE);
-                btnAdd.setVisibility(itemView.VISIBLE);
-
-            });
 
 
             //Xu ly su kien click item cua recycle view

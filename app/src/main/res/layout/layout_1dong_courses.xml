@@ -78,31 +78,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTenGV_Home" />
 
-    <ImageButton
-        android:id="@+id/btnRemoveCart_Home"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="352dp"
-        android:layout_marginTop="80dp"
-
-        android:background="@drawable/ic_btndelete"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
-
-    <ImageButton
-        android:id="@+id/btnAddCart_Home"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="352dp"
-        android:layout_marginTop="80dp"
-
-        android:background="@drawable/decorate_btn_addcart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_add_24" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
