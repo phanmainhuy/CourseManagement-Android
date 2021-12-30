@@ -14,16 +14,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.coupon.CouponActivity;
 import com.example.onlearn.activity.home.HomeActivity;
+import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -96,24 +101,35 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
             dongia = itemView.findViewById(R.id.tvDonGia_Cart);
             btnDeleteCart = itemView.findViewById(R.id.btnRemoveCart_Cart);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.itemClick(items_cart);
 
-                }
-            });
 
             btnDeleteCart.setOnClickListener(v -> {
-                CartActivity.dataCart.remove(items_cart);
-
-                try {
-                    btnDeleteCart.setEnabled(false);
-                    deleteCart();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                //dulieu.remove(items_cart);
+                if (CartActivity.dataCart.size()<= 0){
+                    ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
                 }
+                if ((CartActivity.dataCart.size()>=0))
+                {
+                    ((CartActivity)(context)).rclCart.setVisibility(View.VISIBLE);
+                    listener.itemClick(items_cart);
+                    try {
+                        btnDeleteCart.setEnabled(false);
+                        deleteCart();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+//                    ((CartActivity)(context)).getCartItems();
+
+                }
+                else if(CartActivity.dataCart.size()<=0)
+                {
+                    ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+//                        ((CartActivity)(context)).cartAdapter.notify();
+//                    ((CartActivity)(context)).getCartItems();
+
+                }
+
 
             });
 
@@ -156,6 +172,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
                     }
                     String tenkh = tenKH.getText().toString();
                     Toast.makeText(context.getApplicationContext(), "Đã xóa khóa học " + tenkh, Toast.LENGTH_SHORT).show();
+//                    setItems_cart(context);
                     ((CartActivity) context).getCartItems();
 //                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
 //                startActivity(intent1);
@@ -173,7 +190,60 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
                 }
             });
         }
-
+//        private void setItems_cart(Context context) {
+//            RequestQueue requestQueue = Volley.newRequestQueue(context);
+//
+//            com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+//
+//                try {
+//                    JSONArray Data = response.getJSONArray("CartItems");
+//
+//                    GLOBAL.cart = new CART(response.getInt("CourseCartID"),
+//                            response.getInt("UserID"),
+//                            response.getString("TongTien"));
+//                    dulieu = new ArrayList<>();
+//                    for (int a = 0; a < Data.length(); a++) //have length
+//                    {
+//                        JSONObject inData = Data.getJSONObject(a);
+//
+//                        dulieu.add(new Items_CART(
+//                                        inData.getInt("CourseID"),
+//                                        inData.getString("CourseName"),
+//                                        inData.getString("OriginPrice"),
+//                                        inData.getString("AfterPrice"),
+//                                        inData.getString("TeacherName"),
+//                                        inData.getString("ImageName")
+//                                )
+//                        );
+//
+////                        GLOBAL.itemsCart_items = dulieu;
+////                        if (GLOBAL.itemsCart_items.size() > 0) {
+////                            ((CartActivity) context).tvNull.setVisibility(View.INVISIBLE);
+////                        } else {
+////                            ((CartActivity) context).tvNull.setVisibility(View.VISIBLE);
+////                        }
+//                    }
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+// //               ((CartActivity) context).cartAdapter.notifyDataSetChanged();
+//            };
+//
+//            com.android.volley.Response.ErrorListener thatbai = error -> {
+//                if (error.getMessage() != null) {
+//                    Toast.makeText(context.getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+//                }
+//            };
+//            String urlgetCart = GLOBAL.ip + "api/cartitem/?pUserID=" + GLOBAL.idUser;
+//
+//            JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlgetCart, null, thanhcong, thatbai);
+//            requestQueue.add(jsonArrayRequest);
+//
+//
+//        }
 //        private void resetCart(){
 //
 //        }

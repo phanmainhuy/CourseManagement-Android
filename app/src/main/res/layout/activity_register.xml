@@ -86,35 +86,7 @@
                 android:background="@drawable/decorate_text_register"
                 />
 
-            <EditText
-                android:id="@+id/txt_name_Register"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/decorate_text_register"
-                android:drawableLeft="@drawable/ic_account"
-                android:hint="Họ và tên"
-                android:text=""
-                android:drawablePadding="10dp"
-                android:textSize="15dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/grey_hint_txt"
-                />
 
-            <EditText
-                android:id="@+id/txt_phone_Register"
-                android:layout_width="match_parent"
-                android:textColorHint="@color/grey_hint_txt"
-                android:drawableLeft="@drawable/ic_phone"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:inputType="text"
-                android:textSize="15dp"
-                android:layout_height="50dp"
-                android:drawablePadding="10dp"
-                android:hint="Số điện thoại"
-                android:background="@drawable/decorate_text_register"
-                />
 
 
 
