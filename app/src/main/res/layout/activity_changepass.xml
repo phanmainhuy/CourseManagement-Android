@@ -43,11 +43,11 @@
             android:text="Learning is the eye of the mind" />
 
         <TextView
-            android:id="@+id/lblMatKhau_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="15dp"
             android:text="Mật khẩu mới" />
 
@@ -73,11 +73,11 @@
 
 
         <TextView
-            android:id="@+id/lblMatKhau_Login2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="15dp"
             android:text="Nhập lại mật khẩu" />
 
