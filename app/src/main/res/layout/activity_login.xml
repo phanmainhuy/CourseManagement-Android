@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.login.LoginActivity"
 
-    android:background="@drawable/background"
+    android:background="@drawable/background3"
     android:orientation="vertical"
     >
     <ScrollView
@@ -27,7 +27,6 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="65dp"
                 android:layout_marginRight="50dp"
-                android:background="@color/white"
                 app:srcCompat="@drawable/logoapp"
 
                 />
@@ -37,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="18dp"
 
                 android:textStyle="bold"
@@ -102,11 +101,11 @@
                     android:layout_width="130dp"
                     android:layout_height="30dp"
                     android:layout_marginBottom="10dp"
-                    android:buttonTint="@color/black"
+                    android:buttonTint="@color/yellow"
                     android:layout_marginLeft="5dp"
                     android:text="Lưu mật khẩu"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
                     android:textSize="15dp"/>
 
 

@@ -56,7 +56,7 @@ public class DetailCourseActivity extends AppCompatActivity {
     String urlPostCart = GLOBAL.ip + "api/cartitem";
     API api;
     Context context;
-
+    double priceCourses;
 
     ImageView imgKH;
     TextView tvGiaKH, tvNgayKhaiGiang, tvDanhMuc, tvTheLoai, tvTenGV, tvMoTa, tvTenKH;
@@ -127,12 +127,12 @@ public class DetailCourseActivity extends AppCompatActivity {
         JSONObject parmas = new JSONObject();
         Map<String, String> paramsHeaders = new HashMap<>();
 
-        String GiaKH = tvGiaKH.getText().toString();
+//        String GiaKH = tvGiaKH.getText().toString();
 
         //put parmas
         parmas.put("UserID", GLOBAL.idUser);
         parmas.put("CourseID", GLOBAL.KhoaHocClick.getMaKhoaHoc());
-        parmas.put("OriginPrice", GiaKH);
+        parmas.put("OriginPrice", priceCourses);
         paramsHeaders.put("Content-Type", "application/json");
         api.CallAPI(urlPostCart, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
@@ -187,7 +187,7 @@ public class DetailCourseActivity extends AppCompatActivity {
                 tvTenGV.setText(response.getString("TenGV"));
                 tvTenKH.setText(response.getString("TenKhoaHoc"));
                 ratingKH.setRating(response.getInt("DanhGia"));
-
+                priceCourses = response.getDouble("DonGia");
                 Picasso.with(this)
                         .load(urlgetimgKH + response.getString("HinhAnh"))
                         .placeholder(R.drawable.no_image_found)

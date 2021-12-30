@@ -43,7 +43,7 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
     TextView tvThanhTien, tvNull;
     CartAdapter cartAdapter;
     Context context;
-    ArrayList<Items_CART> dataCart = new ArrayList<>();
+    public static ArrayList<Items_CART> dataCart = new ArrayList<>();
 
 
     String urlgetCart = GLOBAL.ip + "api/cartitem/?pUserID=" + GLOBAL.idUser;
@@ -90,7 +90,7 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
 
     }
 
-    private void getCartItems() {
+    public void getCartItems() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
@@ -103,7 +103,6 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
                         response.getString("TongTien"));
 
 
-
                 tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()) + " VND");
 
                 for (int a = 0; a < Data.length(); a++) //have length
@@ -111,22 +110,19 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
                     JSONObject inData = Data.getJSONObject(a);
 
                     dataCart.add(new Items_CART(
-                            inData.getInt("CourseID"),
-                            inData.getString("CourseName"),
-                            inData.getString("OriginPrice"),
-                            inData.getString("AfterPrice"),
-                            inData.getString("TeacherName"),
-                            inData.getString("ImageName")
-
+                                    inData.getInt("CourseID"),
+                                    inData.getString("CourseName"),
+                                    inData.getString("OriginPrice"),
+                                    inData.getString("AfterPrice"),
+                                    inData.getString("TeacherName"),
+                                    inData.getString("ImageName")
                             )
-
                     );
 
                     GLOBAL.itemsCart_items = dataCart;
-                    if(GLOBAL.itemsCart_items.size() >0){
+                    if (GLOBAL.itemsCart_items.size() > 0) {
                         tvNull.setVisibility(View.INVISIBLE);
-                    }
-                    else {
+                    } else {
                         tvNull.setVisibility(View.VISIBLE);
                     }
                 }
@@ -151,6 +147,11 @@ public class CartActivity extends AppCompatActivity implements OnClickRCL_Cart {
 
     }
 
+    public void reloadCart() {
+        finish();
+        Intent intent1 = new Intent(CartActivity.this, CartActivity.class);
+        startActivity(intent1);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

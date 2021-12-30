@@ -36,7 +36,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
     ArrayList<Items_CART> dulieu;
     private OnClickRCL_Cart listener;
     API api;
-    int maGioHang, maKhoaHoc;
 
 
 
@@ -106,9 +105,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
             });
 
             btnDeleteCart.setOnClickListener(v -> {
+                CartActivity.dataCart.remove(items_cart);
 
                 try {
+                    btnDeleteCart.setEnabled(false);
                     deleteCart();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -129,6 +131,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
 
             JSONObject parmas = new JSONObject();
             Map<String, String> paramsHeaders = new HashMap<>();
+            int maGioHang, maKhoaHoc;
 
 
             //put parmas
@@ -153,7 +156,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
                     }
                     String tenkh = tenKH.getText().toString();
                     Toast.makeText(context.getApplicationContext(), "Đã xóa khóa học " + tenkh, Toast.LENGTH_SHORT).show();
-
+                    ((CartActivity) context).getCartItems();
 //                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
 //                startActivity(intent1);
                     // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
@@ -170,6 +173,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
                 }
             });
         }
+
+//        private void resetCart(){
+//
+//        }
 
 
     }
