@@ -43,7 +43,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
     API api;
 
 
-
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
     public CartAdapter(Context context, ArrayList<Items_CART> dulieu, OnClickRCL_Cart listener) {
@@ -102,35 +101,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
             btnDeleteCart = itemView.findViewById(R.id.btnRemoveCart_Cart);
 
 
-
             btnDeleteCart.setOnClickListener(v -> {
                 //dulieu.remove(items_cart);
-                if (CartActivity.dataCart.size()<= 0){
-                    ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+                try {
+                    deleteCart();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                if ((CartActivity.dataCart.size()>=0))
-                {
-                    ((CartActivity)(context)).rclCart.setVisibility(View.VISIBLE);
-                    listener.itemClick(items_cart);
-                    try {
-                        btnDeleteCart.setEnabled(false);
-                        deleteCart();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-//                    ((CartActivity)(context)).getCartItems();
-
-                }
-                else if(CartActivity.dataCart.size()<=0)
-                {
-                    ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
-//                        ((CartActivity)(context)).cartAdapter.notify();
-//                    ((CartActivity)(context)).getCartItems();
-
-                }
-
-
             });
 
 
@@ -149,38 +126,29 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
             Map<String, String> paramsHeaders = new HashMap<>();
             int maGioHang, maKhoaHoc;
 
-
             //put parmas
 //            parmas.put("maGioHang", GLOBAL.cart.getCartID());
 //            parmas.put("maKhoaHoc", items_cart.getCourseID());
             maGioHang = GLOBAL.cart.getCartID();
             maKhoaHoc = items_cart.getCourseID();
             //http://192.168.1.160:45455/api/cartitem/?maGioHang=18&maKhoaHoc=1
-            String urlApiDeleteCart = GLOBAL.ip + "api/cartitem/?maGioHang="+maGioHang+"&maKhoaHoc="+maKhoaHoc;
+            String urlApiDeleteCart = GLOBAL.ip + "api/cartitem/?maGioHang=" + maGioHang + "&maKhoaHoc=" + maKhoaHoc;
             paramsHeaders.put("Content-Type", "application/json");
             api.CallAPI(urlApiDeleteCart, Request.Method.DELETE, parmas.toString(), null, paramsHeaders, new ICallBack() {
                 @Override
                 public void ReponseSuccess(String dataResponse) {
                     Log.i("success", dataResponse);
-
                     try {
                         JSONObject result = new JSONObject(dataResponse);
-//                    GLOBAL.idUser = result.getInt("UserID");
-//                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
+                        CartActivity.dataCart.clear();
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     String tenkh = tenKH.getText().toString();
                     Toast.makeText(context.getApplicationContext(), "Đã xóa khóa học " + tenkh, Toast.LENGTH_SHORT).show();
-//                    setItems_cart(context);
                     ((CartActivity) context).getCartItems();
-//                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
-//                startActivity(intent1);
-                    // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
-                    // JSONObject objResult = new JSONObject(dataResponse);
-                    // }
-                    //
-                    //   JSONArray arrayResult = objResult.getJSONArray("data");
+
                 }
 
                 @Override
@@ -190,63 +158,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
                 }
             });
         }
-//        private void setItems_cart(Context context) {
-//            RequestQueue requestQueue = Volley.newRequestQueue(context);
-//
-//            com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
-//
-//                try {
-//                    JSONArray Data = response.getJSONArray("CartItems");
-//
-//                    GLOBAL.cart = new CART(response.getInt("CourseCartID"),
-//                            response.getInt("UserID"),
-//                            response.getString("TongTien"));
-//                    dulieu = new ArrayList<>();
-//                    for (int a = 0; a < Data.length(); a++) //have length
-//                    {
-//                        JSONObject inData = Data.getJSONObject(a);
-//
-//                        dulieu.add(new Items_CART(
-//                                        inData.getInt("CourseID"),
-//                                        inData.getString("CourseName"),
-//                                        inData.getString("OriginPrice"),
-//                                        inData.getString("AfterPrice"),
-//                                        inData.getString("TeacherName"),
-//                                        inData.getString("ImageName")
-//                                )
-//                        );
-//
-////                        GLOBAL.itemsCart_items = dulieu;
-////                        if (GLOBAL.itemsCart_items.size() > 0) {
-////                            ((CartActivity) context).tvNull.setVisibility(View.INVISIBLE);
-////                        } else {
-////                            ((CartActivity) context).tvNull.setVisibility(View.VISIBLE);
-////                        }
-//                    }
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//
-//
-// //               ((CartActivity) context).cartAdapter.notifyDataSetChanged();
-//            };
-//
-//            com.android.volley.Response.ErrorListener thatbai = error -> {
-//                if (error.getMessage() != null) {
-//                    Toast.makeText(context.getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-//                }
-//            };
-//            String urlgetCart = GLOBAL.ip + "api/cartitem/?pUserID=" + GLOBAL.idUser;
-//
-//            JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlgetCart, null, thanhcong, thatbai);
-//            requestQueue.add(jsonArrayRequest);
-//
-//
-//        }
-//        private void resetCart(){
-//
-//        }
+
 
 
     }

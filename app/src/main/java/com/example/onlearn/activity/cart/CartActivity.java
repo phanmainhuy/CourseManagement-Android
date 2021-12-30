@@ -71,8 +71,8 @@ public class CartActivity extends AppCompatActivity{
 
         deleteCart = c -> {
             dataCart.remove(c);
-            dataCart = new ArrayList<>();
-            getCartItems();
+//            dataCart.clear();
+//            getCartItems();
             cartAdapter = new CartAdapter(CartActivity.this,dataCart, deleteCart);
             rclCart.setAdapter(cartAdapter);
             checkData();
@@ -123,6 +123,8 @@ public class CartActivity extends AppCompatActivity{
 //            rclCart.setVisibility(View.VISIBLE);
         }
     }
+
+
     public void getCartItems() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -137,10 +139,12 @@ public class CartActivity extends AppCompatActivity{
                         response.getString("TongTien"));
 
                 tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()) + " VND");
-
+                dataCart.clear();
                 for (int a = 0; a < Data.length(); a++) //have length
                 {
                     JSONObject inData = Data.getJSONObject(a);
+//                    dataCart = new ArrayList<>();
+
                     dataCart.add(new Items_CART(
                                     inData.getInt("CourseID"),
                                     inData.getString("CourseName"),
@@ -150,14 +154,12 @@ public class CartActivity extends AppCompatActivity{
                                     inData.getString("ImageName")
                             )
                     );
-
-                    GLOBAL.itemsCart_items = dataCart;
-                    if (GLOBAL.itemsCart_items.size() > 0) {
-                        tvNull.setVisibility(View.INVISIBLE);
-                    } else {
-                        tvNull.setVisibility(View.VISIBLE);
-                    }
-
+                }
+                GLOBAL.itemsCart_items = dataCart;
+                if (GLOBAL.itemsCart_items.size() > 0) {
+                    tvNull.setVisibility(View.INVISIBLE);
+                } else {
+                    tvNull.setVisibility(View.VISIBLE);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
