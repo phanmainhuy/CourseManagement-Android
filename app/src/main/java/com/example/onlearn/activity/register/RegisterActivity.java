@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
+import com.example.onlearn.activity.after_regist.AfterRegistActivity;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.login.LoginActivity;
 import com.example.onlearn.R;
@@ -49,7 +50,6 @@ public class RegisterActivity extends AppCompatActivity {
         api = new API(RegisterActivity.this);
 
 
-
         //anh xa
         btnCancel = findViewById(R.id.btnCancel_Register);
         btnRegist = findViewById(R.id.btnRegister_Register);
@@ -58,37 +58,34 @@ public class RegisterActivity extends AppCompatActivity {
         txtRePass = findViewById(R.id.txt_repass_Register);
 
 
-
         //Onclick
         btnCancel.setOnClickListener(v -> {
-            Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
+            Intent intent1 = new Intent(RegisterActivity.this, AfterRegistActivity.class);
             startActivity(intent1);
         });
 
 
         btnRegist.setOnClickListener(v -> {
-            if (txtUserName.getText().toString().equals("")){
+            if (txtUserName.getText().toString().equals("")) {
                 Toast.makeText(context, "Vui lòng không bỏ trống tên đăng nhập", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (txtRePass.getText().toString().equals("")||txtPassword.getText().toString().equals("")){
+            if (txtRePass.getText().toString().equals("") || txtPassword.getText().toString().equals("")) {
                 Toast.makeText(context, "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (!txtPassword.getText().toString().equals(txtRePass.getText().toString())){
+            if (!txtPassword.getText().toString().equals(txtRePass.getText().toString())) {
                 Toast.makeText(context, "Mật khẩu nhập lại không khớp", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(txtUserName.getText().toString().length() < 6){
-                Toast.makeText(context, "Tên đăng nhập phải trên 6 ký tự\nBạn đang nhập "+txtUserName.getText().toString().length() + " kí tự", Toast.LENGTH_SHORT).show();
+            if (txtUserName.getText().toString().length() < 6) {
+                Toast.makeText(context, "Tên đăng nhập phải trên 6 ký tự\nBạn đang nhập " + txtUserName.getText().toString().length() + " kí tự", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(txtPassword.getText().toString().length() < 6){
-                Toast.makeText(context, "Mật khẩu phải trên 6 ký tự\nBạn đang nhập "+txtPassword.getText().toString().length() + " kí tự", Toast.LENGTH_SHORT).show();
+            if (txtPassword.getText().toString().length() < 6) {
+                Toast.makeText(context, "Mật khẩu phải trên 6 ký tự\nBạn đang nhập " + txtPassword.getText().toString().length() + " kí tự", Toast.LENGTH_SHORT).show();
                 return;
-            }
-
-            else {
+            } else {
                 try {
                     postRegister();
                 } catch (JSONException e) {
@@ -97,18 +94,10 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
 
-
-//            else
-//            {
-//
-//            }
-
-
         });
 
-
-
     }
+
     private void postRegister() throws JSONException {
 
         JSONObject parmas = new JSONObject();
@@ -124,39 +113,29 @@ public class RegisterActivity extends AppCompatActivity {
         api.CallAPI(urlPostRegist, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
-                Log.i("success",dataResponse);
+                Log.i("success", dataResponse);
 
                 try {
                     JSONObject result = new JSONObject(dataResponse);
-//                    GLOBAL.idUser = result.getInt("UserID");
-//                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
-                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
+                Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent1);
                 Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
-                // JSONObject objResult = new JSONObject(dataResponse);
-                // }
-                //
-                //   JSONArray arrayResult = objResult.getJSONArray("data");
+
             }
+
             @Override
             public void ReponseError(String error) {
-                Log.e("error", "My error: "+ error);
+                Log.e("error", "My error: " + error);
                 Toast.makeText(getApplicationContext(), "Đăng ký thất bại", Toast.LENGTH_LONG).show();
             }
         });
     }
-
-
-
-
-
-
 
 
 }

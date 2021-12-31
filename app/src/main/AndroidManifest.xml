@@ -15,6 +15,12 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.change_pass_forget.ChangePassForgetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.after_regist.AfterRegistActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.introduction.IntroductionActivity"
             android:exported="false" />
         <activity
@@ -79,14 +85,10 @@
             android:exported="false" />
         <activity
             android:name=".activity.home.HomeActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activity.register.RegisterActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".activity.change_pass.ChangePassActivity"
             android:exported="false" />
@@ -98,7 +100,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MainActivity"
