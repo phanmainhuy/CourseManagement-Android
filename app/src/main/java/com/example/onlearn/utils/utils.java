@@ -69,7 +69,14 @@ public class utils {
         }
     }
 
-
+    public boolean emailFormat(String email){
+        String regex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        if(email.matches(regex)){
+            return true;
+        }
+        else
+            return false;
+    }
 
 
 //    public static String encryptPassword(String input)
