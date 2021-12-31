@@ -24,9 +24,8 @@ import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.login.LoginActivity;
-import com.example.onlearn.activity.profile_user.UserActivity;
+import com.example.onlearn.activity.profile_user.ProfileUserActivity;
 import com.example.onlearn.models.USER;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
@@ -157,15 +156,15 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
 
         parmas.put("UserID", GLOBAL.idUser);
-        parmas.put("UserName", tvUserName.getText().toString());
-        parmas.put("Name", txtName.getText().toString());
-        parmas.put("CMND", txtCMND.getText().toString());
-        parmas.put("Number", txtNumber.getText().toString());
-        parmas.put("Email", txtEmail.getText().toString());
+        parmas.put("UserName", tvUserName.getText().toString().trim());
+        parmas.put("Name", txtName.getText().toString().trim());
+        parmas.put("CMND", txtCMND.getText().toString().trim());
+        parmas.put("Number", txtNumber.getText().toString().trim());
+        parmas.put("Email", txtEmail.getText().toString().trim());
         parmas.put("Gender", gender);
-        parmas.put("DoB", utils.converDatePutPost(txtDoB.getText().toString()));
-        parmas.put("Address", txtAddress.getText().toString());
-        parmas.put("HinhAnh", GLOBAL.userlogin.getImgUser());
+        parmas.put("DoB", utils.converDatePutPost(txtDoB.getText().toString().trim()));
+        parmas.put("Address", txtAddress.getText().toString().trim());
+        parmas.put("HinhAnh", GLOBAL.userlogin.getImgUser().trim());
         parmas.put("GroupID", GLOBAL.userlogin.getGroupID());
         parmas.put("Salary", GLOBAL.userlogin.getSalary());
 
@@ -194,7 +193,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 //                    e.printStackTrace();
 //                }
 
-                Intent intent = new Intent(context, UserActivity.class);
+                Intent intent = new Intent(context, ProfileUserActivity.class);
                 startActivity(intent);
             }
 

@@ -84,7 +84,7 @@
             android:name=".activity.cart.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.profile_user.UserActivity"
+            android:name=".activity.profile_user.ProfileUserActivity"
             android:exported="false" />
         <activity
             android:name=".activity.home.HomeActivity"

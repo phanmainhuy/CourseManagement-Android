@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
@@ -33,7 +32,7 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 
-public class UserActivity extends AppCompatActivity {
+public class ProfileUserActivity extends AppCompatActivity {
     Button btnChangeInfo, btnBack;
     ImageView imgUser;
     TextView tvUserName, tvName, tvPhone, tvEmail, tvDoB, tvAddress, tvCmnd, tvDiemTL, tvGender;
@@ -44,7 +43,7 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_profile_user);
 
         //ActionBar
         ActionBar actionBar = getSupportActionBar();

@@ -73,7 +73,7 @@ public class SearchActivity extends AppCompatActivity implements OnClickRCL_Sear
         btnSearch.setOnClickListener(v -> {
 
 
-            if(txtSearch.getText().length() <= 0){
+            if(txtSearch.getText().length() <= 0 || txtSearch.getText().toString().trim().equals("")){
                 Toast.makeText(getApplicationContext(), "Vui lòng nhập dữ liệu cần tìm", Toast.LENGTH_SHORT).show();
                 return;
             }

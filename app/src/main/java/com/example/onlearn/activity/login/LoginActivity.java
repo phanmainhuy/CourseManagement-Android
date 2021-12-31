@@ -140,6 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     JSONObject result = new JSONObject(dataResponse);
                     GLOBAL.idUser = result.getInt("UserID");
+                    GLOBAL.username = result.getString("UserName");
                     String name = result.getString("Name");
                     if (name.equals("null")  || name.equals("") || name.isEmpty()){
                         Intent intent1 = new Intent(LoginActivity.this, AfterRegistActivity.class);

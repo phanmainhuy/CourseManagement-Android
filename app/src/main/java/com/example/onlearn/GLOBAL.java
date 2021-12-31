@@ -32,6 +32,8 @@ public class GLOBAL {
 
     public static USER  userlogin;
     public static int idUser;
+    //after register
+    public static String username;
 
     public static ArrayList<Items_CART> itemsCart_items;
     public static CART cart;

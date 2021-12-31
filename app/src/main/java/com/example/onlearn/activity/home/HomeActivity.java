@@ -28,7 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.activity.introduction.IntroductionActivity;
 import com.example.onlearn.activity.search.SearchActivity;
-import com.example.onlearn.activity.profile_user.UserActivity;
+import com.example.onlearn.activity.profile_user.ProfileUserActivity;
 import com.example.onlearn.activity.cart.CartActivity;
 import com.example.onlearn.activity.category_big.DanhMucActivity;
 import com.example.onlearn.activity.notification.NotificationActivity;
@@ -230,7 +230,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void navigation(int mSelectedId) {
         Intent intent = null;
         if (mSelectedId == R.id.mnu_user) {
-            intent = new Intent(HomeActivity.this, UserActivity.class);
+            intent = new Intent(HomeActivity.this, ProfileUserActivity.class);
             startActivity(intent);
 
             drawerLayout.closeDrawer(GravityCompat.START);
