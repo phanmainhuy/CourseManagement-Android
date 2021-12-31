@@ -41,16 +41,18 @@
                 android:text="Learning is the eye of the mind" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:textColor="@color/black"
-                android:textSize="15dp"
-                android:text="Nhập số điện thoại" />
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="2dp"
+                android:text="Thông tin cá nhân" />
 
 
             <EditText
-                android:id="@+id/txt_name_Register"
+                android:id="@+id/txtName_Register"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -64,30 +66,52 @@
                 android:textColorHint="@color/grey_hint_txt"
                 />
             <EditText
-                android:id="@+id/txt_phone_Register"
+                android:id="@+id/txtPhone_Register"
                 android:layout_width="match_parent"
                 android:textColorHint="@color/grey_hint_txt"
                 android:drawableLeft="@drawable/ic_phone"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="15dp"
                 android:layout_height="50dp"
                 android:drawablePadding="10dp"
                 android:hint="Số điện thoại"
                 android:background="@drawable/decorate_text_register"
                 />
+            <EditText
+                android:id="@+id/txtEmail_Register"
+                android:layout_width="match_parent"
+                android:textColorHint="@color/grey_hint_txt"
+                android:drawableLeft="@drawable/ic_email"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                android:textSize="15dp"
+                android:layout_height="50dp"
+                android:drawablePadding="10dp"
+                android:hint="Email"
+                android:background="@drawable/decorate_text_register"
+                />
 
-
-
+            <TextView
+                android:id="@+id/tvValidate_afterRegist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/red_basic"
+                android:textSize="15dp"
+                android:layout_marginLeft="2dp"
+                android:text="" />
 
 
 
             <Button
-                android:id="@+id/btn_xacnhan_forgetpass"
+                android:id="@+id/btnSubmit_AfterRegist"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
 
                 android:text="Xác nhận"
                 android:textColor="@color/white"

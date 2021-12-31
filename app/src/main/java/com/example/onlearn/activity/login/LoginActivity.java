@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
+import com.example.onlearn.activity.after_regist.AfterRegistActivity;
 import com.example.onlearn.activity.forget_pass.ForgetpassActivity;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.register.RegisterActivity;
@@ -139,15 +140,24 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     JSONObject result = new JSONObject(dataResponse);
                     GLOBAL.idUser = result.getInt("UserID");
+                    String name = result.getString("Name");
+                    if (name.equals("null")  || name.equals("") || name.isEmpty()){
+                        Intent intent1 = new Intent(LoginActivity.this, AfterRegistActivity.class);
+                        startActivity(intent1);
+                    }
+                    else
+                    {
+                        saveUserLogin();
+                        Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(intent1);
+                    }
 //                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
-                saveUserLogin();
-                Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent1);
+
                 // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
                 // JSONObject objResult = new JSONObject(dataResponse);
                 // }
