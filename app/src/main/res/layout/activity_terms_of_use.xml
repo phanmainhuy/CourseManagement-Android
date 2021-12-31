@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".activity.terms.TermsOfUseActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:padding="5dp"
+                android:text="Điều khoản dịch vụ"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Dưới đây là những điều khoản được áp dụng cho học viên và đối tác của Onlearn. Xin hãy đọc kỹ toàn bộ thỏa thuận trước khi tham gia. Một khi bạn đã đăng ký tham gia trên Onlearn (bao gồm việc đăng ký là học viên, Giảng viên), chúng tôi sẽ hiểu rằng bạn đã đọc và đồng ý toàn bộ điều khoản được đưa ra trong bản thỏa thuận này. Bản cập nhật mới nhất (nếu có) sẽ được đăng tại tại đây và Onlearn sẽ không thông báo đến từng đối tác, vì vậy bạn hãy quay lại trang này thường xuyên để cập nhật chính sách mới nhất."
+                android:textColor="@color/black"
+                android:textSize="17dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:padding="5dp"
+                android:layout_marginTop="15dp"
+                android:text="Điều khoản chung"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Điều 1: Thông tin tài khoản cá nhân"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:text="- Khi đăng ký tài khoản Onlearn, để được hỗ trợ nhanh chóng, bạn cần cung cấp đầy đủ và chính xác các thông tin: Họ tên, Email, Phone, Giới tính, Ngày sinh, Thành phố,.. Bạn có thể đăng nhập bằng tài khoản Onlearn khi bạn đăng kí trên trang chủ. Bạn có thể cập nhật thông tin cá nhân hoặc hủy (xóa) tài khoản bất kỳ lúc nào khi không còn nhu cầu sử dụng"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:text="- Khi đăng ký tài khoản Onlearn, để được hỗ trợ nhanh chóng, bạn cần cung cấp đầy đủ và chính xác các thông tin: Họ tên, Email, Phone, Giới tính, Ngày sinh, Thành phố,.. Bạn có thể đăng nhập bằng tài khoản Onlearn khi bạn đăng kí trên trang chủ. Bạn có thể cập nhật thông tin cá nhân hoặc hủy (xóa) tài khoản bất kỳ lúc nào khi không còn nhu cầu sử dụng"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Điều 2: Việc bảo mật thông tin"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:text="- Bạn có trách nhiệm tự mình bảo quản mật khẩu, nếu mật khẩu bị lộ ra ngoài dưới bất kỳ hình thức nào, Onlearn sẽ không chịu trách nhiệm về mọi tổn thất phát sinh. Mọi thông tin cá nhân của bạn sẽ được chúng tôi bảo mật, không tiết lộ ra ngoài. Chúng tôi không bán hay trao đổi những thông tin này với bất kỳ một bên thứ ba nào khác. Tuy nhiên, trong trường hợp cơ quan chức năng yêu cầu, Onlearn buộc phải cung cấp những thông tin này theo quy định pháp luật. Bạn có quyền sở hữu trọn đời các khóa học đã đăng ký: không giới hạn số lần tham gia học và thời gian học. Bạn không được download video, không được chia sẻ video lên Internet với bất kỳ hình thức nào. Nếu vi phạm, tài khoản của bạn sẽ bị khoá và bạn phải chịu trách nhiệm trước pháp luật về hành vi xâm phạm sở hữu trí tuệ. Onlearn có thể gửi thông báo tình hình học tập, chương trình khuyến mãi (nếu có), thông báo khóa học mới sắp ra mắt để học viên quan tâm có thể đăng ký ngay để được ưu đãi. Nếu bạn không muốn nhận email có thể bấm vào link Ngừng nhận email ở cuối email."
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Điều 3: Đánh giá khóa học và thảo luận"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:text="- Học viên khi tham gia khóa học trên Onlearn có quyền đánh giá về chất lượng khóa học. Trong quá trình học, học viên có bất kỳ thắc mắc hay góp ý nào có thể đăng bình luận của mình lên phần Thảo luận - ngay trong giao diện bài học để được chuyên viên Onlearn và Giảng viên hỗ trợ giải đáp."
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Điều 4: Nghiêm cấm sử dụng dịch vụ với các hành vi dưới đây"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:text="- Sử dụng bất kỳ công cụ hay hình thức nào để can thiệp vào các dịch vụ, khóa học trong hệ thống Onlearn. Phát tán hoặc tuyên truyền cổ vũ các hoạt động phát tán, can thiệp và phá hoại nội dung các bài học trên hệ thống của Onlearn bên ngoài. Mọi vi phạm khi bị phát hiện sẽ bị xóa tài khoản và có thể xử lý theo quy định của pháp luật về việc vi phạm bản quyền. Sử dụng chung tài khoản: với việc trên 2 người cùng sử dụng chung một tài khoản khi bị phát hiện sẽ bị xóa tài khoản ngay lập tức. Xúc phạm, nhạo báng người khác dưới bất kỳ hình thức nào: chê bai, kỳ thị tôn giáo, giới tính, sắc tộc.. Hành vi mạo nhận hay cố ý làm người khác tưởng lầm mình là một người sử dụng khác trong hệ thống dịch vụ của Onlearn. Bàn luận về các vấn đề chính trị, kỳ thị tôn giáo, kỳ thị sắc tộc. Hành vi, thái độ làm tổn hại đến uy tín của các sản phẩm, dịch vụ, khóa học trong hệ thống Onlearn dưới bất kỳ hình thức nào, phương thức nào. Mua bán chuyển nhượng tài khoản, khóa học của Onlearn. Mạo danh Onlearn ảnh hưởng đến uy tín của Onlearn, gây sự nhầm lẫn cho các học viên và đối tác theo bất kỳ phương thức nào (dùng địa chỉ email, tên miền website, fanpage có chữ Onlearn..) Khi phát hiện những hành vi trên từ tài khoản của bạn, Onlearn có quyền tước bỏ mọi quyền lợi liên quan đối với tài khoản (bao gồm việc khóa tài khoản) hoặc sử dụng những thông tin mà bạn cung cấp khi đăng ký tài khoản để chuyển cho cơ quan chức năng giải quyết theo quy định của pháp luật."
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textlines"
+                android:padding="5dp"
+                android:layout_marginTop="15dp"
+                android:text="Thanh toán"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Điều 5. Thanh toán hoa hồng, thưởng và thuế thu nhập"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="17dp"
+                android:layout_marginBottom="100dp"
+                android:textColor="@color/black"
+                android:text="- Đối Tác của Onlearn sẽ được chia sẻ doanh thu theo thỏa thuận của Onlearn với Đối Tác. Doanh thu từ chương trình đối tác sẽ được hạch toán theo tháng và chi trả chậm nhất vào ngày 15 của tháng kế tiếp (có trường hợp trễ do hệ thống ngân hàng hoặc trùng vào các ngày nghỉ). Vi phạm một trong các điều khoản nói trên sẽ dẫn đến việc dừng thoả thuận hợp tác, hoặc cao hơn là khóa tài khoản và hủy mọi kết quả đạt được tại Onlearn.vn mà không cần thông báo trước. Onlearn có thể thay đổi, bổ sung hoặc sửa chữa thỏa thuận này bất cứ lúc nào nhằm cập nhật những chính sách mới nhất. Các cập nhật mới, quan trọng sẽ được thông báo và gửi email tới các đối tác liên quan."
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

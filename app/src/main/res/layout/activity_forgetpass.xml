@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.forget_pass.ForgetpassActivity"
-    android:background="@drawable/background_forget"
+    android:background="@color/white"
     android:orientation="vertical"
     android:padding="20dp"
 
@@ -20,36 +20,37 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="110dp"
+
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                android:text="QUÊN MẬT KHẨU" />
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="110dp"
                 android:layout_marginRight="50dp"
 
                 app:srcCompat="@drawable/logoapp"
 
                 />
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:text="Learning is the eye of the mind" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:background="@color/black"
                 android:textSize="15dp"
-                android:text="Tên đăng nhập" />
+                android:layout_marginTop="50dp"
+                android:text="Vui lòng nhập chính xác tên đăng nhập vầ địa chỉ email"
+
+                />
+
 
             <EditText
                 android:id="@+id/txtUserName_ForgetPass"
@@ -60,7 +61,7 @@
                 android:textSize="15dp"
                 android:drawableLeft="@drawable/ic_account"
                 android:background="@drawable/decorate_text_register"
-                android:hint="Tên đăng nhập"
+                android:hint="Nhập tên đăng nhập"
                 android:paddingLeft="20dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/grey_hint_txt"
@@ -69,17 +70,7 @@
                 />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
 
-                android:textColor="@color/white"
-                android:background="@color/black"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:text="Email" />
 
             <EditText
                 android:id="@+id/txtEmail_ForgetPass"
@@ -89,7 +80,7 @@
                 android:layout_marginTop="10dp"
                 android:textSize="15dp"
                 android:background="@drawable/decorate_text_register"
-                android:hint="Email"
+                android:hint="Nhập email"
                 android:drawableLeft="@drawable/ic_email"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="20dp"

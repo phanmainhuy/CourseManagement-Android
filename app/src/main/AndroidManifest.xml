@@ -15,6 +15,9 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.terms.TermsOfUseActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.change_pass_forget.ChangePassForgetActivity"
             android:exported="false" />
         <activity

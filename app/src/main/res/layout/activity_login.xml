@@ -42,7 +42,6 @@
                 android:textStyle="bold"
                 android:text="Learning is the eye of the mind" />
             <TextView
-                android:id="@+id/lblTenDN_Login"
                 android:layout_width="match_parent"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
@@ -67,7 +66,6 @@
                 android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/lblMatKhau_Login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -101,7 +99,7 @@
                     android:layout_width="130dp"
                     android:layout_height="30dp"
                     android:layout_marginBottom="10dp"
-                    android:buttonTint="@color/yellow"
+                    android:buttonTint="@color/blue_ForgetPass"
                     android:layout_marginLeft="5dp"
                     android:text="Lưu mật khẩu"
                     android:textStyle="bold"
@@ -136,7 +134,33 @@
                     android:layout_gravity="right"
                     android:text="Quên mật khẩu?" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginTop="15dp"
+                    >
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        android:text="Bằng việc đăng nhập, bạn đã đồng ý " />
+                    <TextView
+                        android:id="@+id/tvDieuKhoanSD_Login"
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/yellow"
+                        android:textSize="15dp"
+                        android:text="Điều khoản sử dụng" />
+
+
+                </LinearLayout>
 
 
 

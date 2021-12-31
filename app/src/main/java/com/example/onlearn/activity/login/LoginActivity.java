@@ -22,6 +22,7 @@ import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.register.RegisterActivity;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.terms.TermsOfUseActivity;
 import com.example.onlearn.utils.utils;
 
 import org.json.JSONException;
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     String urlApi = GLOBAL.ip + "api/identity";
 
     Button btnLogin, btnRegist;
-    TextView btnForgetPass;
+    TextView btnForgetPass, btnDieuKhoan;
     SharedPreferences remember;
     CheckBox chkSave;
     EditText txtUsername, txtPassword;
@@ -62,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         chkSave = findViewById(R.id.chkSave_Login);
         txtPassword = findViewById(R.id.txtPassword_Login);
         txtUsername = findViewById(R.id.txtusername_Login);
+        btnDieuKhoan = findViewById(R.id.tvDieuKhoanSD_Login);
 
 
 
@@ -77,8 +79,13 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         btnForgetPass.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), "Chuyển sang quên mật khẩu", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Chuyển sang quên mật khẩu", Toast.LENGTH_SHORT).show();
             Intent intent1 = new Intent(LoginActivity.this, ForgetpassActivity.class);
+            startActivity(intent1);
+        });
+
+        btnDieuKhoan.setOnClickListener(v -> {
+            Intent intent1 = new Intent(LoginActivity.this, TermsOfUseActivity.class);
             startActivity(intent1);
         });
 
