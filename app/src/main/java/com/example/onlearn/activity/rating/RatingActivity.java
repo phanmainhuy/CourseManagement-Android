@@ -34,6 +34,15 @@ public class RatingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rating);
         DecorateActionBar();
 
+        //map
+        imgKH = findViewById(R.id.imgKH_Rating);
+        imgUser = findViewById(R.id.imgAvatarUser_Rating);
+        tvTenKH = findViewById(R.id.tvTenKH_Rating);
+        tvUserName = findViewById(R.id.tvUsername_Rating);
+
+        //set data
+
+
 
 
     }
