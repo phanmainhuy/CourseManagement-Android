@@ -13,14 +13,14 @@ import com.example.onlearn.models.USER;
 import java.util.ArrayList;
 
 public class GLOBAL {
-    public static String colorActionBar = "#43CD80";
+    public static String colorActionBar = "#7396b4";
     //api
     //Y: 192.168.1.8
     //http://192.168.1.9:63702/
     //https://localhost:63702/
     //10.0.2.2
     //192.168.3.43
-    public static String ip = "http://192.168.1.160:45459/";
+    public static String ip = "http://192.168.1.160:45455/";
     public static String urlimg = "assets/images/";
     //object
     public static DANHMUC DMClick;

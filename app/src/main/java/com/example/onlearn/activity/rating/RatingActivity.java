@@ -9,12 +9,24 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 
 public class RatingActivity extends AppCompatActivity {
     String titleActionBar = "Đánh giá khóa học";
+
+    String urlgetImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
+    String urlgetImgCourses = GLOBAL.ip + GLOBAL.urlimg + "courses/";
+    String urlgetUserRating = GLOBAL.ip + "api/DanhGia?MaKhoaHoc="+GLOBAL.learn.getMaKH()+"&&MaND=" + GLOBAL.idUser;
+
+    ImageView imgKH, imgUser;
+    TextView tvTenKH, tvUserName;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

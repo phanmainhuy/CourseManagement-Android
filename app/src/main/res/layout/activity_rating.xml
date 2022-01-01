@@ -17,45 +17,221 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imgKH_Rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/imgcourse" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Học HTML5/CSS3,BOOTSTRAP4 Cắt Web Từ File Thiết Kế"
+                android:textColor="@color/blue_deep"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đánh giá tổng: "
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+
+                <RatingBar
+                    android:id="@+id/totalrating_Rating"
+                    style="@android:style/Widget.Material.RatingBar.Indicator"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="20dp"
+                    android:isIndicator="true"
+                    android:max="5"
+                    android:stepSize="0.5"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:theme="@style/RatingBar" />
+
+
+                <TextView
+                    android:id="@+id/tvTotalRating_Rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSLPersonRating_Rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="0 đánh giá"
+                android:textColor="@color/grey_hint_txt"
+                android:textSize="16dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/textlines"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/imgAvatarUser_Rating"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="top"
+
+                    android:layout_weight="1"
+                    android:background="@drawable/textlines"
+                    app:srcCompat="@drawable/ic_user" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="UserName"
+                        android:textColor="@color/black"
+                        android:textSize="19dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RatingBar
+                            android:id="@+id/PersonalRating_Rating"
+                            style="@android:style/Widget.Material.RatingBar.Indicator"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginLeft="10dp"
+                            android:isIndicator="false"
+                            android:max="5"
+                            android:min="0"
+                            android:numStars="5"
+                            android:rating="0"
+                            android:stepSize="1"
+                            android:theme="@style/RatingBar" />
+
+                        <TextView
+                            android:id="@+id/tvPersonalRating_Rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvNoiDungRating_Rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Bạn chưa bình luận gì"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
                 >
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    app:srcCompat="@drawable/imgcourse"
-                    android:layout_weight="1"
-                    />
-                <LinearLayout
-                    android:layout_width="0dp"
+                <Button
+                    android:id="@+id/btnAddRating_Rating"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Thêm"
+                    android:backgroundTint="@color/green_dolla"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+                <Button
+                    android:id="@+id/btnUpdateRating_Rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chỉnh sửa"
+                    android:backgroundTint="@color/gold"
+                    android:textStyle="bold"
                     android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="20dp"
-                        android:text="Học HTML5/CSS3,BOOTSTRAP4 Cắt Web Từ File Thiết Kế"
-                        android:layout_weight="2"
-                        android:textStyle="bold"
-                        android:textSize="18dp"
-                        android:textColor="@color/blue_ForgetPass"
-                        />
+                    android:textColor="@color/black"
+                    />
+                <Button
+                    android:id="@+id/btnDeleteRating_Rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red_basic"
+                    android:text="Xóa"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/white"
+                    />
 
-
-                </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đánh giá của cộng đồng"
+                />
 
 
 
         </LinearLayout>
     </ScrollView>
+
 
 </LinearLayout>
