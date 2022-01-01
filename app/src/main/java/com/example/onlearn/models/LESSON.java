@@ -3,13 +3,15 @@ package com.example.onlearn.models;
 import java.io.Serializable;
 
 public class LESSON implements Serializable {
+    public int STT;
     public int MaBaiHoc;
     public String TenBaiHoc;
     public int MaChuong;
     public String TenChuong;
     public String Video;
 
-    public LESSON(int maBaiHoc, String tenBaiHoc, int maChuong, String tenChuong, String video) {
+    public LESSON(int STT, int maBaiHoc, String tenBaiHoc, int maChuong, String tenChuong, String video) {
+        this.STT = STT;
         MaBaiHoc = maBaiHoc;
         TenBaiHoc = tenBaiHoc;
         MaChuong = maChuong;
@@ -17,6 +19,13 @@ public class LESSON implements Serializable {
         Video = video;
     }
 
+    public int getSTT() {
+        return STT;
+    }
+
+    public void setSTT(int STT) {
+        this.STT = STT;
+    }
     public int getMaBaiHoc() {
         return MaBaiHoc;
     }

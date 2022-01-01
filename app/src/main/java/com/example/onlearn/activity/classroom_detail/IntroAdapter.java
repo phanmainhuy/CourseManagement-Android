@@ -43,7 +43,7 @@ private OnClickRCL_InTro listener;
         CHAPTER chap = dulieu.get(position);
 
 
-        holder.ten.setText("Chương "+chap.getTenChuong());
+        holder.ten.setText("Chương "+chap.getSTT()+": "+chap.getTenChuong());
 
 
         holder.chapter = dulieu.get(position);

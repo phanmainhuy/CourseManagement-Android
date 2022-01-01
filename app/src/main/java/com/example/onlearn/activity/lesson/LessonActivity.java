@@ -35,7 +35,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class LessonActivity extends AppCompatActivity implements OnClickRCL_Lesson {
-    String titleActionBar = GLOBAL.chapter.getTenChuong();
+    String titleActionBar = "Chương " +GLOBAL.chapter.getSTT() + ": "+GLOBAL.chapter.getTenChuong();
     String urllesson = GLOBAL.ip + "api/BaiHoc/GetByParentId?MaChuong=" + GLOBAL.chapter.getMaChuong();
     RecyclerView rclLesson;
     LessonAdapter lessonAdapter;
@@ -77,7 +77,7 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    datales.add(new LESSON(jsonObject.getInt("MaBaiHoc"),
+                    datales.add(new LESSON(i+1,jsonObject.getInt("MaBaiHoc"),
                             jsonObject.getString("TenBaiHoc"),
                             jsonObject.getInt("MaChuong"),
                             jsonObject.getString("TenChuong"),

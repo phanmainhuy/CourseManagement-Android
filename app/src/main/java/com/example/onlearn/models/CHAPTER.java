@@ -3,12 +3,16 @@ package com.example.onlearn.models;
 import java.io.Serializable;
 
 public class CHAPTER implements Serializable {
+    public int STT;
+
+
     public int MaChuong;
     public int MaKH;
     public String TenChuong;
     public String TenKH;
 
-    public CHAPTER(int maChuong, int maKH, String tenChuong, String tenKH) {
+    public CHAPTER(int stt, int maChuong, int maKH, String tenChuong, String tenKH) {
+        STT = stt;
         MaChuong = maChuong;
         MaKH = maKH;
         TenChuong = tenChuong;
@@ -46,4 +50,12 @@ public class CHAPTER implements Serializable {
     public void setTenKH(String tenKH) {
         TenKH = tenKH;
     }
+    public int getSTT() {
+        return STT;
+    }
+
+    public void setSTT(int STT) {
+        this.STT = STT;
+    }
+
 }

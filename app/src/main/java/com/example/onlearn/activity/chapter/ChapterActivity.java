@@ -80,7 +80,7 @@ public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Cha
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    data.add(new CHAPTER(jsonObject.getInt("MaChuong"),
+                    data.add(new CHAPTER(i+1,jsonObject.getInt("MaChuong"),
                             jsonObject.getInt("MaKhoaHoc"),
                             jsonObject.getString("TenChuong"), jsonObject.getString("TenKhoaHoc"))
                     );

@@ -46,7 +46,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.KHUNGNHIN>
         LESSON les = dulieu.get(position);
 
 
-        holder.ten.setText(les.getTenBaiHoc());
+        holder.ten.setText("Bài "+les.getSTT()+": "+les.getTenBaiHoc());
 
 
         holder.lesson = dulieu.get(position);
