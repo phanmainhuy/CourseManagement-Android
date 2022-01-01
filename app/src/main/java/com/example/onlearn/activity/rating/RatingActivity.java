@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.squareup.picasso.Picasso;
 
 public class RatingActivity extends AppCompatActivity {
     String titleActionBar = "Đánh giá khóa học";
@@ -41,9 +42,24 @@ public class RatingActivity extends AppCompatActivity {
         tvUserName = findViewById(R.id.tvUsername_Rating);
 
         //set data
+        getSetUpData();
 
 
 
+    }
+
+    private void getSetUpData(){
+        tvTenKH.setText(GLOBAL.learn.getTenKH());
+        tvUserName.setText(GLOBAL.userlogin.getUserName());
+        Picasso.with(this)
+                .load(urlgetImgUser + GLOBAL.userlogin.getImgUser())
+                .placeholder(R.drawable.no_image_found)
+                .into(imgUser);
+
+        Picasso.with(this)
+                .load(urlgetImgCourses + GLOBAL.learn.getImgKH())
+                .placeholder(R.drawable.no_image_found)
+                .into(imgKH);
 
     }
 

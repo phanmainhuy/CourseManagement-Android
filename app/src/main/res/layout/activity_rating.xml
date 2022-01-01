@@ -42,7 +42,7 @@
                 android:gravity="center"
                 android:text="Học HTML5/CSS3,BOOTSTRAP4 Cắt Web Từ File Thiết Kế"
                 android:textColor="@color/blue_deep"
-                android:textSize="20dp"
+                android:textSize="23dp"
                 android:textStyle="bold"
 
                 />
@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:text="Đánh giá tổng: "
                         android:textColor="@color/black"
-                        android:textSize="25dp"
+                        android:textSize="23dp"
                         android:textStyle="bold" />
 
 
@@ -85,6 +85,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:text="0"
+                    android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -114,7 +115,7 @@
                     android:layout_width="70dp"
                     android:layout_height="100dp"
                     android:layout_gravity="top"
-
+                    android:padding="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/textlines"
                     app:srcCompat="@drawable/ic_user" />
