@@ -62,27 +62,12 @@ public class RatingActivity extends AppCompatActivity {
         //set data
         getSetUpData();
         //set up recycle
-        dataRating.add(new RATING(1,
-                1,
-                1,
-                "",
-                3,
-                5,
-                "I love you",
-                "Jack",
-                "asdasd",
-                "2022-01-01T00:00:00"
 
-        ));
         communityAdapter = new RatingAdapter(this, dataRating);
         rcl_RatingCommunity.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rcl_RatingCommunity.setAdapter(communityAdapter);
-
-
-
-
-
-//        getCommunity();
+        
+        getCommunity();
 
     }
 
@@ -118,7 +103,6 @@ public class RatingActivity extends AppCompatActivity {
                             jsonObject.getString("TenND"),
                             jsonObject.getString("HinhAnh"),
                             jsonObject.getString("NgayDanhGia")
-
                             ));
 
 
