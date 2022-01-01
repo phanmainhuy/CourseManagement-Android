@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -113,10 +114,10 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
 
 
 
-        dataEx.add(new EXCERCISE(1,
-                "Bai 1",
-                "luyen thi dh"
-        ));
+//        dataEx.add(new EXCERCISE(1,
+//                "Bai 1",
+//                "luyen thi dh"
+//        ));
         getEx();
 
     }
@@ -178,8 +179,8 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
                     for (int a = 0; a < baihocs.length(); a++) {
                         JSONObject jsonBaihoc = baihocs.getJSONObject(a);
                         dataEx.add(new EXCERCISE(jsonBaihoc.getInt("MaBaiTap"),
-                                jsonBaihoc.getString("TenBaiHoc"),
-                                jsonBaihoc.getString("VideoName")
+                                jsonBaihoc.getString("TenBaiTap"),
+                                jsonBaihoc.getString("LinkPDF")
                         ));
                     }
 

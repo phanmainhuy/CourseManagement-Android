@@ -77,7 +77,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rclbaitap_Excercise"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
 
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
