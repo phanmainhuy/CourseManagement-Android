@@ -126,6 +126,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
                     android:textColor="@color/black"
                     android:background="@color/white"
                     android:textStyle="bold"
@@ -155,7 +156,7 @@
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/yellow"
+                        android:textColor="@color/gold"
                         android:textSize="15dp"
                         android:text="Điều khoản sử dụng" />
 

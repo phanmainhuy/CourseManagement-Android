@@ -60,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Onclick
         btnCancel.setOnClickListener(v -> {
-            Intent intent1 = new Intent(RegisterActivity.this, AfterRegistActivity.class);
+            Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent1);
         });
 
