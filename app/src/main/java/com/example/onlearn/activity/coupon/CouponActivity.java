@@ -178,20 +178,6 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
                 );
                 tvDiemTL.setText(utils.formatNumberCurrency(String.valueOf(GLOBAL.userlogin.getDiemTichLuy())));
 
-//                (response.getString("Name"));
-//                (response.getString("Email"));
-//                tvDoB.setText(utils.converDateFormate(response.getString("DoB")));
-//                tvAddress.setText(response.getString("Address"));
-//                tvGender.setText(response.getString("Gender"));
-//                tvCmnd.setText(response.getString("CMND"));
-//                tvDiemTL.setText(utils.formatNumberCurrency(response.getString("DiemTichLuy")));
-//
-//                Picasso.with(this)
-//                        .load(urlImgUser + response.getString("HinhAnh"))
-//                        .placeholder(R.drawable.no_image_found)
-//                        .into(imgUser);
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

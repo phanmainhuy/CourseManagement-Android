@@ -169,13 +169,15 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                    <TextView
+                    <EditText
                         android:id="@+id/tvNoiDungRating_Rating"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/decorate_text_basic"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
-                        android:text="Bạn chưa bình luận gì"
+                        android:hint="Bạn chưa bình luận gì"
+                        android:textColorHint="@color/grey_hint_txt"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 

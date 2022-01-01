@@ -13,34 +13,23 @@ import android.text.Html;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.ServerError;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.classroom_detail.ClassroomDetailActivity;
-import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.LEARN;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import retrofit2.Response;
 
 public class ClassRoomActivity extends AppCompatActivity implements OnClickRCL_Classroom{
     String titleActionBar = "Phòng học của " +GLOBAL.userlogin.getTen();
-
     String urlClassroom = GLOBAL.ip + "api/KhoaHocTheoHocVien?MaHV=" +GLOBAL.idUser;
     RecyclerView rclClassroom;
     ClassroomAdapter adapterclassroom;

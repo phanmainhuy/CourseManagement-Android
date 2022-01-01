@@ -31,6 +31,8 @@ import com.example.onlearn.activity.rating.RatingActivity;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LOAIKHOAHOC;
+import com.example.onlearn.models.RATING;
+import com.example.onlearn.models.USER;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
@@ -41,8 +43,8 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.util.ArrayList;
 
- public class ClassroomDetailActivity extends AppCompatActivity implements OnClickRCL_InTro{
-    String titleActionBar = "Chi tiết khóa học " ;
+public class ClassroomDetailActivity extends AppCompatActivity implements OnClickRCL_InTro {
+    String titleActionBar = "Chi tiết khóa học ";
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
     ImageView imgKH;
     TextView tvTenKH, tvTenGV, tvNgayMua, tvGioiThieu;
@@ -53,6 +55,8 @@ import java.util.ArrayList;
     ArrayList<CHAPTER> dataintro = new ArrayList<>();
 
     String urlgetchap = GLOBAL.ip + "api/chuong?MaKhoaHoc=" + GLOBAL.learn.getMaKH();
+    String urlRating = GLOBAL.ip + "api/DanhGia?MaKhoaHoc="+GLOBAL.learn.getMaKH()+"&&MaND=" + GLOBAL.idUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,19 +87,21 @@ import java.util.ArrayList;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        
+
         getIntroChap();
+        getUserRating();
 
 
         btnLearn.setOnClickListener(v -> {
             Intent intent = new Intent(this, ChapterActivity.class);
             startActivity(intent);
         });
-        btnRating.setOnClickListener(v ->{
+        btnRating.setOnClickListener(v -> {
             Intent intent = new Intent(this, RatingActivity.class);
             startActivity(intent);
         });
     }
+
 
     private void getIntroChap() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -104,7 +110,7 @@ import java.util.ArrayList;
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    dataintro.add(new CHAPTER(i+1, jsonObject.getInt("MaChuong"),
+                    dataintro.add(new CHAPTER(i + 1, jsonObject.getInt("MaChuong"),
                             jsonObject.getInt("MaKhoaHoc"),
                             jsonObject.getString("TenChuong"), jsonObject.getString("TenKhoaHoc"))
                     );
@@ -117,14 +123,51 @@ import java.util.ArrayList;
         };
 //        Map<String, String> paramsHeaders = new HashMap<>();
 //        paramsHeaders.put("Content-Type", "application/json");
-        com.android.volley.Response.ErrorListener thatbai = error ->{
-            if(error.getMessage()!=null){
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if (error.getMessage() != null) {
                 Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
             }
 
         };
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlgetchap, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
+    private void getUserRating() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+            try {
+                if (response.getString("Message").equals("Không có dữ liệu")) {
+                    GLOBAL.userRating = new RATING(-1,
+                            GLOBAL.userlogin.getMaND(),GLOBAL.learn.getMaKH(),GLOBAL.learn.getTenKH(),
+                            0,0,"","", "", "");
+                    return;
+                }
+                else {
+                    GLOBAL.userRating = new RATING(response.getInt("MaDanhGia"),
+                            GLOBAL.userlogin.getMaND(),GLOBAL.learn.getMaKH(),response.getString("TenKhoaHoc"),
+                            response.getInt("Diem"),response.getDouble("TongDiem"),
+                            response.getString("NoiDung"),response.getString("TenND"),
+                            response.getString("HinhAnh"), response.getString("NgayDanhGia"));
+                }
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        };
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if (error.getMessage() != null) {
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+        };
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlRating, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
 
     }
@@ -154,7 +197,7 @@ import java.util.ArrayList;
         return super.onOptionsItemSelected(item);
     }
 
-    void DecorateActionBar(){
+    void DecorateActionBar() {
         //action bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

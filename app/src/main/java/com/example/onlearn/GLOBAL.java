@@ -8,6 +8,7 @@ import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LESSON;
 import com.example.onlearn.models.LOAIKHOAHOC;
+import com.example.onlearn.models.RATING;
 import com.example.onlearn.models.USER;
 
 import java.util.ArrayList;
@@ -29,8 +30,9 @@ public class GLOBAL {
     public static LEARN learn;
     public static CHAPTER chapter;
     public static LESSON lesson;
+    public static RATING userRating;
 
-    public static USER  userlogin;
+    public static USER userlogin;
     public static int idUser;
     //after register
     public static String username;
