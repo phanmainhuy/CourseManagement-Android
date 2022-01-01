@@ -44,13 +44,13 @@ import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.R;
 import com.example.onlearn.models.USER;
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.models.OPTION;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -161,7 +161,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    if(jsonObject.getBoolean("HienThi") == true){
+                    if (jsonObject.getBoolean("HienThi") == true) {
                         data.add(new KHOAHOC(jsonObject.getInt("MaKhoaHoc"), jsonObject.getInt("MaLoai"),
                                 jsonObject.getInt("MaDM"), jsonObject.getString("TenLoai"),
                                 jsonObject.getString("TenDanhMuc"),
@@ -205,25 +205,45 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     void loadViewFlipper() {
+        String urlCarousel = GLOBAL.ip + "api/decorating?MaLoaiTrangTri=0";
+        String urlimgCarousel = GLOBAL.ip + "assets/images/carousel/";
+        ArrayList<String> mangslide = new ArrayList<>();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject jsonObject = response.getJSONObject(i);
+                    if (jsonObject.getInt("MaLoaiTrangTri") == 0) {
+                        mangslide.add(jsonObject.getString("GiaTri"));
+                    }
 
-        ArrayList<Integer> mangslide = new ArrayList<>();
-        //add slide quang cao
-        mangslide.add(R.drawable.slide1);
-        mangslide.add(R.drawable.slide2);
-        mangslide.add(R.drawable.slide3);
-        mangslide.add(R.drawable.slide4);
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-        for (int i = 0; i < mangslide.size(); i++) {
-            ImageView imageView = new ImageView(this);
-            Picasso.with(this).load(mangslide.get(i)).into(imageView);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            viewQuangCao.addView(imageView);
-        }
+            }
+            for (int x = 0; x < mangslide.size(); x++) {
+                ImageView imageView = new ImageView(this);
+                Picasso.with(this).load(urlimgCarousel + mangslide.get(x)).into(imageView);
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                viewQuangCao.addView(imageView);
+            }
+            viewQuangCao.setAutoStart(true);
+            viewQuangCao.setFlipInterval(2000);
+            viewQuangCao.startFlipping();
+        };
 
-        viewQuangCao.setAutoStart(true);
-        viewQuangCao.setFlipInterval(2000);
-        viewQuangCao.startFlipping();
+        com.android.volley.Response.ErrorListener thatbai = error ->
+        {
+            if (error.getMessage() != null) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlCarousel, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+
     }
 
     //dieu huong navigation
@@ -372,7 +392,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         response.getInt("DiemTichLuy"),
                         response.getInt("GroupID"),
                         response.getString("Salary")
-                        );
+                );
 
 
             } catch (JSONException e) {
@@ -383,9 +403,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         };
         com.android.volley.Response.ErrorListener thatbai = error ->
         {
-                if(error.getMessage() != null){
-                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                }
+            if (error.getMessage() != null) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
         };
 
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
