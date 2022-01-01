@@ -207,7 +207,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     void loadViewFlipper() {
 
         ArrayList<Integer> mangslide = new ArrayList<>();
-
+        //add slide quang cao
         mangslide.add(R.drawable.slide1);
         mangslide.add(R.drawable.slide2);
         mangslide.add(R.drawable.slide3);

@@ -22,7 +22,7 @@ public class Items_CART implements Serializable {
         OriginPrice = originPrice;
         AfterPrice = afterPrice;
 //        TeacherID = teacherID;
-//        TeacherName = teacherName;
+        TeacherName = teacherName;
         this.imgName = imgName;
     }
 

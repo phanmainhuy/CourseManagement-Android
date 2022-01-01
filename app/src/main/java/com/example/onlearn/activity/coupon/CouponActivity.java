@@ -127,14 +127,17 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    datakm.add(new KHUYENMAI(jsonObject.getInt("MaKM"),
-                            "",
-                            jsonObject.getString("TenKM"),
-                            jsonObject.getString("HinhAnh"),
-                            jsonObject.getString("GiaTri"),
-                            jsonObject.getString("ThoiGianKeoDai"),
-                            jsonObject.getString("DiemCanMua")
-                    ));
+                    if(jsonObject.getBoolean("DangMoBan") == true){
+                        datakm.add(new KHUYENMAI(jsonObject.getInt("MaKM"),
+                                "",
+                                jsonObject.getString("TenKM"),
+                                jsonObject.getString("HinhAnh"),
+                                jsonObject.getString("GiaTri"),
+                                jsonObject.getString("ThoiGianKeoDai"),
+                                jsonObject.getString("DiemCanMua")
+                        ));
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

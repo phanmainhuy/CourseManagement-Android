@@ -66,6 +66,7 @@ public class CartActivity extends AppCompatActivity{
         rclCart = findViewById(R.id.lst_Cart);
         tvThanhTien = findViewById(R.id.tv_Cart_Total);
 
+
         //set data rcl
 
 
@@ -184,12 +185,7 @@ public class CartActivity extends AppCompatActivity{
 
     }
 
-    public void reloadCart() {
-        finish();
-        Intent intent1 = new Intent(CartActivity.this, CartActivity.class);
-        startActivity(intent1);
-    }
-
+   
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
