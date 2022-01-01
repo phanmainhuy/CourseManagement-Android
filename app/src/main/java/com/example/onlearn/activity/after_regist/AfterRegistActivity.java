@@ -111,11 +111,6 @@ public class AfterRegistActivity extends AppCompatActivity {
         paramsHeaders.put("Content-Type", "application/json");
 
 
-        //print paramas
-//        Log.i("infoput", parmas.toString());
-
-
-        //api null
         api.CallAPI(urlputUser, Request.Method.PUT, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
