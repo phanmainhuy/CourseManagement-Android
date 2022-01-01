@@ -104,7 +104,7 @@ import java.util.ArrayList;
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    dataintro.add(new CHAPTER(i, jsonObject.getInt("MaChuong"),
+                    dataintro.add(new CHAPTER(i+1, jsonObject.getInt("MaChuong"),
                             jsonObject.getInt("MaKhoaHoc"),
                             jsonObject.getString("TenChuong"), jsonObject.getString("TenKhoaHoc"))
                     );
