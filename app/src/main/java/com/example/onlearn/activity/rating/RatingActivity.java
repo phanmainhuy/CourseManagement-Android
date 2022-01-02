@@ -58,7 +58,6 @@ public class RatingActivity extends AppCompatActivity {
     EditText tvNoiDung;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,19 +88,9 @@ public class RatingActivity extends AppCompatActivity {
 //        int x = GLOBAL.userRating.getMaDanhGia();
 //        System.out.println(x);
 
-//        //null
-//        if (GLOBAL.userRating.getMaDanhGia()==-1){
-//            btnDelete.setVisibility(View.INVISIBLE);
-//            btnUpdate.setVisibility(View.INVISIBLE);
-//            btnCreate.setVisibility(View.VISIBLE);
-//        }
-//        else {
-//            btnCreate.setVisibility(View.INVISIBLE);
-//            btnDelete.setVisibility(View.VISIBLE);
-//            btnUpdate.setVisibility(View.VISIBLE);
-//        }
 
-        btnCreate.setVisibility(View.INVISIBLE);
+//        btnCreate.setVisibility(View.INVISIBLE);
+//        ratingTotal.setStepSize(0.1f);
         //set data
         getSetUpData();
         //set up recycle
@@ -112,7 +101,8 @@ public class RatingActivity extends AppCompatActivity {
 
         getCommunity();
         getRatingTotal();
-
+        btnDelete.setVisibility(View.INVISIBLE);
+        btnUpdate.setVisibility(View.INVISIBLE);
     }
 
     private void getSetUpData() {
@@ -127,7 +117,7 @@ public class RatingActivity extends AppCompatActivity {
                 .load(urlgetImgCourses + GLOBAL.learn.getImgKH())
                 .placeholder(R.drawable.no_image_found)
                 .into(imgKH);
-//        ratingTotal.setRating(4);
+//        ratingTotal.setRating(3.5f);
 
 
     }
@@ -139,7 +129,7 @@ public class RatingActivity extends AppCompatActivity {
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    if (jsonObject.getInt("MaND") != GLOBAL.idUser){
+                    if (jsonObject.getInt("MaND") != GLOBAL.idUser) {
 
                         dataRating.add(new RATING(jsonObject.getInt("MaDanhGia"),
                                 jsonObject.getInt("MaND"),
@@ -174,16 +164,30 @@ public class RatingActivity extends AppCompatActivity {
 
     }
 
-    private void getRatingTotal(){
+    private void getRatingTotal() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
             try {
-
-//                    ratingTotal.setRating(response.getInt("TongDiem"));
+//                    double x = response.getDouble("TongDiem");
+//                    String a = utils.formatTotalRating(x);
+//                    Float total = Float.parseFloat(a);
+                if (response.getInt("Diem") > 0) {
+                    ratingPerson.setIsIndicator(true);
+                    ratingTotal.setRating(response.getInt("TongDiem"));
                     ratingPerson.setRating(response.getInt("Diem"));
-                    tvTotalRating.setText(utils.formatTotalRating(response.getDouble("TongDiem"))+ " ");
+                    tvTotalRating.setText(utils.formatTotalRating(response.getDouble("TongDiem")) + " ");
                     tvRatingPerson.setText(response.getInt("Diem") + " ");
                     tvNoiDung.setText(response.getString("NoiDung") + "");
+
+                    btnCreate.setVisibility(View.INVISIBLE);
+                    btnDelete.setVisibility(View.VISIBLE);
+                    btnUpdate.setVisibility(View.VISIBLE);
+
+                } else {
+                    btnCreate.setVisibility(View.VISIBLE);
+                    btnDelete.setVisibility(View.INVISIBLE);
+                    btnUpdate.setVisibility(View.INVISIBLE);
+                }
 
 
             } catch (JSONException e) {
@@ -194,7 +198,7 @@ public class RatingActivity extends AppCompatActivity {
         };
         com.android.volley.Response.ErrorListener thatbai = error ->
         {
-            if(error.getMessage() != null){
+            if (error.getMessage() != null) {
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         };

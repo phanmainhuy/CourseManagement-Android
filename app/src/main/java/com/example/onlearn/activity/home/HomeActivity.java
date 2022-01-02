@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -108,12 +109,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //anh xa
         viewQuangCao = findViewById(R.id.viewQuangCao_Home);
-        toolbar = findViewById(R.id.toolbar_Home);
         navigationLeft = findViewById(R.id.navigationviewLeft_Home);
         drawerLayout = findViewById(R.id.drawerlayout_Home);
         rclOption = findViewById(R.id.rclOption_Home);
         rclFavoriteCourses = findViewById(R.id.rcl_BestSellingCourse_Home);
+        toolbar = findViewById(R.id.toolbar_Home);
 
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
         //setdata favorite courses
 
         //set cung khoa hoc
