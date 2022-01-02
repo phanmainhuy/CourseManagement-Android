@@ -69,7 +69,7 @@ public class utils {
         }
     }
 
-    public boolean emailFormat(String email){
+    public static boolean emailFormat(String email){
         String regex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if(email.matches(regex)){
             return true;
@@ -78,36 +78,12 @@ public class utils {
             return false;
     }
 
-
-//    public static String encryptPassword(String input)
-//    {
-//        //sha-512
-//        try {
-//            // getInstance() method is called with algorithm SHA-512
-//            MessageDigest md = MessageDigest.getInstance("SHA-512");
-//
-//            byte[] messageDigest = md.digest(input.getBytes());
-//
-////            Chuyển đổi mảng byte sang BigInteger
-//            BigInteger no = new BigInteger(1, messageDigest);
-//
-//            // Chuyển đổi message digest sang dạng hex
-//            String hashtext = no.toString(16);
-//
-//            // Add preceding 0s to make it 32 bit
-//            while (hashtext.length() < 32) {
-//                hashtext = "0" + hashtext;
-//            }
-//
-//            // Trả về kết quả
-//            return hashtext;
-//        }
-//
-//        // Cho các trường hợp xảy ra lỗi
-//        catch (NoSuchAlgorithmException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    //format trung binh danh gia
+    public static String formatTotalRating(Double x){
+        DecimalFormat f = new DecimalFormat("##.0");
+        String a = f.format(x);
+        return a;
+    }
 
 
 

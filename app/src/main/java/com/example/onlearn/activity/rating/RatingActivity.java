@@ -11,17 +11,23 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.models.RATING;
+import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -39,11 +45,17 @@ public class RatingActivity extends AppCompatActivity {
     String urlgetCommunity = GLOBAL.ip + "api/DanhGia?MaKhoaHoc=" + GLOBAL.learn.getMaKH();
 
     ImageView imgKH, imgUser;
-    TextView tvTenKH, tvUserName;
+    TextView tvTenKH, tvUserName, tvSLUserRating;
 
     RecyclerView rcl_RatingCommunity;
     ArrayList<RATING> dataRating = new ArrayList<>();
     RatingAdapter communityAdapter;
+
+    RatingBar ratingTotal, ratingPerson;
+    TextView tvTotalRating, tvRatingPerson;
+    Button btnCreate, btnUpdate, btnDelete;
+    EditText tvNoiDung;
+
 
 
     @Override
@@ -57,7 +69,25 @@ public class RatingActivity extends AppCompatActivity {
         imgUser = findViewById(R.id.imgAvatarUser_Rating);
         tvTenKH = findViewById(R.id.tvTenKH_Rating);
         tvUserName = findViewById(R.id.tvUsername_Rating);
+        tvSLUserRating = findViewById(R.id.tvSLPersonRating_Rating);
+
+        tvTotalRating = findViewById(R.id.tvTotalRating_Rating);
+        tvRatingPerson = findViewById(R.id.tvPersonalRating_Rating);
+        tvNoiDung = findViewById(R.id.tvNoiDungRating_Rating);
+
+        //rcl
         rcl_RatingCommunity = findViewById(R.id.rclRatingCommunity_Rating);
+        //btn
+        btnCreate = findViewById(R.id.btnAddRating_Rating);
+        btnUpdate = findViewById(R.id.btnUpdateRating_Rating);
+        btnDelete = findViewById(R.id.btnDeleteRating_Rating);
+        //rating
+        ratingPerson = findViewById(R.id.PersonalRating_Rating);
+        ratingTotal = findViewById(R.id.totalrating_Rating);
+
+
+
+
 
         //set data
         getSetUpData();
@@ -66,8 +96,9 @@ public class RatingActivity extends AppCompatActivity {
         communityAdapter = new RatingAdapter(this, dataRating);
         rcl_RatingCommunity.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rcl_RatingCommunity.setAdapter(communityAdapter);
-        
+
         getCommunity();
+        getRatingTotal();
 
     }
 
@@ -83,6 +114,17 @@ public class RatingActivity extends AppCompatActivity {
                 .load(urlgetImgCourses + GLOBAL.learn.getImgKH())
                 .placeholder(R.drawable.no_image_found)
                 .into(imgKH);
+
+//        if (GLOBAL.userRating.getMaDanhGia()==-1){
+//            btnDelete.setVisibility(View.INVISIBLE);
+//            btnUpdate.setVisibility(View.INVISIBLE);
+//            btnCreate.setVisibility(View.VISIBLE);
+//        }
+//        else {
+//            btnCreate.setVisibility(View.INVISIBLE);
+//            btnDelete.setVisibility(View.VISIBLE);
+//            btnUpdate.setVisibility(View.VISIBLE);
+//        }
 
     }
 
@@ -110,6 +152,7 @@ public class RatingActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+            tvSLUserRating.setText(response.length() + " lượt đánh giá");
             communityAdapter.notifyDataSetChanged();
         };
 
@@ -122,6 +165,34 @@ public class RatingActivity extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlgetCommunity, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
 
+    }
+
+    private void getRatingTotal(){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
+            try {
+//                    ratingTotal.setNumStars((int) response.getDouble("TongDiem"));
+//                    ratingPerson.setNumStars(response.getInt("Diem"));
+                    tvTotalRating.setText(utils.formatTotalRating( response.getDouble("TongDiem"))+ " ");
+                    tvRatingPerson.setText(response.getInt("Diem") + " ");
+                    tvNoiDung.setText(response.getString("NoiDung") + "");
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        };
+        com.android.volley.Response.ErrorListener thatbai = error ->
+        {
+            if(error.getMessage() != null){
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlgetUserRating, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
     }
 
     //action bar
