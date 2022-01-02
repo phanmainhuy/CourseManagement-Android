@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:text="02/01/2022"
         android:textSize="17dp"
+        android:textColor="@color/black"
         android:layout_marginLeft="10dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/tvName_Community"
