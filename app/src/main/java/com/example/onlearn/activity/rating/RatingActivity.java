@@ -92,6 +92,7 @@ public class RatingActivity extends AppCompatActivity {
 //        btnCreate.setVisibility(View.INVISIBLE);
 //        ratingTotal.setStepSize(0.1f);
         //set data
+        getCommunity();
         getSetUpData();
         //set up recycle
 
@@ -99,8 +100,8 @@ public class RatingActivity extends AppCompatActivity {
         rcl_RatingCommunity.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rcl_RatingCommunity.setAdapter(communityAdapter);
 
-        getCommunity();
-        getRatingTotal();
+
+
 
         btnDelete.setVisibility(View.INVISIBLE);
         btnUpdate.setVisibility(View.INVISIBLE);
@@ -144,6 +145,7 @@ public class RatingActivity extends AppCompatActivity {
                                 jsonObject.getString("HinhAnh"),
                                 jsonObject.getString("NgayDanhGia")
                         ));
+                        getRatingTotal();
 
                     }
 
@@ -185,11 +187,16 @@ public class RatingActivity extends AppCompatActivity {
                     btnCreate.setVisibility(View.INVISIBLE);
                     btnDelete.setVisibility(View.VISIBLE);
                     btnUpdate.setVisibility(View.VISIBLE);
+                    tvNoiDung.setEnabled(false);
 
                 } else {
                     btnCreate.setVisibility(View.VISIBLE);
                     btnDelete.setVisibility(View.INVISIBLE);
                     btnUpdate.setVisibility(View.INVISIBLE);
+                    tvNoiDung.setEnabled(true);
+                    ratingPerson.setIsIndicator(false);
+
+
                 }
 
 
