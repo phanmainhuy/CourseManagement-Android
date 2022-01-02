@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -138,6 +139,7 @@ public class RatingActivity extends AppCompatActivity {
                 if (btnUpdate.getText().toString().trim().equals("Chỉnh sửa")) {
                     turnOnRating();
                     btnUpdate.setText("Hủy");
+                    btnDelete.setVisibility(View.INVISIBLE);
                     btnCreate.setVisibility(View.VISIBLE);
                     btnCreate.setText("Lưu");
                     tvNoiDung.setText("");
@@ -151,6 +153,8 @@ public class RatingActivity extends AppCompatActivity {
                 } else {
                     btnUpdate.setText("Chỉnh sửa");
                     turnOffRating();
+                    btnCreate.setVisibility(View.VISIBLE);
+
                 }
 
                 return true;
@@ -190,18 +194,63 @@ public class RatingActivity extends AppCompatActivity {
             else {
                 try {
                     postRating();
+                    getRatingTotal();
+                    getCommunity();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+
             }
         });
 
         btnDelete.setOnClickListener(v -> {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+            //setTitle
+            builder.setTitle("Xác nhận xóa đánh giá");
+            builder.setMessage("Bạn có chắc chắn muốn xóa đánh giá này không?");
+            builder.setIcon(R.drawable.ic_chatbot);
+
+
+            builder.setCancelable(true);
+
+            //create Cancel
+            // Create "Positive" button with OnClickListener.
+            builder.setPositiveButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Toast.makeText(context, "Đã hủy xóa đánh giá",
+                            Toast.LENGTH_SHORT).show();
+                    //  Cancel
+                    dialog.cancel();
+                }
+            });
+//            builder.setPositiveButtonIcon(positiveIcon);
+
+            //create Delete button
+            builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    try {
+                        deleteRating();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            });
+//            builder.setNegativeButtonIcon(context.getResources().getDrawable(R.drawable.ic_add_24));
+
+            // Create AlertDialog:
+            AlertDialog alert = builder.create();
+            alert.show();
 
         });
 
@@ -248,7 +297,8 @@ public class RatingActivity extends AppCompatActivity {
 
                         getRatingTotal();
 
-                    } else {
+                    }
+                    else{
                         getRatingTotal();
                     }
 
@@ -271,6 +321,8 @@ public class RatingActivity extends AppCompatActivity {
         com.android.volley.Response.ErrorListener thatbai = error -> {
             if (error.getMessage() != null)
                 Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            tvNull.setVisibility(View.VISIBLE);
+
 
         };
 
@@ -294,9 +346,16 @@ public class RatingActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
             try {
-//                    double x = response.getDouble("TongDiem");
-//                    String a = utils.formatTotalRating(x);
-//                    Float total = Float.parseFloat(a);
+//                if (response.getString("Message").equals("Không có dữ liệu")) {
+//                    btnCreate.setVisibility(View.VISIBLE);
+//                    btnDelete.setVisibility(View.INVISIBLE);
+//                    btnUpdate.setVisibility(View.INVISIBLE);
+//                    turnOnRating();
+//                    tvTotalRating.setText(0 + " ");
+//                    ratingTotal.setRating(0);
+//                    tvSLUserRating.setText("0 đánh giá");
+//
+//                }
                 if (response.getInt("Diem") > 0) {
                     ratingTotal.setRating((float) response.getDouble("TongDiem"));
                     ratingPerson.setRating(response.getInt("Diem"));
@@ -396,8 +455,12 @@ public class RatingActivity extends AppCompatActivity {
 //                startActivity(intent);
 
                 btnCreate.setVisibility(View.INVISIBLE);
+                btnUpdate.setVisibility(View.VISIBLE);
+                btnDelete.setVisibility(View.VISIBLE);
+                dataRating.clear();
+
                 turnOffRating();
-                getRatingTotal();
+//                getRatingTotal();
                 getCommunity();
 
             }
@@ -415,25 +478,39 @@ public class RatingActivity extends AppCompatActivity {
         JSONObject parmas = new JSONObject();
         Map<String, String> paramsHeaders = new HashMap<>();
 
-        //put parmas
-        parmas.put("MaND", GLOBAL.idUser);
-        parmas.put("MaKhoaHoc", GLOBAL.learn.getMaKH());
+//        //put parmas
+//        parmas.put("MaKhoaHoc", GLOBAL.learn.getMaKH());
+//        parmas.put("MaND", GLOBAL.idUser);
+
 
         paramsHeaders.put("Content-Type", "application/json");
 
-        api.CallAPI(urlCRUDRating, Request.Method.DELETE, parmas.toString(), null, paramsHeaders, new ICallBack() {
+        String urlDelete = urlCRUDRating + "?MaND=" + GLOBAL.idUser + "&&MaKhoaHoc=" + GLOBAL.learn.getMaKH();
+
+        api.CallAPI(urlDelete, Request.Method.DELETE, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
 
                 Log.i("success", "my response" + dataResponse);
 
                 Toast.makeText(getApplicationContext(), "Xóa thành công ", Toast.LENGTH_LONG).show();
-//                Intent intent = new Intent(context, ProfileUserActivity.class);
-//                startActivity(intent);
 
                 turnOnRating();
-                getRatingTotal();
+                turnOnRating();
+                tvNoiDung.setText("");
+                tvUserDate.setText("");
+                ratingPerson.setRating(0);
+                tvRatingPerson.setText(0 + " ");
+                tvTotalRating.setText(0+ "");
+                tvSLUserRating.setText(0 + " lượt đánh giá");
+                ratingTotal.setRating(0);
+                dataRating.clear();
+                btnCreate.setVisibility(View.VISIBLE);
+                btnDelete.setVisibility(View.INVISIBLE);
+                btnUpdate.setVisibility(View.INVISIBLE);
                 getCommunity();
+                getRatingTotal();
+
 
             }
 

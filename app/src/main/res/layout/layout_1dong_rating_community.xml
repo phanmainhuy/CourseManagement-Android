@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:text="4"
-        android:textSize="16dp"
+        android:textSize="15dp"
         android:layout_marginLeft="10dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ratingBar_Community"
