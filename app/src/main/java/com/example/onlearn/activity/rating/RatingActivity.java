@@ -2,6 +2,7 @@ package com.example.onlearn.activity.rating;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,7 +65,7 @@ public class RatingActivity extends AppCompatActivity {
     RatingAdapter communityAdapter;
 
     RatingBar ratingTotal, ratingPerson;
-    TextView tvTotalRating, tvRatingPerson;
+    TextView tvTotalRating, tvRatingPerson, tvNull;
     Button btnCreate, btnUpdate, btnDelete;
     EditText tvNoiDung;
 
@@ -89,6 +90,7 @@ public class RatingActivity extends AppCompatActivity {
         tvRatingPerson = findViewById(R.id.tvPersonalRating_Rating);
         tvNoiDung = findViewById(R.id.tvNoiDungRating_Rating);
         tvUserDate = findViewById(R.id.tvDateRatingUser_Rating);
+        tvNull = findViewById(R.id.tvNullComunity_Rating);
 
         //rcl
         rcl_RatingCommunity = findViewById(R.id.rclRatingCommunity_Rating);
@@ -103,7 +105,7 @@ public class RatingActivity extends AppCompatActivity {
 
 //        int x = GLOBAL.userRating.getMaDanhGia();
 //        System.out.println(x);
-
+        tvNull.setVisibility(View.INVISIBLE);
 
 //        btnCreate.setVisibility(View.INVISIBLE);
 //        ratingTotal.setStepSize(0.1f);
@@ -138,6 +140,11 @@ public class RatingActivity extends AppCompatActivity {
                     btnUpdate.setText("Hủy");
                     btnCreate.setVisibility(View.VISIBLE);
                     btnCreate.setText("Lưu");
+                    tvNoiDung.setText("");
+                    ratingPerson.setRating(0);
+                    tvRatingPerson.setText(0 + " ");
+                    tvUserDate.setText("");
+
                     Toast.makeText(getApplicationContext(), "Chuyển sang chỉnh sửa đánh giá ",
                             Toast.LENGTH_SHORT).show();
 //                    return true;
@@ -165,8 +172,8 @@ public class RatingActivity extends AppCompatActivity {
             if (ratingPerson.getRating() <= 0) {
                 Toast.makeText(context, "Đánh giá thấp nhất là 1 sao", Toast.LENGTH_SHORT).show();
                 return;
-            } else if (tvNoiDung.getText().toString().trim().equals("")) {
-                Toast.makeText(context, "Vui lòng ghi nội dung đánh giá ít nhất 1 ký tự", Toast.LENGTH_SHORT).show();
+            } else if (tvNoiDung.getText().toString().trim().length() < 5) {
+                Toast.makeText(context, "Nội dung đánh giá phải ít nhất 5 ký tự", Toast.LENGTH_SHORT).show();
                 return;
             }
             //update
@@ -180,7 +187,7 @@ public class RatingActivity extends AppCompatActivity {
                 }
             }
             //create
-            else{
+            else {
                 try {
                     postRating();
                 } catch (JSONException e) {
@@ -189,11 +196,14 @@ public class RatingActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+        });
 
+        btnDelete.setOnClickListener(v -> {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            
 
 
         });
-
 
     }
 
@@ -238,6 +248,8 @@ public class RatingActivity extends AppCompatActivity {
 
                         getRatingTotal();
 
+                    } else {
+                        getRatingTotal();
                     }
 
 
@@ -247,6 +259,13 @@ public class RatingActivity extends AppCompatActivity {
             }
             tvSLUserRating.setText(response.length() + " lượt đánh giá");
             communityAdapter.notifyDataSetChanged();
+
+            if (response.length() > 1) {
+                tvNull.setVisibility(View.INVISIBLE);
+            } else {
+                tvNull.setVisibility(View.VISIBLE);
+            }
+
         };
 
         com.android.volley.Response.ErrorListener thatbai = error -> {
@@ -337,8 +356,8 @@ public class RatingActivity extends AppCompatActivity {
 //                Intent intent = new Intent(context, ProfileUserActivity.class);
 //                startActivity(intent);
                 btnUpdate.setText("Chỉnh sửa");
-                btnCreate.setText("Thêm");
                 btnCreate.setVisibility(View.INVISIBLE);
+                btnCreate.setText("Thêm");
                 turnOffRating();
                 getRatingTotal();
 
@@ -379,6 +398,7 @@ public class RatingActivity extends AppCompatActivity {
                 btnCreate.setVisibility(View.INVISIBLE);
                 turnOffRating();
                 getRatingTotal();
+                getCommunity();
 
             }
 
@@ -386,11 +406,45 @@ public class RatingActivity extends AppCompatActivity {
             public void ReponseError(String error) {
 
                 Log.e("error", "my error: " + error);
-                Toast.makeText(getApplicationContext(), "Thêm không thành công ", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Thêm không thành công, đánh giá đã tồn tại ", Toast.LENGTH_LONG).show();
             }
         });
     }
 
+    private void deleteRating() throws JSONException, ParseException {
+        JSONObject parmas = new JSONObject();
+        Map<String, String> paramsHeaders = new HashMap<>();
+
+        //put parmas
+        parmas.put("MaND", GLOBAL.idUser);
+        parmas.put("MaKhoaHoc", GLOBAL.learn.getMaKH());
+
+        paramsHeaders.put("Content-Type", "application/json");
+
+        api.CallAPI(urlCRUDRating, Request.Method.DELETE, parmas.toString(), null, paramsHeaders, new ICallBack() {
+            @Override
+            public void ReponseSuccess(String dataResponse) {
+
+                Log.i("success", "my response" + dataResponse);
+
+                Toast.makeText(getApplicationContext(), "Xóa thành công ", Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(context, ProfileUserActivity.class);
+//                startActivity(intent);
+
+                turnOnRating();
+                getRatingTotal();
+                getCommunity();
+
+            }
+
+            @Override
+            public void ReponseError(String error) {
+
+                Log.e("error", "my error: " + error);
+                Toast.makeText(getApplicationContext(), "Xóa không thành công ", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
     //action bar
     @Override

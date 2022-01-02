@@ -268,13 +268,30 @@
                 android:background="@drawable/textlines"
                 />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rclRatingCommunity_Rating"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="300dp"
                 android:layout_marginTop="5dp"
-                />
+                >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rclRatingCommunity_Rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="300dp"
+                    />
+                <TextView
+                    android:id="@+id/tvNullComunity_Rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_hint_txt"
+                    android:text="Chưa có đánh giá nào"
+                    android:textSize="17dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="50dp"
+
+                    />
+            </FrameLayout>
+
 
 
         </LinearLayout>
