@@ -171,9 +171,10 @@ public class RatingActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
             try {
-//                    ratingTotal.setNumStars((int) response.getDouble("TongDiem"));
-//                    ratingPerson.setNumStars(response.getInt("Diem"));
-                    tvTotalRating.setText(utils.formatTotalRating( response.getDouble("TongDiem"))+ " ");
+
+                    ratingTotal.setRating(response.getInt("TongDiem"));
+                    ratingPerson.setRating(response.getInt("Diem"));
+                    tvTotalRating.setText(utils.formatTotalRating(response.getDouble("TongDiem"))+ " ");
                     tvRatingPerson.setText(response.getInt("Diem") + " ");
                     tvNoiDung.setText(response.getString("NoiDung") + "");
 
