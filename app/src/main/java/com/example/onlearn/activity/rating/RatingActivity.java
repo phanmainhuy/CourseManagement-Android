@@ -101,6 +101,7 @@ public class RatingActivity extends AppCompatActivity {
 
         getCommunity();
         getRatingTotal();
+
         btnDelete.setVisibility(View.INVISIBLE);
         btnUpdate.setVisibility(View.INVISIBLE);
     }
@@ -131,6 +132,7 @@ public class RatingActivity extends AppCompatActivity {
                     JSONObject jsonObject = response.getJSONObject(i);
                     if (jsonObject.getInt("MaND") != GLOBAL.idUser) {
 
+
                         dataRating.add(new RATING(jsonObject.getInt("MaDanhGia"),
                                 jsonObject.getInt("MaND"),
                                 jsonObject.getInt("MaKhoaHoc"),
@@ -142,6 +144,7 @@ public class RatingActivity extends AppCompatActivity {
                                 jsonObject.getString("HinhAnh"),
                                 jsonObject.getString("NgayDanhGia")
                         ));
+
                     }
 
 

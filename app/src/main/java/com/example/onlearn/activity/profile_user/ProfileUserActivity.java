@@ -120,6 +120,10 @@ public class ProfileUserActivity extends AppCompatActivity {
                         response.getString("Salary")
                 );
 
+                if(tvCmnd.getText().toString().trim().equals("")) {
+                    tvCmnd.setText("Chưa có thông tin");
+                    tvCmnd.setTextColor(getResources().getColor(R.color.grey_hint_txt));
+                }
 
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();

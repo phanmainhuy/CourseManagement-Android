@@ -38,7 +38,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_Excercise{
-    String titleActionBar = "Bài " +GLOBAL.chapter.getSTT() + ": "+GLOBAL.lesson.getTenBaiHoc();
+    String titleActionBar = "Bài " +GLOBAL.lesson.getSTT() + ": "+GLOBAL.lesson.getTenBaiHoc();
     String urlGetEx = GLOBAL.ip + "api/baihoc?MaBaiHoc=" + GLOBAL.lesson.getMaBaiHoc();
     ExcerciseAdapter exAdapter;
     ArrayList<EXCERCISE> dataEx = new ArrayList<>();

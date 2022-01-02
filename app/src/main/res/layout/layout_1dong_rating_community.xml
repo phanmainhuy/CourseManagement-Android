@@ -68,8 +68,8 @@
 
     <TextView
         android:id="@+id/tvNoidung_Community"
-        android:layout_width="314dp"
-        android:layout_height="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="85dp"
         android:text="Nội dung bình luận"
         android:textColor="@color/black"

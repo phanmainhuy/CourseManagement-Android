@@ -2,6 +2,7 @@ package com.example.onlearn.activity.coupon;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -168,7 +169,8 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                     }
                     ((CouponActivity) context).getResetUser();
 
-
+                    btnMuaMa.setText("Đã mua");
+                    btnMuaMa.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.grey_hint_txt)));
                     Toast.makeText(context.getApplicationContext(), "Mua khuyến mãi "+ tenkm.getText().toString() + " thành công", Toast.LENGTH_SHORT).show();
 
                 }
