@@ -40,7 +40,7 @@ import java.util.Map;
 public class ChangeProfileActivity extends AppCompatActivity {
     String titleActionBar = "Sửa thông tin người dùng";
     Button btnSave, btnLogout;
-    EditText txtName, txtNumber, txtEmail, txtDoB, txtAddress, txtCMND;
+    EditText txtName, txtNumber, txtEmail, txtDoB, txtAddress;
     TextView tvUserName;
     ImageView imgAvatar;
     RadioButton rdoMale, rdoFemale;
@@ -70,7 +70,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.txt_User_Email);
         txtDoB = findViewById(R.id.txt_User_Birthday);
         txtAddress = findViewById(R.id.txt_User_Address);
-        txtCMND = findViewById(R.id.txt_User_CMND);
         tvUserName = findViewById(R.id.tv_User_username);
         imgAvatar = findViewById(R.id.img_User_Avatar);
         rdoMale = findViewById(R.id.rdb_User_Male);
@@ -113,7 +112,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         txtAddress.setText(user.getAddress());
-        txtCMND.setText(user.getCMND());
         Picasso.with(this)
                 .load(urlImgUser + user.getImgUser())
                 .placeholder(R.drawable.no_image_found)
@@ -158,7 +156,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
         parmas.put("UserID", GLOBAL.idUser);
         parmas.put("UserName", tvUserName.getText().toString().trim());
         parmas.put("Name", txtName.getText().toString().trim());
-        parmas.put("CMND", txtCMND.getText().toString().trim());
+        parmas.put("CMND", GLOBAL.userlogin.getCMND().trim());
         parmas.put("Number", txtNumber.getText().toString().trim());
         parmas.put("Email", txtEmail.getText().toString().trim());
         parmas.put("Gender", gender);

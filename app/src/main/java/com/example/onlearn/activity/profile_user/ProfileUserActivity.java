@@ -35,7 +35,7 @@ import java.text.ParseException;
 public class ProfileUserActivity extends AppCompatActivity {
     Button btnChangeInfo, btnBack;
     ImageView imgUser;
-    TextView tvUserName, tvName, tvPhone, tvEmail, tvDoB, tvAddress, tvCmnd, tvDiemTL, tvGender;
+    TextView tvUserName, tvName, tvPhone, tvEmail, tvDoB, tvAddress, tvDiemTL, tvGender;
 
     //url take imformation user
     String urlUser = GLOBAL.ip + "api/hocvien?userId="+GLOBAL.idUser;
@@ -65,7 +65,6 @@ public class ProfileUserActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tvEmail_User);
         tvDoB = findViewById(R.id.tvDoB_User);
         tvAddress = findViewById(R.id.tvAddress_User);
-        tvCmnd = findViewById(R.id.tvCMND_User);
         tvDiemTL = findViewById(R.id.tvDiemTichLuy_User);
         imgUser = findViewById(R.id.imgAvatar);
         tvGender = findViewById(R.id.tvGender_User);
@@ -97,7 +96,6 @@ public class ProfileUserActivity extends AppCompatActivity {
                     tvDoB.setText(utils.converDateFormate(response.getString("DoB")));
                     tvAddress.setText(response.getString("Address"));
                         tvGender.setText(response.getString("Gender"));
-                    tvCmnd.setText(response.getString("CMND"));
                     tvDiemTL.setText(utils.formatNumberCurrency(response.getString("DiemTichLuy")));
 
                     Picasso.with(this)
@@ -120,9 +118,17 @@ public class ProfileUserActivity extends AppCompatActivity {
                         response.getString("Salary")
                 );
 
-                if(tvCmnd.getText().toString().trim().equals("")) {
-                    tvCmnd.setText("Chưa có thông tin");
-                    tvCmnd.setTextColor(getResources().getColor(R.color.grey_hint_txt));
+                if(tvGender.getText().toString().trim().equals("")) {
+                    tvGender.setText("Chưa có thông tin");
+                    tvGender.setTextColor(getResources().getColor(R.color.grey_hint_txt));
+                }
+                if (tvDoB.getText().toString().trim().equals("")){
+                    tvDoB.setText("Chưa có thông tin");
+                    tvDoB.setTextColor(getResources().getColor(R.color.grey_hint_txt));
+                }
+                if (tvAddress.getText().toString().trim().equals("")){
+                    tvAddress.setText("Chưa có thông tin");
+                    tvAddress.setTextColor(getResources().getColor(R.color.grey_hint_txt));
                 }
 
             } catch (JSONException | ParseException e) {
