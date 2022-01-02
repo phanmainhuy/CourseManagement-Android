@@ -101,10 +101,19 @@ public class RatingActivity extends AppCompatActivity {
         rcl_RatingCommunity.setAdapter(communityAdapter);
 
 
-
-
         btnDelete.setVisibility(View.INVISIBLE);
         btnUpdate.setVisibility(View.INVISIBLE);
+
+        //listen change rating bar
+        ratingPerson.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                String rate = String.valueOf((int) ratingPerson.getRating());
+                tvRatingPerson.setText(rate + " ");
+            }
+        });
+
+
     }
 
     private void getSetUpData() {
@@ -145,6 +154,7 @@ public class RatingActivity extends AppCompatActivity {
                                 jsonObject.getString("HinhAnh"),
                                 jsonObject.getString("NgayDanhGia")
                         ));
+
                         getRatingTotal();
 
                     }
@@ -195,16 +205,10 @@ public class RatingActivity extends AppCompatActivity {
                     btnUpdate.setVisibility(View.INVISIBLE);
                     tvNoiDung.setEnabled(true);
                     ratingPerson.setIsIndicator(false);
-
-
                 }
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-
         };
         com.android.volley.Response.ErrorListener thatbai = error ->
         {
@@ -216,6 +220,7 @@ public class RatingActivity extends AppCompatActivity {
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlgetUserRating, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
+
 
     //action bar
     @Override

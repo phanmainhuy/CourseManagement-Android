@@ -48,7 +48,8 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.KHUNGNHIN>
     public void onBindViewHolder(@NonNull RatingAdapter.KHUNGNHIN holder, int position) {
         RATING rating = dulieu.get(position);
 
-        holder.ratingBar.setNumStars(rating.getDiem());
+        //set rating
+        holder.ratingBar.setRating(rating.getDiem());
 
         holder.tvNameUser.setText(rating.getTenND());
         try {
@@ -64,7 +65,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.KHUNGNHIN>
 
         Picasso.with(context)
                 .load(urlimgUser + rating.getAvatar())
-                .placeholder(R.drawable.no_image_found)
+                .placeholder(R.drawable.ic_user)
                 .into(holder.imgUser);
 
 
