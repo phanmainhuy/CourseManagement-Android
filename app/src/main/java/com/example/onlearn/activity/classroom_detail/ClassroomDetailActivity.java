@@ -89,7 +89,7 @@ public class ClassroomDetailActivity extends AppCompatActivity implements OnClic
         }
 
         getIntroChap();
-//        getUserRating();
+        getUserRating();
 
 
         btnLearn.setOnClickListener(v -> {

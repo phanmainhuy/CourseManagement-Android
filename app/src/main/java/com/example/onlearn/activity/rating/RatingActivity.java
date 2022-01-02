@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -85,10 +86,22 @@ public class RatingActivity extends AppCompatActivity {
         ratingPerson = findViewById(R.id.PersonalRating_Rating);
         ratingTotal = findViewById(R.id.totalrating_Rating);
 
+//        int x = GLOBAL.userRating.getMaDanhGia();
+//        System.out.println(x);
 
+//        //null
+//        if (GLOBAL.userRating.getMaDanhGia()==-1){
+//            btnDelete.setVisibility(View.INVISIBLE);
+//            btnUpdate.setVisibility(View.INVISIBLE);
+//            btnCreate.setVisibility(View.VISIBLE);
+//        }
+//        else {
+//            btnCreate.setVisibility(View.INVISIBLE);
+//            btnDelete.setVisibility(View.VISIBLE);
+//            btnUpdate.setVisibility(View.VISIBLE);
+//        }
 
-
-
+        btnCreate.setVisibility(View.INVISIBLE);
         //set data
         getSetUpData();
         //set up recycle
@@ -114,17 +127,8 @@ public class RatingActivity extends AppCompatActivity {
                 .load(urlgetImgCourses + GLOBAL.learn.getImgKH())
                 .placeholder(R.drawable.no_image_found)
                 .into(imgKH);
+//        ratingTotal.setRating(4);
 
-//        if (GLOBAL.userRating.getMaDanhGia()==-1){
-//            btnDelete.setVisibility(View.INVISIBLE);
-//            btnUpdate.setVisibility(View.INVISIBLE);
-//            btnCreate.setVisibility(View.VISIBLE);
-//        }
-//        else {
-//            btnCreate.setVisibility(View.INVISIBLE);
-//            btnDelete.setVisibility(View.VISIBLE);
-//            btnUpdate.setVisibility(View.VISIBLE);
-//        }
 
     }
 
@@ -135,17 +139,20 @@ public class RatingActivity extends AppCompatActivity {
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    dataRating.add(new RATING(jsonObject.getInt("MaDanhGia"),
-                            jsonObject.getInt("MaND"),
-                            jsonObject.getInt("MaKhoaHoc"),
-                            jsonObject.getString("TenKhoaHoc"),
-                            jsonObject.getInt("Diem"),
-                            jsonObject.getDouble("TongDiem"),
-                            jsonObject.getString("NoiDung"),
-                            jsonObject.getString("TenND"),
-                            jsonObject.getString("HinhAnh"),
-                            jsonObject.getString("NgayDanhGia")
-                            ));
+                    if (jsonObject.getInt("MaND") != GLOBAL.idUser){
+
+                        dataRating.add(new RATING(jsonObject.getInt("MaDanhGia"),
+                                jsonObject.getInt("MaND"),
+                                jsonObject.getInt("MaKhoaHoc"),
+                                jsonObject.getString("TenKhoaHoc"),
+                                jsonObject.getInt("Diem"),
+                                jsonObject.getDouble("TongDiem"),
+                                jsonObject.getString("NoiDung"),
+                                jsonObject.getString("TenND"),
+                                jsonObject.getString("HinhAnh"),
+                                jsonObject.getString("NgayDanhGia")
+                        ));
+                    }
 
 
                 } catch (JSONException e) {
@@ -172,7 +179,7 @@ public class RatingActivity extends AppCompatActivity {
         com.android.volley.Response.Listener<JSONObject> thanhcong = response -> {
             try {
 
-                    ratingTotal.setRating(response.getInt("TongDiem"));
+//                    ratingTotal.setRating(response.getInt("TongDiem"));
                     ratingPerson.setRating(response.getInt("Diem"));
                     tvTotalRating.setText(utils.formatTotalRating(response.getDouble("TongDiem"))+ " ");
                     tvRatingPerson.setText(response.getInt("Diem") + " ");
