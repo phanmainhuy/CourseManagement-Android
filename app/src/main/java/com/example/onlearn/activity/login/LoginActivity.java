@@ -142,6 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                     GLOBAL.idUser = result.getInt("UserID");
                     GLOBAL.username = result.getString("UserName");
                     String name = result.getString("Name");
+                    GLOBAL.passwordLogin = txtPassword.getText().toString();
                     if (name.equals("null")  || name.equals("") || name.isEmpty()){
                         Intent intent1 = new Intent(LoginActivity.this, AfterRegistActivity.class);
                         startActivity(intent1);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.change_pass.ChangePassActivity"
-    android:background="@color/white"
+    android:background="@drawable/background6"
     android:orientation="vertical"
     android:padding="20dp"
 
@@ -18,14 +18,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
 
         <ImageView
-            android:id="@+id/imgLogo_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="50dp"
 
             app:srcCompat="@drawable/logoapp"
@@ -42,24 +43,16 @@
             android:textStyle="bold"
             android:text="Learning is the eye of the mind" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:text="Mật khẩu mới" />
 
         <EditText
-            android:id="@+id/txtPassword_ChangePass"
+            android:id="@+id/txtOldPass_ChangePass"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:drawablePadding="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:textSize="15dp"
             android:background="@drawable/decorate_text_login"
-            android:hint="Mật khẩu"
+            android:hint="Mật khẩu cũ"
             android:drawableLeft="@drawable/ic_password"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
@@ -68,18 +61,23 @@
 
 
             />
-
-
-
-
-        <TextView
+        <EditText
+            android:id="@+id/txtNewPassword_ChangePass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:drawablePadding="10dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="15dp"
-            android:text="Nhập lại mật khẩu" />
+            android:background="@drawable/decorate_text_login"
+            android:hint="Mật khẩu mới"
+            android:drawableLeft="@drawable/ic_password"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_hint_txt"
+
+
+            />
 
 
         <EditText
@@ -97,14 +95,24 @@
             android:textColorHint="@color/grey_hint_txt"
             android:textSize="15dp"
 
-
             />
+
+        <TextView
+            android:id="@+id/tvValidate_ChangePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:textColor="@color/red_basic"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:text="" />
 
         <Button
             android:id="@+id/btnChangePass_ChangePass"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
 
             android:backgroundTint="@color/blue_primary"
             android:text="Đổi mật khẩu"
@@ -115,7 +123,7 @@
             />
 
         <Button
-            android:id="@+id/btnReturn_ForgetPass"
+            android:id="@+id/btnReturn_ChangePass"
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
             android:layout_height="60dp"

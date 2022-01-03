@@ -27,6 +27,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.onlearn.activity.change_pass.ChangePassActivity;
 import com.example.onlearn.activity.introduction.IntroductionActivity;
 import com.example.onlearn.activity.search.SearchActivity;
 import com.example.onlearn.activity.profile_user.ProfileUserActivity;
@@ -282,6 +283,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         if (mSelectedId == R.id.mnu_help) {
             intent = new Intent(this, SupportChatActivity.class);
+            startActivity(intent);
+        }
+
+        if(mSelectedId == R.id.mnu_changepass){
+            intent = new Intent(this, ChangePassActivity.class);
             startActivity(intent);
         }
 

@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,7 +22,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.change_pass.ChangePassActivity;
 import com.example.onlearn.activity.change_profile.ChangeProfileActivity;
+import com.example.onlearn.activity.forget_pass.ForgetpassActivity;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.models.USER;
 import com.example.onlearn.utils.utils;
@@ -151,13 +154,26 @@ public class ProfileUserActivity extends AppCompatActivity {
         JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET, urlUser, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_password, menu);
 
+        return super.onCreateOptionsMenu(menu);
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 this.finish();
+                return true;
+            case R.id.action_forgetpass:
+                Intent intent1 = new Intent(ProfileUserActivity.this, ForgetpassActivity.class);
+                startActivity(intent1);
+                return true;
+            case R.id.action_changepass:
+                Intent intent2 = new Intent(ProfileUserActivity.this, ChangePassActivity.class);
+                startActivity(intent2);
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -34,6 +34,7 @@ public class GLOBAL {
 
     public static USER userlogin;
     public static int idUser;
+    public static String passwordLogin;
     //after register
     public static String username;
 
