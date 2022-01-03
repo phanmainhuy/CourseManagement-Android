@@ -1,7 +1,9 @@
 package com.example.onlearn.activity;
 
+import android.content.DialogInterface;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +15,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.detail_course.DetailCourseActivity;
 import com.example.onlearn.models.KHUYENMAI;
 import com.example.onlearn.models.USER;
 import com.example.onlearn.utils.utils;
@@ -142,5 +145,27 @@ public class _Function {
 //    }
 
 
+    //Dialog
+
+//    AlertDialog.Builder builder = new AlertDialog.Builder(DetailCourseActivity.this);
+//
+//    //setTitle
+//                builder.setTitle("Thông báo");
+//                builder.setMessage("Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng");
+//                builder.setIcon(R.drawable.ic_chatbot);
+//
+//
+//                builder.setCancelable(true);
+//
+//                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+//        public void onClick(DialogInterface dialog, int id) {
+//
+//            //  Cancel
+//            dialog.cancel();
+//        }
+//    });
+//    // Create AlertDialog:
+//    AlertDialog alert = builder.create();
+//                alert.show();
 
 }

@@ -2,9 +2,11 @@ package com.example.onlearn.activity.detail_course;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -167,7 +169,31 @@ public class DetailCourseActivity extends AppCompatActivity {
                 Log.e("error", "My error: "+ error);
                 btnAddCart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_hint_txt)));
                 btnAddCart.setEnabled(false);
-                Toast.makeText(getApplicationContext(), "Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng", Toast.LENGTH_LONG).show();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(DetailCourseActivity.this);
+
+                //setTitle
+                builder.setTitle("Thông báo");
+                builder.setMessage("Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng");
+                builder.setIcon(GLOBAL.iconDialog);
+
+
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        //  Cancel
+                        dialog.cancel();
+                    }
+                });
+                // Create AlertDialog:
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
+
             }
         });
     }

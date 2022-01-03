@@ -9,12 +9,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 
 public class PayActivity extends AppCompatActivity {
     String titleActionBar = "Thanh toán";
+    LinearLayout lnEditUser;
 
 
     @Override
@@ -23,8 +26,22 @@ public class PayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pay);
         decorateActionBar();
 
+        //map
+        lnEditUser = findViewById(R.id.layoutEditUser_Pay);
 
 
+
+
+        //event
+
+        //onclick edit user
+        lnEditUser.setOnClickListener(v -> {
+            //Toast.makeText(getApplicationContext(), "Nhấn được linear rồi nè", Toast.LENGTH_SHORT).show();
+
+
+
+
+        });
 
 
     }

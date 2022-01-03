@@ -211,11 +211,8 @@ public class RatingActivity extends AppCompatActivity {
             //setTitle
             builder.setTitle("Xác nhận xóa đánh giá");
             builder.setMessage("Bạn có chắc chắn muốn xóa đánh giá này không?");
-            builder.setIcon(R.drawable.ic_chatbot);
-
-
+            builder.setIcon(GLOBAL.iconDialog);
             builder.setCancelable(true);
-
             //create Cancel
             // Create "Positive" button with OnClickListener.
             builder.setPositiveButton("Hủy bỏ", new DialogInterface.OnClickListener() {
