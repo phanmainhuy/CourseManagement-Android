@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background9"
+    android:padding="20dp"
+    android:orientation="vertical"
+    tools:context=".activity.pay_edit.PayEditUserActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:text="THÔNG TIN NGƯỜI ĐẶT" />
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Vui lòng nhập chính xác thông tin"
+
+                />
+
+
+            <EditText
+                android:id="@+id/txtName_Pay"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:drawableLeft="@drawable/ic_account"
+                android:background="@drawable/decorate_text_register"
+                android:hint="Họ tên"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_hint_txt"
+
+
+                />
+
+
+
+
+            <EditText
+                android:id="@+id/txtEmail_Pay"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:background="@drawable/decorate_text_register"
+                android:hint="Email"
+                android:drawableLeft="@drawable/ic_email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_hint_txt"
+                />
+
+            <EditText
+                android:id="@+id/txtAddress_Pay"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:background="@drawable/decorate_text_register"
+                android:hint="Địa chỉ"
+                android:drawableLeft="@drawable/ic_location"
+                android:inputType="text"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_hint_txt"
+
+
+                />
+            <EditText
+                android:id="@+id/txtPhone_Pay"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:background="@drawable/decorate_text_register"
+                android:hint="Số điện thoại"
+                android:drawableLeft="@drawable/ic_phone"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_hint_txt"
+
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/red_basic"
+                android:textStyle="bold"
+                android:text=""
+                />
+
+
+
+            <Button
+                android:id="@+id/btnSaveInfo_Pay"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:text="Lưu thông tin"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold"
+
+                />
+            <Button
+                android:id="@+id/btnCancelSaveInfo_Pay"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:text="Hủy bỏ"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold"
+
+                />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>
