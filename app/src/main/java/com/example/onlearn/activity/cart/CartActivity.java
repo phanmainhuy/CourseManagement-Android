@@ -2,11 +2,13 @@ package com.example.onlearn.activity.cart;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,6 +28,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.pay.PayActivity;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.utils.utils;
@@ -36,7 +39,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity{
+public class CartActivity extends AppCompatActivity {
 
     Button btnContinue, btnThanhToan;
     String titleActionBar = "Giỏ hàng";
@@ -75,7 +78,7 @@ public class CartActivity extends AppCompatActivity{
             dataCart.remove(c);
 //            dataCart.clear();
 //            getCartItems();
-            cartAdapter = new CartAdapter(CartActivity.this,dataCart, deleteCart);
+            cartAdapter = new CartAdapter(CartActivity.this, dataCart, deleteCart);
             rclCart.setAdapter(cartAdapter);
             checkData();
 
@@ -95,7 +98,6 @@ public class CartActivity extends AppCompatActivity{
 //        checkData();
 
 
-
         //xu ly
         btnContinue.setOnClickListener(v -> {
             Intent intent = new Intent(CartActivity.this, HomeActivity.class);
@@ -104,22 +106,49 @@ public class CartActivity extends AppCompatActivity{
         });
 
         btnThanhToan.setOnClickListener(v -> {
-            Toast.makeText(context, "thanh toán", Toast.LENGTH_SHORT).show();
+            if (dataCart.size() <= 0) {
+                //Toast.makeText(context, "Bạn chưa có gì trong giỏ hàng", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                //setTitle
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn chưa có gì trong giỏ hàng");
+                builder.setIcon(R.drawable.ic_chatbot);
+
+
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        //  Cancel
+                        dialog.cancel();
+                    }
+                });
+                // Create AlertDialog:
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
+
+            } else {
+                Intent intent = new Intent(CartActivity.this, PayActivity.class);
+                startActivity(intent);
+            }
+
+
         });
 
 
     }
 
     private void checkData() {
-        if(dataCart.size() <=0)
-        {
+        if (dataCart.size() <= 0) {
             cartAdapter.notifyDataSetChanged();
             tvNull.setVisibility(View.VISIBLE);
 //            rclCart.setVisibility(View.INVISIBLE);
 
-        }
-        else
-        {
+        } else {
             cartAdapter.notifyDataSetChanged();
             tvNull.setVisibility(View.INVISIBLE);
 //            rclCart.setVisibility(View.VISIBLE);
@@ -169,7 +198,6 @@ public class CartActivity extends AppCompatActivity{
             cartAdapter.notifyDataSetChanged();
 
 
-
 //            checkData();
 
         };
@@ -186,7 +214,7 @@ public class CartActivity extends AppCompatActivity{
 
     }
 
-   
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

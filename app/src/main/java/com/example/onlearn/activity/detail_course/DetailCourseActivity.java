@@ -89,6 +89,8 @@ public class DetailCourseActivity extends AppCompatActivity {
         //get data
         getDetailCourse();
 
+
+
         //xu ly button
         tvTheLoai.setOnClickListener(v -> {
             Intent intent = new Intent(this, KhoaHocTheoLoaiActivity.class);

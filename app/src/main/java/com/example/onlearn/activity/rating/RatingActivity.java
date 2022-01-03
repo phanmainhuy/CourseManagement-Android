@@ -220,8 +220,8 @@ public class RatingActivity extends AppCompatActivity {
             // Create "Positive" button with OnClickListener.
             builder.setPositiveButton("Hủy bỏ", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    Toast.makeText(context, "Đã hủy xóa đánh giá",
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "Đã hủy xóa đánh giá",
+//                            Toast.LENGTH_SHORT).show();
                     //  Cancel
                     dialog.cancel();
                 }
