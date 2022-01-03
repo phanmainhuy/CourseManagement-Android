@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void ReponseSuccess(String dataResponse) {
                 Log.i("success",dataResponse);
-
+                    LoginActivity.this.finish();
                 try {
                     JSONObject result = new JSONObject(dataResponse);
                     GLOBAL.idUser = result.getInt("UserID");
