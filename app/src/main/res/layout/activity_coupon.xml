@@ -101,6 +101,7 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rclCoupon"
         android:layout_marginRight="5dp"
@@ -110,6 +111,7 @@
         >
 
 </androidx.recyclerview.widget.RecyclerView>
+
 
 
 

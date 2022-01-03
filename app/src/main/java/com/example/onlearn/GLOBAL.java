@@ -8,6 +8,7 @@ import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LESSON;
 import com.example.onlearn.models.LOAIKHOAHOC;
+import com.example.onlearn.models.PAY_ReceiptOrder;
 import com.example.onlearn.models.RATING;
 import com.example.onlearn.models.USER;
 
@@ -31,10 +32,15 @@ public class GLOBAL {
     public static CHAPTER chapter;
     public static LESSON lesson;
     public static RATING userRating;
+    //payment
+    public static int idHD_pay;
+    public static PAY_ReceiptOrder infoThuHo;
 
     public static USER userlogin;
     public static int idUser;
     public static String passwordLogin;
+
+
     //after register
     public static String username;
 
@@ -42,6 +48,7 @@ public class GLOBAL {
 
     public static ArrayList<Items_CART> itemsCart_items;
     public static CART cart;
+
 
 
 

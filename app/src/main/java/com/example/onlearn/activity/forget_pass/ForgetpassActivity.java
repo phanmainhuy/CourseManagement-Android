@@ -61,8 +61,7 @@ public class ForgetpassActivity extends AppCompatActivity {
 
         //xu ly
         btnCancel.setOnClickListener(v -> {
-            Intent intent = new Intent(ForgetpassActivity.this, LoginActivity.class);
-            startActivity(intent);
+            this.finish();
         });
 
         btnContinue.setOnClickListener(v -> {

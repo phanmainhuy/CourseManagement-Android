@@ -44,6 +44,7 @@ import com.example.onlearn.models.CART;
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.R;
+import com.example.onlearn.models.PAY_ReceiptOrder;
 import com.example.onlearn.models.USER;
 import com.google.android.material.navigation.NavigationView;
 
@@ -406,8 +407,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         response.getInt("DiemTichLuy"),
                         response.getInt("GroupID"),
                         response.getString("Salary")
-                );
 
+                );
+                GLOBAL.infoThuHo = new PAY_ReceiptOrder(
+                        response.getString("Name"),
+                        response.getString("Email"),
+                        response.getString("Address"),
+                        response.getString("Number")
+                );
 
             } catch (JSONException e) {
                 e.printStackTrace();

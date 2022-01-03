@@ -25,9 +25,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.onlearn.API.API;
+import com.example.onlearn.API.ICallBack;
+import com.example.onlearn.activity.change_pass.ChangePassActivity;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.login.LoginActivity;
 import com.example.onlearn.activity.pay.PayActivity;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
@@ -38,6 +42,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -49,9 +55,12 @@ public class CartActivity extends AppCompatActivity {
     Context context;
     OnClickRCL_Cart deleteCart;
     public static ArrayList<Items_CART> dataCart = new ArrayList<>();
+    API api;
 
 
     String urlgetCart = GLOBAL.ip + "api/cartitem/?pUserID=" + GLOBAL.idUser;
+
+    String urlpostCart = GLOBAL.ip + "api/Payment";
 
 
     @Override
@@ -62,6 +71,7 @@ public class CartActivity extends AppCompatActivity {
         DecorateActionBar();
         context = getApplicationContext();
 
+        api = new API(CartActivity.this);
 
         //anh xa
         btnContinue = findViewById(R.id.btn_Cart_Continue);
@@ -131,9 +141,14 @@ public class CartActivity extends AppCompatActivity {
 
 
 
-            } else {
-                Intent intent = new Intent(CartActivity.this, PayActivity.class);
-                startActivity(intent);
+            }
+            else {
+                //post gio hang
+                try {
+                    postCart_CreateOrder();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
 
@@ -213,6 +228,44 @@ public class CartActivity extends AppCompatActivity {
 
 
     }
+
+    private void postCart_CreateOrder() throws JSONException {
+        JSONObject parmas = new JSONObject();
+        Map<String, String> paramsHeaders = new HashMap<>();
+
+
+        //put parmas
+        parmas.put("MaND", GLOBAL.idUser);
+        parmas.put("MaGioHang", GLOBAL.cart.getCartID());
+
+
+
+        paramsHeaders.put("Content-Type", "application/json");
+
+        api.CallAPI(urlpostCart, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
+            @Override
+            public void ReponseSuccess(String dataResponse) {
+
+                Log.i("success", "my response" + dataResponse);
+
+                GLOBAL.idHD_pay = Integer.parseInt(dataResponse);
+                Toast.makeText(getApplicationContext(), "Tạo hóa đơn thành công ", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(CartActivity.this, PayActivity.class);
+                startActivity(intent1);
+                dataCart.clear();
+                CartActivity.this.finish();
+
+            }
+
+            @Override
+            public void ReponseError(String error) {
+
+                Log.e("error", "my error: " + error);
+                Toast.makeText(getApplicationContext(), "Lỗi khi tạo hóa đơn ", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 
 
     @Override
