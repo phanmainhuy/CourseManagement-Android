@@ -130,6 +130,10 @@ public class ProfileUserActivity extends AppCompatActivity {
                     tvAddress.setText("Chưa có thông tin");
                     tvAddress.setTextColor(getResources().getColor(R.color.grey_hint_txt));
                 }
+                if (tvDoB.getText().toString().trim().equals("01-01-0001")){
+                    tvDoB.setText("Chưa có thông tin");
+                    tvDoB.setTextColor(getResources().getColor(R.color.grey_hint_txt));
+                }
 
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();

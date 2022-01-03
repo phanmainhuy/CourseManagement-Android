@@ -439,6 +439,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         com.android.volley.Response.ErrorListener thatbai = error -> {
             if (error.getMessage() != null) {
+
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         };

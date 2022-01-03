@@ -115,6 +115,9 @@ public class SearchActivity extends AppCompatActivity implements OnClickRCL_Sear
                     e.printStackTrace();
                 }
             }
+            if (data.size() <= 0){
+                Toast.makeText(getApplicationContext(), "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
+            }
             searchAdapter_rcl.notifyDataSetChanged();
         };
 

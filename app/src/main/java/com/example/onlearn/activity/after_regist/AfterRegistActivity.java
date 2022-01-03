@@ -32,7 +32,7 @@ public class AfterRegistActivity extends AppCompatActivity {
     TextView tvValidate;
     EditText txtName, txtPhone, txtEmail;
     Button btnSubmit;
-    String urlputUser = GLOBAL.ip + "api/nguoidung";
+    String urlputUser = GLOBAL.ip + "api/nguoidung/?MaNDUpdate="+GLOBAL.userlogin.getMaND();
     API api;
     Context context;
 
@@ -93,11 +93,11 @@ public class AfterRegistActivity extends AppCompatActivity {
         Map<String, String> paramsHeaders = new HashMap<>();
         String gender = "";
 
-
+//        parmas.put("MaNDUpdate=", GLOBAL.idUser);
         parmas.put("UserID", GLOBAL.idUser);
         parmas.put("UserName", GLOBAL.username);
         parmas.put("Name", txtName.getText().toString());
-        parmas.put("CMND", "");
+//        parmas.put("CMND", "");
         parmas.put("Number", txtPhone.getText().toString());
         parmas.put("Email", txtEmail.getText().toString());
         parmas.put("Gender", gender);
@@ -126,7 +126,7 @@ public class AfterRegistActivity extends AppCompatActivity {
 
                 Log.e("error", "my error: " + error);
 //                Toast.makeText(getApplicationContext(), " " + error, Toast.LENGTH_LONG).show();
-                tvValidate.setText("Lỗi: "+ error);
+                tvValidate.setText("Sửa không thành công\nThông tin đã có người sử dụng");
             }
         });
 

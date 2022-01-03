@@ -21,7 +21,7 @@ public class GLOBAL {
     //https://localhost:63702/
     //10.0.2.2
     //192.168.3.43
-    public static String ip = "http://192.168.1.160:45459/";
+    public static String ip = "http://192.168.1.160:45455/";
     public static String urlimg = "assets/images/";
     //object
     public static DANHMUC DMClick;

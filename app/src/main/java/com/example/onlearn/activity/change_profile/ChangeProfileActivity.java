@@ -49,7 +49,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
     API api;
     //url
-    String urlputUser = GLOBAL.ip + "api/nguoidung";
+    String urlputUser = GLOBAL.ip + "api/nguoidung/?MaNDUpdate="+GLOBAL.idUser;
     String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
     private USER user = GLOBAL.userlogin;
 
@@ -199,7 +199,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
             public void ReponseError(String error) {
 
                     Log.e("error", "my error: "+ error);
-                    Toast.makeText(getApplicationContext(), "Sửa không thành công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Sửa không thành công\nThông tin đã có người sử dụng", Toast.LENGTH_LONG).show();
             }
         });
 
