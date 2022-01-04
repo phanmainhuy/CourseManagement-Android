@@ -202,9 +202,24 @@
                     android:layout_marginLeft="1dp"
                     android:padding="5dp"
                     android:textStyle="bold"
-                    android:text="(3 khóa học)"
+                    android:hint="(0 khóa học)"
+                    android:textColorHint="@color/grey_hint_txt"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/btnXemCoupon_Pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/green_dolla"
+                    android:text="My Coupon"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+
 
             </LinearLayout>
 
@@ -213,7 +228,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:background="#CCFFFF">
+                android:background="@color/white">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -231,20 +246,98 @@
                     android:layout_marginLeft="1dp"
                     android:padding="5dp"
                     android:textStyle="bold"
+                    android:layout_gravity="center"
                     android:text="Mã khuyến mãi"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
                 <EditText
+                    android:id="@+id/txtMaApDung_Pay"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/decorate_text_basic"
                     android:hint="   Mã áp dụng"
+                    android:layout_marginLeft="20dp"
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:drawablePadding="10dp"
 
                     />
+                <Button
+                    android:id="@+id/btn_Order_ApdungGiamGia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:backgroundTint="@color/red_basic"
+                    android:text="Áp dụng"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/textlines"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:text="Tổng tiền"
+                    android:layout_weight="1"
+                    android:layout_gravity="left"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/tvTongTien_Pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:text="1.641.654 VND"
+                    android:textColor="@color/red_basic"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/textlines"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:text="Giảm giá"
+                    android:layout_weight="1"
+                    android:layout_gravity="left"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/tvGiamGia_Pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:text="0 VND"
+                    android:textColor="@color/red_basic"
+                    android:textSize="16dp" />
 
             </LinearLayout>
 
@@ -266,6 +359,7 @@
                     android:textColor="@color/black"
                     android:textSize="16dp" />
                 <TextView
+                    android:id="@+id/tvThanhTien_Pay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -274,13 +368,14 @@
                     android:layout_marginRight="5dp"
                     android:gravity="right"
                     android:textStyle="bold"
-                    android:text="1.641.654 VND"
+                    android:text="1.441.654 VND"
                     android:textColor="@color/red_basic"
                     android:textSize="16dp" />
 
             </LinearLayout>
 
             <Button
+                android:id="@+id/btnPay_Pay"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Đặt khóa học"

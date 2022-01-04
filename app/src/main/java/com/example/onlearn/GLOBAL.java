@@ -35,6 +35,7 @@ public class GLOBAL {
     //payment
     public static int idHD_pay;
     public static PAY_ReceiptOrder infoThuHo;
+    public static double ThanhTienPay;
 
     public static USER userlogin;
     public static int idUser;

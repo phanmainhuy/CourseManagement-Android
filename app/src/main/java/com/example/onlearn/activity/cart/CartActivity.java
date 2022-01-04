@@ -143,15 +143,15 @@ public class CartActivity extends AppCompatActivity {
 
             }
             else {
-//                //post gio hang
-//                try {
-//                    postCart_CreateOrder();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
+                //post gio hang
+                try {
+                    postCart_CreateOrder();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                Intent intent1 = new Intent(CartActivity.this, PayActivity.class);
-                startActivity(intent1);
+//                Intent intent1 = new Intent(CartActivity.this, PayActivity.class);
+//                startActivity(intent1);
 
 
             }
