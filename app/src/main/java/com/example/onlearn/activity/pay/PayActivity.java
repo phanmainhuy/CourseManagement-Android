@@ -33,6 +33,7 @@ import com.example.onlearn.activity.cart.CartActivity;
 import com.example.onlearn.activity.cart.CartAdapter;
 import com.example.onlearn.activity.coupon_wallet.CouponWalletActivity;
 import com.example.onlearn.activity.pay_edit.PayEditUserActivity;
+import com.example.onlearn.activity.pay_successfully.PaySuccessfulActivity;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.utils.utils;
@@ -245,6 +246,8 @@ public class PayActivity extends AppCompatActivity {
 
                 PayActivity.this.finish();
                 Toast.makeText(getApplicationContext(), "Thanh toán thành công ", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(PayActivity.this, PaySuccessfulActivity.class);
+                startActivity(intent);
 
 
             }
