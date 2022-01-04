@@ -61,11 +61,11 @@ public class PayActivity extends AppCompatActivity {
 
     String urlpostPayment = GLOBAL.ip + "api/Payment/ReceiptOrder";
     String urlgetPay = GLOBAL.ip + "api/payment?MaHoaDon=" + GLOBAL.idHD_pay;
-//    String urlgetCoupon = GLOBAL.ip + "api/KhuyenMai/ApDung";
+    String urlgetCoupon = GLOBAL.ip + "api/KhuyenMai/ApDung?MaND="+GLOBAL.idUser+"&&MaApDung=";
 
 
 
-    TextView tvTongTien, tvThanhTien, tvTongKH;
+    TextView tvTongTien, tvThanhTien, tvTongKH, tvGiamGia;
     Button btnPay, btnCoupon, btnMyCoupon;
     EditText txtMaApDung;
 
@@ -95,6 +95,7 @@ public class PayActivity extends AppCompatActivity {
         btnCoupon = findViewById(R.id.btn_Order_ApdungGiamGia);
         txtMaApDung = findViewById(R.id.txtMaApDung_Pay);
         btnMyCoupon = findViewById(R.id.btnXemCoupon_Pay);
+        tvGiamGia = findViewById(R.id.tvGiamGia_Pay);
 
         //data
         loadDataInfo();
@@ -140,7 +141,11 @@ public class PayActivity extends AppCompatActivity {
                 return;
             }
             else {
-                getMaGiamGia();
+                try {
+                    getMaGiamGia();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
 
@@ -148,9 +153,45 @@ public class PayActivity extends AppCompatActivity {
 
     }
 
-    private void getMaGiamGia() {
+    private void getMaGiamGia() throws JSONException {
+        JSONObject parmas = new JSONObject();
+        Map<String, String> paramsHeaders = new HashMap<>();
 
+
+//        //put parmas
+//        parmas.put("MaND", GLOBAL.idUser);
+//        parmas.put("MaGioHang", GLOBAL.cart.getCartID());
+
+
+
+        paramsHeaders.put("Content-Type", "application/json");
+        String urlgetMaApDung = urlgetCoupon + txtMaApDung.getText().toString().trim();
+        api.CallAPI(urlgetMaApDung, Request.Method.GET, parmas.toString(), null, paramsHeaders, new ICallBack() {
+            @Override
+            public void ReponseSuccess(String dataResponse) {
+
+                Log.i("success", "my response" + dataResponse);
+                GLOBAL.SoGiaGiam = dataResponse;
+                String giamgia = dataResponse;
+//                int thanhtien = Integer.parseInt(GLOBAL.cart.getTongTien()) - Integer.parseInt(GLOBAL.SoGiaGiam);
+//                tvThanhTien.setText(thanhtien + " Đ");
+                tvGiamGia.setText("- "+utils.formatNumberCurrency(giamgia)+" Đ");
+                Toast.makeText(getApplicationContext(), "Áp dụng thành công", Toast.LENGTH_SHORT).show();
+                txtMaApDung.setEnabled(false);
+
+            }
+
+            @Override
+            public void ReponseError(String error) {
+
+                Log.e("error", "my error: " + error);
+                Toast.makeText(getApplicationContext(), "Áp dụng thất bại, người dùng không có mã", Toast.LENGTH_LONG).show();
+            }
+        });
     }
+
+
+
 
 
     private void loadDataInfo(){
@@ -231,7 +272,7 @@ public class PayActivity extends AppCompatActivity {
         parmas.put("Email", GLOBAL.infoThuHo.getEmail());
         parmas.put("SDTThu", GLOBAL.infoThuHo.getSDT());
         parmas.put("SoTienThu", GLOBAL.cart.getTongTien());
-//        parmas.put("MaApDung", GLOBAL.idHD_pay);
+        parmas.put("MaApDung", txtMaApDung.getText().toString());
 
 
 

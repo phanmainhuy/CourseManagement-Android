@@ -335,7 +335,7 @@
                     android:layout_marginRight="5dp"
                     android:gravity="right"
                     android:textStyle="bold"
-                    android:text="0 VND"
+                    android:text="- 0 VND"
                     android:textColor="@color/red_basic"
                     android:textSize="16dp" />
 

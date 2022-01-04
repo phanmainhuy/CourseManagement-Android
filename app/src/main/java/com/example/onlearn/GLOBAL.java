@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class GLOBAL {
 
     //decorate
-    public static String colorActionBar = "#7396b4";
+    public static String colorActionBar = "#3333CC";
     public static int iconDialog = R.drawable.ic_chatbot;
 
     //api
@@ -35,6 +35,7 @@ public class GLOBAL {
     //payment
     public static int idHD_pay;
     public static PAY_ReceiptOrder infoThuHo;
+    public static String SoGiaGiam;
     public static double ThanhTienPay;
 
     public static USER userlogin;
