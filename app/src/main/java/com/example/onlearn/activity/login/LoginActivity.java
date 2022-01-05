@@ -136,20 +136,23 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void ReponseSuccess(String dataResponse) {
                 Log.i("success",dataResponse);
-                    LoginActivity.this.finish();
                 try {
                     JSONObject result = new JSONObject(dataResponse);
                     GLOBAL.idUser = result.getInt("UserID");
                     GLOBAL.username = result.getString("UserName");
                     String name = result.getString("Name");
                     GLOBAL.passwordLogin = txtPassword.getText().toString();
-                    if (name.equals("null")  || name.equals("") || name.isEmpty()){
+                    if (name.equals("null")){
+                        saveUserLogin();
+                        LoginActivity.this.finish();
                         Intent intent1 = new Intent(LoginActivity.this, AfterRegistActivity.class);
                         startActivity(intent1);
                     }
                     else
                     {
                         saveUserLogin();
+                        LoginActivity.this.finish();
+
                         Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent1);
                     }

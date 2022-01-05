@@ -20,23 +20,17 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
+        new Handler().postDelayed(() -> {
+            MainActivity.this.finish();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
         },2000);
 
-        getFavoriteCourses();
 
 
     }
 
-    private void getFavoriteCourses()
-    {
 
-    }
 
 
 

@@ -32,7 +32,7 @@ public class AfterRegistActivity extends AppCompatActivity {
     TextView tvValidate;
     EditText txtName, txtPhone, txtEmail;
     Button btnSubmit;
-    String urlputUser = GLOBAL.ip + "api/nguoidung/?MaNDUpdate="+GLOBAL.userlogin.getMaND();
+    String urlputUser = GLOBAL.ip + "api/nguoidung/?MaNDUpdate="+GLOBAL.idUser;
     API api;
     Context context;
 
