@@ -30,7 +30,10 @@ public class PayEditUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payedit_user);
-        decorateActionBar();
+//        decorateActionBar();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
 
         //map
         txtName = findViewById(R.id.txtName_Pay);

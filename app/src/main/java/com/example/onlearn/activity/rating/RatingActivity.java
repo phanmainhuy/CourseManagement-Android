@@ -132,35 +132,32 @@ public class RatingActivity extends AppCompatActivity {
             }
         });
 
-        //long click update to open update
-        btnUpdate.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (btnUpdate.getText().toString().trim().equals("Chỉnh sửa")) {
-                    turnOnRating();
-                    btnUpdate.setText("Hủy");
-                    btnDelete.setVisibility(View.INVISIBLE);
-                    btnCreate.setVisibility(View.VISIBLE);
-                    btnCreate.setText("Lưu");
-                    tvNoiDung.setText("");
-                    ratingPerson.setRating(0);
-                    tvRatingPerson.setText(0 + " ");
-                    tvUserDate.setText("");
-
-                    Toast.makeText(getApplicationContext(), "Chuyển sang chỉnh sửa đánh giá ",
-                            Toast.LENGTH_SHORT).show();
-//                    return true;
-                } else {
-                    btnUpdate.setText("Chỉnh sửa");
-                    turnOffRating();
-                    btnCreate.setVisibility(View.VISIBLE);
-
-                }
-
-                return true;
-            }
-        });
+//        //long click update to open update
+//        btnUpdate.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//
+//
+//                return true;
+//            }
+//        });
         btnUpdate.setOnClickListener(v -> {
+            if (btnUpdate.getText().toString().trim().equals("Chỉnh sửa")) {
+                turnOnRating();
+                btnUpdate.setText("Hủy");
+                btnDelete.setVisibility(View.INVISIBLE);
+                btnCreate.setVisibility(View.VISIBLE);
+                btnCreate.setText("Lưu");
+                tvNoiDung.setText("");
+                ratingPerson.setRating(0);
+                tvRatingPerson.setText(0 + " ");
+                tvUserDate.setText("");
+
+                Toast.makeText(getApplicationContext(), "Chuyển sang chỉnh sửa đánh giá ",
+                        Toast.LENGTH_SHORT).show();
+                    return;
+            }
+
             if (btnUpdate.getText().toString().trim().equals("Hủy")) {
                 turnOffRating();
                 btnUpdate.setText("Chỉnh sửa");
@@ -168,6 +165,14 @@ public class RatingActivity extends AppCompatActivity {
                 getRatingTotal();
                 return;
             }
+
+            else {
+                btnUpdate.setText("Chỉnh sửa");
+                turnOffRating();
+                btnCreate.setVisibility(View.VISIBLE);
+
+            }
+
 
         });
 
