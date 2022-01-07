@@ -108,6 +108,7 @@ public class CartActivity extends AppCompatActivity {
 
         //xu ly
         btnContinue.setOnClickListener(v -> {
+            this.finish();
             Intent intent = new Intent(CartActivity.this, HomeActivity.class);
             startActivity(intent);
 
@@ -248,7 +249,7 @@ public class CartActivity extends AppCompatActivity {
 
         com.android.volley.Response.ErrorListener thatbai = error -> {
             if (error.getMessage() != null) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         };
 

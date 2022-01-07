@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
+import com.example.onlearn.activity.cart.CartActivity;
 import com.example.onlearn.activity.detail_course.DetailCourseActivity;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.R;
@@ -109,6 +111,12 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity implements OnClic
             requestQueue.add(jsonArrayRequest);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_cart, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
     // nut tro ve
     @Override
@@ -117,6 +125,10 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity implements OnClic
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 this.finish();
+                return true;
+            case R.id.action_cart:
+                Intent intent = new Intent(this, CartActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
