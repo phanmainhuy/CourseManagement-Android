@@ -1,45 +1,32 @@
-package com.example.onlearn.activity.pay;
+package com.example.onlearn.activity.pay_offline;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.example.onlearn.API.API;
-import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.activity.cart.CartActivity;
-import com.example.onlearn.activity.cart.CartAdapter;
-import com.example.onlearn.activity.cart.OnClickRCL_Cart;
 import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-public class PayAdapter extends RecyclerView.Adapter<PayAdapter.KHUNGNHIN> {
+public class PayOfflineAdapter extends RecyclerView.Adapter<PayOfflineAdapter.KHUNGNHIN> {
     Context context;
     ArrayList<Items_CART> dulieu;
 
 
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
 
-    public PayAdapter(Context context, ArrayList<Items_CART> dulieu) {
+    public PayOfflineAdapter(Context context, ArrayList<Items_CART> dulieu) {
         this.context = context;
         this.dulieu = dulieu;
     }
@@ -47,14 +34,14 @@ public class PayAdapter extends RecyclerView.Adapter<PayAdapter.KHUNGNHIN> {
     @NonNull
 
     @Override
-    public PayAdapter.KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PayOfflineAdapter.KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_itemcart, null);
-        return new PayAdapter.KHUNGNHIN(view);
+        return new PayOfflineAdapter.KHUNGNHIN(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull PayAdapter.KHUNGNHIN holder, int position) {
+    public void onBindViewHolder(@NonNull PayOfflineAdapter.KHUNGNHIN holder, int position) {
         Items_CART cart = dulieu.get(position);
 
         //img

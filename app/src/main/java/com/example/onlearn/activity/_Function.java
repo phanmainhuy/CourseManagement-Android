@@ -28,8 +28,6 @@ public class _Function {
 
     String titleActionBar = "";
 //    //action bar
-//
-//
 //    void DecorateActionBar(){
 //        //action bar
 //        ActionBar actionBar = getSupportActionBar();

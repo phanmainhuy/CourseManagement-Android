@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.activity.pay.PayActivity;
+import com.example.onlearn.activity.pay_offline.PayOfflineActivity;
 import com.example.onlearn.models.PAY_ReceiptOrder;
 
 public class PayEditUserActivity extends AppCompatActivity {
@@ -74,7 +74,7 @@ public class PayEditUserActivity extends AppCompatActivity {
                         txtPhone.getText().toString()
                 );
                 this.finish();
-                Intent intent = new Intent(this, PayActivity.class);
+                Intent intent = new Intent(this, PayOfflineActivity.class);
                 startActivity(intent);
             }
 

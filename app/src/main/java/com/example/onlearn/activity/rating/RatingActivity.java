@@ -148,13 +148,32 @@ public class RatingActivity extends AppCompatActivity {
                 btnDelete.setVisibility(View.INVISIBLE);
                 btnCreate.setVisibility(View.VISIBLE);
                 btnCreate.setText("Lưu");
-                tvNoiDung.setText("");
-                ratingPerson.setRating(0);
-                tvRatingPerson.setText(0 + " ");
-                tvUserDate.setText("");
+//                tvNoiDung.setText("");
+//                ratingPerson.setRating(0);
+//                tvRatingPerson.setText(0 + " ");
+//                tvUserDate.setText("");
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-                Toast.makeText(getApplicationContext(), "Chuyển sang chỉnh sửa đánh giá ",
-                        Toast.LENGTH_SHORT).show();
+                //setTitle
+                builder.setTitle("Thông báo");
+                builder.setMessage("Chuyển sang chỉnh sửa đánh giá");
+                builder.setIcon(R.drawable.ic_chatbot);
+
+
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        //  Cancel
+                        dialog.cancel();
+                    }
+                });
+                // Create AlertDialog:
+                AlertDialog alert = builder.create();
+                alert.show();
+//                Toast.makeText(getApplicationContext(), "Chuyển sang chỉnh sửa đánh giá ",
+//                        Toast.LENGTH_SHORT).show();
                     return;
             }
 
@@ -312,7 +331,7 @@ public class RatingActivity extends AppCompatActivity {
             tvSLUserRating.setText(response.length() + " lượt đánh giá");
             communityAdapter.notifyDataSetChanged();
 
-            if (response.length() > 1) {
+            if (response.length() > 0) {
                 tvNull.setVisibility(View.INVISIBLE);
             } else {
                 tvNull.setVisibility(View.VISIBLE);

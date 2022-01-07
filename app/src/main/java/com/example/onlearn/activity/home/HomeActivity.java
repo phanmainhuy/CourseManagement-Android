@@ -159,7 +159,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationLeft.setNavigationItemSelectedListener(this);
         //load quang cao
         loadViewFlipper();
-        getCart();
+//        getCart();
 
     }
 

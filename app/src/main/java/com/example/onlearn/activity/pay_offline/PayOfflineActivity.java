@@ -1,4 +1,4 @@
-package com.example.onlearn.activity.pay;
+package com.example.onlearn.activity.pay_offline;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -29,8 +28,6 @@ import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.activity.cart.CartActivity;
-import com.example.onlearn.activity.cart.CartAdapter;
 import com.example.onlearn.activity.coupon_wallet.CouponWalletActivity;
 import com.example.onlearn.activity.pay_edit.PayEditUserActivity;
 import com.example.onlearn.activity.pay_successfully.PaySuccessfulActivity;
@@ -50,10 +47,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class PayActivity extends AppCompatActivity {
+public class PayOfflineActivity extends AppCompatActivity {
     String titleActionBar = "Thanh toán";
 
-    PayAdapter payAdapter;
+    PayOfflineAdapter payOfflineAdapter;
     API api;
     Context context;
     RecyclerView rcl_pay;
@@ -77,10 +74,10 @@ public class PayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay);
+        setContentView(R.layout.activity_pay_offline);
         decorateActionBar();
 
-        api = new API(PayActivity.this);
+        api = new API(PayOfflineActivity.this);
         context = getApplicationContext();
 
 
@@ -105,9 +102,9 @@ public class PayActivity extends AppCompatActivity {
         loadDataInfo();
 
         //set rcl
-        payAdapter = new PayAdapter(this, dataPay);
+        payOfflineAdapter = new PayOfflineAdapter(this, dataPay);
         rcl_pay.setHasFixedSize(true);
-        rcl_pay.setAdapter(payAdapter);
+        rcl_pay.setAdapter(payOfflineAdapter);
         rcl_pay.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         getPayItems();
@@ -116,11 +113,11 @@ public class PayActivity extends AppCompatActivity {
 
         //onclick edit user
         lnEditUser.setOnClickListener(v -> {
-            Intent intent = new Intent(PayActivity.this, PayEditUserActivity.class);
+            Intent intent = new Intent(PayOfflineActivity.this, PayEditUserActivity.class);
             startActivity(intent);
         });
         btnMyCoupon.setOnClickListener(v -> {
-            Intent intent = new Intent(PayActivity.this, CouponWalletActivity.class);
+            Intent intent = new Intent(PayOfflineActivity.this, CouponWalletActivity.class);
             startActivity(intent);
         });
 
@@ -245,7 +242,7 @@ public class PayActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            payAdapter.notifyDataSetChanged();
+            payOfflineAdapter.notifyDataSetChanged();
 
 
 
@@ -289,14 +286,14 @@ public class PayActivity extends AppCompatActivity {
 
                 Log.i("success", "my response" + dataResponse);
                 String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                PayActivity.this.finish();
+                PayOfflineActivity.this.finish();
                 GLOBAL.notifications.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thành công",
                 "Bạn đã đặt khóa học thành công! Vui lòng thanh toán và đợi nhân viên duyệt đơn hàng, sau khi nhân viên hệ thống sẽ thêm khóa học vào phòng học của bạn." +
                         "\nMọi thắc mắc về thanh toán, vui lòng gọi hotline hỗ trợ của OnLearn." + "\nOnLearn xin chân thành cảm ơn bạn.",
                         currentDate));
 
                 Toast.makeText(getApplicationContext(), "Thanh toán thành công ", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(PayActivity.this, PaySuccessfulActivity.class);
+                Intent intent = new Intent(PayOfflineActivity.this, PaySuccessfulActivity.class);
                 startActivity(intent);
 
 

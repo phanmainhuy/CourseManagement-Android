@@ -27,12 +27,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
-import com.example.onlearn.activity.change_pass.ChangePassActivity;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.activity.login.LoginActivity;
-import com.example.onlearn.activity.pay.PayActivity;
 import com.example.onlearn.activity.pay_edit.PayEditUserActivity;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
@@ -105,7 +102,7 @@ public class CartActivity extends AppCompatActivity {
         getCartItems();
 
 
-        tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()));
+//        tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()));
 //        checkData();
 
 

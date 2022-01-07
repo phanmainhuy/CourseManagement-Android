@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".activity.payment_methods.PaymentMethodsActivity"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="CHỌN PHƯƠNG THỨC THANH TOÁN"
+        />
+    <RadioGroup
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <RadioButton
+            android:id="@+id/rdo_Offline_Payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giao khóa học đến tận nhà (thanh toán offline)"
+            android:textSize="17dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:buttonTint="@color/black"
+            android:textColor="@color/black"
+            android:background="@drawable/textlines"
+
+            />
+        <RadioButton
+            android:id="@+id/rdo_OnlineWallet_Payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/textlines"
+            android:text="Thanh toán bằng ví điện tử"
+            android:paddingTop="20dp"
+            android:buttonTint="@color/black"
+            android:paddingBottom="20dp"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+
+            />
+        <RadioButton
+            android:id="@+id/rdo_CreditCart_Payment"
+            android:background="@drawable/textlines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thanh toán bằng thẻ"
+            android:layout_marginTop="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:textSize="17dp"
+            android:buttonTint="@color/black"
+            android:textColor="@color/black"
+
+            />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnContinue_PaymentMethods"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:text="Tiếp tục"
+        android:textSize="17dp"
+        />
+
+
+</LinearLayout>
