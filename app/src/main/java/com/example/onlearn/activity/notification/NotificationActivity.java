@@ -22,7 +22,7 @@ import com.example.onlearn.models.NOTIFICATION;
 import com.example.onlearn.R;
 
 public class NotificationActivity extends AppCompatActivity {
-    ArrayList<NOTIFICATION> dataNotification = new ArrayList<>();
+//    ArrayList<NOTIFICATION> dataNotification = new ArrayList<>();
     ListView lstNotification;
     NotificationAdapter_Listview notificationAdapter;
 
@@ -51,25 +51,25 @@ public class NotificationActivity extends AppCompatActivity {
 
 
 
-        //set data listview
-        dataNotification.add(new NOTIFICATION(R.drawable.coupon1, "Thông báo mua khóa học thành công",
-                "We' were happy to let you know that we’ve received your order." +
+//        //set data listview
+//        dataNotification.add(new NOTIFICATION(R.drawable.coupon1, "Thông báo mua khóa học thành công",
+//                "We' were happy to let you know that we’ve received your order." +
+//
+//                "Once your package ships, we will send you an email with a tracking number and link so you can see the movement of your package.\n" +
+//                "\n" +
+//                "If you have any questions, contact us here or call us on [contact number]!",
+//                "10/10/2021"));
+//
+//        dataNotification.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thất bại",
+//                "Bạn đã thanh toán thất bại, vui lòng thực hiện thanh toán lại khóa học. \nMọi thắc mắc về thanh toán, vui lòng gọi hotline hỗ trợ của OnLearn.",
+//                "11/10/2021"));
+//        dataNotification.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thành công",
+//                "Bạn đã thanh toán khóa học thành công! Vui lòng đợi nhân viên duyệt đơn hàng, sau khi nhân viên duyệt hệ thống sẽ thêm khóa học vào phòng học của bạn. OnLearn xin chân thành cảm ơn bạn.",
+//                "11/10/2021"));
 
-                "Once your package ships, we will send you an email with a tracking number and link so you can see the movement of your package.\n" +
-                "\n" +
-                "If you have any questions, contact us here or call us on [contact number]!",
-                "10/10/2021"));
-
-        dataNotification.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thất bại",
-                "Bạn đã thanh toán thất bại, vui lòng thực hiện thanh toán lại khóa học. \nMọi thắc mắc về thanh toán, vui lòng gọi hotline hỗ trợ của OnLearn.",
-                "11/10/2021"));
-        dataNotification.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thành công",
-                "Bạn đã thanh toán khóa học thành công! Vui lòng đợi ít phút, hệ thống sẽ thêm khóa học vào phòng học của bạn. OnLearn xin chân thành cảm ơn bạn.",
-                "11/10/2021"));
 
 
-
-        notificationAdapter = new NotificationAdapter_Listview(this, dataNotification);
+        notificationAdapter = new NotificationAdapter_Listview(this, GLOBAL.notifications);
         lstNotification.setAdapter(notificationAdapter);
 
 

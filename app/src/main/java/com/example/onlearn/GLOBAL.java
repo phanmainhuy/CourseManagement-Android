@@ -8,6 +8,7 @@ import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LESSON;
 import com.example.onlearn.models.LOAIKHOAHOC;
+import com.example.onlearn.models.NOTIFICATION;
 import com.example.onlearn.models.PAY_ReceiptOrder;
 import com.example.onlearn.models.RATING;
 import com.example.onlearn.models.USER;
@@ -21,7 +22,7 @@ public class GLOBAL {
     public static int iconDialog = R.drawable.ic_chatbot;
 
     //api
-    public static String ip = "http://192.168.3.19:45455/";
+    public static String ip = "http://192.168.3.43/";
     public static String urlimg = "assets/images/";
 
     //object
@@ -51,6 +52,8 @@ public class GLOBAL {
     public static ArrayList<Items_CART> itemsCart_items;
     public static CART cart;
 
+    //notification
+    public static ArrayList<NOTIFICATION> notifications;
 
 
 
