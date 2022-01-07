@@ -36,14 +36,18 @@ import com.example.onlearn.activity.pay_edit.PayEditUserActivity;
 import com.example.onlearn.activity.pay_successfully.PaySuccessfulActivity;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
+import com.example.onlearn.models.NOTIFICATION;
 import com.example.onlearn.utils.utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class PayActivity extends AppCompatActivity {
@@ -284,8 +288,13 @@ public class PayActivity extends AppCompatActivity {
             public void ReponseSuccess(String dataResponse) {
 
                 Log.i("success", "my response" + dataResponse);
-
+                String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 PayActivity.this.finish();
+                GLOBAL.notifications.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thành công",
+                "Bạn đã đặt khóa học thành công! Vui lòng thanh toán và đợi nhân viên duyệt đơn hàng, sau khi nhân viên hệ thống sẽ thêm khóa học vào phòng học của bạn." +
+                        "\nMọi thắc mắc về thanh toán, vui lòng gọi hotline hỗ trợ của OnLearn." + "\nOnLearn xin chân thành cảm ơn bạn.",
+                        currentDate));
+
                 Toast.makeText(getApplicationContext(), "Thanh toán thành công ", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(PayActivity.this, PaySuccessfulActivity.class);
                 startActivity(intent);

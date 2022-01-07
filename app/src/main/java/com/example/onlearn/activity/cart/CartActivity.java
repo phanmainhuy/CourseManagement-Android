@@ -33,6 +33,7 @@ import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.login.LoginActivity;
 import com.example.onlearn.activity.pay.PayActivity;
+import com.example.onlearn.activity.pay_edit.PayEditUserActivity;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.utils.utils;
@@ -144,11 +145,37 @@ public class CartActivity extends AppCompatActivity {
             }
             else {
                 //post gio hang
-                try {
-                    postCart_CreateOrder();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+
+                //setTitle
+                builder1.setTitle("Thông báo");
+                builder1.setMessage("Khi chuyển sang thanh toán sẽ xóa sạch khóa học trong giỏ hàng, bạn có đồng ý không?");
+                builder1.setIcon(R.drawable.ic_chatbot);
+
+
+                builder1.setCancelable(true);
+
+                builder1.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        try {
+                            postCart_CreateOrder();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        //  Cancel
+                        dialog.cancel();
+                    }
+                });
+                builder1.setPositiveButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //  Cancel
+                        dialog.cancel();
+                    }
+                });
+                // Create AlertDialog:
+                AlertDialog alert = builder1.create();
+                alert.show();
+
 
 //                Intent intent1 = new Intent(CartActivity.this, PayActivity.class);
 //                startActivity(intent1);
@@ -255,7 +282,7 @@ public class CartActivity extends AppCompatActivity {
 
                 GLOBAL.idHD_pay = Integer.parseInt(dataResponse);
                 Toast.makeText(getApplicationContext(), "Tạo hóa đơn thành công ", Toast.LENGTH_SHORT).show();
-                Intent intent1 = new Intent(CartActivity.this, PayActivity.class);
+                Intent intent1 = new Intent(CartActivity.this, PayEditUserActivity.class);
                 startActivity(intent1);
                 dataCart.clear();
                 CartActivity.this.finish();

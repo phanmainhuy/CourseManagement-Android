@@ -22,7 +22,7 @@ import com.example.onlearn.models.NOTIFICATION;
 import com.example.onlearn.R;
 
 public class NotificationActivity extends AppCompatActivity {
-//    ArrayList<NOTIFICATION> dataNotification = new ArrayList<>();
+    ArrayList<NOTIFICATION> dataNotification = new ArrayList<>();
     ListView lstNotification;
     NotificationAdapter_Listview notificationAdapter;
 
@@ -64,7 +64,7 @@ public class NotificationActivity extends AppCompatActivity {
 //                "Bạn đã thanh toán thất bại, vui lòng thực hiện thanh toán lại khóa học. \nMọi thắc mắc về thanh toán, vui lòng gọi hotline hỗ trợ của OnLearn.",
 //                "11/10/2021"));
 //        dataNotification.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thành công",
-//                "Bạn đã thanh toán khóa học thành công! Vui lòng đợi nhân viên duyệt đơn hàng, sau khi nhân viên duyệt hệ thống sẽ thêm khóa học vào phòng học của bạn. OnLearn xin chân thành cảm ơn bạn.",
+//                "Bạn đã thanh toán khóa học thành công! Vui lòng đợi nhân viên duyệt đơn hàng, sau khi nhân viên hệ thống sẽ thêm khóa học vào phòng học của bạn. OnLearn xin chân thành cảm ơn bạn.",
 //                "11/10/2021"));
 
 
@@ -75,12 +75,9 @@ public class NotificationActivity extends AppCompatActivity {
 
 
         //OnClick
-        btnVoucher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NotificationActivity.this, CouponActivity.class);
-                startActivity(intent);
-            }
+        btnVoucher.setOnClickListener(v -> {
+            Intent intent = new Intent(NotificationActivity.this, CouponActivity.class);
+            startActivity(intent);
         });
 
 

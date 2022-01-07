@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -86,8 +87,8 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
         btnSave.setOnClickListener(v -> {
             try {
+//                this.finish();
                 changeProfileUser();
-
 
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();
@@ -183,14 +184,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
                     Log.i("success", "my response" +dataResponse);
 
-//                try {
-//                    JSONObject result = new JSONObject(dataResponse);
-//                    GLOBAL.idUser = result.getInt("UserID");
-////                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
+                ChangeProfileActivity.this.finish();
                 Intent intent = new Intent(context, ProfileUserActivity.class);
                 startActivity(intent);
             }

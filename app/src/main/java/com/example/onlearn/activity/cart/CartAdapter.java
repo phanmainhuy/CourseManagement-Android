@@ -1,6 +1,7 @@
 package com.example.onlearn.activity.cart;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -103,11 +105,39 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.KHUNGNHIN> {
 
             btnDeleteCart.setOnClickListener(v -> {
                 //dulieu.remove(items_cart);
-                try {
-                    deleteCart();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                //setTitle
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn chưa muốn xóa khóa học khỏi giỏ hàng?");
+                builder.setIcon(R.drawable.ic_chatbot);
+
+
+                builder.setCancelable(true);
+                builder.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //do something
+                        try {
+                            deleteCart();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        //  Cancel
+                        dialog.cancel();
+                    }
+                });
+                // Create AlertDialog:
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
+
             });
 
 
