@@ -31,6 +31,7 @@ import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.pay_edit.PayEditUserActivity;
+import com.example.onlearn.activity.payment_methods.PaymentMethodsActivity;
 import com.example.onlearn.models.CART;
 import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.utils.utils;
@@ -280,7 +281,7 @@ public class CartActivity extends AppCompatActivity {
 
                 GLOBAL.idHD_pay = Integer.parseInt(dataResponse);
                 Toast.makeText(getApplicationContext(), "Tạo hóa đơn thành công ", Toast.LENGTH_SHORT).show();
-                Intent intent1 = new Intent(CartActivity.this, PayEditUserActivity.class);
+                Intent intent1 = new Intent(CartActivity.this, PaymentMethodsActivity.class);
                 startActivity(intent1);
                 dataCart.clear();
                 CartActivity.this.finish();

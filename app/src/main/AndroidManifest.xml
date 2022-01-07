@@ -18,10 +18,17 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.payment_methods.PaymentMethodsActivity"
-            android:exported="false" >
+            android:name=".activity.payment_online_method.PaymentOnlineWalletActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.payment_methods.PaymentMethodsActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".activity.pay_successfully.PaySuccessfulActivity"
             android:exported="false" />
@@ -111,19 +118,12 @@
             android:exported="false" />
         <activity
             android:name=".activity.login.LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
 
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

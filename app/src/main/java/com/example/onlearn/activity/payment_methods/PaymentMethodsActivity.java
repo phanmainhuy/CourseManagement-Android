@@ -17,7 +17,9 @@ import android.widget.RadioButton;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.pay_edit.PayEditUserActivity;
 import com.example.onlearn.activity.pay_offline.PayOfflineActivity;
+import com.example.onlearn.activity.payment_online_method.PaymentOnlineWalletActivity;
 
 public class PaymentMethodsActivity extends AppCompatActivity {
     String titleActionBar = "Thanh toán";
@@ -38,13 +40,13 @@ public class PaymentMethodsActivity extends AppCompatActivity {
 
         btnContinue.setOnClickListener(v -> {
             if (rdoOffline.isChecked()) {
-                this.finish();
-                Intent intent = new Intent(PaymentMethodsActivity.this, PayOfflineActivity.class);
+//                this.finish();
+                Intent intent = new Intent(this, PayEditUserActivity.class);
                 startActivity(intent);
             }
             if(rdoOnline.isChecked()){
-                this.finish();
-                Intent intent = new Intent(this, PayOfflineActivity.class);
+//                this.finish();
+                Intent intent = new Intent(this, PaymentOnlineWalletActivity.class);
                 startActivity(intent);
             }
 

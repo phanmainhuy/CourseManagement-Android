@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/textlines"
-            android:text="Thanh toán bằng ví điện tử"
+            android:text="Thanh toán bằng ví điện tử (Thanh toán online)"
             android:paddingTop="20dp"
             android:buttonTint="@color/black"
             android:paddingBottom="20dp"
