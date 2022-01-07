@@ -4,17 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.payment_momo_wallet.MomoWalletActivity;
 
 public class PaymentOnlineWalletActivity extends AppCompatActivity {
     String titleActionBar = "Thanh toán bằng ví điện tử";
+    LinearLayout btnMoMo, btnAirPay, btnVNPay;
 
 
     @Override
@@ -22,6 +26,17 @@ public class PaymentOnlineWalletActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_online_wallet);
         DecorateActionBar();
+        //map
+        btnMoMo = findViewById(R.id.btnMoMo_PaymentWallet);
+        btnAirPay = findViewById(R.id.btnAirpay_PaymentWallet);
+        btnVNPay = findViewById(R.id.btnVnPay_PaymentWallet);
+
+        btnMoMo.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MomoWalletActivity.class);
+            startActivity(intent);
+        });
+
+
 
     }
 
