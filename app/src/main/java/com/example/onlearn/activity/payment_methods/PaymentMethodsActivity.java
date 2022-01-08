@@ -39,6 +39,30 @@ public class PaymentMethodsActivity extends AppCompatActivity {
         btnContinue = findViewById(R.id.btnContinue_PaymentMethods);
 
         btnContinue.setOnClickListener(v -> {
+            if(!rdoOffline.isChecked() && !rdoOnline.isChecked() && !rdoCreditCard.isChecked()){
+                //Dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                //setTitle
+                builder.setTitle("Thông báo");
+                builder.setMessage("Vui lòng chọn phương thức thanh toán");
+                builder.setIcon(R.drawable.ic_chatbot);
+
+
+                builder.setCancelable(true);
+
+                builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        //  Cancel
+                        dialog.cancel();
+                    }
+                });
+                // Create AlertDialog:
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
             if (rdoOffline.isChecked()) {
 //                this.finish();
                 Intent intent = new Intent(this, PayEditUserActivity.class);
@@ -50,15 +74,13 @@ public class PaymentMethodsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
-
-
-            else {
+            if (rdoCreditCard.isChecked()){
                 //Dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
                 //setTitle
                 builder.setTitle("Thông báo");
-                builder.setMessage("Vui lòng chọn phương thức thanh toán");
+                builder.setMessage("Tính năng này đang được phát triển\nVui lòng chọn phương thức thanh toán khác");
                 builder.setIcon(R.drawable.ic_chatbot);
 
 
@@ -75,6 +97,7 @@ public class PaymentMethodsActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
             }
+
 
 
         });

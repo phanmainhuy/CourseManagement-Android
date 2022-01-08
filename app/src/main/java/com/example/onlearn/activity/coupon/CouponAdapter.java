@@ -122,9 +122,12 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                     return;
                 }
                 else {
-                    listener.buyCoupon(khuyenmai);
+//                    listener.buyCoupon(khuyenmai);
                     try {
                         postBuyCP();
+                        btnMuaMa.setText("Đã mua");
+                        btnMuaMa.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.grey_hint_txt)));
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -167,17 +170,15 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    Toast.makeText(context.getApplicationContext(), "Mua khuyến mãi "+ tenkm.getText().toString() + " thành công", Toast.LENGTH_SHORT).show();
                     ((CouponActivity) context).getResetUser();
 
-                    btnMuaMa.setText("Đã mua");
-                    btnMuaMa.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.grey_hint_txt)));
-                    Toast.makeText(context.getApplicationContext(), "Mua khuyến mãi "+ tenkm.getText().toString() + " thành công", Toast.LENGTH_SHORT).show();
 
                 }
                 @Override
                 public void ReponseError(String error) {
                     Log.e("error", "My error: "+ error);
-                    Toast.makeText(context.getApplicationContext(), "Bạn đã có mã khuyến mãi này trong ví", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context.getApplicationContext(), "Bạn đã có mã khuyến mãi này trong ví hoặc\nđã sử dụng mã khuyến mãi", Toast.LENGTH_SHORT).show();
                 }
             });
         }

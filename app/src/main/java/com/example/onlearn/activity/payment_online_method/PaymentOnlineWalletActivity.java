@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.payment_momo_wallet.MomoWalletActivity;
+import com.example.onlearn.activity.payment_vnpay_wallet.VNPayWalletActivity;
 
 public class PaymentOnlineWalletActivity extends AppCompatActivity {
     String titleActionBar = "Thanh toán bằng ví điện tử";
@@ -33,6 +34,11 @@ public class PaymentOnlineWalletActivity extends AppCompatActivity {
 
         btnMoMo.setOnClickListener(v -> {
             Intent intent = new Intent(this, MomoWalletActivity.class);
+            startActivity(intent);
+        });
+
+        btnVNPay.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VNPayWalletActivity.class);
             startActivity(intent);
         });
 

@@ -173,12 +173,21 @@ public class PayOfflineActivity extends AppCompatActivity {
 
                 Log.i("success", "my response" + dataResponse);
                 GLOBAL.SoGiaGiam = dataResponse;
-                String giamgia = dataResponse;
+                Double giamgia = Double.parseDouble(GLOBAL.SoGiaGiam);
+//                Log.i("gia giam", "so gia " + x);
+
+                Double tongtien = Double.parseDouble(GLOBAL.cart.getTongTien());
+                Double thanhtien = tongtien - giamgia;
+                if (thanhtien <= 0){
+                    thanhtien = Double.valueOf(1);
+                }
+                String thanhtienin = String.valueOf(thanhtien);
+                tvThanhTien.setText(utils.formatNumberCurrency(thanhtienin)+" Đ");
 //                int thanhtien = Integer.parseInt(GLOBAL.cart.getTongTien()) - Integer.parseInt(GLOBAL.SoGiaGiam);
 //                tvThanhTien.setText(thanhtien + " Đ");
-                tvGiamGia.setText("- "+utils.formatNumberCurrency(giamgia)+" Đ");
+                tvGiamGia.setText("- "+utils.formatNumberCurrency(GLOBAL.SoGiaGiam)+" Đ");
                 Toast.makeText(getApplicationContext(), "Áp dụng thành công", Toast.LENGTH_SHORT).show();
-                txtMaApDung.setEnabled(false);
+//                txtMaApDung.setEnabled(false);
 
             }
 
@@ -288,7 +297,7 @@ public class PayOfflineActivity extends AppCompatActivity {
                 String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 PayOfflineActivity.this.finish();
                 GLOBAL.notifications.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thành công",
-                "Bạn đã đặt khóa học thành công! Vui lòng thanh toán và đợi nhân viên duyệt đơn hàng, sau khi nhân viên hệ thống sẽ thêm khóa học vào phòng học của bạn." +
+                "Bạn đã đặt khóa học thành công! Vui lòng thanh toán và đợi nhân viên duyệt đơn hàng. \nSau khi đơn hàng được duyệt thành công, hệ thống sẽ thêm khóa học vào phòng học của bạn." +
                         "\nMọi thắc mắc về thanh toán, vui lòng gọi hotline hỗ trợ của OnLearn." + "\nOnLearn xin chân thành cảm ơn bạn.",
                         currentDate));
 

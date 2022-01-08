@@ -154,7 +154,7 @@ public class CartActivity extends AppCompatActivity {
 
                 builder1.setCancelable(true);
 
-                builder1.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                builder1.setNegativeButton("Đồng ý", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         try {
                             postCart_CreateOrder();

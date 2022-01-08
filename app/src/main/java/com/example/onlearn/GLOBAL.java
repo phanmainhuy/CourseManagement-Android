@@ -22,7 +22,7 @@ public class GLOBAL {
     public static int iconDialog = R.drawable.ic_chatbot;
 
     //api
-    public static String ip = "http://192.168.3.68:45455/";
+    public static String ip = "http://192.168.1.160:45455/";
     public static String urlimg = "assets/images/";
 
     //object
