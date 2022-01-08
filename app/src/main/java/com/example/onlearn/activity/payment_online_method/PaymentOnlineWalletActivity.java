@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,7 +21,7 @@ import com.example.onlearn.activity.payment_vnpay_wallet.VNPayWalletActivity;
 
 public class PaymentOnlineWalletActivity extends AppCompatActivity {
     String titleActionBar = "Thanh toán bằng ví điện tử";
-    LinearLayout btnMoMo, btnAirPay, btnVNPay;
+    LinearLayout btnMoMo, btnAirPay, btnVNPay, btnZaloPay;
 
 
     @Override
@@ -31,6 +33,7 @@ public class PaymentOnlineWalletActivity extends AppCompatActivity {
         btnMoMo = findViewById(R.id.btnMoMo_PaymentWallet);
         btnAirPay = findViewById(R.id.btnAirpay_PaymentWallet);
         btnVNPay = findViewById(R.id.btnVnPay_PaymentWallet);
+        btnZaloPay = findViewById(R.id.btnZaloPay_PaymentWallet);
 
         btnMoMo.setOnClickListener(v -> {
             Intent intent = new Intent(this, MomoWalletActivity.class);
@@ -41,12 +44,44 @@ public class PaymentOnlineWalletActivity extends AppCompatActivity {
             Intent intent = new Intent(this, VNPayWalletActivity.class);
             startActivity(intent);
         });
+        btnZaloPay.setOnClickListener(v -> {
+//            Intent intent = new Intent(this, VNPayWalletActivity.class);
+//            startActivity(intent);
+            notificateDeveloping();
+
+        });
+        btnAirPay.setOnClickListener(v -> {
+            notificateDeveloping();
+
+        });
 
 
 
     }
 
+    private void notificateDeveloping(){
+        //Dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        //setTitle
+        builder.setTitle("Thông báo");
+        builder.setMessage("Tính năng này đang được phát triển.\nVui lòng chọn ví thanh toán online khác");
+        builder.setIcon(R.drawable.ic_chatbot);
+
+
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+                //  Cancel
+                dialog.cancel();
+            }
+        });
+        // Create AlertDialog:
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
 //    //action bar
     void DecorateActionBar(){

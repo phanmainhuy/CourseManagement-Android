@@ -80,7 +80,7 @@ public class PaymentMethodsActivity extends AppCompatActivity {
 
                 //setTitle
                 builder.setTitle("Thông báo");
-                builder.setMessage("Tính năng này đang được phát triển\nVui lòng chọn phương thức thanh toán khác");
+                builder.setMessage("Tính năng này đang được phát triển.\nVui lòng chọn phương thức thanh toán khác");
                 builder.setIcon(R.drawable.ic_chatbot);
 
 

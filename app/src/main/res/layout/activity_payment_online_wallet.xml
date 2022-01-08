@@ -103,7 +103,35 @@
             android:text="VnPay"
             />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/btnZaloPay_PaymentWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textlines"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
 
+        >
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/zalopay"
+            android:layout_marginLeft="10dp"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="ZaloPay"
+            />
+    </LinearLayout>
 
 
 </LinearLayout>
