@@ -40,6 +40,7 @@ public class ProfileUserActivity extends AppCompatActivity {
     ImageView imgUser;
     TextView tvUserName, tvName, tvPhone, tvEmail, tvDoB, tvAddress, tvDiemTL, tvGender;
 
+
     //url take imformation user
     String urlUser = GLOBAL.ip + "api/hocvien?userId="+GLOBAL.idUser;
     String urlImgUser = GLOBAL.ip + GLOBAL.urlimg + "users/";
@@ -47,6 +48,7 @@ public class ProfileUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_user);
+
 
         //ActionBar
         ActionBar actionBar = getSupportActionBar();

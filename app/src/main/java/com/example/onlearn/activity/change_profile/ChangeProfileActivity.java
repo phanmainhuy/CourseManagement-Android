@@ -41,8 +41,8 @@ import java.util.Map;
 public class ChangeProfileActivity extends AppCompatActivity {
     String titleActionBar = "Sửa thông tin người dùng";
     Button btnSave, btnLogout;
-    EditText txtName, txtNumber, txtEmail, txtDoB, txtAddress;
-    TextView tvUserName;
+    EditText txtName, txtNumber, txtEmail, txtAddress;
+    TextView tvUserName, txtDoB;
     ImageView imgAvatar;
     RadioButton rdoMale, rdoFemale;
     Context context;
@@ -109,6 +109,9 @@ public class ChangeProfileActivity extends AppCompatActivity {
         txtEmail.setText(user.getEmail());
         try {
             txtDoB.setText(utils.converDateFormate(user.getBirthday()));
+            if(txtDoB.getText().toString().equals("01-01-0001")){
+                txtDoB.setText("");
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
