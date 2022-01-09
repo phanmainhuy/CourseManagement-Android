@@ -179,13 +179,13 @@ public class PayOfflineActivity extends AppCompatActivity {
                 Double tongtien = Double.parseDouble(GLOBAL.cart.getTongTien());
                 Double thanhtien = tongtien - giamgia;
                 if (thanhtien <= 0){
-                    thanhtien = Double.valueOf(1);
+                    thanhtien = Double.valueOf(0);
                 }
                 String thanhtienin = String.valueOf(thanhtien);
-                tvThanhTien.setText(utils.formatNumberCurrency(thanhtienin)+" Đ");
+                tvThanhTien.setText(utils.formatNumberCurrency(thanhtienin)+" đ");
 //                int thanhtien = Integer.parseInt(GLOBAL.cart.getTongTien()) - Integer.parseInt(GLOBAL.SoGiaGiam);
 //                tvThanhTien.setText(thanhtien + " Đ");
-                tvGiamGia.setText("- "+utils.formatNumberCurrency(GLOBAL.SoGiaGiam)+" Đ");
+                tvGiamGia.setText("- "+utils.formatNumberCurrency(GLOBAL.SoGiaGiam)+" đ");
                 Toast.makeText(getApplicationContext(), "Áp dụng thành công", Toast.LENGTH_SHORT).show();
 //                txtMaApDung.setEnabled(false);
 
