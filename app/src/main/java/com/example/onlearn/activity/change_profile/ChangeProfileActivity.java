@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -35,17 +37,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ChangeProfileActivity extends AppCompatActivity {
     String titleActionBar = "Sửa thông tin người dùng";
-    Button btnSave, btnLogout;
+    Button btnSave, btnLogout, btnChangeTime;
     EditText txtName, txtNumber, txtEmail, txtAddress;
     TextView tvUserName, txtDoB;
     ImageView imgAvatar;
     RadioButton rdoMale, rdoFemale;
     Context context;
+    Calendar c;
+    DatePickerDialog dpd;
+
 
 
     API api;
@@ -75,6 +81,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
         imgAvatar = findViewById(R.id.img_User_Avatar);
         rdoMale = findViewById(R.id.rdb_User_Male);
         rdoFemale = findViewById(R.id.rdb_User_Female);
+        btnChangeTime = findViewById(R.id.btnChangeDate_ChangeProfile);
 
 
         setData();
@@ -93,6 +100,24 @@ public class ChangeProfileActivity extends AppCompatActivity {
             } catch (JSONException | ParseException e) {
                 e.printStackTrace();
             }
+
+        });
+        btnChangeTime.setOnClickListener(v -> {
+           c = Calendar.getInstance();
+           int day = c.get(Calendar.DAY_OF_MONTH);
+           int month = c.get(Calendar.MONTH);
+           int year = c.get(Calendar.YEAR);
+
+           dpd = new DatePickerDialog(ChangeProfileActivity.this, new DatePickerDialog.OnDateSetListener() {
+               @Override
+               public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                    txtDoB.setText(mDay+"-"+(mMonth+1)+"-"+mYear);
+               }
+
+
+           }, day, month,year);
+           dpd.show();
+
 
         });
 
@@ -155,8 +180,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
         else {
             gender = "";
         }
-
-
         parmas.put("UserID", GLOBAL.idUser);
         parmas.put("UserName", tvUserName.getText().toString().trim());
         parmas.put("Name", txtName.getText().toString().trim());
