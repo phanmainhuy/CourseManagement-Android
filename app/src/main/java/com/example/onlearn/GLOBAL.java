@@ -48,6 +48,7 @@ public class GLOBAL {
     public static String username;
 
     public static String getUsnForget;
+    public static String getEmForget;
 
     public static ArrayList<Items_CART> itemsCart_items;
     public static CART cart;

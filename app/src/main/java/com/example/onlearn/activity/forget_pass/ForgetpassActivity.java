@@ -97,6 +97,7 @@ public class ForgetpassActivity extends AppCompatActivity {
             else
             {
                 try {
+
                     postForgetPass();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -132,8 +133,11 @@ public class ForgetpassActivity extends AppCompatActivity {
 //                    } catch (JSONException e) {
 //                        e.printStackTrace();
 //                    }
+
                     Intent intent1 = new Intent(ForgetpassActivity.this, ChangePassForgetActivity.class);
                     GLOBAL.getUsnForget = username;
+                    GLOBAL.getEmForget = email;
+                    ForgetpassActivity.this.finish();
                     startActivity(intent1);
 
                     Toast.makeText(getApplicationContext(), "Đã gửi mã xác nhận vào email\nQuý khách vui lòng kiểm tra email để lấy mã", Toast.LENGTH_LONG).show();

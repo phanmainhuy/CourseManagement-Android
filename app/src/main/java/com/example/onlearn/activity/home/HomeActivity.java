@@ -294,7 +294,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         if (mSelectedId == R.id.mnu_logout) {
             GLOBAL.notifications.clear();
-            GLOBAL.itemsCart_items.clear();
+//            GLOBAL.itemsCart_items.clear();
             intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }

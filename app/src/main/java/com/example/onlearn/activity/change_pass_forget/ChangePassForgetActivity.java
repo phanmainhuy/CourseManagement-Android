@@ -8,7 +8,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -74,7 +76,7 @@ public class ChangePassForgetActivity extends AppCompatActivity {
         tvTime = findViewById(R.id.tvTimeCode_ForgetPass);
         tvValidate = findViewById(R.id.tvValidate_ForgetPass2);
 
-
+        countTime();
 
         //events
         btnChangePass.setOnClickListener(v ->{
@@ -101,8 +103,63 @@ public class ChangePassForgetActivity extends AppCompatActivity {
 
         });
 
+        btnResendCode.setOnClickListener(v -> {
+            try {
+                postForgetPass();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        });
+
 
     }
+
+    private void countTime(){
+        CountDownTimer Timer = new CountDownTimer(30000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                btnResendCode.setVisibility(View.INVISIBLE);
+                tvTime.setText("Thời gian còn: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                tvTime.setText("done!");
+                btnResendCode.setVisibility(View.VISIBLE);
+            }
+        }.start();
+    }
+
+    private void postForgetPass() throws JSONException {
+
+        JSONObject parmas = new JSONObject();
+        Map<String, String> paramsHeaders = new HashMap<>();
+
+
+
+        //put parmas
+        parmas.put("UserName", GLOBAL.getUsnForget);
+        parmas.put("Email", GLOBAL.getEmForget);
+        String urlpostForgetPass = GLOBAL.ip + "api/nguoidung/quenmatkhau";
+
+        paramsHeaders.put("Content-Type", "application/json");
+        api.CallAPI(urlpostForgetPass, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
+            @Override
+            public void ReponseSuccess(String dataResponse) {
+                Log.i("success", dataResponse);
+                Toast.makeText(getApplicationContext(), "Đã gửi lại mã xác nhận vào email\nQuý khách vui lòng kiểm tra email để lấy mã", Toast.LENGTH_LONG).show();
+                countTime();
+            }
+
+            @Override
+            public void ReponseError(String error) {
+                Log.e("error", "My error: " + error);
+                Toast.makeText(getApplicationContext(), "Gửi mail thất bại", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
+
+
     private void postChangeForgetPass() throws JSONException {
 
         JSONObject parmas = new JSONObject();
@@ -123,6 +180,7 @@ public class ChangePassForgetActivity extends AppCompatActivity {
                 Log.i("success", dataResponse);
 
                 Toast.makeText(context, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                ChangePassForgetActivity.this.finish();
                 Intent intent1 = new Intent(ChangePassForgetActivity.this, LoginActivity.class);
                 startActivity(intent1);
             }
