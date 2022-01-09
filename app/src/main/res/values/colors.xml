@@ -25,6 +25,7 @@
 
     <color name="statusBar_login">#518060</color>
     <color name="statusBar_payment_successful">#eaeaec</color>
+    <color name="statusBar_register">#616161</color>
 
 
     <color name="primary">#FF6666</color>
