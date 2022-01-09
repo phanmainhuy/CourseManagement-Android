@@ -2,12 +2,16 @@ package com.example.onlearn.activity.login;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -42,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtUsername, txtPassword;
     API api;
     Context context;
+    Activity activity = LoginActivity.this;
 
     //    public static List<KHOAHOC> favoriteCourses;
     @Override
@@ -56,6 +61,17 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.hide();
 
 
+        Window window = activity.getWindow();
+
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(activity, R.color.statusBar_payment_successful));
+
 
         //anh xa
         btnLogin = findViewById(R.id.btnLogin_Login);
@@ -65,8 +81,6 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txtPassword_Login);
         txtUsername = findViewById(R.id.txtusername_Login);
         btnDieuKhoan = findViewById(R.id.tvDieuKhoanSD_Login);
-
-
 
 
         //Xu ly checkbox luu mat khau
@@ -95,20 +109,19 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent1);
         });
 
-        btnLogin.setOnClickListener(v ->{
-            if (txtUsername.getText().toString().equals("")){
+        btnLogin.setOnClickListener(v -> {
+            if (txtUsername.getText().toString().equals("")) {
                 Toast.makeText(getApplicationContext(), "Vui lòng điền tên đăng nhập", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if (txtPassword.getText().toString().equals("")){
+            if (txtPassword.getText().toString().equals("")) {
                 Toast.makeText(getApplicationContext(), "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             //neu khong rong thi chay ham login
-            else
-            {
+            else {
                 try {
                     checkLogin();
                 } catch (JSONException e) {
@@ -135,21 +148,19 @@ public class LoginActivity extends AppCompatActivity {
         api.CallAPI(urlApi, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
-                Log.i("success",dataResponse);
+                Log.i("success", dataResponse);
                 try {
                     JSONObject result = new JSONObject(dataResponse);
                     GLOBAL.idUser = result.getInt("UserID");
                     GLOBAL.username = result.getString("UserName");
                     String name = result.getString("Name");
                     GLOBAL.passwordLogin = txtPassword.getText().toString();
-                    if (name.equals("null")){
+                    if (name.equals("null")) {
                         saveUserLogin();
                         LoginActivity.this.finish();
                         Intent intent1 = new Intent(LoginActivity.this, AfterRegistActivity.class);
                         startActivity(intent1);
-                    }
-                    else
-                    {
+                    } else {
                         saveUserLogin();
                         LoginActivity.this.finish();
 
@@ -162,22 +173,22 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
 
-
                 // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
                 // JSONObject objResult = new JSONObject(dataResponse);
                 // }
                 //
                 //   JSONArray arrayResult = objResult.getJSONArray("data");
             }
+
             @Override
             public void ReponseError(String error) {
-                Log.e("error", "My error: "+ error);
+                Log.e("error", "My error: " + error);
                 Toast.makeText(getApplicationContext(), "Sai mật khẩu", Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    private void saveUserLogin(){
+    private void saveUserLogin() {
         //Luu lai thong tin dang nhap
         SharedPreferences.Editor editor = remember.edit();
         if (chkSave.isChecked()) {
@@ -214,9 +225,6 @@ public class LoginActivity extends AppCompatActivity {
 //        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST, urlApi, jsonBody, thanhcong, thatbai);
 //        requestQueue.add(jsonArrayRequest);
 //    }
-
-
-
 
 
 }

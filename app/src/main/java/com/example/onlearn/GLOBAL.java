@@ -18,11 +18,11 @@ import java.util.ArrayList;
 public class GLOBAL {
 
     //decorate
-    public static String colorActionBar = "#7A67EE";
+    public static String colorActionBar = "#FF6666";
     public static int iconDialog = R.drawable.ic_chatbot;
 
     //api
-    public static String ip = "http://192.168.1.160:45455/";
+    public static String ip = "http://192.168.3.68:45455/";
     public static String urlimg = "assets/images/";
 
     //object
@@ -37,7 +37,7 @@ public class GLOBAL {
     public static int idHD_pay;
     public static PAY_ReceiptOrder infoThuHo;
     public static String SoGiaGiam;
-    public static double ThanhTienPay;
+//    public static double ThanhTienPay;
 
     public static USER userlogin;
     public static int idUser;

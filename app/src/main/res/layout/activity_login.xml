@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activity.login.LoginActivity"
 
-    android:background="@drawable/background3"
+    android:background="@drawable/background11"
     android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     >
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp"
+
 
             >
 
@@ -24,9 +26,9 @@
                 android:id="@+id/imgLogo_Login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="65dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="160dp"
                 app:srcCompat="@drawable/logoapp"
 
                 />
@@ -46,7 +48,8 @@
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:paddingLeft="10dp"
                 android:textSize="15dp"
                 android:text="Tài khoản" />
 
@@ -55,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/decorate_text_login"
+                android:background="@drawable/decorate_text_login_fix"
                 android:drawablePadding="10dp"
                 android:hint="Tên đăng nhập"
                 android:inputType="text"
@@ -68,8 +71,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:text="Mật khẩu" />
@@ -81,7 +85,7 @@
                 android:drawablePadding="10dp"
                 android:layout_marginTop="10dp"
                 android:textSize="15dp"
-                android:background="@drawable/decorate_text_login"
+                android:background="@drawable/decorate_text_login_fix"
                 android:hint="Mật khẩu"
                 android:drawableLeft="@drawable/ic_password"
                 android:inputType="textPassword"
@@ -100,10 +104,11 @@
                     android:layout_height="30dp"
                     android:layout_marginBottom="10dp"
                     android:buttonTint="@color/blue_ForgetPass"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="15dp"
+
                     android:text="Lưu mật khẩu"
                     android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="15dp"/>
 
 
@@ -128,7 +133,6 @@
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:textColor="@color/black"
-                    android:background="@color/white"
                     android:textStyle="bold"
                     android:textSize="15dp"
 
@@ -145,9 +149,8 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:textStyle="bold"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15dp"
                         android:text="Bằng việc đăng nhập, bạn đã đồng ý " />
                     <TextView
@@ -156,7 +159,7 @@
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/gold"
+                        android:textColor="@color/black"
                         android:textSize="15dp"
                         android:text="Điều khoản sử dụng" />
 

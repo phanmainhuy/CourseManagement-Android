@@ -23,7 +23,11 @@
     <color name="grey_txtSearch">#D3D3D3</color>
 
 
-    <color name="primary">#7A67EE</color>
+    <color name="statusBar_login">#518060</color>
+    <color name="statusBar_payment_successful">#eaeaec</color>
+
+
+    <color name="primary">#FF6666</color>
 
 
 

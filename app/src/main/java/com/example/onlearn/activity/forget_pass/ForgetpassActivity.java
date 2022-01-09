@@ -2,12 +2,16 @@ package com.example.onlearn.activity.forget_pass;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,6 +40,7 @@ public class ForgetpassActivity extends AppCompatActivity {
     Context context;
     TextView tvValidation;
 
+
     String urlpostForgetPass = GLOBAL.ip + "api/nguoidung/quenmatkhau";
 
     @Override
@@ -49,6 +54,19 @@ public class ForgetpassActivity extends AppCompatActivity {
         //set up api
         api = new API(ForgetpassActivity.this);
         context = getApplicationContext();
+
+        //Change status bar
+        Activity activity = ForgetpassActivity.this;
+        Window window = activity.getWindow();
+
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(activity, R.color.black));
 
 
         //anh xa
