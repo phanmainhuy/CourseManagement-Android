@@ -2,12 +2,16 @@ package com.example.onlearn.activity.change_pass;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -55,7 +59,18 @@ public class ChangePassActivity extends AppCompatActivity {
         tvValidation = findViewById(R.id.tvValidate_ChangePass);
         txtOldPass = findViewById(R.id.txtOldPass_ChangePass);
 
+//Change status bar
+    Activity activity = ChangePassActivity.this;
+    Window window = activity.getWindow();
 
+    // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+    // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(activity, R.color.statusBar_changePass));
 
 
         btnChangePass.setOnClickListener(v -> {

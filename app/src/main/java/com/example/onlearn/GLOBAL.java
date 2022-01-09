@@ -5,6 +5,8 @@ import com.example.onlearn.models.Items_CART;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.KHOAHOC;
+import com.example.onlearn.models.KHUYENMAI;
+import com.example.onlearn.models.KHUYENMAI_KH;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LESSON;
 import com.example.onlearn.models.LOAIKHOAHOC;
@@ -55,6 +57,7 @@ public class GLOBAL {
 
     //notification
     public static ArrayList<NOTIFICATION> notifications = new ArrayList<>();
+
 
 
 

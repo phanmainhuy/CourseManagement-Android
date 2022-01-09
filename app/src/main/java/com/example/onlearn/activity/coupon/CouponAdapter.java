@@ -36,17 +36,17 @@ import java.util.Map;
 public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN> {
     Context context;
     ArrayList<KHUYENMAI> dulieu;
-    private OnClickRCL_Coupon listener;
     API api;
+    OnClickRCL_Coupon onBuyCoupon;
 
 
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "sales/";
     String urlBuyCP = GLOBAL.ip + "/api/khuyenmai";
 
-    public CouponAdapter(Context context, ArrayList<KHUYENMAI> dulieu, OnClickRCL_Coupon listener) {
+    public CouponAdapter(Context context, ArrayList<KHUYENMAI> dulieu, OnClickRCL_Coupon onBuyCoupon) {
         this.context = context;
         this.dulieu = dulieu;
-        this.listener = listener;
+        this.onBuyCoupon = onBuyCoupon;
     }
 
     @NonNull
@@ -125,8 +125,8 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
 //                    listener.buyCoupon(khuyenmai);
                     try {
                         postBuyCP();
-                        btnMuaMa.setText("Đã mua");
-                        btnMuaMa.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.grey_hint_txt)));
+//                        onBuyCoupon.buyCoupon(khuyenmai);
+//
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -172,7 +172,8 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                     }
                     Toast.makeText(context.getApplicationContext(), "Mua khuyến mãi "+ tenkm.getText().toString() + " thành công", Toast.LENGTH_SHORT).show();
                     ((CouponActivity) context).getResetUser();
-
+                    btnMuaMa.setText("Đã mua");
+                    btnMuaMa.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.grey_hint_txt)));
 
                 }
                 @Override

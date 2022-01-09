@@ -2,11 +2,15 @@ package com.example.onlearn.activity.after_regist;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,7 +36,7 @@ public class AfterRegistActivity extends AppCompatActivity {
     TextView tvValidate;
     EditText txtName, txtPhone, txtEmail;
     Button btnSubmit;
-    String urlputUser = GLOBAL.ip + "api/nguoidung/?MaNDUpdate="+GLOBAL.idUser;
+    String urlputUser = GLOBAL.ip + "api/nguoidung/?MaNDUpdate=" + GLOBAL.idUser;
     API api;
     Context context;
 
@@ -43,6 +47,20 @@ public class AfterRegistActivity extends AppCompatActivity {
         //hide actionbar
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        //Change status bar
+        Activity activity = AfterRegistActivity.this;
+        Window window = activity.getWindow();
+
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(ContextCompat.getColor(activity, R.color.statusBar_changePass));
+
 
         //map
         tvValidate = findViewById(R.id.tvValidate_afterRegist);
@@ -68,9 +86,7 @@ public class AfterRegistActivity extends AppCompatActivity {
             if (txtPhone.getText().toString().equals("") || txtPhone.getText().toString().isEmpty()) {
                 tvValidate.setText("Vui lòng nhập Số điện thoại");
                 return;
-            }
-            else
-                {
+            } else {
                 try {
                     updateAfterRegist();
                 } catch (JSONException e) {

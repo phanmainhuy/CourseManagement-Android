@@ -41,14 +41,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coupon{
+public class CouponActivity extends AppCompatActivity{
     CouponAdapter kmAdapter;
     ArrayList<KHUYENMAI> datakm = new ArrayList<>();
     RecyclerView rclCoupon;
     ImageView imgAvatar;
     TextView tvUsername, tvName;
     TextView tvDiemTL;
-//    OnClickRCL_Coupon onBuyCoupon;
+    OnClickRCL_Coupon onBuyCoupon;
 
     String urlAvatar = GLOBAL.ip + GLOBAL.urlimg +  "users/";
 
@@ -72,8 +72,13 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
         tvDiemTL = findViewById(R.id.tvDiemTL_Coupon);
 
 
+        onBuyCoupon = c -> {
+//            DEPRESS.carts.remove(c);
+            kmAdapter = new CouponAdapter(CouponActivity.this, datakm, onBuyCoupon);
+            rclCoupon.setAdapter(kmAdapter);
+        };
         //set data rcl
-        kmAdapter = new CouponAdapter(this, datakm, this);
+        kmAdapter = new CouponAdapter(this, datakm, onBuyCoupon);
         rclCoupon.setHasFixedSize(true);
         rclCoupon.setAdapter(kmAdapter);
         rclCoupon.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -218,13 +223,5 @@ public class CouponActivity extends AppCompatActivity implements OnClickRCL_Coup
 
 
 
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
 
-    }
-
-    @Override
-    public void buyCoupon(KHUYENMAI khuyenmai) {
-
-    }
 }
