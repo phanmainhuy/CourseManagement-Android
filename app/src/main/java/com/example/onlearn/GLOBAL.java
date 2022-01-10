@@ -35,6 +35,10 @@ public class GLOBAL {
     public static CHAPTER chapter;
     public static LESSON lesson;
     public static RATING userRating;
+
+    //video learn
+//    public static String videoLearn;
+
     //payment
     public static int idHD_pay;
     public static PAY_ReceiptOrder infoThuHo;
@@ -57,6 +61,7 @@ public class GLOBAL {
 
     //notification
     public static ArrayList<NOTIFICATION> notifications = new ArrayList<>();
+
 
 
 

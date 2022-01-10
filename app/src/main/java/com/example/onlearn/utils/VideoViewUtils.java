@@ -6,8 +6,10 @@ import android.util.Log;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.onlearn.GLOBAL;
+
 public class VideoViewUtils{
-    public static final String URL_VIDEO_SAMPLE  = "https://ex1.o7planning.com/_testdatas_/mov_bbb.mp4";
+//    public static final String URL_VIDEO_SAMPLE  = GLOBAL.ip+"assets/video/" + GLOBAL.lesson.getVideo();
     public static final String LOG_TAG= "AndroidVideoView";
     // String videoURL = "https://ex1.o7planning.com/_testdatas_/mov_bbb.mp4";
     public static void playURLVideo(Context context, VideoView videoView, String videoURL)  {

@@ -51,7 +51,8 @@ public class ExcerciseAdapter extends RecyclerView.Adapter<ExcerciseAdapter.KHUN
         EXCERCISE bt = dulieu.get(position);
 
         holder.tvPDF.setText(bt.getFilepdf());
-        holder.tvTenBT.setText(bt.getTenBaiTap());
+
+//        holder.tvTenBT.setText(bt.getTenBaiTap());
 
 
         holder.baitap = dulieu.get(position);

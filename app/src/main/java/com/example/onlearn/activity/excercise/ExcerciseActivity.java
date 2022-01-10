@@ -38,13 +38,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_Excercise{
-    String titleActionBar = "Bài " +GLOBAL.lesson.getSTT() + ": "+GLOBAL.lesson.getTenBaiHoc();
+    String titleActionBar = "Bài " +GLOBAL.lesson.getSTT() + ": " + GLOBAL.lesson.getTenBaiHoc();
     String urlGetEx = GLOBAL.ip + "api/baihoc?MaBaiHoc=" + GLOBAL.lesson.getMaBaiHoc();
     ExcerciseAdapter exAdapter;
     ArrayList<EXCERCISE> dataEx = new ArrayList<>();
     RecyclerView rclPDF;
-
-    String urlgetPDF = GLOBAL.ip + "assets/PDF/";
+    String URL_VIDEO_SAMPLE  = GLOBAL.ip+"assets/video/" + GLOBAL.lesson.getVideo();
+//    String urlgetPDF = GLOBAL.ip + "assets/PDF/";
 
 
     VideoView videoLearn;
@@ -104,7 +104,7 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
         btnUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String videoURL = VideoViewUtils.URL_VIDEO_SAMPLE;
+                String videoURL = URL_VIDEO_SAMPLE;
                 VideoViewUtils.playURLVideo(ExcerciseActivity.this, videoLearn, videoURL);
             }
 

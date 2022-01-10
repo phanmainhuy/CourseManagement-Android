@@ -89,6 +89,7 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
                     e.printStackTrace();
                 }
             }
+
             lessonAdapter.notifyDataSetChanged();
 
         };
@@ -130,6 +131,7 @@ public class LessonActivity extends AppCompatActivity implements OnClickRCL_Less
     @Override
     public void ItemClickLesson(LESSON lesson) {
         GLOBAL.lesson = lesson;
+
         Intent intent = new Intent(this, ExcerciseActivity.class);
         startActivity(intent);
     }

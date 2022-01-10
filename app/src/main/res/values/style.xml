@@ -1,0 +1,10 @@
+
+<resources>
+<!--    <style name="MyCustomQRTheme" parent="SdkQRTheme">-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>//Màu main color-->
+<!--        <item name="colorButtonNormal">@android:color/white</item>//Màu text Titlebar-->
+<!--        <item name="colorControlNormal">@color/color_touch</item>//Màu button actived-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>//Màu status bar-->
+<!--    </style>-->
+
+</resources>
