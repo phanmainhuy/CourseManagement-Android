@@ -180,8 +180,8 @@
                     android:id="@+id/btnDKHoc_Detail"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:backgroundTint="@color/red_basic"
-                    android:text="Đăng ký học ngay"
+                    android:backgroundTint="@color/orange"
+                    android:text="Học thử"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     />

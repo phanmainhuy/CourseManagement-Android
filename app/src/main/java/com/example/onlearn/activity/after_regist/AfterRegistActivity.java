@@ -107,7 +107,7 @@ public class AfterRegistActivity extends AppCompatActivity {
 
         JSONObject parmas = new JSONObject();
         Map<String, String> paramsHeaders = new HashMap<>();
-        String gender = "";
+
 
 //        parmas.put("MaNDUpdate=", GLOBAL.idUser);
         parmas.put("UserID", GLOBAL.idUser);
@@ -116,7 +116,7 @@ public class AfterRegistActivity extends AppCompatActivity {
 //        parmas.put("CMND", "");
         parmas.put("Number", txtPhone.getText().toString());
         parmas.put("Email", txtEmail.getText().toString());
-        parmas.put("Gender", gender);
+        parmas.put("Gender", "");
         parmas.put("DoB", "");
         parmas.put("Address", "");
         parmas.put("HinhAnh", "");
