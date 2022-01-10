@@ -158,6 +158,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void ReponseError(String error) {
                 Log.e("error", "My error: " + error);
+                tvValidation.setText("Tên đăng nhập đã có người sử dụng");
                 Toast.makeText(getApplicationContext(), "Đăng ký thất bại", Toast.LENGTH_LONG).show();
             }
         });
