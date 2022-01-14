@@ -6,15 +6,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />  <!-- CAMERA (Truy cập camera) -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /><!-- READ_EXTERNAL_STORAGE (Truy cập ảnh QR từ thư viện) -->
-
-
-    <uses-feature
-    android:name="android.hardware.camera.autofocus" />
-
-    <uses-feature
-        android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- CAMERA (Truy cập camera) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- READ_EXTERNAL_STORAGE (Truy cập ảnh QR từ thư viện) -->
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:allowBackup="true"
@@ -25,17 +20,17 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.payment_razor_wallet.RazorPayWalletActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.payment_vnpay_wallet.VNPayWalletActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".activity.payment_momo_wallet.MomoWalletActivity"
             android:exported="false" />
         <activity
             android:name=".activity.payment_online_method.PaymentOnlineWalletActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".activity.payment_methods.PaymentMethodsActivity"
             android:exported="false" />
@@ -128,9 +123,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.login.LoginActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -17,11 +17,12 @@ import android.widget.LinearLayout;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.payment_momo_wallet.MomoWalletActivity;
+import com.example.onlearn.activity.payment_razor_wallet.RazorPayWalletActivity;
 import com.example.onlearn.activity.payment_vnpay_wallet.VNPayWalletActivity;
 
 public class PaymentOnlineWalletActivity extends AppCompatActivity {
     String titleActionBar = "Thanh toán bằng ví điện tử";
-    LinearLayout btnMoMo, btnAirPay, btnVNPay, btnZaloPay;
+    LinearLayout btnMoMo, btnAirPay, btnVNPay, btnZaloPay, btnRazorpay;
 
 
     @Override
@@ -34,6 +35,7 @@ public class PaymentOnlineWalletActivity extends AppCompatActivity {
         btnAirPay = findViewById(R.id.btnAirpay_PaymentWallet);
         btnVNPay = findViewById(R.id.btnVnPay_PaymentWallet);
         btnZaloPay = findViewById(R.id.btnZaloPay_PaymentWallet);
+        btnRazorpay = findViewById(R.id.btnRazorPay_PaymentWallet);
 
         btnMoMo.setOnClickListener(v -> {
             Intent intent = new Intent(this, MomoWalletActivity.class);
@@ -53,6 +55,10 @@ public class PaymentOnlineWalletActivity extends AppCompatActivity {
         btnAirPay.setOnClickListener(v -> {
             notificateDeveloping();
 
+        });
+        btnRazorpay.setOnClickListener(v -> {
+                Intent intent = new Intent(this, RazorPayWalletActivity.class);
+                startActivity(intent);
         });
 
 
