@@ -20,6 +20,9 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.excercise.VideoScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.learn_demo.video_demo.VideoDemoActivity"
             android:exported="false" />
         <activity

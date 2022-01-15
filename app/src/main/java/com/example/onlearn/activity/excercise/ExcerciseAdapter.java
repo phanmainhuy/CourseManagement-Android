@@ -76,7 +76,7 @@ public class ExcerciseAdapter extends RecyclerView.Adapter<ExcerciseAdapter.KHUN
 
             //map
             tvPDF = itemView.findViewById(R.id.tvTenpdf_Ex);
-            tvTenBT = itemView.findViewById(R.id.tvTenBT_Ex);
+//            tvTenBT = itemView.findViewById(R.id.tvTenBT_Ex);
 
 
             //Xu ly su kien click item cua recycle view

@@ -54,7 +54,7 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
     VideoView videoLearn;
     private int position = 0;
     MediaController mediaController;
-    Button btnUrl;
+    Button btnUrl, buttonFullScreen;
 
 
     @Override
@@ -68,6 +68,7 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
         btnUrl = findViewById(R.id.button_url);
         videoLearn = findViewById(R.id.videoLearn);
         rclPDF = findViewById(R.id.rclbaitap_Excercise);
+        buttonFullScreen = findViewById(R.id.buttonFullScreen);
 
         //set data for rcl
         exAdapter = new ExcerciseAdapter(this, dataEx, this);
@@ -75,7 +76,10 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
         rclPDF.setAdapter(exAdapter);
         rclPDF.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-
+        buttonFullScreen.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VideoScreenActivity.class);
+            startActivity(intent);
+        });
         //set the controller button
         if(mediaController == null){
             mediaController = new MediaController(this);
