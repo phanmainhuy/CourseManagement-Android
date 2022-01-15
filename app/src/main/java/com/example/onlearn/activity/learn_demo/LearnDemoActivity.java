@@ -26,6 +26,8 @@ import com.example.onlearn.R;
 import com.example.onlearn.activity.chapter.ChapterAdapter;
 import com.example.onlearn.activity.chapter.OnClickRCL_Chapter;
 import com.example.onlearn.activity.home.HomeActivity;
+import com.example.onlearn.activity.learn_demo.lesson_demo.LessonDemoActivity;
+import com.example.onlearn.activity.lesson.LessonActivity;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.utils.SpacesItemDecoration;
 
@@ -142,7 +144,9 @@ public class LearnDemoActivity extends AppCompatActivity implements OnClickRCL_C
 
     @Override
     public void ItemClickLoaiKhoaHoc(CHAPTER chapter) {
-
+        GLOBAL.chapter = chapter;
+        Intent intent = new Intent(this, LessonDemoActivity.class);
+        startActivity(intent);
     }
 
     @Override

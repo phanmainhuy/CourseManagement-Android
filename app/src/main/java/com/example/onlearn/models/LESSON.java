@@ -10,6 +10,7 @@ public class LESSON implements Serializable {
     public String TenChuong;
     public String Video;
 
+
     public LESSON(int STT, int maBaiHoc, String tenBaiHoc, int maChuong, String tenChuong, String video) {
         this.STT = STT;
         MaBaiHoc = maBaiHoc;
