@@ -342,7 +342,7 @@
                     android:layout_marginRight="5dp"
                     android:gravity="right"
                     android:textStyle="bold"
-                    android:text="- 0 VND"
+                    android:text="0 VND"
                     android:textColor="@color/red_basic"
                     android:textSize="16dp" />
 
@@ -381,17 +381,19 @@
 
             </LinearLayout>
 
+
             <Button
                 android:id="@+id/btnPay_Pay"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Đặt khóa học"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:textStyle="bold"
                 android:textSize="16dp"
                 android:backgroundTint="#FF3333"
                 android:textColor="@color/white"
                 />
-
 
         </LinearLayout>
     </ScrollView>
