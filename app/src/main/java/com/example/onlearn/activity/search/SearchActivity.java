@@ -13,8 +13,10 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,6 +40,7 @@ public class SearchActivity extends AppCompatActivity implements OnClickRCL_Sear
     RecyclerView rclSearch;
     Button btnSearch;
     EditText txtSearch;
+    TextView tvNull;
 
 
     ArrayList<KHOAHOC> data = new ArrayList<>();
@@ -63,9 +66,10 @@ public class SearchActivity extends AppCompatActivity implements OnClickRCL_Sear
         btnSearch = findViewById(R.id.btnSearch_Search);
         txtSearch = findViewById(R.id.txtSearch_Search);
         rclSearch = findViewById(R.id.rclSearch);
+        tvNull = findViewById(R.id.tvNull_Search);
 
 //        search = txtSearch.getText().toString();
-
+        tvNull.setVisibility(View.INVISIBLE);
         //set up rcl
         searchAdapter_rcl = new SearchAdapter_rcl(this, data, this);
         rclSearch.setHasFixedSize(true);
@@ -118,7 +122,11 @@ public class SearchActivity extends AppCompatActivity implements OnClickRCL_Sear
                 }
             }
             if (data.size() <= 0){
-                Toast.makeText(getApplicationContext(), "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
+                tvNull.setVisibility(View.VISIBLE);
+            }
+            else {
+                tvNull.setVisibility(View.INVISIBLE);
             }
             searchAdapter_rcl.notifyDataSetChanged();
         };

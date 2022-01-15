@@ -53,14 +53,29 @@
             </LinearLayout>
 
 
-
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rclSearch"
-                android:layout_marginTop="10dp"
+                    android:id="@+id/rclSearch"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white">
                 </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/tvNull_Search"
+                    android:paddingTop="80dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="@color/grey_hint_txt"
+                    android:text="Không có khóa học nào"
+                    />
+            </FrameLayout>
+
 
 
 
