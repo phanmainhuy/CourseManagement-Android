@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.util.Linkify;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.coupon.CouponAdapter;
+import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.models.EXCERCISE;
 import com.example.onlearn.models.LESSON;
 import com.example.onlearn.utils.VideoViewUtils;
@@ -144,7 +147,13 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
         position = savedInstanceState.getInt("CurrentPosition");
         videoLearn.seekTo(position);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
 
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
     //action bar
     @Override
@@ -154,6 +163,10 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.action_home:
+                this.finish();
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

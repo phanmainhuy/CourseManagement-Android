@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,6 +28,7 @@ import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.category_small.LoaiKhoaHocAdapter_rcl;
 import com.example.onlearn.activity.chapter.ChapterActivity;
+import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.rating.RatingActivity;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.LEARN;
@@ -184,7 +186,13 @@ public class ClassroomDetailActivity extends AppCompatActivity implements OnClic
                 .into(imgKH);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
 
+
+        return super.onCreateOptionsMenu(menu);
+    }
     //action bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -193,6 +201,10 @@ public class ClassroomDetailActivity extends AppCompatActivity implements OnClic
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.action_home:
+                this.finish();
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

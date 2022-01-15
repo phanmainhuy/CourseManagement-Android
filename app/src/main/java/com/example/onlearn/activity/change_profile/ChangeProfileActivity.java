@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -27,6 +28,7 @@ import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.login.LoginActivity;
 import com.example.onlearn.activity.profile_user.ProfileUserActivity;
 import com.example.onlearn.models.USER;
@@ -225,7 +227,13 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
 
+
+        return super.onCreateOptionsMenu(menu);
+    }
     //action bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -234,6 +242,10 @@ public class ChangeProfileActivity extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.action_home:
+                this.finish();
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

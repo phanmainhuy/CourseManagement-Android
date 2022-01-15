@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.API.API;
@@ -34,9 +35,14 @@ import com.example.onlearn.R;
 import com.example.onlearn.activity.cart.CartActivity;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiActivity;
 import com.example.onlearn.activity.category_small.LoaiKhoaHocActivity;
+import com.example.onlearn.activity.chapter.ChapterActivity;
+import com.example.onlearn.activity.home.HomeActivity;
+import com.example.onlearn.activity.learn_demo.LearnDemoActivity;
 import com.example.onlearn.activity.login.LoginActivity;
+import com.example.onlearn.activity.rating.RatingActivity;
 import com.example.onlearn.activity.register.RegisterActivity;
 import com.example.onlearn.models.DANHMUC;
+import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
@@ -51,7 +57,7 @@ import java.util.Map;
 
 public class DetailCourseActivity extends AppCompatActivity {
 
-
+    String urlClassroom = GLOBAL.ip + "api/KhoaHocTheoHocVien?MaHV=" +GLOBAL.idUser;
     //http://192.168.1.160:45455/api/khoahoc?makhoa=1
     String urlgetKH = GLOBAL.ip + "api/khoahoc?makhoa=" + GLOBAL.KhoaHocClick.getMaKhoaHoc();
     String urlgetimgKH = GLOBAL.ip + GLOBAL.urlimg + "courses/";
@@ -89,8 +95,8 @@ public class DetailCourseActivity extends AppCompatActivity {
         btnMuaNgay = findViewById(R.id.btnDKHoc_Detail);
 
         //get data
-        getDetailCourse();
-
+//        getDetailCourse();
+            getClassroom();
 
 
         //xu ly button
@@ -104,10 +110,27 @@ public class DetailCourseActivity extends AppCompatActivity {
         });
 
         btnAddCart.setOnClickListener(v -> {
-            try {
+           if(btnAddCart.getText().toString().equals("Thêm vào giỏ hàng")){
+                try {
                 addCart();
             } catch (JSONException e) {
                 e.printStackTrace();
+            }
+           }
+           if (btnAddCart.getText().toString().equals("Đánh giá khoá học")){
+               Intent intent = new Intent(this, RatingActivity.class);
+               startActivity(intent);
+           }
+        });
+        btnMuaNgay.setOnClickListener(v -> {
+            if(btnMuaNgay.getText().toString().equals("Vào học")){
+
+                Intent intent = new Intent(this, ChapterActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(this, LearnDemoActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -228,8 +251,16 @@ public class DetailCourseActivity extends AppCompatActivity {
                 GLOBAL.DMClick = new DANHMUC(response.getInt("MaDM"),
                         response.getString("TenDanhMuc"), "", 0);
 
+                GLOBAL.learn = new LEARN(response.getInt("MaKhoaHoc"),
+                        response.getString("TenKhoaHoc"),
+                        response.getString("HinhAnh"),
+                        response.getInt("MaGV"),
+                        response.getString("TenGV") ,
+                        response.getInt("DanhGia"),
+                        response.getString("GioiThieu"),
+                        utils.converDateFormate(response.getString("NgayChapThuan")));
 
-            } catch (JSONException e) {
+            } catch (JSONException | ParseException e) {
                 e.printStackTrace();
             }
 
@@ -245,9 +276,49 @@ public class DetailCourseActivity extends AppCompatActivity {
 
     }
 
+    private void getClassroom() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject jsonObject = response.getJSONObject(i);
+                    if (jsonObject.getInt("MaKhoaHoc") == GLOBAL.KhoaHocClick.getMaKhoaHoc()){
+                        getDetailCourse();
+                        btnMuaNgay.setText("Vào học");
+                        btnAddCart.setText("Đánh giá khóa học");
+                        btnMuaNgay.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue_deep)));
+                        btnAddCart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red_price)));
+                    }
+                    else {
+                        getDetailCourse();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+//            adapterclassroom.notifyDataSetChanged();
+
+        };
+//        Map<String, String> paramsHeaders = new HashMap<>();
+//        paramsHeaders.put("Content-Type", "application/json");
+        com.android.volley.Response.ErrorListener thatbai = error ->{
+            if(error.getMessage()!=null){
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlClassroom, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         getMenuInflater().inflate(R.menu.menu_cart, menu);
+
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -261,6 +332,11 @@ public class DetailCourseActivity extends AppCompatActivity {
             case R.id.action_cart:
                 Intent intent = new Intent(DetailCourseActivity.this, CartActivity.class);
                 startActivity(intent);
+                return true;
+            case R.id.action_home:
+                this.finish();
+                Intent intent1 = new Intent(DetailCourseActivity.this, HomeActivity.class);
+                startActivity(intent1);
                 return true;
         }
         return super.onOptionsItemSelected(item);

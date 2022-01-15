@@ -1,4 +1,4 @@
-package com.example.onlearn.activity.chapter;
+package com.example.onlearn.activity.learn_demo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -23,7 +23,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
-import com.example.onlearn.activity.classroom_detail.IntroAdapter;
+import com.example.onlearn.activity.chapter.ChapterAdapter;
+import com.example.onlearn.activity.chapter.OnClickRCL_Chapter;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.lesson.LessonActivity;
 import com.example.onlearn.models.CHAPTER;
@@ -35,9 +36,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Chapter{
+public class LearnDemoActivity extends AppCompatActivity implements OnClickRCL_Chapter {
+    String titleActionBar = "Chọn chương học thử";
     String urlChap = GLOBAL.ip +"api/chuong?MaKhoaHoc=" +GLOBAL.learn.getMaKH();
-    String titleActionBar = "Chọn chương";
     RecyclerView rclChap;
     ChapterAdapter chapterAdapter;
     ArrayList<CHAPTER> data = new ArrayList<>();
@@ -45,18 +46,16 @@ public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Cha
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chapter);
+        setContentView(R.layout.activity_learn_demo);
         DecorateActionBar();
-
-        //anh xa
-        rclChap = findViewById(R.id.rclChapter);
+        //map
+        rclChap = findViewById(R.id.rclChapter_ChapDemo);
 
         //set adapter
         chapterAdapter = new ChapterAdapter(this, data, this);
         rclChap.setHasFixedSize(true);
         rclChap.setAdapter(chapterAdapter);
         rclChap.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
 //        Chèn một kẻ ngang giữa các phần tử
         DividerItemDecoration dividerHorizontal =
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -72,8 +71,9 @@ public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Cha
         //data
         getChap();
 
-    }
 
+
+    }
 
     private void getChap() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -106,6 +106,17 @@ public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Cha
         requestQueue.add(jsonArrayRequest);
 
     }
+    void DecorateActionBar(){
+        //action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + titleActionBar + "</font>"));
+        //doi mau thanh action bars
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
@@ -128,19 +139,6 @@ public class ChapterActivity extends AppCompatActivity implements OnClickRCL_Cha
         }
         return super.onOptionsItemSelected(item);
     }
-
-    void DecorateActionBar(){
-        //action bar
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + titleActionBar + "</font>"));
-        //doi mau thanh action bars
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor(GLOBAL.colorActionBar));
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-    }
-
 
     @Override
     public void ItemClickLoaiKhoaHoc(CHAPTER chapter) {

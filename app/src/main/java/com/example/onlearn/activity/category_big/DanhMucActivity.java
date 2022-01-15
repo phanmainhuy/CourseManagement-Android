@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -125,7 +126,13 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
         requestQueue.add(jsonArrayRequest);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
 
+
+        return super.onCreateOptionsMenu(menu);
+    }
     // nut tro ve
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -134,6 +141,8 @@ public class DanhMucActivity extends AppCompatActivity implements OnClickRCL_Dan
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.action_home:
+                this.finish();
         }
         return super.onOptionsItemSelected(item);
     }

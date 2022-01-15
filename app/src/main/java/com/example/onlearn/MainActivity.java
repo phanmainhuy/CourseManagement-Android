@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.finish();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
-        }, 5000);
+        }, 2000);
 
         //Change status bar
         Activity activity = MainActivity.this;

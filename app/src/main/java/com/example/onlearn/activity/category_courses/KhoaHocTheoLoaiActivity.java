@@ -22,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.activity.cart.CartActivity;
 import com.example.onlearn.activity.detail_course.DetailCourseActivity;
+import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.models.KHOAHOC;
 import com.example.onlearn.R;
 
@@ -113,8 +114,8 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity implements OnClic
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         getMenuInflater().inflate(R.menu.menu_cart, menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -130,6 +131,10 @@ public class KhoaHocTheoLoaiActivity extends AppCompatActivity implements OnClic
                 Intent intent = new Intent(this, CartActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_home:
+                this.finish();
+                Intent intent1 = new Intent(this, HomeActivity.class);
+                startActivity(intent1);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiActivity;
+import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.models.LOAIKHOAHOC;
 import com.example.onlearn.R;
 
@@ -138,7 +140,13 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
 
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
     // nut tro ve
     @Override
@@ -148,6 +156,10 @@ public class LoaiKhoaHocActivity extends AppCompatActivity implements OnClickRCL
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.action_home:
+                this.finish();
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
