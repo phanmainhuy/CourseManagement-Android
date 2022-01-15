@@ -24,7 +24,7 @@ public class GLOBAL {
     public static int iconDialog = R.drawable.ic_chatbot;
 
     //api
-    public static String ip = "http://172.23.240.1:45455/";
+    public static String ip = "http://192.168.1.160:45455/";
     public static String urlimg = "assets/images/";
 
     //object
@@ -61,6 +61,10 @@ public class GLOBAL {
 
     //notification
     public static ArrayList<NOTIFICATION> notifications = new ArrayList<>();
+
+    //payment online
+    public static int ThanhTien;
+    public static String MaApDung = "";
 
 
 

@@ -298,6 +298,7 @@ public class RatingActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            dataRating.clear();
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
@@ -315,12 +316,17 @@ public class RatingActivity extends AppCompatActivity {
                                 jsonObject.getString("HinhAnh"),
                                 jsonObject.getString("NgayDanhGia")
                         ));
+//                        tvTotalRating.setText();
+                        ratingTotal.setRating((float) jsonObject.getDouble("TongDiem"));
 
-                        getRatingTotal();
+                        tvTotalRating.setText(utils.formatTotalRating(jsonObject.getDouble("TongDiem")) + " ");
 
                     }
-                    else{
+                    else if(jsonObject.getInt("MaND") == GLOBAL.idUser){
                         getRatingTotal();
+                        ratingTotal.setRating((float) jsonObject.getDouble("TongDiem"));
+
+                        tvTotalRating.setText(utils.formatTotalRating(jsonObject.getDouble("TongDiem")) + " ");
                     }
 
 
@@ -328,6 +334,7 @@ public class RatingActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+            getRatingTotal();
             tvSLUserRating.setText(response.length() + " lượt đánh giá");
             communityAdapter.notifyDataSetChanged();
 
