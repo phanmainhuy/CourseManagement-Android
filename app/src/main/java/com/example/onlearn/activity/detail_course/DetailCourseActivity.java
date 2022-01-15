@@ -118,7 +118,7 @@ public class DetailCourseActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
            }
-           if (btnAddCart.getText().toString().equals("Đánh giá khoá học")){
+           else{
                Intent intent = new Intent(this, RatingActivity.class);
                startActivity(intent);
            }
