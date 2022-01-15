@@ -19,6 +19,7 @@ import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.pay_edit.PayEditUserActivity;
 import com.example.onlearn.activity.pay_offline.PayOfflineActivity;
+import com.example.onlearn.activity.payment_online_method.PaymentOnlineActivity;
 import com.example.onlearn.activity.payment_online_method.PaymentOnlineWalletActivity;
 
 public class PaymentMethodsActivity extends AppCompatActivity {
@@ -70,7 +71,7 @@ public class PaymentMethodsActivity extends AppCompatActivity {
             }
             if(rdoOnline.isChecked()){
 //                this.finish();
-                Intent intent = new Intent(this, PaymentOnlineWalletActivity.class);
+                Intent intent = new Intent(this, PaymentOnlineActivity.class);
                 startActivity(intent);
             }
 

@@ -55,12 +55,19 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
         try {
             JSONObject options = new JSONObject();
 
-            options.put("name", "Tea factory");
-            options.put("description", "Buy Green tea");
+            int pricePay = 455000*100;
+            String titlePay = "Tea factory";
+            String DetailPay = "Buy Green tea";
+            String EmailCus = "nhuy@gmail.com";
+            String MobileCus = "0948462041";
+
+
+            options.put("name", titlePay);
+            options.put("description", DetailPay);
             options.put("currency", "INR");
-            options.put("amount", "5000");//pass amount in currency subunits
-            options.put("prefill.email", "baotiantu@gmail.com");
-            options.put("prefill.contact","0948462040");
+            options.put("amount", pricePay);//pass amount in currency subunits
+            options.put("prefill.email", EmailCus);
+            options.put("prefill.contact",MobileCus);
 
 
             checkout.open(activity, options);
@@ -84,6 +91,7 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
         /**
          * Add your logic here for a failed payment response
          */
+        this.finish();
     }
 
 

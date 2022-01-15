@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.payment_online_method.PaymentOnlineActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
+
+            android:textStyle="bold"
+            android:text="Đơn hàng của tôi"
+            android:textSize="16dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvTotalCourses_PayOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:hint="(0 khóa học)"
+            android:layout_gravity="center"
+
+            android:textColorHint="@color/grey_hint_txt"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btnXemCoupon_PayOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:backgroundTint="@color/green_dolla"
+            android:text="My Coupon"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            />
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rclPay_PayOnline"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
+        android:layout_height="520dp"
+        android:background="@color/white">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/blue_deep"
+        android:layout_marginTop="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="Mã khuyến mãi"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+        <EditText
+            android:id="@+id/txtMaApDung_PayOnline"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/decorate_text_basic"
+            android:hint="Mã áp dụng"
+            android:textColorHint="@color/grey_hint_txt"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="5dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:drawablePadding="10dp"
+
+            />
+        <Button
+            android:id="@+id/btnApdungGiamGia_PayOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/red_basic"
+            android:text="Áp dụng"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/textlines"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:text="Tổng tiền"
+                    android:layout_weight="1"
+                    android:layout_gravity="left"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/tvTongTien_PayOnline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:text=""
+                    android:hint="1.641.654 đ"
+                    android:textColorHint="@color/red_basic"
+                    android:textColor="@color/red_basic"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/textlines"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:text="Giảm giá"
+                    android:layout_weight="1"
+                    android:layout_gravity="left"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/tvGiamGia_PayOnline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:textColorHint="@color/red_basic"
+                    android:hint="0 đ"
+                    android:textColor="@color/red_basic"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/textlines"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:text="Thành tiền"
+                    android:layout_weight="1"
+                    android:layout_gravity="left"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/tvThanhTien_PayOnline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="1dp"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:text="1.441.654 đ"
+                    android:textColor="@color/red_basic"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                >
+            <Button
+                android:id="@+id/btnPay_PayOnline"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Thanh toán"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:backgroundTint="#FF3333"
+                android:textColor="@color/white"
+                />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

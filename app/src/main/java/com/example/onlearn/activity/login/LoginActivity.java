@@ -200,31 +200,4 @@ public class LoginActivity extends AppCompatActivity {
         editor.commit();
         Toast.makeText(getApplicationContext(), "Đã lưu thông tin đăng nhập", Toast.LENGTH_SHORT).show();
     }
-
-//    private void  onLogin() throws JSONException {
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//            String username = txtUsername.getText().toString();
-//            String password = txtPassword.getText().toString();
-//        Response.Listener<JSONObject> thanhcong = response -> {
-//            Log.v("login response", response.toString());
-//        };
-//
-//        Response.ErrorListener thatbai = error -> {
-//            if(error.getMessage()!=null){
-//                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        };
-//        LOGIN login = new LOGIN(username,password);
-//
-//
-//        JSONObject jsonBody = new JSONObject();
-////        jsonBody.put("model", login);
-//        jsonBody.put("UserName", username);
-//        jsonBody.put("Password", password);
-//
-//        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST, urlApi, jsonBody, thanhcong, thatbai);
-//        requestQueue.add(jsonArrayRequest);
-//    }
-
-
 }

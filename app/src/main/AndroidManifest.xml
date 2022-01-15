@@ -20,11 +20,20 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.payment_online_method.PaymentOnlineActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activity.payment_razor_wallet.RazorPayWalletActivity"
             android:exported="false" />
         <activity
             android:name=".activity.payment_vnpay_wallet.VNPayWalletActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".activity.payment_momo_wallet.MomoWalletActivity"
             android:exported="false" />
@@ -123,15 +132,11 @@
             android:exported="false" />
         <activity
             android:name=".activity.login.LoginActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
