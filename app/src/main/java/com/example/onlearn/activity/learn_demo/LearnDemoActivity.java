@@ -26,7 +26,6 @@ import com.example.onlearn.R;
 import com.example.onlearn.activity.chapter.ChapterAdapter;
 import com.example.onlearn.activity.chapter.OnClickRCL_Chapter;
 import com.example.onlearn.activity.home.HomeActivity;
-import com.example.onlearn.activity.lesson.LessonActivity;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.utils.SpacesItemDecoration;
 
@@ -38,7 +37,7 @@ import java.util.ArrayList;
 
 public class LearnDemoActivity extends AppCompatActivity implements OnClickRCL_Chapter {
     String titleActionBar = "Chọn chương học thử";
-    String urlChap = GLOBAL.ip +"api/chuong?MaKhoaHoc=" +GLOBAL.learn.getMaKH();
+    String urlChap = GLOBAL.ip +"api/chuong?MaKhoaHoc=" +GLOBAL.KhoaHocClick.getMaKhoaHoc();
     RecyclerView rclChap;
     ChapterAdapter chapterAdapter;
     ArrayList<CHAPTER> data = new ArrayList<>();
@@ -106,6 +105,7 @@ public class LearnDemoActivity extends AppCompatActivity implements OnClickRCL_C
         requestQueue.add(jsonArrayRequest);
 
     }
+
     void DecorateActionBar(){
         //action bar
         ActionBar actionBar = getSupportActionBar();
@@ -142,9 +142,7 @@ public class LearnDemoActivity extends AppCompatActivity implements OnClickRCL_C
 
     @Override
     public void ItemClickLoaiKhoaHoc(CHAPTER chapter) {
-        GLOBAL.chapter = chapter;
-        Intent intent = new Intent(this, LessonActivity.class);
-        startActivity(intent);
+
     }
 
     @Override

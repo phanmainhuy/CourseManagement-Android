@@ -97,6 +97,7 @@ public class DetailCourseActivity extends AppCompatActivity {
         //get data
 //        getDetailCourse();
             getClassroom();
+            getDetailCourse();
 
 
         //xu ly button
@@ -154,7 +155,6 @@ public class DetailCourseActivity extends AppCompatActivity {
         JSONObject parmas = new JSONObject();
         Map<String, String> paramsHeaders = new HashMap<>();
 
-//        String GiaKH = tvGiaKH.getText().toString();
 
         //put parmas
         parmas.put("UserID", GLOBAL.idUser);
@@ -168,24 +168,16 @@ public class DetailCourseActivity extends AppCompatActivity {
 
                 try {
                     JSONObject result = new JSONObject(dataResponse);
-//                    GLOBAL.idUser = result.getInt("UserID");
-//                    Toast.makeText(getApplicationContext(), GLOBAL.idUser, Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
-//                Intent intent1 = new Intent(RegisterActivity.this ,LoginActivity.class);
-//                startActivity(intent1);
                 Toast.makeText(getApplicationContext(), "Thêm vào thành công", Toast.LENGTH_SHORT).show();
                 btnAddCart.setEnabled(false);
                 btnAddCart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_hint_txt)));
 
-                // nếu data trả về là object thì --> tạo dataJsonObject cho data {"message:"success",data:[{id:"1",name:"gido"},{id:"2",name:"123"]}
-                // JSONObject objResult = new JSONObject(dataResponse);
-                // }
-                //
-                //   JSONArray arrayResult = objResult.getJSONArray("data");
+
             }
             @Override
             public void ReponseError(String error) {
@@ -255,7 +247,7 @@ public class DetailCourseActivity extends AppCompatActivity {
                         response.getString("TenKhoaHoc"),
                         response.getString("HinhAnh"),
                         response.getInt("MaGV"),
-                        response.getString("TenGV") ,
+                        response.getString("TenGV"),
                         response.getInt("DanhGia"),
                         response.getString("GioiThieu"),
                         utils.converDateFormate(response.getString("NgayChapThuan")));
@@ -284,11 +276,11 @@ public class DetailCourseActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
                     if (jsonObject.getInt("MaKhoaHoc") == GLOBAL.KhoaHocClick.getMaKhoaHoc()){
-                        getDetailCourse();
                         btnMuaNgay.setText("Vào học");
                         btnAddCart.setText("Đánh giá khóa học");
                         btnMuaNgay.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue_deep)));
                         btnAddCart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red_price)));
+
                     }
                     else {
                         getDetailCourse();

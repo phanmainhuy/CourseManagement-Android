@@ -126,6 +126,7 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
          * Add your logic here for a failed payment response
          */
         this.finish();
+
     }
 
 
