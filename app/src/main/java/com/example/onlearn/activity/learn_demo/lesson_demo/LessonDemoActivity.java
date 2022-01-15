@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
 import com.example.onlearn.activity.excercise.ExcerciseActivity;
+import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.lesson.LessonAdapter;
 import com.example.onlearn.activity.lesson.OnClickRCL_Lesson;
 import com.example.onlearn.models.LESSON;
@@ -131,7 +133,13 @@ public class LessonDemoActivity extends AppCompatActivity implements OnClickRCL_
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urllesson, null, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
 
+
+        return super.onCreateOptionsMenu(menu);
+    }
     //action bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -139,6 +147,11 @@ public class LessonDemoActivity extends AppCompatActivity implements OnClickRCL_
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 this.finish();
+                return true;
+            case R.id.action_home:
+                this.finish();
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -155,6 +168,8 @@ public class LessonDemoActivity extends AppCompatActivity implements OnClickRCL_
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
     }
+
+
     @Override
     public void ItemClickLesson(LESSON lesson) {
         GLOBAL.lesson = lesson;

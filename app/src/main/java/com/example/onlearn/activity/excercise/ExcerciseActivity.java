@@ -13,6 +13,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.util.Linkify;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -104,13 +105,19 @@ public class ExcerciseActivity extends AppCompatActivity implements OnClickRCL_E
             }
         });
 
-        btnUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String videoURL = URL_VIDEO_SAMPLE;
-                VideoViewUtils.playURLVideo(ExcerciseActivity.this, videoLearn, videoURL);
-            }
+//        //set full mh
+//        DisplayMetrics metrics = new DisplayMetrics();
+//        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+//        android.widget.LinearLayout.LayoutParams params = (android.widget.LinearLayout.LayoutParams) videoLearn.getLayoutParams();
+//        params.width = metrics.widthPixels;
+//        params.height = metrics.heightPixels;
+//        params.leftMargin = 0;
+//        videoLearn.setLayoutParams(params);
 
+
+        btnUrl.setOnClickListener(v -> {
+            String videoURL = URL_VIDEO_SAMPLE;
+            VideoViewUtils.playURLVideo(ExcerciseActivity.this, videoLearn, videoURL);
         });
         // When you change direction of phone, this method will be called.
         // It store the state of video (Current position)
