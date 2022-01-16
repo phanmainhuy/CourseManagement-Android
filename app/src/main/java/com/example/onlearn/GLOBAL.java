@@ -67,6 +67,9 @@ public class GLOBAL {
     public static String MaApDung = "";
 
 
+    //change avatar
+    public static String nameAvatar = "";
+
 
 
 

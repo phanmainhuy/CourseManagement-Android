@@ -56,6 +56,7 @@
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/drawable/textlines.xml" value="0.2703125" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_after_regist.xml" value="0.264" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_cart.xml" value="0.25416666666666665" />
+        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_change_avatar.xml" value="0.2125" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_change_profile.xml" value="0.13020833333333334" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_changepass.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activity_changepass_forget.xml" value="0.25416666666666665" />
@@ -105,6 +106,7 @@
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/activityloaikhoahoc.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/bot_msg_rv_item.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_basic.xml" value="0.264" />
+        <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_changeavatar.xml" value="0.264" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_chapter.xml" value="0.13020833333333334" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_classroom_intro.xml" value="0.25416666666666665" />
         <entry key="..\:/University/KhoaLuan/Code/OnLearn/app/src/main/res/layout/layout_1dong_coupon.xml" value="0.264" />

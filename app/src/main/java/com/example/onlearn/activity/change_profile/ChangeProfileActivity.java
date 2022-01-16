@@ -28,6 +28,7 @@ import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.change_avatar.ChangeAvatarActivity;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.login.LoginActivity;
 import com.example.onlearn.activity.profile_user.ProfileUserActivity;
@@ -47,7 +48,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
     String titleActionBar = "Sửa thông tin người dùng";
     Button btnSave, btnLogout, btnChangeTime;
     EditText txtName, txtNumber, txtEmail, txtAddress;
-    TextView tvUserName, txtDoB;
+    TextView tvUserName, txtDoB, btnChangeAvatar;
     ImageView imgAvatar;
     RadioButton rdoMale, rdoFemale;
     Context context;
@@ -84,6 +85,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
         rdoMale = findViewById(R.id.rdb_User_Male);
         rdoFemale = findViewById(R.id.rdb_User_Female);
         btnChangeTime = findViewById(R.id.btnChangeDate_ChangeProfile);
+        btnChangeAvatar = findViewById(R.id.btnChangeAva);
 
 
         setData();
@@ -121,6 +123,10 @@ public class ChangeProfileActivity extends AppCompatActivity {
            dpd.show();
 
 
+        });
+        btnChangeAvatar.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ChangeAvatarActivity.class);
+            startActivity(intent);
         });
 
 
@@ -195,23 +201,13 @@ public class ChangeProfileActivity extends AppCompatActivity {
         parmas.put("GroupID", GLOBAL.userlogin.getGroupID());
         parmas.put("Salary", GLOBAL.userlogin.getSalary());
 
-
-
-
         paramsHeaders.put("Content-Type", "application/json");
-
-
-        //print paramas
-//        Log.i("infoput", parmas.toString());
-
-
         //api null
         api.CallAPI(urlputUser, Request.Method.PUT, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
 
                     Log.i("success", "my response" +dataResponse);
-
                 ChangeProfileActivity.this.finish();
                 Intent intent = new Intent(context, ProfileUserActivity.class);
                 startActivity(intent);
@@ -219,12 +215,10 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
             @Override
             public void ReponseError(String error) {
-
                     Log.e("error", "my error: "+ error);
                     Toast.makeText(getApplicationContext(), "Sửa không thành công\nThông tin đã có người sử dụng", Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     @Override

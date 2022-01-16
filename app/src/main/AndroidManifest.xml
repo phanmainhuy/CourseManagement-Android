@@ -20,6 +20,9 @@
         android:theme="@style/Theme.OnLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.change_avatar.ChangeAvatarActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.excercise.VideoScreenActivity"
             android:exported="false" />
         <activity

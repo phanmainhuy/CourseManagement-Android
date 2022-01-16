@@ -39,7 +39,7 @@
                 app:srcCompat="@drawable/ic_user" />
 
             <TextView
-                android:id="@+id/btnChangeImage"
+                android:id="@+id/btnChangeAva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
