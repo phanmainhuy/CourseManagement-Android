@@ -1,6 +1,7 @@
 package com.example.onlearn.activity.coupon;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -73,7 +75,7 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
         holder.hsdkm.setText(km.HSD);
         //set format cho giá
         holder.giatrikm.setText(utils.formatNumberCurrency(km.GiaTri) + " VND");
-        holder.diemmua.setText((km.Diem) + " ");
+        holder.diemmua.setText((utils.formatNumberCurrency(km.Diem)));
 
 //        holder.btnMuaMa.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -123,14 +125,38 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponAdapter.KHUNGNHIN>
                 }
                 else {
 //                    listener.buyCoupon(khuyenmai);
-                    try {
-                        postBuyCP();
-//                        onBuyCoupon.buyCoupon(khuyenmai);
-//
+                    //post gio hang
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    //setTitle
+                    builder1.setTitle("Thông báo");
+                    builder1.setMessage("Bạn có đồng ý mua khuyến mãi "+tenkm.getText().toString()+" không?");
+                    builder1.setIcon(R.drawable.ic_chatbot);
+
+
+                    builder1.setCancelable(true);
+
+                    builder1.setNegativeButton("Đồng ý", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            try {
+                                postBuyCP();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            //  Cancel
+                            dialog.cancel();
+                        }
+                    });
+                    builder1.setPositiveButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //  Cancel
+                            dialog.cancel();
+                        }
+                    });
+                    // Create AlertDialog:
+                    AlertDialog alert = builder1.create();
+                    alert.show();
+
 //                    Toast.makeText(context.getApplicationContext(), "Đã mua khuyến mãi", Toast.LENGTH_SHORT).show();
 
                 }

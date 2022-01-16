@@ -150,10 +150,11 @@ public class PaymentOnlineActivity extends AppCompatActivity {
                     thanhtien = Double.valueOf(0);
                 }
 
-                int y = (int) Math.round(thanhtien);
 
                 String thanhtienin = String.valueOf(thanhtien);
-                GLOBAL.ThanhTien = y;
+
+
+                GLOBAL.ThanhTien = (int) Math.round(thanhtien);
 
                 tvThanhTien.setText(utils.formatNumberCurrency(thanhtienin)+" đ");
 //                int thanhtien = Integer.parseInt(GLOBAL.cart.getTongTien()) - Integer.parseInt(GLOBAL.SoGiaGiam);
