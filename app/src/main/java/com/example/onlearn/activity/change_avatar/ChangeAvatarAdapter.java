@@ -165,7 +165,7 @@ public class ChangeAvatarAdapter extends BaseAdapter {
 
                 Log.i("success", "my response" +dataResponse);
                 ((Activity)context).finish();
-                Intent intent = new Intent(context, ChangeProfileActivity.class);
+                Intent intent = new Intent(context, ProfileUserActivity.class);
                 context.startActivity(intent);
             }
 

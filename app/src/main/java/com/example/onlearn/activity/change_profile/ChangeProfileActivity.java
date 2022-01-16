@@ -125,6 +125,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
         });
         btnChangeAvatar.setOnClickListener(v -> {
+            this.finish();
             Intent intent = new Intent(this, ChangeAvatarActivity.class);
             startActivity(intent);
         });
