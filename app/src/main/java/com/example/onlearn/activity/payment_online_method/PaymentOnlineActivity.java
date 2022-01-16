@@ -47,6 +47,7 @@ public class PaymentOnlineActivity extends AppCompatActivity {
     String urlgetPay = GLOBAL.ip + "api/payment?MaHoaDon=" + GLOBAL.idHD_pay;
     String urlgetCoupon = GLOBAL.ip + "api/KhuyenMai/ApDung?MaND="+GLOBAL.idUser+"&&MaApDung=";
 
+
     String titleActionBar = "Thanh toán online";
     TextView tvTotalCourses, tvTongTien, tvGiamGia, tvThanhTien;
     Button btnMyCoupon, btngetCoupon, btnPayOnline;
@@ -65,7 +66,6 @@ public class PaymentOnlineActivity extends AppCompatActivity {
 
         api = new API(this);
         context = getApplicationContext();
-
 
         //map
         tvTotalCourses = findViewById(R.id.tvTotalCourses_PayOnline);
@@ -138,6 +138,11 @@ public class PaymentOnlineActivity extends AppCompatActivity {
                 GLOBAL.SoGiaGiam = dataResponse;
                 Double giamgia = Double.parseDouble(GLOBAL.SoGiaGiam);
 //                Log.i("gia giam", "so gia " + x);
+//                int giamgiaint =  Integer.parseInt(GLOBAL.SoGiaGiam);
+//                int tongtienint = Integer.parseInt(GLOBAL.cart.getTongTien());
+//                int thanhtienint = tongtienint - giamgiaint;
+//                GLOBAL.ThanhTien = thanhtienint;
+
 
                 Double tongtien = Double.parseDouble(GLOBAL.cart.getTongTien());
                 Double thanhtien = tongtien - giamgia;
@@ -145,8 +150,8 @@ public class PaymentOnlineActivity extends AppCompatActivity {
                 if (thanhtien <= 0){
                     thanhtien = Double.valueOf(0);
                 }
+
                 String thanhtienin = String.valueOf(thanhtien);
-//                GLOBAL.ThanhTien = Integer.parseInt(thanhtienin);
                 tvThanhTien.setText(utils.formatNumberCurrency(thanhtienin)+" đ");
 //                int thanhtien = Integer.parseInt(GLOBAL.cart.getTongTien()) - Integer.parseInt(GLOBAL.SoGiaGiam);
 //                tvThanhTien.setText(thanhtien + " Đ");
@@ -189,7 +194,8 @@ public class PaymentOnlineActivity extends AppCompatActivity {
                 GLOBAL.cart = new CART(response.getInt("MaHoaDon"),
                         response.getInt("MaND"),
                         response.getString("TongThanhToan"));
-
+                GLOBAL.ThanhTien =  response.getInt("TongThanhToan");
+                Log.e("thanhtien", "onCreate: " + GLOBAL.ThanhTien);
                 tvThanhTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()) + " VND");
                 tvTongTien.setText(utils.formatNumberCurrency(GLOBAL.cart.getTongTien()) + " VND");
                 dataPay.clear();

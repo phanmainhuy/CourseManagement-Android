@@ -85,7 +85,7 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
         try {
             JSONObject options = new JSONObject();
 
-            int pricePay = 199000 *100;
+            int pricePay = GLOBAL.ThanhTien /10;
             String titlePay = "ONLEARN";
             String DetailPay = "Thanh toán khóa học online";
             String EmailCus = GLOBAL.userlogin.getEmail();
