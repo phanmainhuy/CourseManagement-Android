@@ -10,6 +10,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,6 +19,7 @@ import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.pay_offline.PayOfflineActivity;
 import com.example.onlearn.activity.pay_successfully.PaySuccessfulActivity;
 import com.example.onlearn.models.NOTIFICATION;
@@ -36,6 +39,7 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
     String urlPay = GLOBAL.ip + "api/payment/InstantRamenMobile";
     API api;
     String titleActionBar = "RazorPay";
+    Button btnHome;
     private static final String TAG = RazorPayWalletActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,15 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
         //actionbar
         decorateActionBar();
         api = new API(this);
+        //map
+        btnHome = findViewById(R.id.btnReturn_RazoPay);
+        btnHome.setVisibility(View.INVISIBLE);
         Checkout.preload(getApplicationContext());
+        btnHome.setOnClickListener(v -> {
+            this.finish();
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        });
         //start
         startPayment();
 
@@ -85,7 +97,10 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
         try {
             JSONObject options = new JSONObject();
 
-            int pricePay = GLOBAL.ThanhTien /10;
+
+
+
+            int pricePay = Integer.parseInt(String.valueOf(GLOBAL.ThanhTien)) /10;
             String titlePay = "ONLEARN";
             String DetailPay = "Thanh toán khóa học online";
             String EmailCus = GLOBAL.userlogin.getEmail();
@@ -125,7 +140,8 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
         /**
          * Add your logic here for a failed payment response
          */
-        this.finish();
+        btnHome.setVisibility(View.VISIBLE);
+//        this.finish();
 
     }
 
@@ -172,7 +188,7 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
 
             @Override
             public void ReponseError(String error) {
-
+                btnHome.setVisibility(View.VISIBLE);
                 Log.e("error", "my error: " + error);
                 Toast.makeText(getApplicationContext(), "Thanh toán thất bại", Toast.LENGTH_LONG).show();
 

@@ -138,20 +138,23 @@ public class PaymentOnlineActivity extends AppCompatActivity {
                 GLOBAL.SoGiaGiam = dataResponse;
                 Double giamgia = Double.parseDouble(GLOBAL.SoGiaGiam);
 //                Log.i("gia giam", "so gia " + x);
-//                int giamgiaint =  Integer.parseInt(GLOBAL.SoGiaGiam);
-//                int tongtienint = Integer.parseInt(GLOBAL.cart.getTongTien());
-//                int thanhtienint = tongtienint - giamgiaint;
-//                GLOBAL.ThanhTien = thanhtienint;
+
+
 
 
                 Double tongtien = Double.parseDouble(GLOBAL.cart.getTongTien());
                 Double thanhtien = tongtien - giamgia;
+//                GLOBAL.ThanhTien = thanhtien;
 
                 if (thanhtien <= 0){
                     thanhtien = Double.valueOf(0);
                 }
 
+                int y = (int) Math.round(thanhtien);
+
                 String thanhtienin = String.valueOf(thanhtien);
+                GLOBAL.ThanhTien = y;
+
                 tvThanhTien.setText(utils.formatNumberCurrency(thanhtienin)+" đ");
 //                int thanhtien = Integer.parseInt(GLOBAL.cart.getTongTien()) - Integer.parseInt(GLOBAL.SoGiaGiam);
 //                tvThanhTien.setText(thanhtien + " Đ");
