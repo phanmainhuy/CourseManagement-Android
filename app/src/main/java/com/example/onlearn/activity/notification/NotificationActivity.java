@@ -22,11 +22,10 @@ import com.example.onlearn.models.NOTIFICATION;
 import com.example.onlearn.R;
 
 public class NotificationActivity extends AppCompatActivity {
-    ArrayList<NOTIFICATION> dataNotification = new ArrayList<>();
     ListView lstNotification;
     NotificationAdapter_Listview notificationAdapter;
 
-    TextView btnVoucher;
+    TextView btnVoucher, tvNull;
 
 
     @Override
@@ -47,6 +46,7 @@ public class NotificationActivity extends AppCompatActivity {
         //anh xa
         lstNotification = findViewById(R.id.lst_Notification);
         btnVoucher = findViewById(R.id.btnVoucher_Notification);
+        tvNull = findViewById(R.id.tvNull_Notification);
 
 
 
@@ -72,10 +72,17 @@ public class NotificationActivity extends AppCompatActivity {
         notificationAdapter = new NotificationAdapter_Listview(this, GLOBAL.notifications);
         lstNotification.setAdapter(notificationAdapter);
 
+        if (GLOBAL.notifications.size() > 0){
+            tvNull.setVisibility(View.INVISIBLE);
+        }
+        else {
+            tvNull.setVisibility(View.VISIBLE);
+        }
 
 
         //OnClick
         btnVoucher.setOnClickListener(v -> {
+            this.finish();
             Intent intent = new Intent(NotificationActivity.this, CouponActivity.class);
             startActivity(intent);
         });

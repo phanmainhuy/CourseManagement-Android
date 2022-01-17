@@ -24,7 +24,12 @@ public class GLOBAL {
     public static int iconDialog = R.drawable.ic_chatbot;
 
     //api
+    //https://khoahocapi.conveyor.cloud/
+    //http://192.168.1.160:45455/
+//    public static String ip = "https://khoahocapi.conveyor.cloud/";
     public static String ip = "http://192.168.1.160:45455/";
+
+
     public static String urlimg = "assets/images/";
 
     //object
@@ -64,7 +69,7 @@ public class GLOBAL {
 
     //payment online
     public static int ThanhTien = 0;
-    public static String MaApDung = "";
+    public static String MaApDung;
 
 
     //change avatar

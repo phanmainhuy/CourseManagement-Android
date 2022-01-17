@@ -110,7 +110,10 @@ public class PaymentOnlineActivity extends AppCompatActivity {
         });
 
         btnPayOnline.setOnClickListener(v -> {
-            GLOBAL.MaApDung.equals(txtCoupon.getText().toString().trim());
+            GLOBAL.MaApDung = txtCoupon.getText().toString().trim();
+            String x;
+            x = GLOBAL.MaApDung;
+            System.out.println(x);
             Intent intent = new Intent(this, PaymentOnlineWalletActivity.class);
             startActivity(intent);
         });
@@ -162,6 +165,10 @@ public class PaymentOnlineActivity extends AppCompatActivity {
                 tvGiamGia.setText("- "+utils.formatNumberCurrency(GLOBAL.SoGiaGiam)+" đ");
                 Toast.makeText(getApplicationContext(), "Áp dụng thành công", Toast.LENGTH_SHORT).show();
 //                txtMaApDung.setEnabled(false);
+                GLOBAL.MaApDung = (txtCoupon.getText().toString());
+                String a;
+                a = (GLOBAL.MaApDung);
+                System.out.println(a);
 
             }
 

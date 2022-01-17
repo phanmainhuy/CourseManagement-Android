@@ -47,17 +47,28 @@
 
 
 
-        <ListView
-            android:id="@+id/lst_Notification"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content">
+            <ListView
+                android:id="@+id/lst_Notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
 
-
-
-
-            >
-
-        </ListView>
+            </ListView>
+            <TextView
+                android:id="@+id/tvNull_Notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bạn chưa có thông báo nào"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="25dp"
+                android:textColor="@color/grey_hint_txt"
+                android:paddingTop="50dp"
+                />
+        </FrameLayout>
 
 
 

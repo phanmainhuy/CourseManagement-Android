@@ -157,7 +157,6 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
 
 
         //put parmas
-
         parmas.put("MaHD", GLOBAL.idHD_pay);
         parmas.put("MaApDung", GLOBAL.MaApDung);
 
@@ -173,8 +172,8 @@ public class RazorPayWalletActivity extends AppCompatActivity implements Payment
                 Log.i("success", "my response" + dataResponse);
                 String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 GLOBAL.notifications.add(new NOTIFICATION(R.drawable.ic_logonotification, "Thông báo mua khóa học thành công",
-                        "Bạn đã mua khóa học bằng ví RazorPay thành công! Hệ thống đã được thêm khóa học vào Phòng học của bạn." +
-                                "\nVui lòng vào Phòng học để kiểm tra"+
+                        "Bạn đã mua khóa học bằng ví RazorPay thành công! Hệ thống đã thêm khóa học vào Phòng học của bạn." +
+                                "\nVui lòng vào Phòng học để kiểm tra."+
                                 "\nMọi thắc mắc về thanh toán, vui lòng gọi hotline hỗ trợ của OnLearn." + "\nOnLearn xin chân thành cảm ơn bạn.",
                         currentDate));
 
