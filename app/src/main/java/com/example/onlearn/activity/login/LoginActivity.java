@@ -39,8 +39,8 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     String urlApi = GLOBAL.ip + "api/identity";
 
-    Button btnLogin, btnRegist;
-    TextView btnForgetPass, btnDieuKhoan;
+    Button btnLogin;
+    TextView btnForgetPass, btnDieuKhoan, btnRegist;
     SharedPreferences remember;
     CheckBox chkSave;
     EditText txtUsername, txtPassword;

@@ -3,7 +3,7 @@
     android:shape="rectangle"
 
     >
-<stroke android:color="@color/black"
+<stroke android:color="@color/white"
     android:width="2dp"
 
     >
@@ -17,7 +17,7 @@
 
         />
 
-    <solid android:color="@color/grey_txtSearch"/>
+    <solid android:color="@color/white"/>
 
 
 

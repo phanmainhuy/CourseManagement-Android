@@ -126,18 +126,50 @@
                     android:textStyle="bold"
 
                     />
-                <TextView
-                    android:id="@+id/btnForgetPass_Login"
-                    android:layout_marginTop="10dp"
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:layout_weight="1"
+                   android:gravity="left">
+                   <TextView
+                       android:id="@+id/btnRegist_Login"
+                       android:layout_marginTop="10dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:padding="2dp"
+                       android:textColor="@color/black"
+                       android:textStyle="bold"
+                       android:textSize="15dp"
+                       android:text="Đăng ký tài khoản mới" />
+               </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="2dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:gravity="left">
+                    <TextView
+                        android:id="@+id/btnForgetPass_Login"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:layout_gravity="right"
+                        android:text="Quên mật khẩu?" />
+                </LinearLayout>
 
-                    android:layout_gravity="right"
-                    android:text="Quên mật khẩu?" />
+
+            </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -168,17 +200,7 @@
 
 
 
-                <Button
-                    android:id="@+id/btnRegist_Login"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_height="60dp"
-                    android:text="Đăng ký tài khoản mới"
-                    android:textColor="@color/white"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
 
-                    />
 
 
 

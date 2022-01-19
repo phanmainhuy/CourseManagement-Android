@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="55dp"
-                android:background="@drawable/decorate_text_register"
+                android:background="@drawable/decorate_text_login_fix"
                 android:drawableLeft="@drawable/ic_account"
                 android:drawablePadding="10dp"
                 android:hint="Tên đăng nhập"
@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/decorate_text_register"
+                android:background="@drawable/decorate_text_login_fix"
                 android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="10dp"
                 android:hint="Mật khẩu"
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/decorate_text_register"
+                android:background="@drawable/decorate_text_login_fix"
                 android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="10dp"
                 android:hint="Nhập lại mật khẩu"
@@ -106,16 +106,6 @@
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnCancel_Register"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Huỷ bỏ"
-                android:textColor="@color/white"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/btnSaveRegister" />
 
         </LinearLayout>
 
