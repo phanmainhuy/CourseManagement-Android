@@ -104,12 +104,12 @@ public class RegisterActivity extends AppCompatActivity {
             }
             if (txtUserName.getText().toString().length() < 6) {
 //                Toast.makeText(context, "Tên đăng nhập phải trên 6 ký tự\nBạn đang nhập " + txtUserName.getText().toString().length() + " kí tự", Toast.LENGTH_SHORT).show();
-                tvValidation.setText("Tên đăng nhập từ 6 ký tự trở lên\nBạn đang nhập " + txtUserName.getText().toString().length() + " kí tự");
+                tvValidation.setText("Tên đăng nhập phải từ 6 ký tự trở lên\nBạn đang nhập " + txtUserName.getText().toString().length() + " kí tự");
                 return;
             }
-            if (txtPassword.getText().toString().length() < 6) {
+            if (txtPassword.getText().toString().length() < 6 || txtPassword.getText().toString().length() > 32) {
 //                Toast.makeText(context, "Mật khẩu phải trên 6 ký tự\nBạn đang nhập " + txtPassword.getText().toString().length() + " kí tự", Toast.LENGTH_SHORT).show();
-                tvValidation.setText("Mật khẩu từ 6 ký tự trở lên\nBạn đang nhập " + txtPassword.getText().toString().length() + " kí tự");
+                tvValidation.setText("Mật khẩu phải từ 6 đến 32 ký tự\nBạn đang nhập " + txtPassword.getText().toString().length() + " kí tự");
                 return;
             } else {
                 try {
