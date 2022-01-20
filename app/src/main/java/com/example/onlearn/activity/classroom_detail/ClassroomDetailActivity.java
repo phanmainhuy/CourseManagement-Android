@@ -111,7 +111,7 @@ public class ClassroomDetailActivity extends AppCompatActivity implements OnClic
             startActivity(intent);
         });
         btnRating.setOnClickListener(v -> {
-            this.finish();
+
             Intent intent = new Intent(this, RatingActivity.class);
             startActivity(intent);
         });

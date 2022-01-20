@@ -10,17 +10,26 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class utils {
-
+    Pattern pattern = Pattern.compile(EMAIL_PATTERN);
     //Tạo format tiền VND
     public static String formatNumberCurrency(String gia)
     {
         DecimalFormat format = new DecimalFormat("#,###");
         return format.format(Double.parseDouble(gia));
     }
+    public static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";// cấu trúc 1 email thông thường
+    // Class kiểm định dạng email
+    public boolean validate(final String hex) {
+        Matcher matcher;
+        matcher = pattern.matcher(hex);
+        return matcher.matches();
 
-
+    }
 //    public static Date formatStringtoDate(String datestring) throws ParseException {
 ////        String strDate = "2013-05-15T10:00:00-0700";
 ////        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");

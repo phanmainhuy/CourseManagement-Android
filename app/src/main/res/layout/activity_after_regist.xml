@@ -76,6 +76,7 @@
                 android:layout_marginTop="10dp"
                 android:inputType="number"
                 android:textSize="15dp"
+                android:maxLength="10"
                 android:layout_height="50dp"
                 android:drawablePadding="10dp"
                 android:hint="Số điện thoại"
