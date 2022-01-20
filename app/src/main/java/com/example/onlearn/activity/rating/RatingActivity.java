@@ -33,6 +33,7 @@ import com.example.onlearn.API.API;
 import com.example.onlearn.API.ICallBack;
 import com.example.onlearn.GLOBAL;
 import com.example.onlearn.R;
+import com.example.onlearn.activity.classroom_detail.ClassroomDetailActivity;
 import com.example.onlearn.activity.profile_user.ProfileUserActivity;
 import com.example.onlearn.models.RATING;
 import com.example.onlearn.utils.utils;
@@ -325,8 +326,10 @@ public class RatingActivity extends AppCompatActivity {
                     else if(jsonObject.getInt("MaND") == GLOBAL.idUser){
                         getRatingTotal();
                         ratingTotal.setRating((float) jsonObject.getDouble("TongDiem"));
+                        tvTotalRating.setText(utils.formatTotalRating(jsonObject.getDouble("TongDiem")) + " ");
 
                         tvTotalRating.setText(utils.formatTotalRating(jsonObject.getDouble("TongDiem")) + " ");
+
                     }
 
 
@@ -338,7 +341,7 @@ public class RatingActivity extends AppCompatActivity {
             tvSLUserRating.setText(response.length() + " lượt đánh giá");
             communityAdapter.notifyDataSetChanged();
 
-            if (response.length() > 0) {
+            if (response.length() >= 1) {
                 tvNull.setVisibility(View.INVISIBLE);
             } else {
                 tvNull.setVisibility(View.VISIBLE);
@@ -558,6 +561,7 @@ public class RatingActivity extends AppCompatActivity {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 this.finish();
+
                 return true;
         }
         return super.onOptionsItemSelected(item);

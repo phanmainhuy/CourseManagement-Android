@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,6 +19,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -36,14 +39,19 @@ import com.example.onlearn.activity.cart.CartActivity;
 import com.example.onlearn.activity.category_courses.KhoaHocTheoLoaiActivity;
 import com.example.onlearn.activity.category_small.LoaiKhoaHocActivity;
 import com.example.onlearn.activity.chapter.ChapterActivity;
+import com.example.onlearn.activity.classroom_detail.IntroAdapter;
+import com.example.onlearn.activity.classroom_detail.OnClickRCL_InTro;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.learn_demo.LearnDemoActivity;
 import com.example.onlearn.activity.login.LoginActivity;
 import com.example.onlearn.activity.rating.RatingActivity;
+import com.example.onlearn.activity.rating.RatingAdapter;
 import com.example.onlearn.activity.register.RegisterActivity;
+import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.DANHMUC;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LOAIKHOAHOC;
+import com.example.onlearn.models.RATING;
 import com.example.onlearn.utils.utils;
 import com.squareup.picasso.Picasso;
 
@@ -52,25 +60,34 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DetailCourseActivity extends AppCompatActivity {
+public class DetailCourseActivity extends AppCompatActivity implements OnClickRCL_InTro {
 
-    String urlClassroom = GLOBAL.ip + "api/KhoaHocTheoHocVien?MaHV=" +GLOBAL.idUser;
+    String urlClassroom = GLOBAL.ip + "api/KhoaHocTheoHocVien?MaHV=" + GLOBAL.idUser;
     //http://192.168.1.160:45455/api/khoahoc?makhoa=1
     String urlgetKH = GLOBAL.ip + "api/khoahoc?makhoa=" + GLOBAL.KhoaHocClick.getMaKhoaHoc();
     String urlgetimgKH = GLOBAL.ip + GLOBAL.urlimg + "courses/";
     String urlPostCart = GLOBAL.ip + "api/cartitem";
+    String urlgetCommunity = GLOBAL.ip + "api/DanhGia?MaKhoaHoc=" + GLOBAL.KhoaHocClick.getMaKhoaHoc();
+    String urlgetchap = GLOBAL.ip + "api/chuong?MaKhoaHoc=" + GLOBAL.KhoaHocClick.getMaKhoaHoc();
+
     API api;
     Context context;
     double priceCourses;
-
+    IntroAdapter chapAdapter;
     ImageView imgKH;
-    TextView tvGiaKH, tvNgayKhaiGiang, tvDanhMuc, tvTheLoai, tvTenGV, tvMoTa, tvTenKH;
+    TextView tvGiaKH, tvNgayKhaiGiang, tvDanhMuc, tvTheLoai, tvTenGV, tvMoTa, tvTenKH, tvNull;
     RatingBar ratingKH;
     Button btnMuaNgay, btnAddCart;
     String TitleActionBar = "Chi tiết khóa học";
+    RecyclerView rcl_RatingCommunity, rclChapter;
+    ArrayList<RATING> dataRating = new ArrayList<>();
+    ArrayList<CHAPTER> dataintro = new ArrayList<>();
+
+    RatingAdapter communityAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +110,28 @@ public class DetailCourseActivity extends AppCompatActivity {
         tvMoTa = findViewById(R.id.tvGioiThieu_Detail);
         btnAddCart = findViewById(R.id.AddCart_Detail);
         btnMuaNgay = findViewById(R.id.btnDKHoc_Detail);
+        rcl_RatingCommunity = findViewById(R.id.rclRatingCommunity_DetailCourse);
+        tvNull = findViewById(R.id.tvNullComunity_DetailCourse);
+        rclChapter = findViewById(R.id.rclChapter_detail);
+
 
         //get data
 //        getDetailCourse();
-            getClassroom();
-            getDetailCourse();
+        getClassroom();
+        getDetailCourse();
+        getIntroChap();
+        getCommunity();
+
+        //set adapter
+        chapAdapter = new IntroAdapter(this, dataintro, this);
+        rclChapter.setHasFixedSize(true);
+        rclChapter.setAdapter(chapAdapter);
+        rclChapter.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+
+        communityAdapter = new RatingAdapter(this, dataRating);
+        rcl_RatingCommunity.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rcl_RatingCommunity.setAdapter(communityAdapter);
 
 
         //xu ly button
@@ -111,25 +145,23 @@ public class DetailCourseActivity extends AppCompatActivity {
         });
 
         btnAddCart.setOnClickListener(v -> {
-           if(btnAddCart.getText().toString().equals("Thêm vào giỏ hàng")){
+            if (btnAddCart.getText().toString().equals("Thêm vào giỏ hàng")) {
                 try {
-                addCart();
-            } catch (JSONException e) {
-                e.printStackTrace();
+                    addCart();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Intent intent = new Intent(this, RatingActivity.class);
+                startActivity(intent);
             }
-           }
-           else{
-               Intent intent = new Intent(this, RatingActivity.class);
-               startActivity(intent);
-           }
         });
         btnMuaNgay.setOnClickListener(v -> {
-            if(btnMuaNgay.getText().toString().equals("Vào học")){
+            if (btnMuaNgay.getText().toString().equals("Vào học")) {
 
                 Intent intent = new Intent(this, ChapterActivity.class);
                 startActivity(intent);
-            }
-            else {
+            } else {
                 Intent intent = new Intent(this, LearnDemoActivity.class);
                 startActivity(intent);
             }
@@ -137,7 +169,7 @@ public class DetailCourseActivity extends AppCompatActivity {
 
     }
 
-    void DecorateActionBar(){
+    void DecorateActionBar() {
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
         //thanh tro ve home
@@ -148,6 +180,38 @@ public class DetailCourseActivity extends AppCompatActivity {
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(Html.fromHtml("<font color=\"white\">" + TitleActionBar + "</font>"));
+    }
+
+    private void getIntroChap() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject jsonObject = response.getJSONObject(i);
+                    dataintro.add(new CHAPTER(i + 1, jsonObject.getInt("MaChuong"),
+                            jsonObject.getInt("MaKhoaHoc"),
+                            jsonObject.getString("TenChuong"), jsonObject.getString("TenKhoaHoc"))
+                    );
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            chapAdapter.notifyDataSetChanged();
+
+        };
+//        Map<String, String> paramsHeaders = new HashMap<>();
+//        paramsHeaders.put("Content-Type", "application/json");
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if (error.getMessage() != null) {
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlgetchap, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+
     }
 
     private void addCart() throws JSONException {
@@ -164,7 +228,7 @@ public class DetailCourseActivity extends AppCompatActivity {
         api.CallAPI(urlPostCart, Request.Method.POST, parmas.toString(), null, paramsHeaders, new ICallBack() {
             @Override
             public void ReponseSuccess(String dataResponse) {
-                Log.i("success",dataResponse);
+                Log.i("success", dataResponse);
 
                 try {
                     JSONObject result = new JSONObject(dataResponse);
@@ -179,9 +243,10 @@ public class DetailCourseActivity extends AppCompatActivity {
 
 
             }
+
             @Override
             public void ReponseError(String error) {
-                Log.e("error", "My error: "+ error);
+                Log.e("error", "My error: " + error);
                 btnAddCart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_hint_txt)));
                 btnAddCart.setEnabled(false);
 //                Toast.makeText(getApplicationContext(), "Thêm vào giỏ hàng thất bại\nKhóa học đã được mua hoặc có trong giỏ hàng", Toast.LENGTH_LONG).show();
@@ -208,9 +273,58 @@ public class DetailCourseActivity extends AppCompatActivity {
                 alert.show();
 
 
-
             }
         });
+    }
+
+    private void getCommunity() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            dataRating.clear();
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject jsonObject = response.getJSONObject(i);
+
+
+                    dataRating.add(new RATING(jsonObject.getInt("MaDanhGia"),
+                            jsonObject.getInt("MaND"),
+                            jsonObject.getInt("MaKhoaHoc"),
+                            jsonObject.getString("TenKhoaHoc"),
+                            jsonObject.getInt("Diem"),
+                            jsonObject.getDouble("TongDiem"),
+                            jsonObject.getString("NoiDung"),
+                            jsonObject.getString("TenND"),
+                            jsonObject.getString("HinhAnh"),
+                            jsonObject.getString("NgayDanhGia")
+                    ));
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            communityAdapter.notifyDataSetChanged();
+
+            if (response.length() > 0) {
+                tvNull.setVisibility(View.INVISIBLE);
+            } else {
+                tvNull.setVisibility(View.VISIBLE);
+            }
+
+        };
+
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if (error.getMessage() != null)
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            tvNull.setVisibility(View.VISIBLE);
+
+
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlgetCommunity, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+
     }
 
 
@@ -275,14 +389,13 @@ public class DetailCourseActivity extends AppCompatActivity {
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject jsonObject = response.getJSONObject(i);
-                    if (jsonObject.getInt("MaKhoaHoc") == GLOBAL.KhoaHocClick.getMaKhoaHoc()){
+                    if (jsonObject.getInt("MaKhoaHoc") == GLOBAL.KhoaHocClick.getMaKhoaHoc()) {
                         btnMuaNgay.setText("Vào học");
                         btnAddCart.setText("Đánh giá khóa học");
                         btnMuaNgay.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blue_deep)));
                         btnAddCart.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red_price)));
 
-                    }
-                    else {
+                    } else {
                         getDetailCourse();
                     }
                 } catch (JSONException e) {
@@ -294,8 +407,8 @@ public class DetailCourseActivity extends AppCompatActivity {
         };
 //        Map<String, String> paramsHeaders = new HashMap<>();
 //        paramsHeaders.put("Content-Type", "application/json");
-        com.android.volley.Response.ErrorListener thatbai = error ->{
-            if(error.getMessage()!=null){
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if (error.getMessage() != null) {
                 Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
             }
 
@@ -314,6 +427,7 @@ public class DetailCourseActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -334,4 +448,13 @@ public class DetailCourseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void itemClickChapter(CHAPTER chapter) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }

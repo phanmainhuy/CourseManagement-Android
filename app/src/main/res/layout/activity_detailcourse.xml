@@ -220,11 +220,61 @@
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nội dung khóa học "
+                android:textColor="@color/black"
+                android:paddingLeft="5dp"
+                android:background="@drawable/textlines"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rclChapter_detail"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="70dp"
+                android:background="@color/white"
+
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Đánh giá của cộng đồng"
+                android:textColor="@color/black"
+                android:paddingLeft="5dp"
+                android:background="@drawable/textlines"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rclRatingCommunity_DetailCourse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="300dp"
+                    />
+                <TextView
+                    android:id="@+id/tvNullComunity_DetailCourse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_hint_txt"
+                    android:text="Chưa có đánh giá nào"
+                    android:textSize="17dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="50dp"
 
-
-
+                    />
+            </FrameLayout>
 
 
 

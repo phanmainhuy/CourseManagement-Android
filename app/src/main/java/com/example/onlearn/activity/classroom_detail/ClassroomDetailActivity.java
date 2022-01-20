@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -30,6 +31,7 @@ import com.example.onlearn.activity.category_small.LoaiKhoaHocAdapter_rcl;
 import com.example.onlearn.activity.chapter.ChapterActivity;
 import com.example.onlearn.activity.home.HomeActivity;
 import com.example.onlearn.activity.rating.RatingActivity;
+import com.example.onlearn.activity.rating.RatingAdapter;
 import com.example.onlearn.models.CHAPTER;
 import com.example.onlearn.models.LEARN;
 import com.example.onlearn.models.LOAIKHOAHOC;
@@ -49,13 +51,16 @@ public class ClassroomDetailActivity extends AppCompatActivity implements OnClic
     String titleActionBar = "Chi tiết khóa học ";
     String urlimg = GLOBAL.ip + GLOBAL.urlimg + "courses/";
     ImageView imgKH;
-    TextView tvTenKH, tvTenGV, tvNgayMua, tvGioiThieu;
+    TextView tvTenKH, tvTenGV, tvNgayMua, tvGioiThieu, tvNull;
     Button btnLearn, btnRating;
     RatingBar ratingBar;
-    RecyclerView rclChapter;
+    RecyclerView rclChapter, rcl_RatingCommunity;
     IntroAdapter chapAdapter;
     ArrayList<CHAPTER> dataintro = new ArrayList<>();
+    ArrayList<RATING> dataRating = new ArrayList<>();
+    RatingAdapter communityAdapter;
 
+    String urlgetCommunity = GLOBAL.ip + "api/DanhGia?MaKhoaHoc=" + GLOBAL.learn.getMaKH();
     String urlgetchap = GLOBAL.ip + "api/chuong?MaKhoaHoc=" + GLOBAL.learn.getMaKH();
     String urlRating = GLOBAL.ip + "api/DanhGia?MaKhoaHoc="+GLOBAL.learn.getMaKH()+"&&MaND=" + GLOBAL.idUser;
 
@@ -77,6 +82,9 @@ public class ClassroomDetailActivity extends AppCompatActivity implements OnClic
         ratingBar = findViewById(R.id.rating_classroom);
         rclChapter = findViewById(R.id.rclChapter_classroom);
 
+        rcl_RatingCommunity = findViewById(R.id.rclRatingCommunity_DetailClassroom);
+        tvNull = findViewById(R.id.tvNullComunity_DetailClassroom);
+
         //set adapter
         chapAdapter = new IntroAdapter(this, dataintro, this);
         rclChapter.setHasFixedSize(true);
@@ -92,13 +100,18 @@ public class ClassroomDetailActivity extends AppCompatActivity implements OnClic
 
         getIntroChap();
         getUserRating();
+        getCommunity();
 
+        communityAdapter = new RatingAdapter(this, dataRating);
+        rcl_RatingCommunity.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rcl_RatingCommunity.setAdapter(communityAdapter);
 
         btnLearn.setOnClickListener(v -> {
             Intent intent = new Intent(this, ChapterActivity.class);
             startActivity(intent);
         });
         btnRating.setOnClickListener(v -> {
+            this.finish();
             Intent intent = new Intent(this, RatingActivity.class);
             startActivity(intent);
         });
@@ -221,7 +234,57 @@ public class ClassroomDetailActivity extends AppCompatActivity implements OnClic
         actionBar.setBackgroundDrawable(colorDrawable);
     }
 
+    private void getCommunity() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
+        com.android.volley.Response.Listener<JSONArray> thanhcong = response -> {
+            dataRating.clear();
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject jsonObject = response.getJSONObject(i);
+
+
+                    dataRating.add(new RATING(jsonObject.getInt("MaDanhGia"),
+                            jsonObject.getInt("MaND"),
+                            jsonObject.getInt("MaKhoaHoc"),
+                            jsonObject.getString("TenKhoaHoc"),
+                            jsonObject.getInt("Diem"),
+                            jsonObject.getDouble("TongDiem"),
+                            jsonObject.getString("NoiDung"),
+                            jsonObject.getString("TenND"),
+                            jsonObject.getString("HinhAnh"),
+                            jsonObject.getString("NgayDanhGia")
+                    ));
+
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            communityAdapter.notifyDataSetChanged();
+
+            if (response.length() > 0) {
+                tvNull.setVisibility(View.INVISIBLE);
+            } else {
+                tvNull.setVisibility(View.VISIBLE);
+            }
+
+        };
+
+        com.android.volley.Response.ErrorListener thatbai = error -> {
+            if (error.getMessage() != null)
+                Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show();
+            tvNull.setVisibility(View.VISIBLE);
+
+
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlgetCommunity, null, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+
+    }
     @Override
     public void itemClickChapter(CHAPTER chapter) {
         GLOBAL.chapter = chapter;
