@@ -1,2 +1,2 @@
-# Mobile
-for mobile
+# Mobile Java Android
+course management for Android
